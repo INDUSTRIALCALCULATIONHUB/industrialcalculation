@@ -1,6 +1,116 @@
-<h2>Tools</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Industrial Calculation Hub</title>
 
-<a href="air-density.html">Air Density Calculator</a><br>
-<a href="thermal-expansion.html">Thermal Expansion</a><br>
-<a href="weight-conversion.html">Weight Converter</a>
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: white;
+}
 
+/* HEADER */
+.header {
+    text-align: center;
+    padding: 50px 20px 20px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+.header p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* TOOL CARDS */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px;
+}
+
+.card {
+    background: white;
+    color: #333;
+    width: 280px;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: #2a5298;
+}
+
+.card p {
+    font-size: 14px;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 14px;
+}
+
+.footer a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Industrial Calculation Hub</h1>
+    <p>Free Engineering Calculators for Accurate Industrial Calculations</p>
+</div>
+
+<div class="container">
+
+    <a href="air-density.html" class="card">
+        <h3>Air Density Calculator</h3>
+        <p>Calculate air density using altitude and temperature with accurate results.</p>
+    </a>
+
+    <a href="thermal-expansion.html" class="card">
+        <h3>Thermal Expansion</h3>
+        <p>Estimate material expansion based on temperature change.</p>
+    </a>
+
+    <a href="weight-conversion.html" class="card">
+        <h3>Weight Converter</h3>
+        <p>Convert weight between kg and lb quickly and easily.</p>
+    </a>
+
+</div>
+
+<div class="footer">
+    <p>© 2026 Industrial Calculation Hub</p>
+    <a href="about.html">About</a> |
+    <a href="contact.html">Contact</a> |
+    <a href="privacy.html">Privacy Policy</a>
+</div>
+
+</body>
+</html>
