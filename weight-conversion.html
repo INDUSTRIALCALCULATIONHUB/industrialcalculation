@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Weight Conversion</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: #333;
+}
+
+.header {
+    text-align: center;
+    padding: 30px;
+    color: white;
+}
+
+.container {
+    background: white;
+    padding: 25px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+button {
+    padding: 12px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    width: 45%;
+}
+
+.calc-btn {
+    background: #2a5298;
+    color: white;
+}
+
+.reset-btn {
+    background: #ccc;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+#output {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #2a5298;
+    color: white;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.footer {
+    text-align: center;
+    margin: 30px;
+    color: white;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+    <h1>⚖️ Weight Conversion</h1>
+    <p>Convert weight across multiple engineering units</p>
+</div>
+
+<div class="container">
+
+<input type="number" id="inputValue" placeholder="Enter Value">
+
+<select id="unit">
+    <option>kg</option>
+    <option>N</option>
+    <option>kN</option>
+    <option>Metric Ton (t)</option>
+    <option>Pound (lb)</option>
+    <option>Kip</option>
+    <option>Kilogram-force (kgf)</option>
+    <option>Ton-force (tf)</option>
+</select>
+
+<div style="text-align:center;">
+    <button class="calc-btn" onclick="calculate()">Calculate</button>
+    <button class="reset-btn" onclick="resetForm()">Reset</button>
+</div>
+
+</div>
+
+<div id="output"></div>
+
+<div class="footer">
+    <p>© Industrial Calculation Hub</p>
+</div>
+
+<script>
+
+// Conversion factors (same as Python)
+const TO_NEWTON = {
+    "kg": 9.81,
+    "N": 1.0,
+    "kN": 1000.0,
+    "Metric Ton (t)": 9810.0,
+    "Pound (lb)": 4.44822,
+    "Kip": 4448.22,
+    "Kilogram-force (kgf)": 9.81,
+    "Ton-force (tf)": 9810.0
+};
+
+function calculate() {
+
+    let value = parseFloat(document.getElementById("inputValue").value);
+    let unit = document.getElementById("unit").value;
+
+    if (isNaN(value)) {
+        document.getElementById("output").innerHTML =
+            "<p style='color:red; text-align:center;'>Please enter a valid value</p>";
+        return;
+    }
+
+    let newton = value * TO_NEWTON[unit];
+
+    let results = {
+        "Kilogram (kg)": newton / 9.81,
+        "Newton (N)": newton,
+        "Kilonewton (kN)": newton / 1000,
+        "Metric Ton (t)": newton / 9810,
+        "Pound (lb)": newton / 4.44822,
+        "Kip": newton / 4448.22,
+        "Kilogram-force (kgf)": newton / 9.81,
+        "Ton-force (tf)": newton / 9810
+    };
+
+    let table = `
+    <div class="card">
+        <h3 style="text-align:center;">Conversion Results</h3>
+        <table>
+            <tr><th>Unit</th><th>Value</th></tr>
+    `;
+
+    for (let key in results) {
+        table += `<tr><td>${key}</td><td>${results[key].toFixed(2)}</td></tr>`;
+    }
+
+    table += `</table></div>`;
+
+    document.getElementById("output").innerHTML = table;
+}
+
+function resetForm() {
+    document.getElementById("inputValue").value = "";
+    document.getElementById("unit").value = "kg";
+    document.getElementById("output").innerHTML = "";
+}
+
+</script>
+
+</body>
+</html>
