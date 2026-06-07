@@ -6,24 +6,109 @@
 <title>Thermal Expansion Calculator</title>
 
 <!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
-crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612" crossorigin="anonymous"></script>
 
-<!-- Google CMP -->
+<!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
 <style>
-body {margin:0;font-family:Segoe UI;background:linear-gradient(to right,#1e3c72,#2a5298);color:#333;}
-.navbar{text-align:center;background:#444;padding:12px;}
-.navbar a{color:white;margin:10px;text-decoration:none;}
-.header{text-align:center;padding:30px;color:white;}
-.container{background:white;padding:25px;margin:20px auto;width:90%;max-width:650px;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,0.2);}
-input,select{width:100%;padding:12px;margin:10px 0;}
-button{padding:12px;border:none;border-radius:8px;cursor:pointer;}
-.calc-btn{background:#2a5298;color:white;}
-.reset-btn{background:#ccc;}
-#output{margin-top:20px;}
-.footer{text-align:center;margin:30px;color:white;}
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: #333;
+}
+
+.navbar {
+    text-align: center;
+    background: #444;
+    padding: 12px;
+}
+
+.navbar a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+}
+
+.header {
+    text-align: center;
+    padding: 30px;
+    color: white;
+}
+
+.container {
+    background: white;
+    padding: 25px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 520px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+select, input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 45%;
+}
+
+.calc-btn {background:#2a5298;color:white;}
+.reset-btn {background:#ccc;}
+
+#output {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.result-item {
+    margin: 8px 0;
+}
+
+.success {
+    margin-top: 15px;
+    padding: 12px;
+    background: #d4edda;
+    color: #155724;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ✅ ENGINEERING NOTES */
+.section {
+    background: white;
+    padding: 25px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 520px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.footer {
+    text-align: center;
+    margin: 30px;
+    color: white;
+}
 </style>
 </head>
 
@@ -39,13 +124,13 @@ button{padding:12px;border:none;border-radius:8px;cursor:pointer;}
 
 <div class="header">
 <h1>Thermal Expansion Calculator</h1>
-<p>Calculate material expansion due to temperature change</p>
+<p>Calculate linear expansion of engineering materials</p>
 </div>
 
 <div class="container">
 
 <select id="material">
-<option>Select Material</option>
+    <option value="">Select Material</option>
 </select>
 
 <input type="number" id="length" placeholder="Length (mm)">
@@ -60,83 +145,64 @@ button{padding:12px;border:none;border-radius:8px;cursor:pointer;}
 
 <div id="output"></div>
 
-<div class="container">
+<!-- ✅ ENGINEERING NOTES ADDED -->
+<div class="section">
+<h2>Engineering Notes</h2>
+<p>This calculator is based on standard engineering formulas used in real-world industrial design and analysis.</p>
 
-<h2>About Thermal Expansion</h2>
-<p>
-Thermal expansion occurs when materials expand or contract due to temperature changes. It is critical in structural and mechanical design.
-</p>
-
-<h2>How This Calculator Works</h2>
-<p>
-The calculator uses the linear expansion formula ΔL = α × L × ΔT, where α is the coefficient of thermal expansion.
-</p>
-
-<h2>Applications</h2>
+<h3>Reference Standards</h3>
 <ul>
-<li>Piping system design</li>
-<li>Bridge construction</li>
-<li>Machine design</li>
-<li>Rail track expansion</li>
+<li>ISO engineering standards</li>
+<li>Standard atmospheric equations</li>
+<li>Material property constants</li>
 </ul>
-
-<h2>Limitations</h2>
-<p>
-This calculation assumes uniform material properties and does not include stress or deformation effects.
-</p>
-
-<h2>FAQ</h2>
-<h3>Is this accurate?</h3>
-<p>Yes, it uses standard engineering formulas for estimation.</p>
-
-<h3>Can I use it professionally?</h3>
-<p>Yes, for preliminary design and learning purposes.</p>
-
-</div>
-
-<div class="footer">
-© 2026 Industrial Calculation Hub
 </div>
 
 <script>
 const coefficients = {
-"Aluminium 5083":23.8e-6,
-"Aluminium 6061":23.6e-6,
-"Brass":19e-6,
-"Bronze":18e-6,
-"Carbon Steel":12e-6,
-"Copper":16.5e-6,
-"Stainless Steel 304":17.3e-6
+    "Aluminium 5083": 23.8e-6,
+    "Aluminium 6061": 23.6e-6,
+    "Brass": 19.0e-6,
+    "Bronze": 18.0e-6,
+    "Carbon Steel (A36)": 12.0e-6,
+    "Copper": 16.5e-6,
+    "Stainless Steel 304": 17.3e-6,
+    "Stainless Steel 316": 16.0e-6
 };
 
-const mat=document.getElementById("material");
-Object.keys(coefficients).forEach(m=>{
-let o=document.createElement("option");
-o.text=m;
-mat.add(o);
+const materialSelect = document.getElementById("material");
+Object.keys(coefficients).sort().forEach(m=>{
+    let opt=document.createElement("option");
+    opt.value=m;
+    opt.text=m;
+    materialSelect.appendChild(opt);
 });
 
 function calculate(){
-let m=mat.value;
+
+let mat=document.getElementById("material").value;
 let L=parseFloat(document.getElementById("length").value);
 let dT=parseFloat(document.getElementById("deltaTemp").value);
 
-if(m==="Select Material"||isNaN(L)||isNaN(dT)){
-document.getElementById("output").innerHTML="<p style='color:red;text-align:center;'>Invalid input</p>";
+if(!mat||isNaN(L)||isNaN(dT)){
+document.getElementById("output").innerHTML="Invalid input";
 return;
 }
 
-let exp=coefficients[m]*L*dT;
+let alpha=coefficients[mat];
+let expansion=alpha*L*dT;
 
 document.getElementById("output").innerHTML=`
-<div class="container">
+<div class="card">
 <h3>Result</h3>
-<p><b>Expansion:</b> ${exp.toFixed(4)} mm</p>
+<div class="result-item">Material: ${mat}</div>
+<div class="result-item">Expansion: ${expansion.toFixed(3)} mm</div>
+<div class="success">Calculation Completed</div>
 </div>`;
 }
 
 function resetForm(){
-document.getElementById("material").value="Select Material";
+document.getElementById("material").value="";
 document.getElementById("length").value="";
 document.getElementById("deltaTemp").value="";
 document.getElementById("output").innerHTML="";
