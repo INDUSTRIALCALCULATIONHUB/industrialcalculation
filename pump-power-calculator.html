@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pump Power Calculator</title>
+
+<!-- SEO -->
+<meta name="description" content="Calculate pump power required based on flow rate, head and efficiency. Engineering tool for hydraulic systems.">
+<meta name="keywords" content="pump power calculator, hydraulic power, pump efficiency, engineering calculator, fluid power">
+<meta name="author" content="Industrial Calculation Hub">
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
+crossorigin="anonymous"></script>
+
+<!-- CMP -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    text-align: center;
+    background: #444;
+    padding: 12px;
+}
+
+.navbar a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 30px;
+    color: white;
+}
+
+/* Container */
+.container {
+    background: white;
+    padding: 25px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 520px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* Buttons */
+button {
+    padding: 12px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 45%;
+}
+
+.calc-btn {background:#2a5298;color:white;}
+.reset-btn {background:#ccc;}
+
+/* Output */
+#output {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Section */
+.section {
+    background: white;
+    padding: 25px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 520px;
+    border-radius: 12px;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin: 30px;
+    color: white;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+<h1>Pump Power Calculator</h1>
+<p>Calculate hydraulic pump power requirement</p>
+</div>
+
+<!-- INPUT -->
+<div class="container">
+
+<input type="number" id="flow" placeholder="Flow Rate (m³/s)">
+<input type="number" id="head" placeholder="Head (m)">
+<input type="number" id="eff" placeholder="Efficiency (%)">
+
+<div style="text-align:center;">
+<button class="calc-btn" onclick="calculate()">Calculate</button>
+<button class="reset-btn" onclick="resetForm()">Reset</button>
+</div>
+
+</div>
+
+<!-- OUTPUT -->
+<div id="output"></div>
+
+<!-- INFO -->
+<div class="container">
+
+<h2>About Pump Power</h2>
+<p>
+Pump power is the energy required to move fluid through a system against gravity and resistance.
+It is widely used in hydraulic, water supply, and industrial systems.
+</p>
+
+<h3>Formula</h3>
+<p>P = (ρ × g × Q × H) / η</p>
+
+<ul>
+<li>P = Power (Watts)</li>
+<li>ρ = Density of fluid (kg/m³)</li>
+<li>g = Gravity (9.81 m/s²)</li>
+<li>Q = Flow rate (m³/s)</li>
+<li>H = Head (m)</li>
+<li>η = Efficiency</li>
+</ul>
+
+<h3>Applications</h3>
+<ul>
+<li>Water pumping systems</li>
+<li>Industrial fluid transfer</li>
+<li>Irrigation systems</li>
+<li>Oil & gas pipelines</li>
+</ul>
+
+</div>
+
+<!-- ENGINEERING NOTES -->
+<div class="section">
+<h2>Engineering Notes</h2>
+<p>This calculator is based on standard hydraulic engineering principles used in real-world design and analysis.</p>
+
+<h3>Reference Standards</h3>
+<ul>
+<li>Fluid mechanics equations</li>
+<li>ISO hydraulic standards</li>
+<li>Energy conservation laws</li>
+</ul>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+© 2026 Industrial Calculation Hub
+</div>
+
+<script>
+function calculate() {
+
+let Q = parseFloat(document.getElementById("flow").value);
+let H = parseFloat(document.getElementById("head").value);
+let eff = parseFloat(document.getElementById("eff").value);
+
+if(isNaN(Q) || isNaN(H) || isNaN(eff)){
+document.getElementById("output").innerHTML =
+"<p style='color:red;text-align:center;'>Enter valid values</p>";
+return;
+}
+
+let rho = 1000; // water
+let g = 9.81;
+
+let eta = eff / 100;
+
+let P = (rho * g * Q * H) / eta;
+let kW = P / 1000;
+
+document.getElementById("output").innerHTML = `
+<div class="card">
+<h3>Results</h3>
+<p><strong>Power:</strong> ${P.toFixed(2)} W</p>
+<p><strong>Power:</strong> ${kW.toFixed(3)} kW</p>
+</div>
+`;
+}
+
+function resetForm(){
+document.getElementById("flow").value="";
+document.getElementById("head").value="";
+document.getElementById("eff").value="";
+document.getElementById("output").innerHTML="";
+}
+</script>
+
+</body>
+</html>
