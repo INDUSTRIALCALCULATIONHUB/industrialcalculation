@@ -6,8 +6,8 @@
 
 <title>Pump Power Calculator | Industrial Calculation Hub</title>
 
-<meta name="description" content="Calculate pump power based on flow rate, head, and efficiency. Engineering tool for hydraulic and fluid systems.">
-<meta name="keywords" content="pump power calculator, hydraulic power, pump efficiency, flow rate calculator, engineering tools">
+<meta name="description" content="Calculate pump power based on flow rate, head, efficiency, and fluid density. Engineering tool for hydraulic systems.">
+<meta name="keywords" content="pump power calculator, hydraulic power, fluid density, flow rate calculator, engineering tools">
 <meta name="author" content="Industrial Calculation Hub">
 
 <!-- AdSense -->
@@ -53,7 +53,7 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-input {
+input, select {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
@@ -93,7 +93,6 @@ button {
     width: 90%;
     max-width: 520px;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .footer {
@@ -107,7 +106,6 @@ button {
 
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
@@ -116,14 +114,20 @@ button {
 <a href="terms.html">Terms</a>
 </div>
 
-<!-- HEADER -->
 <div class="header">
 <h1>Pump Power Calculator</h1>
-<p>Hydraulic power calculation for engineering systems</p>
+<p>Hydraulic power calculation with fluid selection</p>
 </div>
 
-<!-- INPUT -->
 <div class="container">
+
+<select id="fluid" onchange="setDensity()">
+    <option value="1000">Water (1000 kg/m³)</option>
+    <option value="850">Oil (850 kg/m³)</option>
+    <option value="custom">Custom Density</option>
+</select>
+
+<input type="number" id="density" placeholder="Density (kg/m³) - auto / custom">
 
 <input type="number" id="flow" placeholder="Flow Rate (m³/s)">
 <input type="number" id="head" placeholder="Head (m)">
@@ -136,71 +140,63 @@ button {
 
 </div>
 
-<!-- OUTPUT -->
 <div id="output"></div>
 
-<!-- INFO -->
 <div class="container">
-
-<h2>About Pump Power</h2>
-<p>
-Pump power is the energy required to move fluid against gravity and system resistance.
-It is widely used in hydraulic engineering and industrial fluid systems.
-</p>
-
-<h3>Formula</h3>
+<h2>Formula</h2>
 <p><b>P = (ρ × g × Q × H) / η</b></p>
 
 <ul>
 <li>ρ = Fluid density (kg/m³)</li>
-<li>g = Gravity (9.81 m/s²)</li>
 <li>Q = Flow rate (m³/s)</li>
 <li>H = Head (m)</li>
 <li>η = Efficiency</li>
 </ul>
-
 </div>
 
-<!-- ENGINEERING NOTES -->
 <div class="section">
 <h2>Engineering Notes</h2>
-<p>
-This calculator is based on standard fluid mechanics equations used in real-world hydraulic design and industrial engineering systems.
-</p>
-
-<h3>Reference Standards</h3>
-<ul>
-<li>Bernoulli’s equation</li>
-<li>Hydraulic energy balance</li>
-<li>ISO fluid system standards</li>
-</ul>
+<p>Includes fluid selection for realistic industrial pump calculations.</p>
 </div>
 
-<!-- FOOTER -->
 <div class="footer">
 © 2026 Industrial Calculation Hub
 </div>
 
 <script>
+
+function setDensity() {
+    let fluid = document.getElementById("fluid").value;
+    let densityInput = document.getElementById("density");
+
+    if (fluid !== "custom") {
+        densityInput.value = fluid;
+        densityInput.disabled = true;
+    } else {
+        densityInput.value = "";
+        densityInput.disabled = false;
+    }
+}
+
 function calculate() {
 
+let rho = parseFloat(document.getElementById("density").value);
 let Q = parseFloat(document.getElementById("flow").value);
 let H = parseFloat(document.getElementById("head").value);
 let eff = parseFloat(document.getElementById("eff").value);
 
-if (isNaN(Q) || isNaN(H) || isNaN(eff)) {
+if (isNaN(rho) || isNaN(Q) || isNaN(H) || isNaN(eff)) {
 document.getElementById("output").innerHTML =
-"<p style='color:red;text-align:center;'>Please enter valid numeric values</p>";
+"<p style='color:red;text-align:center;'>Please enter all values</p>";
 return;
 }
 
 if (eff <= 0 || eff > 100) {
 document.getElementById("output").innerHTML =
-"<p style='color:red;text-align:center;'>Efficiency must be between 1 and 100%</p>";
+"<p style='color:red;text-align:center;'>Efficiency must be 1–100%</p>";
 return;
 }
 
-let rho = 1000;
 let g = 9.81;
 let eta = eff / 100;
 
@@ -210,18 +206,24 @@ let kW = P / 1000;
 document.getElementById("output").innerHTML = `
 <div class="card">
 <h3>Results</h3>
-<p><strong>Power:</strong> ${P.toFixed(2)} W</p>
-<p><strong>Power:</strong> ${kW.toFixed(3)} kW</p>
+<p><b>Power:</b> ${P.toFixed(2)} W</p>
+<p><b>Power:</b> ${kW.toFixed(3)} kW</p>
 </div>
 `;
 }
 
-function resetForm(){
+function resetForm() {
+document.getElementById("fluid").value = "1000";
+document.getElementById("density").value = "1000";
+document.getElementById("density").disabled = true;
 document.getElementById("flow").value = "";
 document.getElementById("head").value = "";
 document.getElementById("eff").value = "";
 document.getElementById("output").innerHTML = "";
 }
+
+window.onload = setDensity;
+
 </script>
 
 </body>
