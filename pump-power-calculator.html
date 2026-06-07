@@ -122,7 +122,7 @@ button {
 <div class="container">
 
 <input type="number" id="density" placeholder="Fluid Density (kg/m³)">
-<input type="number" id="flow" placeholder="Flow Rate (m³/s)">
+<input type="number" id="flow" placeholder="Flow Rate (m³/hr)">
 <input type="number" id="head" placeholder="Head (m)">
 <input type="number" id="eff" placeholder="Efficiency (%)">
 
@@ -141,7 +141,7 @@ button {
 
 <ul>
 <li>ρ = Fluid density (kg/m³)</li>
-<li>Q = Flow rate (m³/s)</li>
+<li>Q = Flow rate (converted to m³/s)</li>
 <li>H = Head (m)</li>
 <li>η = Efficiency</li>
 </ul>
@@ -149,7 +149,7 @@ button {
 
 <div class="section">
 <h2>Engineering Notes</h2>
-<p>This tool allows any fluid (water, oil, gas, slurry) by entering density manually.</p>
+<p>This tool converts flow rate from m³/hr to m³/s automatically for correct hydraulic calculation.</p>
 </div>
 
 <div class="footer">
@@ -160,11 +160,11 @@ button {
 function calculate() {
 
 let rho = parseFloat(document.getElementById("density").value);
-let Q = parseFloat(document.getElementById("flow").value);
+let Q_hr = parseFloat(document.getElementById("flow").value);
 let H = parseFloat(document.getElementById("head").value);
 let eff = parseFloat(document.getElementById("eff").value);
 
-if (isNaN(rho) || isNaN(Q) || isNaN(H) || isNaN(eff)) {
+if (isNaN(rho) || isNaN(Q_hr) || isNaN(H) || isNaN(eff)) {
 document.getElementById("output").innerHTML =
 "<p style='color:red;text-align:center;'>Please fill all fields</p>";
 return;
@@ -175,6 +175,9 @@ document.getElementById("output").innerHTML =
 "<p style='color:red;text-align:center;'>Efficiency must be 1–100%</p>";
 return;
 }
+
+// conversion m³/hr → m³/s
+let Q = Q_hr / 3600;
 
 let g = 9.81;
 let eta = eff / 100;
