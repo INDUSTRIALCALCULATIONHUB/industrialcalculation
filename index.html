@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Industrial Calculation Hub | Engineering SaaS Tools</title>
+<title>Industrial Calculation Hub | Engineering Tools</title>
 
-<meta name="description" content="Professional engineering calculators, converters, and industrial design tools with SaaS-style dashboard UI.">
+<meta name="description" content="Professional engineering calculators, converters, and industrial tools for real-world applications.">
 <meta name="author" content="Industrial Calculation Hub">
 
 <link rel="canonical" href="https://industrialcalculation.com/">
@@ -18,11 +18,12 @@ crossorigin="anonymous"></script>
 <style>
 body {
     margin: 0;
-    font-family: Segoe UI, sans-serif;
-    background: #0f172a;
-    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f9;
+    color: #222;
 }
 
+/* APP */
 .app {
     display: flex;
     height: 100vh;
@@ -30,27 +31,29 @@ body {
 
 /* SIDEBAR */
 .sidebar {
-    width: 250px;
-    background: #111827;
+    width: 240px;
+    background: #ffffff;
+    border-right: 1px solid #ddd;
     padding: 15px;
 }
 
 .sidebar h2 {
-    color: #38bdf8;
+    color: #1e3c72;
+    font-size: 20px;
 }
 
 .sidebar a {
     display: block;
     padding: 10px;
-    margin: 5px 0;
-    color: white;
+    margin: 6px 0;
+    color: #333;
     text-decoration: none;
     border-radius: 6px;
     cursor: pointer;
 }
 
 .sidebar a:hover {
-    background: #1f2937;
+    background: #e8f0fe;
 }
 
 /* MAIN */
@@ -60,20 +63,23 @@ body {
     flex-direction: column;
 }
 
+/* TOPBAR */
 .topbar {
-    background: #1e293b;
-    padding: 10px;
+    background: white;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
     position: relative;
 }
 
 .topbar input {
     width: 60%;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
+    padding: 10px 14px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
     outline: none;
 }
 
+/* AUTOSUGGEST */
 #suggestBox {
     position: absolute;
     background: white;
@@ -82,7 +88,8 @@ body {
     max-width: 400px;
     margin-top: 5px;
     border-radius: 8px;
-    z-index: 999;
+    border: 1px solid #ddd;
+    z-index: 1000;
 }
 
 #suggestBox div {
@@ -91,29 +98,40 @@ body {
 }
 
 #suggestBox div:hover {
-    background: #eee;
+    background: #f1f1f1;
 }
 
+/* CONTENT */
 #content {
     padding: 20px;
     overflow-y: auto;
 }
 
+/* CARD */
 .card {
     display: block;
-    background: #1f2937;
-    padding: 15px;
+    background: white;
+    padding: 16px;
     margin: 10px 0;
     border-radius: 10px;
-    color: white;
+    color: #222;
     text-decoration: none;
+    border-left: 5px solid #1e3c72;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
+.card:hover {
+    transform: translateY(-2px);
+}
+
+/* MOBILE */
 @media(max-width:800px){
     .sidebar{display:none;}
     .topbar input{width:90%;}
+    #suggestBox{width:90%;}
 }
 </style>
+
 </head>
 
 <body>
@@ -122,7 +140,7 @@ body {
 
 <!-- SIDEBAR -->
 <div class="sidebar">
-<h2>ICH Dashboard</h2>
+<h2>Industrial Hub</h2>
 
 <a onclick="loadPage('home')">🏠 Home</a>
 <a onclick="loadPage('tools')">🔧 Tools</a>
@@ -142,7 +160,7 @@ body {
 
 <div id="content">
 <h2>Industrial Calculation Hub</h2>
-<p>Engineering tools, converters, and industrial knowledge system.</p>
+<p>Professional engineering tools, converters, and industrial knowledge platform.</p>
 </div>
 
 </div>
@@ -150,19 +168,15 @@ body {
 
 <script>
 
-/* =========================
-   FULL TOOL DATABASE
-========================= */
+/* DATABASE */
 const tools = [
 
-/* FLUID / MECHANICAL */
 {name:"Pump Power Calculator", url:"pump-power-calculator.html", tag:"fluid"},
 {name:"Pipe Flow Calculator", url:"pipe-flow-calculator.html", tag:"fluid"},
 {name:"Air Density Calculator", url:"air-density.html", tag:"thermal"},
 {name:"Heat Transfer Tool", url:"heat-transfer.html", tag:"thermal"},
 {name:"Hopper Valley Angle Calculator", url:"hopper-valley-angle-calculator.html", tag:"mechanical"},
 
-/* CONVERTERS */
 {name:"Weight Conversion", url:"weight-conversion.html", tag:"converter"},
 {name:"Length Conversion", url:"length-conversion.html", tag:"converter"},
 {name:"Pressure Conversion", url:"pressure-conversion.html", tag:"converter"},
@@ -172,9 +186,7 @@ const tools = [
 
 ];
 
-/* =========================
-   PAGE LOADER
-========================= */
+/* PAGE LOAD */
 function loadPage(page){
 
 let content = document.getElementById("content");
@@ -186,14 +198,14 @@ content.innerHTML = "<h2>Dashboard</h2><p>Select tools or search above.</p>";
 if(page==="tools"){
 content.innerHTML = "<h2>Engineering Tools</h2>" +
 tools.filter(t=>t.tag!=="converter")
-.map(t=>`<a class='card' href='${t.url}'>${t.name}</a>`)
+.map(t=>`<a class='card' href='${t.url}' onclick="trackTool('${t.name}')">${t.name}</a>`)
 .join("");
 }
 
 if(page==="converters"){
 content.innerHTML = "<h2>Unit Converters</h2>" +
 tools.filter(t=>t.tag==="converter")
-.map(t=>`<a class='card' href='${t.url}'>${t.name}</a>`)
+.map(t=>`<a class='card' href='${t.url}' onclick="trackTool('${t.name}')">${t.name}</a>`)
 .join("");
 }
 
@@ -208,9 +220,7 @@ content.innerHTML = `
 }
 }
 
-/* =========================
-   GLOBAL SEARCH
-========================= */
+/* SEARCH */
 document.getElementById("globalSearch").addEventListener("keyup", function(e){
 
 let val = e.target.value.toLowerCase();
@@ -222,14 +232,12 @@ t.name.toLowerCase().includes(val)
 document.getElementById("content").innerHTML =
 "<h2>Search Results</h2>" +
 results.map(r =>
-`<a class='card' href='${r.url}'>${r.name}</a>`
+`<a class='card' href='${r.url}' onclick="trackTool('${r.name}')">${r.name}</a>`
 ).join("");
 
 });
 
-/* =========================
-   AUTO SUGGEST
-========================= */
+/* AUTOSUGGEST */
 document.getElementById("globalSearch").addEventListener("input", function(){
 
 let val = this.value.toLowerCase();
@@ -250,9 +258,7 @@ box.innerHTML = matches.map(m =>
 
 });
 
-/* =========================
-   ANALYTICS
-========================= */
+/* ANALYTICS */
 function trackTool(name){
 let data = JSON.parse(localStorage.getItem("usage")||"{}");
 data[name]=(data[name]||0)+1;
