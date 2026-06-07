@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temperature Conversion Tool</title>
+
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612" crossorigin="anonymous"></script>
+
+<!-- CMP -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: #333;
+}
+
+.navbar {
+    text-align: center;
+    background: #444;
+    padding: 12px;
+}
+
+.navbar a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+}
+
+.header {
+    text-align: center;
+    padding: 30px;
+    color: white;
+}
+
+.container {
+    background: white;
+    padding: 25px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 520px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 45%;
+}
+
+.calc-btn {background:#2a5298;color:white;}
+.reset-btn {background:#ccc;}
+
+#output {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th {
+    background: #2a5298;
+    color: white;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Engineering Notes */
+.section {
+    background: white;
+    padding: 25px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 520px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.footer {
+    text-align: center;
+    margin: 30px;
+    color: white;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+<h1>Temperature Conversion Tool</h1>
+<p>Convert temperature units used in engineering and science</p>
+</div>
+
+<!-- INPUT -->
+<div class="container">
+
+<input type="number" id="inputValue" placeholder="Enter Temperature">
+
+<select id="unit">
+    <option value="C">Celsius (°C)</option>
+    <option value="F">Fahrenheit (°F)</option>
+    <option value="K">Kelvin (K)</option>
+</select>
+
+<div style="text-align:center;">
+<button class="calc-btn" onclick="calculate()">Calculate</button>
+<button class="reset-btn" onclick="resetForm()">Reset</button>
+</div>
+
+</div>
+
+<!-- OUTPUT -->
+<div id="output"></div>
+
+<!-- INFO -->
+<div class="container">
+<h2>About Temperature Conversion</h2>
+<p>This tool converts temperature values using standard thermodynamic relationships between Celsius, Fahrenheit, and Kelvin scales.</p>
+
+<h3>Applications</h3>
+<ul>
+<li>Thermodynamics</li>
+<li>HVAC systems</li>
+<li>Process engineering</li>
+<li>Scientific calculations</li>
+</ul>
+</div>
+
+<!-- ENGINEERING NOTES -->
+<div class="section">
+<h2>Engineering Notes</h2>
+<p>This calculator is based on standard engineering formulas used in real-world industrial design and analysis.</p>
+
+<h3>Reference Standards</h3>
+<ul>
+<li>SI unit system</li>
+<li>Thermodynamic principles</li>
+<li>International temperature scales</li>
+</ul>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+© 2026 Industrial Calculation Hub
+</div>
+
+<script>
+
+function calculate() {
+
+let value = parseFloat(document.getElementById("inputValue").value);
+let unit = document.getElementById("unit").value;
+
+if(isNaN(value)){
+document.getElementById("output").innerHTML="<p style='color:red;text-align:center;'>Invalid input</p>";
+return;
+}
+
+let C, F, K;
+
+// Convert input to Celsius first
+if(unit === "C"){
+    C = value;
+} else if(unit === "F"){
+    C = (value - 32) * 5/9;
+} else if(unit === "K"){
+    C = value - 273.15;
+}
+
+// Convert from Celsius to others
+F = (C * 9/5) + 32;
+K = C + 273.15;
+
+let results = {
+"Celsius (°C)": C,
+"Fahrenheit (°F)": F,
+"Kelvin (K)": K
+};
+
+let table = `<div class="card"><h3>Results</h3><table><tr><th>Unit</th><th>Value</th></tr>`;
+
+for(let k in results){
+table += `<tr><td>${k}</td><td>${results[k].toFixed(2)}</td></tr>`;
+}
+
+table += `</table></div>`;
+
+document.getElementById("output").innerHTML = table;
+}
+
+function resetForm(){
+document.getElementById("inputValue").value="";
+document.getElementById("unit").value="C";
+document.getElementById("output").innerHTML="";
+}
+
+</script>
+
+</body>
+</html>
