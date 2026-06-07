@@ -12,6 +12,23 @@ body {
     color: #333;
 }
 
+.navbar {
+    text-align: center;
+    background: #444;
+    padding: 12px;
+}
+
+.navbar a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
 .header {
     text-align: center;
     padding: 30px;
@@ -105,19 +122,22 @@ button:hover {
 
 <body>
 
-<div style="text-align:center; background:#444; padding:10px;">
-<a href="index.html" style="color:white; margin:10px;">Home</a>
-<a href="about.html" style="color:white; margin:10px;">About</a>
-<a href="contact.html" style="color:white; margin:10px;">Contact</a>
-<a href="privacy.html" style="color:white; margin:10px;">Privacy</a>
-<a href="terms.html" style="color:white; margin:10px;">Terms</a>
+<!-- Navigation -->
+<div class="navbar">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
 </div>
-    
+
+<!-- Header -->
 <div class="header">
     <h1>⚙️ Thermal Expansion Calculator</h1>
     <p>Calculate linear thermal expansion for engineering materials</p>
 </div>
 
+<!-- Calculator -->
 <div class="container">
 
 <select id="material">
@@ -136,22 +156,19 @@ button:hover {
 
 <div id="output"></div>
 
+<!-- Info Section -->
 <div class="container" style="margin-top:20px;">
 
-<h2>Professional Thermal Expansion Calculator</h2>
+<h2>About Thermal Expansion</h2>
 
 <p>
-This professional thermal expansion calculator is designed to estimate the
-linear expansion of engineering materials when subjected to temperature changes.
-It is widely used in mechanical, civil, and process engineering applications
-where dimensional changes due to heat must be considered.
+This professional thermal expansion calculator estimates the linear expansion
+of engineering materials when subjected to temperature changes.
 </p>
 
 <p>
 When materials are exposed to temperature variations, they expand or contract
-based on their coefficient of thermal expansion. This tool calculates the
-change in length using standard engineering formulas and material-specific
-coefficients.
+based on their coefficient of thermal expansion.
 </p>
 
 <h3>Formula Used</h3>
@@ -166,42 +183,28 @@ Thermal Expansion (ΔL) = α × L × ΔT
 <li>ΔT = Temperature difference (°C)</li>
 </ul>
 
-<h3>Materials Covered</h3>
-
-<p>
-This calculator includes commonly used industrial materials such as aluminium,
-carbon steel, stainless steel, copper, brass, bronze, and cast iron, each with
-standard thermal expansion coefficients.
-</p>
-
 <h3>Applications</h3>
 
 <ul>
-<li>Piping system design and expansion allowance</li>
-<li>Structural engineering calculations</li>
-<li>Machinery and equipment design</li>
+<li>Piping system design</li>
+<li>Structural engineering</li>
+<li>Machinery design</li>
 <li>Thermal stress analysis</li>
-<li>Construction and fabrication planning</li>
-</ul>
-
-<h3>Why Use This Tool?</h3>
-
-<ul>
-<li>Accurate engineering calculations</li>
-<li>Predefined material database</li>
-<li>Fast and reliable results</li>
-<li>Professional and easy-to-use interface</li>
 </ul>
 
 </div>
-    
+
+<!-- Footer -->
 <div class="footer">
-    <p>© Industrial Calculation Hub</p>
+    <p>© 2026 Industrial Calculation Hub</p>
+    <a href="index.html" style="color:white;">Home</a> |
+    <a href="privacy.html" style="color:white;">Privacy Policy</a> |
+    <a href="terms.html" style="color:white;">Terms</a>
 </div>
 
 <script>
 
-// Material database (same as Python)
+// Material database
 const coefficients = {
     "Aluminium 5083": 23.8e-6,
     "Aluminium 6061": 23.6e-6,
