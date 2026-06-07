@@ -2,7 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Air Density Calculator</title>
+
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
+crossorigin="anonymous"></script>
+
+<!-- Google CMP (Funding Choices) -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
 <style>
 body {
@@ -12,6 +20,7 @@ body {
     color: #333;
 }
 
+/* Navbar */
 .navbar {
     text-align: center;
     background: #444;
@@ -29,12 +38,14 @@ body {
     text-decoration: underline;
 }
 
+/* Header */
 .header {
     text-align: center;
     padding: 30px;
     color: white;
 }
 
+/* Container */
 .container {
     background: white;
     padding: 25px;
@@ -45,6 +56,7 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
+/* Inputs */
 input {
     width: 100%;
     padding: 12px;
@@ -54,6 +66,7 @@ input {
     font-size: 16px;
 }
 
+/* Buttons */
 button {
     padding: 12px 20px;
     margin: 10px 5px;
@@ -76,6 +89,7 @@ button:hover {
     opacity: 0.9;
 }
 
+/* Output */
 #output {
     margin: 20px auto;
     width: 90%;
@@ -90,6 +104,7 @@ button:hover {
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
+/* Table */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -107,10 +122,19 @@ th, td {
     border-bottom: 1px solid #ddd;
 }
 
+/* Footer */
 .footer {
     text-align: center;
     margin: 30px;
     color: white;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
 }
 </style>
 
@@ -118,7 +142,7 @@ th, td {
 
 <body>
 
-<!-- Top Navigation -->
+<!-- NAVBAR -->
 <div class="navbar">
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
@@ -127,13 +151,13 @@ th, td {
 <a href="terms.html">Terms</a>
 </div>
 
-<!-- Header -->
+<!-- HEADER -->
 <div class="header">
     <h1>Air Density Calculator</h1>
     <p>Calculate air density based on altitude and temperature</p>
 </div>
 
-<!-- Calculator -->
+<!-- INPUT -->
 <div class="container">
 
 <input type="number" id="altitude" placeholder="Altitude (m above MSL)">
@@ -146,47 +170,37 @@ th, td {
 
 </div>
 
+<!-- OUTPUT -->
 <div id="output"></div>
 
-<!-- Info Section -->
-<div class="container" style="margin-top:20px;">
+<!-- INFO -->
+<div class="container">
 
 <h2>About Air Density</h2>
 
 <p>
-Air density is an important parameter in engineering and industrial applications.
-It represents the mass of air per unit volume and is influenced by temperature,
-pressure, and altitude.
+Air density is the mass of air per unit volume. It changes with altitude, pressure, and temperature and is widely used in engineering applications.
 </p>
 
-<p>
-This calculator uses standard atmospheric equations to determine pressure at a
-given altitude and calculates density using the ideal gas law.
-</p>
-
-<h3>Formula Used</h3>
-
-<p>
-Density (ρ) = Pressure (P) / (R × Temperature (T))
-</p>
+<h3>Formula</h3>
+<p>ρ = P / (R × T)</p>
 
 <h3>Applications</h3>
-
 <ul>
-<li>HVAC system design</li>
-<li>Aerodynamics calculations</li>
-<li>Process engineering</li>
-<li>Environmental studies</li>
+<li>Aerodynamics</li>
+<li>HVAC systems</li>
+<li>Weather studies</li>
+<li>Industrial design</li>
 </ul>
 
 </div>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <div class="footer">
     <p>© 2026 Industrial Calculation Hub</p>
-    <a href="index.html" style="color:white;">Home</a> |
-    <a href="privacy.html" style="color:white;">Privacy Policy</a> |
-    <a href="terms.html" style="color:white;">Terms</a>
+    <a href="index.html">Home</a> |
+    <a href="privacy.html">Privacy</a> |
+    <a href="terms.html">Terms</a>
 </div>
 
 <script>
@@ -218,33 +232,19 @@ function calculate() {
 
     let rho_lb = rho * 0.062428;
 
-    let pressureTable = `
-    <div class="card">
-        <h3>Pressure</h3>
-        <table>
-            <tr><th>Unit</th><th>Value</th></tr>
-            <tr><td>Pa</td><td>${P.toFixed(2)}</td></tr>
-            <tr><td>kPa</td><td>${(P/1000).toFixed(2)}</td></tr>
-            <tr><td>bar</td><td>${(P/100000).toFixed(2)}</td></tr>
-            <tr><td>atm</td><td>${(P/101325).toFixed(2)}</td></tr>
-            <tr><td>mmWC</td><td>${(P/9.80665).toFixed(2)}</td></tr>
-        </table>
-    </div>
+    document.getElementById("output").innerHTML = `
+        <div class="card">
+            <h3>Results</h3>
+            <table>
+                <tr><th>Parameter</th><th>Value</th></tr>
+                <tr><td>Pressure (Pa)</td><td>${P.toFixed(2)}</td></tr>
+                <tr><td>Pressure (kPa)</td><td>${(P/1000).toFixed(2)}</td></tr>
+                <tr><td>Pressure (atm)</td><td>${(P/101325).toFixed(2)}</td></tr>
+                <tr><td>Density (kg/m³)</td><td>${rho.toFixed(2)}</td></tr>
+                <tr><td>Density (lb/ft³)</td><td>${rho_lb.toFixed(2)}</td></tr>
+            </table>
+        </div>
     `;
-
-    let densityTable = `
-    <div class="card">
-        <h3>Density</h3>
-        <table>
-            <tr><th>Unit</th><th>Value</th></tr>
-            <tr><td>kg/m³</td><td>${rho.toFixed(2)}</td></tr>
-            <tr><td>lb/ft³</td><td>${rho_lb.toFixed(2)}</td></tr>
-        </table>
-    </div>
-    `;
-
-    document.getElementById("output").innerHTML =
-        pressureTable + densityTable;
 }
 
 function resetForm() {
