@@ -6,8 +6,8 @@
 
 <title>Pump Power Calculator | Industrial Calculation Hub</title>
 
-<meta name="description" content="Calculate pump power using flow rate, head, efficiency, and fluid density. Engineering hydraulic calculator for water, oil and gas systems.">
-<meta name="keywords" content="pump power calculator, hydraulic power, fluid density, flow rate m3/hr, engineering calculator">
+<meta name="description" content="Industrial pump design calculator for hydraulic power, shaft power, motor selection based on flow rate, head, density and efficiency.">
+<meta name="keywords" content="pump power calculator, shaft power, motor selection, hydraulic power, fluid density, engineering calculator">
 <meta name="author" content="Industrial Calculation Hub">
 
 <!-- AdSense -->
@@ -48,18 +48,17 @@ body {
     padding: 25px;
     margin: 20px auto;
     width: 90%;
-    max-width: 520px;
+    max-width: 600px;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-input, select {
+input {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
     border-radius: 8px;
     border: 1px solid #ccc;
-    font-size: 14px;
 }
 
 button {
@@ -74,15 +73,10 @@ button {
 .calc-btn {background:#2a5298;color:white;}
 .reset-btn {background:#ccc;}
 
-#output {
-    width: 90%;
-    max-width: 600px;
-    margin: 20px auto;
-}
-
 .card {
     background: white;
     padding: 20px;
+    margin: 15px auto;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
@@ -92,7 +86,7 @@ button {
     padding: 25px;
     margin: 20px auto;
     width: 90%;
-    max-width: 520px;
+    max-width: 600px;
     border-radius: 12px;
 }
 
@@ -102,12 +96,10 @@ button {
     color: white;
 }
 </style>
-
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
@@ -116,22 +108,18 @@ button {
 <a href="terms.html">Terms</a>
 </div>
 
-<!-- HEADER -->
 <div class="header">
 <h1>Pump Power Calculator</h1>
-<p>Hydraulic power calculation using fluid density and flow rate (m³/hr)</p>
+<p>Industrial Pump Design: Hydraulic Power + Motor Selection</p>
 </div>
 
-<!-- INPUT -->
 <div class="container">
 
-<input type="number" id="density" placeholder="Fluid Density (kg/m³)">
-
+<input type="number" id="rho" placeholder="Fluid Density (kg/m³)">
 <input type="number" id="flow" placeholder="Flow Rate (m³/hr)">
-
 <input type="number" id="head" placeholder="Head (m)">
-
-<input type="number" id="eff" placeholder="Efficiency (%)">
+<input type="number" id="eff" placeholder="Pump Efficiency (%)">
+<input type="number" id="meff" placeholder="Motor Efficiency (%) (e.g. 90)">
 
 <div style="text-align:center;">
 <button class="calc-btn" onclick="calculate()">Calculate</button>
@@ -140,83 +128,91 @@ button {
 
 </div>
 
-<!-- OUTPUT -->
 <div id="output"></div>
 
-<!-- FORMULA -->
 <div class="container">
-<h2>Formula</h2>
-<p><b>P = (ρ × g × Q × H) / η</b></p>
+<h2>Engineering Formula</h2>
 
-<ul>
-<li>ρ = Fluid density (kg/m³)</li>
-<li>Q = Flow rate (m³/s)</li>
-<li>H = Head (m)</li>
-<li>η = Efficiency</li>
-</ul>
+<p><b>Hydraulic Power:</b></p>
+<p>Ph = (ρ × g × Q × H) / (3.6 × 10⁶)</p>
 
-<p><b>Note:</b> Flow is converted from m³/hr → m³/s internally</p>
+<p><b>Shaft Power:</b></p>
+<p>Ps = Ph / ηpump</p>
+
+<p><b>Motor Power:</b></p>
+<p>Pm = Ps / ηmotor</p>
 </div>
 
-<!-- ENGINEERING NOTES -->
 <div class="section">
-<h2>Engineering Notes</h2>
-<p>
-This calculator supports any fluid (water, oil, slurry, gas) by allowing manual density input.
-Flow rate is accepted in m³/hr for real industrial use.
-</p>
+<h2>Standard Motor Selection</h2>
+<p>Motor is selected from nearest higher standard rating.</p>
+<p>Available: 0.75, 1.1, 1.5, 2.2, 3, 4, 5.5, 7.5, 11, 15, 18.5, 22, 30 kW</p>
 </div>
 
-<!-- FOOTER -->
 <div class="footer">
 © 2026 Industrial Calculation Hub
 </div>
 
 <script>
-function calculate() {
 
-let rho = parseFloat(document.getElementById("density").value);
+function getMotorRating(power) {
+let motors = [0.75,1.1,1.5,2.2,3,4,5.5,7.5,11,15,18.5,22,30];
+
+for(let i=0;i<motors.length;i++){
+if(power <= motors[i]){
+return motors[i];
+}
+}
+return ">30 kW (custom design)";
+}
+
+function calculate(){
+
+let rho = parseFloat(document.getElementById("rho").value);
 let Q_hr = parseFloat(document.getElementById("flow").value);
 let H = parseFloat(document.getElementById("head").value);
 let eff = parseFloat(document.getElementById("eff").value);
+let meff = parseFloat(document.getElementById("meff").value);
 
-if (isNaN(rho) || isNaN(Q_hr) || isNaN(H) || isNaN(eff)) {
-document.getElementById("output").innerHTML =
-"<p style='color:red;text-align:center;'>Please fill all fields</p>";
+if(isNaN(rho)||isNaN(Q_hr)||isNaN(H)||isNaN(eff)||isNaN(meff)){
+alert("Enter all values");
 return;
 }
 
-if (eff <= 0 || eff > 100) {
-document.getElementById("output").innerHTML =
-"<p style='color:red;text-align:center;'>Efficiency must be 1–100%</p>";
+if(eff<=0||eff>100||meff<=0||meff>100){
+alert("Efficiency must be 1–100%");
 return;
 }
 
-// Convert m³/hr to m³/s
 let Q = Q_hr / 3600;
-
 let g = 9.81;
-let eta = eff / 100;
 
-let P = (rho * g * Q * H) / eta;
-let kW = P / 1000;
+let Ph = (rho*g*Q*H)/1000; // kW approx form scaling
+let Ps = Ph/(eff/100);
+let Pm = Ps/(meff/100);
+
+let motor = getMotorRating(Pm);
 
 document.getElementById("output").innerHTML = `
 <div class="card">
 <h3>Results</h3>
-<p><b>Power:</b> ${P.toFixed(2)} W</p>
-<p><b>Power:</b> ${kW.toFixed(3)} kW</p>
+<p><b>Hydraulic Power:</b> ${Ph.toFixed(3)} kW</p>
+<p><b>Shaft Power:</b> ${Ps.toFixed(3)} kW</p>
+<p><b>Motor Power:</b> ${Pm.toFixed(3)} kW</p>
+<p><b>Selected Motor:</b> ${motor}</p>
 </div>
 `;
 }
 
-function resetForm() {
-document.getElementById("density").value = "";
-document.getElementById("flow").value = "";
-document.getElementById("head").value = "";
-document.getElementById("eff").value = "";
-document.getElementById("output").innerHTML = "";
+function resetForm(){
+document.getElementById("rho").value="";
+document.getElementById("flow").value="";
+document.getElementById("head").value="";
+document.getElementById("eff").value="";
+document.getElementById("meff").value="";
+document.getElementById("output").innerHTML="";
 }
+
 </script>
 
 </body>
