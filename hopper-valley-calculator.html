@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hopper Valley Angle Calculator | Industrial Calculation Hub</title>
+
+<meta name="description" content="Calculate hopper valley angle or height using top and bottom dimensions. Engineering calculator for hoppers and silos.">
+<meta name="keywords" content="hopper angle calculator, hopper height calculator, silo design, engineering hopper, valley angle calculator">
+<meta name="author" content="Industrial Calculation Hub">
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
+crossorigin="anonymous"></script>
+
+<!-- CMP -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: #333;
+}
+
+.navbar {
+    text-align: center;
+    background: #444;
+    padding: 12px;
+}
+
+.navbar a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+}
+
+.header {
+    text-align: center;
+    padding: 30px;
+    color: white;
+}
+
+.container {
+    background: white;
+    padding: 25px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 520px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 12px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 45%;
+}
+
+.calc-btn {background:#2a5298;color:white;}
+.reset-btn {background:#ccc;}
+
+#output {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.section {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 520px;
+    border-radius: 12px;
+}
+
+.footer {
+    text-align: center;
+    margin: 30px;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+</div>
+
+<div class="header">
+<h1>Hopper Valley Calculator</h1>
+<p>Calculate angle or height of industrial hopper</p>
+</div>
+
+<div class="container">
+
+<select id="mode" onchange="toggleMode()">
+<option value="angle">Calculate Angle</option>
+<option value="height">Calculate Height</option>
+</select>
+
+<input type="number" id="Lt" placeholder="Top Length (m)">
+<input type="number" id="Wt" placeholder="Top Width (m)">
+<input type="number" id="Lb" placeholder="Bottom Length (m)">
+<input type="number" id="Wb" placeholder="Bottom Width (m)">
+
+<div id="heightInput">
+<input type="number" id="H" placeholder="Height (m)">
+</div>
+
+<div id="angleInput" style="display:none;">
+<input type="number" id="angle" placeholder="Angle (degrees)">
+</div>
+
+<div style="text-align:center;">
+<button class="calc-btn" onclick="calculate()">Calculate</button>
+<button class="reset-btn" onclick="resetForm()">Reset</button>
+</div>
+
+</div>
+
+<div id="output"></div>
+
+<div class="container">
+<h3>Formula</h3>
+<p>Based on geometry of pyramid hopper</p>
+</div>
+
+<div class="section">
+<h3>Engineering Notes</h3>
+<p>Used in silo design, hopper discharge systems, and bulk material handling.</p>
+</div>
+
+<div class="footer">
+© 2026 Industrial Calculation Hub
+</div>
+
+<script>
+function toggleMode() {
+    let mode = document.getElementById("mode").value;
+
+    document.getElementById("heightInput").style.display = mode === "angle" ? "block" : "none";
+    document.getElementById("angleInput").style.display = mode === "height" ? "block" : "none";
+}
+
+function calculate() {
+
+let Lt = parseFloat(document.getElementById("Lt").value);
+let Wt = parseFloat(document.getElementById("Wt").value);
+let Lb = parseFloat(document.getElementById("Lb").value);
+let Wb = parseFloat(document.getElementById("Wb").value);
+
+let mode = document.getElementById("mode").value;
+
+let dx = (Lt - Lb) / 2;
+let dy = (Wt - Wb) / 2;
+
+let r = Math.sqrt(dx*dx + dy*dy);
+
+if(mode === "angle") {
+
+let H = parseFloat(document.getElementById("H").value);
+if(isNaN(H)) return;
+
+let angle = Math.atan(H / r) * (180 / Math.PI);
+
+document.getElementById("output").innerHTML =
+`<div class="card"><h3>Result</h3><p>Hopper Angle = ${angle.toFixed(2)}°</p></div>`;
+}
+
+else {
+
+let angle = parseFloat(document.getElementById("angle").value);
+if(isNaN(angle)) return;
+
+let H = r * Math.tan(angle * Math.PI / 180);
+
+document.getElementById("output").innerHTML =
+`<div class="card"><h3>Result</h3><p>Hopper Height = ${H.toFixed(2)} m</p></div>`;
+}
+}
+
+function resetForm(){
+document.getElementById("Lt").value="";
+document.getElementById("Wt").value="";
+document.getElementById("Lb").value="";
+document.getElementById("Wb").value="";
+document.getElementById("H").value="";
+document.getElementById("angle").value="";
+document.getElementById("output").innerHTML="";
+}
+</script>
+
+</body>
+</html>
