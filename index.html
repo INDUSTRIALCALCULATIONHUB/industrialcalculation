@@ -6,7 +6,7 @@
 
 <title>Industrial Calculation Hub | Engineering Tools</title>
 
-<meta name="description" content="Professional engineering calculators, converters, and industrial tools for real-world applications.">
+<meta name="description" content="Professional engineering calculators, converters, and industrial tools.">
 
 <!-- AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
@@ -17,281 +17,170 @@ body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(to right, #1e3c72, #2a5298);
-}
-
-/* MOBILE TOP BAR */
-.mobile-header {
-    display: none;
-    background: #1e3c72;
     color: white;
+}
+
+/* NAVBAR */
+.navbar {
+    background: rgba(0,0,0,0.6);
     padding: 12px;
-    font-size: 18px;
+    text-align: center;
 }
 
-.menu-btn {
-    font-size: 22px;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-/* APP */
-.app {
-    display: flex;
-    height: 100vh;
-}
-
-/* SIDEBAR */
-.sidebar {
-    width: 240px;
-    background: white;
-    padding: 15px;
-    border-right: 1px solid #ddd;
-    transition: 0.3s;
-}
-
-.sidebar h2 {
-    color: #1e3c72;
-}
-
-.sidebar a {
-    display: block;
-    padding: 10px;
-    margin: 6px 0;
-    color: #333;
+.navbar a {
+    color: white;
+    margin: 8px 10px;
     text-decoration: none;
-    border-radius: 6px;
+    font-weight: 500;
 }
 
-.sidebar a:hover {
-    background: #f1f5ff;
+/* HEADER */
+.header {
+    text-align: center;
+    padding: 40px 20px 20px;
 }
 
-/* MAIN */
-.main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+/* SEARCH */
+.search-box {
+    text-align: center;
+    margin: 20px;
 }
 
-/* SEARCH BAR */
-.topbar {
-    background: white;
+.search-box input {
+    width: 60%;
+    max-width: 500px;
     padding: 12px;
-    border-bottom: 1px solid #ddd;
-    position: relative;
+    border-radius: 25px;
+    border: none;
 }
 
-.topbar input {
-    width: 60%;
+/* CONTAINER */
+.wrapper {
+    max-width: 1100px;
+    margin: auto;
     padding: 10px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
 }
 
-/* AUTOSUGGEST */
-#suggestBox {
-    position: absolute;
-    background: white;
-    width: 60%;
-    max-width: 400px;
-    margin-top: 5px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    z-index: 1000;
-}
-
-#suggestBox div {
-    padding: 10px;
-    cursor: pointer;
-}
-
-#suggestBox div:hover {
-    background: #eee;
-}
-
-/* CONTENT */
-#content {
-    padding: 20px;
-    overflow-y: auto;
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
 }
 
 /* CARD */
 .card {
-    display: block;
     background: white;
-    padding: 16px;
-    margin: 10px 0;
-    border-radius: 10px;
     color: #222;
+    padding: 18px;
+    border-radius: 10px;
     text-decoration: none;
-    border-left: 5px solid #1e3c72;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+/* SECTION */
+.section {
+    margin-top: 30px;
+}
+
+.section h2 {
+    text-align: center;
 }
 
 /* MOBILE */
-@media(max-width:800px){
-
-    .mobile-header {
-        display: flex;
-        align-items: center;
-    }
-
-    .sidebar {
-        position: fixed;
-        left: -260px;
-        top: 0;
-        height: 100%;
-        z-index: 1000;
-    }
-
-    .sidebar.active {
-        left: 0;
-    }
-
-    .topbar input {
-        width: 90%;
-    }
-
-    #suggestBox {
+@media(max-width:600px){
+    .search-box input {
         width: 90%;
     }
 }
 </style>
+
 </head>
 
 <body>
 
-<!-- MOBILE HEADER -->
-<div class="mobile-header">
-<span class="menu-btn" onclick="toggleMenu()">☰</span>
-Industrial Calculation Hub
+<!-- NAVBAR -->
+<div class="navbar">
+<a href="#">Home</a>
+<a href="#tools">Tools</a>
+<a href="#converters">Converters</a>
+<a href="#blogs">Knowledge</a>
 </div>
 
-<div class="app">
-
-<!-- SIDEBAR -->
-<div class="sidebar" id="sidebar">
-<h2>Industrial Calculation Hub</h2>
-
-<a onclick="loadPage('home')">🏠 Home</a>
-<a onclick="loadPage('tools')">🔧 Engineering Tools</a>
-<a onclick="loadPage('converters')">⚙️ Unit Converters</a>
-<a onclick="loadPage('blogs')">📘 Engineering Knowledge</a>
-<a onclick="showAnalytics()">📊 Usage Analytics</a>
-
+<!-- HEADER -->
+<div class="header">
+<h1>Industrial Calculation Hub</h1>
+<p>Engineering Tools • Converters • Knowledge</p>
 </div>
 
-<!-- MAIN -->
-<div class="main">
-
-<div class="topbar">
-<input id="globalSearch" placeholder="Search tools, converters...">
-<div id="suggestBox"></div>
+<!-- SEARCH -->
+<div class="search-box">
+<input id="searchInput" placeholder="Search tools, converters...">
 </div>
 
-<div id="content">
-<h2>Industrial Calculation Hub</h2>
-<p>Select tools from menu or search above.</p>
-</div>
+<div class="wrapper">
+
+<!-- TOOLS -->
+<div class="section" id="tools">
+<h2>🔧 Engineering Tools</h2>
+
+<div class="grid" id="toolGrid">
+
+<a class="card" href="pump-power-calculator.html">Pump Power Calculator</a>
+<a class="card" href="pipe-flow-calculator.html">Pipe Flow Calculator</a>
+<a class="card" href="air-density.html">Air Density Calculator</a>
+<a class="card" href="heat-transfer.html">Heat Transfer Tool</a>
+<a class="card" href="hopper-valley-angle-calculator.html">Hopper Valley Angle Calculator</a>
 
 </div>
+</div>
+
+<!-- CONVERTERS -->
+<div class="section" id="converters">
+<h2>⚙️ Unit Converters</h2>
+
+<div class="grid" id="converterGrid">
+
+<a class="card" href="weight-conversion.html">Weight Conversion</a>
+<a class="card" href="length-conversion.html">Length Conversion</a>
+<a class="card" href="pressure-conversion.html">Pressure Conversion</a>
+<a class="card" href="temperature-conversion.html">Temperature Conversion</a>
+<a class="card" href="area-conversion.html">Area Conversion</a>
+<a class="card" href="volume-conversion.html">Volume Conversion</a>
+
+</div>
+</div>
+
+<!-- BLOGS -->
+<div class="section" id="blogs">
+<h2>📘 Engineering Knowledge</h2>
+
+<div class="grid">
+
+<a class="card" href="reynolds-number-explained.html">Reynolds Number Explained</a>
+<a class="card" href="bernoulli-equation-explained.html">Bernoulli Equation Explained</a>
+<a class="card" href="heat-transfer-explained.html">Heat Transfer Explained</a>
+<a class="card" href="pipe-flow-basics.html">Pipe Flow Basics</a>
+
+</div>
+</div>
+
 </div>
 
 <script>
-
-/* MOBILE MENU */
-function toggleMenu(){
-document.getElementById("sidebar").classList.toggle("active");
-}
-
-/* DATABASE */
-const tools = [
-
-{name:"Pump Power Calculator", url:"pump-power-calculator.html"},
-{name:"Pipe Flow Calculator", url:"pipe-flow-calculator.html"},
-{name:"Air Density Calculator", url:"air-density.html"},
-{name:"Heat Transfer Tool", url:"heat-transfer.html"},
-{name:"Hopper Valley Angle Calculator", url:"hopper-valley-angle-calculator.html"},
-
-{name:"Weight Conversion", url:"weight-conversion.html"},
-{name:"Length Conversion", url:"length-conversion.html"},
-{name:"Pressure Conversion", url:"pressure-conversion.html"},
-{name:"Temperature Conversion", url:"temperature-conversion.html"},
-{name:"Area Conversion", url:"area-conversion.html"},
-{name:"Volume Conversion", url:"volume-conversion.html"}
-
-];
-
-/* LOAD PAGE */
-function loadPage(page){
-
-let content = document.getElementById("content");
-
-if(page==="tools"){
-content.innerHTML = "<h2>Engineering Tools</h2>" +
-tools.slice(0,5).map(t =>
-`<a class='card' href='${t.url}'>${t.name}</a>`
-).join("");
-}
-
-if(page==="converters"){
-content.innerHTML = "<h2>Converters</h2>" +
-tools.slice(5).map(t =>
-`<a class='card' href='${t.url}'>${t.name}</a>`
-).join("");
-}
-
-if(page==="blogs"){
-content.innerHTML = `
-<h2>Engineering Knowledge</h2>
-<a class='card' href='reynolds-number-explained.html'>Reynolds Number Explained</a>
-<a class='card' href='bernoulli-equation-explained.html'>Bernoulli Equation Explained</a>
-<a class='card' href='heat-transfer-explained.html'>Heat Transfer Explained</a>
-`;
-}
-
-if(page==="home"){
-content.innerHTML = "<h2>Dashboard</h2><p>Select tools or search above.</p>";
-}
-}
-
-/* SEARCH */
-document.getElementById("globalSearch").addEventListener("keyup", function(e){
-
-let val = e.target.value.toLowerCase();
-
-let results = tools.filter(t =>
-t.name.toLowerCase().includes(val)
-);
-
-document.getElementById("content").innerHTML =
-"<h2>Search Results</h2>" +
-results.map(r =>
-`<a class='card' href='${r.url}'>${r.name}</a>`
-).join("");
-
-});
-
-/* AUTOSUGGEST */
-document.getElementById("globalSearch").addEventListener("input", function(){
-
+/* SEARCH FILTER */
+document.getElementById("searchInput").addEventListener("keyup", function(){
 let val = this.value.toLowerCase();
-let box = document.getElementById("suggestBox");
 
-if(!val){
-box.innerHTML="";
-return;
-}
-
-let matches = tools.filter(t =>
-t.name.toLowerCase().includes(val)
-);
-
-box.innerHTML = matches.map(m =>
-`<div onclick="window.location='${m.url}'">${m.name}</div>`
-).join("");
-
+document.querySelectorAll(".card").forEach(card=>{
+let text = card.textContent.toLowerCase();
+card.style.display = text.includes(val) ? "block" : "none";
 });
-
+});
 </script>
 
 </body>
