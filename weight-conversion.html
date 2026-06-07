@@ -162,6 +162,7 @@ th, td {
 <input type="number" id="inputValue" placeholder="Enter Value">
 
 <select id="unit">
+    <option value="">Select Unit</option>
     <option value="kg">kg</option>
     <option value="N">N</option>
     <option value="kN">kN</option>
@@ -213,7 +214,6 @@ This tool converts engineering force and mass units using Newton as the base ref
 
 <script>
 
-// Conversion factors
 const TO_NEWTON = {
     "kg": 9.81,
     "N": 1.0,
@@ -230,9 +230,9 @@ function calculate() {
     let value = parseFloat(document.getElementById("inputValue").value);
     let unit = document.getElementById("unit").value;
 
-    if (isNaN(value)) {
+    if (unit === "" || isNaN(value)) {
         document.getElementById("output").innerHTML =
-            "<p style='color:red; text-align:center;'>Please enter a valid value</p>";
+            "<p style='color:red; text-align:center;'>Please select unit and enter valid value</p>";
         return;
     }
 
@@ -267,7 +267,7 @@ function calculate() {
 
 function resetForm() {
     document.getElementById("inputValue").value = "";
-    document.getElementById("unit").value = "kg";
+    document.getElementById("unit").value = "";
     document.getElementById("output").innerHTML = "";
 }
 
