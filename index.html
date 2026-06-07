@@ -19,8 +19,7 @@ crossorigin="anonymous"></script>
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: #f4f6f9;
-    color: #222;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
 }
 
 /* APP */
@@ -32,14 +31,15 @@ body {
 /* SIDEBAR */
 .sidebar {
     width: 240px;
-    background: #ffffff;
-    border-right: 1px solid #ddd;
+    background: white;
     padding: 15px;
+    border-right: 1px solid #ddd;
 }
 
 .sidebar h2 {
     color: #1e3c72;
     font-size: 20px;
+    margin-bottom: 10px;
 }
 
 .sidebar a {
@@ -53,7 +53,7 @@ body {
 }
 
 .sidebar a:hover {
-    background: #e8f0fe;
+    background: #f1f5ff;
 }
 
 /* MAIN */
@@ -76,14 +76,12 @@ body {
     padding: 10px 14px;
     border-radius: 20px;
     border: 1px solid #ccc;
-    outline: none;
 }
 
 /* AUTOSUGGEST */
 #suggestBox {
     position: absolute;
     background: white;
-    color: black;
     width: 60%;
     max-width: 400px;
     margin-top: 5px;
@@ -117,7 +115,7 @@ body {
     color: #222;
     text-decoration: none;
     border-left: 5px solid #1e3c72;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .card:hover {
@@ -131,7 +129,6 @@ body {
     #suggestBox{width:90%;}
 }
 </style>
-
 </head>
 
 <body>
@@ -140,13 +137,13 @@ body {
 
 <!-- SIDEBAR -->
 <div class="sidebar">
-<h2>Industrial Hub</h2>
+<h2>Industrial Calculation Hub</h2>
 
 <a onclick="loadPage('home')">🏠 Home</a>
-<a onclick="loadPage('tools')">🔧 Tools</a>
-<a onclick="loadPage('converters')">⚙️ Converters</a>
-<a onclick="loadPage('blogs')">📘 Blogs</a>
-<a onclick="showAnalytics()">📊 Analytics</a>
+<a onclick="loadPage('tools')">🔧 Engineering Tools</a>
+<a onclick="loadPage('converters')">⚙️ Unit Converters</a>
+<a onclick="loadPage('blogs')">📘 Engineering Knowledge</a>
+<a onclick="showAnalytics()">📊 Usage Analytics</a>
 
 </div>
 
@@ -160,7 +157,10 @@ body {
 
 <div id="content">
 <h2>Industrial Calculation Hub</h2>
-<p>Professional engineering tools, converters, and industrial knowledge platform.</p>
+<p>
+Welcome to the engineering tools platform.  
+Select tools from the sidebar or search above to begin calculations.
+</p>
 </div>
 
 </div>
@@ -168,7 +168,7 @@ body {
 
 <script>
 
-/* DATABASE */
+/* TOOL DATABASE */
 const tools = [
 
 {name:"Pump Power Calculator", url:"pump-power-calculator.html", tag:"fluid"},
@@ -211,7 +211,7 @@ tools.filter(t=>t.tag==="converter")
 
 if(page==="blogs"){
 content.innerHTML = `
-<h2>Engineering Blogs</h2>
+<h2>Engineering Knowledge</h2>
 <a class='card' href='reynolds-number-explained.html'>Reynolds Number Explained</a>
 <a class='card' href='bernoulli-equation-explained.html'>Bernoulli Equation Explained</a>
 <a class='card' href='heat-transfer-explained.html'>Heat Transfer Explained</a>
@@ -268,7 +268,7 @@ localStorage.setItem("usage",JSON.stringify(data));
 function showAnalytics(){
 let data = JSON.parse(localStorage.getItem("usage")||"{}");
 
-let html="<h2>Tool Usage Analytics</h2>";
+let html="<h2>Usage Analytics</h2>";
 
 for(let k in data){
 html+=`<p>${k} → ${data[k]} clicks</p>`;
