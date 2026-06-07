@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pipe Flow Rate Calculator</title>
+
+<!-- SEO -->
+<meta name="description" content="Calculate pipe flow rate using velocity and diameter. Engineering tool for fluid flow calculations.">
+<meta name="keywords" content="pipe flow calculator, flow rate, fluid flow, engineering calculator, pipe velocity">
+<meta name="author" content="Industrial Calculation Hub">
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
+crossorigin="anonymous"></script>
+
+<!-- CMP -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    text-align: center;
+    background: #444;
+    padding: 12px;
+}
+
+.navbar a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 30px;
+    color: white;
+}
+
+/* Container */
+.container {
+    background: white;
+    padding: 25px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 520px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Inputs */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* Buttons */
+button {
+    padding: 12px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 45%;
+}
+
+.calc-btn {background:#2a5298;color:white;}
+.reset-btn {background:#ccc;}
+
+/* Output */
+#output {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Section */
+.section {
+    background: white;
+    padding: 25px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 520px;
+    border-radius: 12px;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin: 30px;
+    color: white;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+<h1>Pipe Flow Rate Calculator</h1>
+<p>Calculate flow rate using pipe diameter and velocity</p>
+</div>
+
+<!-- INPUT -->
+<div class="container">
+
+<input type="number" id="diameter" placeholder="Pipe Diameter (mm)">
+<input type="number" id="velocity" placeholder="Flow Velocity (m/s)">
+
+<div style="text-align:center;">
+<button class="calc-btn" onclick="calculate()">Calculate</button>
+<button class="reset-btn" onclick="resetForm()">Reset</button>
+</div>
+
+</div>
+
+<!-- OUTPUT -->
+<div id="output"></div>
+
+<!-- INFO -->
+<div class="container">
+<h2>About Pipe Flow</h2>
+<p>
+Pipe flow rate is the volume of fluid passing through a pipe per unit time.
+It is widely used in fluid mechanics, HVAC, and process engineering.
+</p>
+
+<h3>Formula</h3>
+<p>Q = A × V</p>
+
+<p>Where:</p>
+<ul>
+<li>Q = Flow Rate (m³/s)</li>
+<li>A = Cross-sectional Area (m²)</li>
+<li>V = Velocity (m/s)</li>
+</ul>
+
+<h3>Applications</h3>
+<ul>
+<li>Piping systems design</li>
+<li>Water supply engineering</li>
+<li>Oil & gas pipelines</li>
+<li>HVAC systems</li>
+</ul>
+</div>
+
+<!-- ENGINEERING NOTES -->
+<div class="section">
+<h2>Engineering Notes</h2>
+<p>This calculator is based on standard engineering formulas used in real-world industrial design and analysis.</p>
+
+<h3>Reference Standards</h3>
+<ul>
+<li>Fluid mechanics principles</li>
+<li>ISO engineering standards</li>
+<li>Continuity equation</li>
+</ul>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+© 2026 Industrial Calculation Hub
+</div>
+
+<script>
+function calculate() {
+
+let d = parseFloat(document.getElementById("diameter").value);
+let v = parseFloat(document.getElementById("velocity").value);
+
+if(isNaN(d) || isNaN(v)){
+document.getElementById("output").innerHTML = "<p style='color:red;text-align:center;'>Enter valid values</p>";
+return;
+}
+
+// convert mm to m
+let d_m = d / 1000;
+
+// area
+let A = Math.PI * (d_m/2)**2;
+
+// flow rate
+let Q = A * v;
+
+// L/s
+let Q_lps = Q * 1000;
+
+document.getElementById("output").innerHTML = `
+<div class="card">
+<h3>Results</h3>
+<p><strong>Area:</strong> ${A.toFixed(4)} m²</p>
+<p><strong>Flow Rate:</strong> ${Q.toFixed(4)} m³/s</p>
+<p><strong>Flow Rate:</strong> ${Q_lps.toFixed(2)} L/s</p>
+</div>
+`;
+}
+
+function resetForm(){
+document.getElementById("diameter").value="";
+document.getElementById("velocity").value="";
+document.getElementById("output").innerHTML="";
+}
+</script>
+
+</body>
+</html>
