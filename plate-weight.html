@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Plate Weight Calculator | Industrial Calculation Hub</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: white;
+}
+
+/* NAVBAR */
+.navbar {
+    position: sticky;
+    top: 0;
+    background: #1e3c72;
+    padding: 12px;
+    text-align: center;
+}
+.navbar a {
+    color: white;
+    margin: 8px;
+    text-decoration: none;
+}
+
+/* CONTAINER */
+.container {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* INPUT */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+}
+
+/* REMOVE ARROWS */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #1e3c72;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* RESULT */
+.result {
+    margin-top: 15px;
+    font-weight: bold;
+    line-height: 1.6;
+}
+
+/* FOOTER */
+.footer {
+    position: sticky;
+    bottom: 0;
+    background: #1e3c72;
+    text-align: center;
+    padding: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</div>
+
+<div class="container">
+
+<h2>Plate Weight Calculator</h2>
+
+<label>Plate Shape</label>
+<select id="shape" onchange="renderInputs()">
+<option value="rect">Rectangular</option>
+<option value="circular">Circular</option>
+</select>
+
+<div id="inputs"></div>
+
+<label>Thickness (mm)</label>
+<input type="number" id="thk">
+
+<label>Material</label>
+<select id="density">
+<option value="7850">Steel</option>
+<option value="8000">Stainless Steel</option>
+<option value="2700">Aluminium</option>
+<option value="8900">Copper</option>
+<option value="8500">Brass</option>
+</select>
+
+<button onclick="calculate()">Calculate</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<div class="footer">
+© 2026 Industrial Calculation Hub
+</div>
+
+<script>
+
+function renderInputs(){
+    let shape = document.getElementById("shape").value;
+    let html = "";
+
+    if(shape === "rect"){
+        html = `
+        Length (m): <input type="number" id="L">
+        Width (m): <input type="number" id="W">
+        `;
+    } else {
+        html = `
+        Diameter (m): <input type="number" id="D">
+        `;
+    }
+
+    document.getElementById("inputs").innerHTML = html;
+}
+
+renderInputs();
+
+function calculate(){
+
+    let shape = document.getElementById("shape").value;
+    let thk = parseFloat(document.getElementById("thk").value) / 1000;
+    let density = parseFloat(document.getElementById("density").value);
+
+    if(isNaN(thk)){
+        document.getElementById("result").innerHTML = "Enter all values";
+        return;
+    }
+
+    let area;
+
+    if(shape === "rect"){
+        let L = parseFloat(document.getElementById("L").value);
+        let W = parseFloat(document.getElementById("W").value);
+
+        area = L * W;
+    }
+    else {
+        let D = parseFloat(document.getElementById("D").value);
+
+        area = Math.PI * D * D / 4;
+    }
+
+    let volume = area * thk;
+    let weight = volume * density;
+
+    document.getElementById("result").innerHTML =
+        "Surface Area = " + area.toFixed(2) + " m²<br>" +
+        "Weight = " + weight.toFixed(2) + " kg";
+}
+
+</script>
+
+</body>
+</html>
