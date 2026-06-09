@@ -4,64 +4,126 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Engineering Unit Conversion Explained | Complete Guide</title>
+<title>Engineering Unit Conversion Explained | Industrial Calculation Hub</title>
 
-<meta name="description" content="Learn engineering unit conversion with simple explanations. Understand SI units, imperial units, and how to convert accurately in real-world applications.">
+<meta name="description" content="Learn engineering unit conversion with SI and imperial systems, formulas, and real-world applications in mechanical and civil engineering.">
+<meta name="keywords" content="unit conversion, SI units, imperial units, engineering conversion, measurement systems">
+<meta name="author" content="Industrial Calculation Hub">
 
 <!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
-crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612" crossorigin="anonymous"></script>
 
 <!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
 <style>
+/* =========================
+GLOBAL RESET
+========================= */
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(to right, #1e3c72, #2a5298);
     color: #333;
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 
+/* =========================
+FIXED HEADER
+========================= */
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #1f2d3d;
     text-align: center;
-    background: #444;
     padding: 12px;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 .navbar a {
     color: white;
     margin: 10px;
     text-decoration: none;
+    font-weight: 500;
 }
 
+/* =========================
+HEADER SECTION
+========================= */
 .header {
     text-align: center;
-    padding: 40px;
+    padding: 35px 15px;
     color: white;
 }
 
+/* =========================
+MAIN CONTAINER (80% WIDTH RULE)
+========================= */
 .container {
     background: white;
-    padding: 30px;
-    margin: 20px auto;
-    width: 90%;
+    width: 80%;
     max-width: 900px;
+    margin: 20px auto;
+    padding: 25px;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     line-height: 1.7;
 }
 
+/* =========================
+HEADINGS
+========================= */
 h2 {
     color: #2a5298;
 }
 
+/* =========================
+LINKS
+========================= */
+a {
+    color: #2a5298;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* =========================
+FOOTER
+========================= */
 .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #1f2d3d;
     text-align: center;
-    margin: 30px;
+    padding: 10px;
     color: white;
+    font-size: 14px;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 92%;
+    }
+
+    .navbar a {
+        font-size: 14px;
+        margin: 5px;
+    }
 }
 </style>
+
 </head>
 
 <body>
@@ -78,36 +140,26 @@ h2 {
 <!-- HEADER -->
 <div class="header">
 <h1>Engineering Unit Conversion Explained</h1>
-<p>Understand how unit conversion works in real-world engineering</p>
+<p>Understanding SI and Imperial measurement systems</p>
 </div>
 
-<!-- BLOG CONTENT -->
+<!-- MAIN CONTENT -->
 <div class="container">
 
 <h2>What is Unit Conversion?</h2>
 <p>
-Unit conversion is the process of converting a value from one measurement unit to another.
-In engineering, accurate unit conversion is critical because even a small mistake can lead
-to major design or safety issues.
+Unit conversion is the process of converting a value from one unit system to another. In engineering, accuracy in conversion is essential for safe and reliable design.
 </p>
 
-<h2>Why Unit Conversion is Important in Engineering</h2>
-<p>
-Engineering projects often involve different unit systems such as SI (metric) and
-Imperial units. Converting values correctly ensures consistency, accuracy, and
-reliability in calculations.
-</p>
-
+<h2>Importance in Engineering</h2>
 <ul>
-<li>Ensures correct design calculations</li>
-<li>Prevents engineering failures</li>
-<li>Improves communication between teams</li>
-<li>Maintains standardization across industries</li>
+<li>Ensures accurate design calculations</li>
+<li>Prevents structural and mechanical failures</li>
+<li>Maintains global engineering standards</li>
+<li>Improves communication between industries</li>
 </ul>
 
-<h2>SI Units vs Imperial Units</h2>
-
-<h3>SI Units (Metric System)</h3>
+<h2>SI Units (Metric System)</h2>
 <ul>
 <li>Length: meter (m)</li>
 <li>Mass: kilogram (kg)</li>
@@ -115,16 +167,15 @@ reliability in calculations.
 <li>Pressure: pascal (Pa)</li>
 </ul>
 
-<h3>Imperial Units</h3>
+<h2>Imperial Units</h2>
 <ul>
 <li>Length: inch, foot</li>
-<li>Weight: pound (lb)</li>
+<li>Mass: pound (lb)</li>
 <li>Force: pound-force (lbf)</li>
 <li>Pressure: psi</li>
 </ul>
 
-<h2>Common Conversion Examples</h2>
-
+<h2>Common Conversions</h2>
 <ul>
 <li>1 meter = 3.28084 feet</li>
 <li>1 kilogram = 2.20462 pounds</li>
@@ -134,34 +185,26 @@ reliability in calculations.
 
 <h2>How Conversion Works</h2>
 <p>
-Unit conversion is done using conversion factors. A conversion factor is a number
-used to change one set of units to another without changing the value.
+Conversion is performed using multiplication factors that preserve the physical quantity while changing its unit representation.
 </p>
 
 <p>
 Example:
 <br>
-To convert kilograms to newtons:
-<br>
-Force (N) = Mass (kg) × 9.81
+Force = Mass × 9.81 (for Newtons in SI system)
 </p>
 
 <h2>Engineering Applications</h2>
 <ul>
-<li>Structural design calculations</li>
-<li>Mechanical system analysis</li>
-<li>Fluid mechanics and pressure systems</li>
-<li>Material strength calculations</li>
+<li>Mechanical design calculations</li>
+<li>Structural engineering analysis</li>
+<li>Fluid mechanics systems</li>
+<li>Thermal and energy calculations</li>
 </ul>
 
-<h2>Use Online Conversion Tools</h2>
+<h2>Use Our Tools</h2>
 <p>
-Manual conversion can lead to errors. Engineers often use reliable tools to
-ensure accuracy.
-</p>
-
-<p>
-👉 Try our tools:
+👉 Practical engineering converters:
 <br>
 <a href="weight-conversion.html">Weight Conversion Tool</a><br>
 <a href="length-conversion.html">Length Conversion Tool</a><br>
