@@ -6,80 +6,154 @@
 
 <title>Air Density Explained | Industrial Calculation Hub</title>
 
-<meta name="description" content="Understand air density, its formula, influencing factors, and practical engineering applications.">
+<meta name="description" content="Understand air density, formula, factors and engineering applications.">
+
+<!-- ✅ ADSENSE -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
+ crossorigin="anonymous"></script>
+
+<!-- ✅ CMP (Google Funding Choices) -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
 <style>
-body {
+
+/* ================= GLOBAL RESET ================= */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ================= BODY ================= */
+body {
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: white;
+    color: #333;
 }
 
-/* NAVBAR */
-.navbar {
-    position: sticky;
+/* ================= FIXED HEADER ================= */
+.header {
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     background: #1e3c72;
-    padding: 12px;
-    text-align: center;
-}
-.navbar a {
     color: white;
-    margin: 8px;
+    padding: 12px 10px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    z-index: 1000;
+}
+
+.header a {
+    color: white;
     text-decoration: none;
+    font-size: 14px;
 }
 
-/* CONTAINER */
-.container {
-    width: 80%;
-    max-width: 800px;
-    margin: 20px auto;
-    background: white;
-    color: black;
-    padding: 20px;
-    border-radius: 10px;
-    line-height: 1.6;
-}
-
-/* HEADINGS */
-h1, h2 {
-    color: #1e3c72;
-}
-
-/* BUTTON LINK */
-.cta {
-    display: block;
+/* ================= FIXED FOOTER ================= */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #1e3c72;
+    color: white;
     text-align: center;
-    margin-top: 20px;
+    padding: 10px;
+    font-size: 13px;
 }
+
+/* ================= MAIN CONTAINER (70–80%) ================= */
+.container {
+    width: 75%;
+    max-width: 900px;
+    margin: 80px auto 80px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* ================= RESPONSIVE MOBILE ================= */
+@media (max-width: 768px) {
+    .container {
+        width: 78%;
+        padding: 18px;
+    }
+
+    .header {
+        flex-wrap: wrap;
+        font-size: 12px;
+    }
+}
+
+/* ================= HEADINGS ================= */
+h1, h2, h3 {
+    color: #1e3c72;
+    margin-bottom: 10px;
+}
+
+/* ================= TEXT ================= */
+p, ul {
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+/* ================= CTA BUTTON ================= */
+.cta {
+    text-align: center;
+    margin-top: 25px;
+}
+
 .cta a {
     background: #1e3c72;
     color: white;
-    padding: 12px 20px;
+    padding: 12px 18px;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 6px;
+    display: inline-block;
 }
 
-/* FOOTER */
-.footer {
-    position: sticky;
-    bottom: 0;
-    background: #1e3c72;
+/* ================= ADS PLACEHOLDER (CLS SAFE) ================= */
+.ad-slot {
+    width: 100%;
+    min-height: 90px;
+    margin: 20px 0;
     text-align: center;
-    padding: 10px;
 }
+
+/* ================= REMOVE NUMBER SPINNERS ================= */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="navbar">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
+<!-- FIXED HEADER -->
+<div class="header">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
 </div>
 
+<!-- MAIN CONTENT -->
 <div class="container">
 
 <h1>Air Density Explained</h1>
@@ -88,90 +162,62 @@ h1, h2 {
 Air density is the mass of air per unit volume. It is an important property in engineering calculations involving fluid flow, heat transfer, HVAC systems, and aerodynamics.
 </p>
 
+<!-- ✅ AD SLOT (SAFE PLACE FOR ADSENSE) -->
+<div class="ad-slot">
+    <!-- AdSense Ad Unit can be inserted here later -->
+</div>
+
 <h2>What is Air Density?</h2>
-<p>
-Air density (ρ) is defined as:
-</p>
+<p>Air density (ρ) is defined as mass per unit volume.</p>
 
 <p><b>Density = Mass / Volume</b></p>
 
-<p>
-In SI units, air density is expressed in kg/m³.
-</p>
-
 <h2>Standard Air Density</h2>
-<p>
-At standard atmospheric conditions:
-</p>
-
 <ul>
 <li>Temperature: 15°C</li>
-<li>Pressure: 1 atm (101325 Pa)</li>
+<li>Pressure: 1 atm</li>
 <li>Air Density ≈ 1.225 kg/m³</li>
 </ul>
 
 <h2>Air Density Formula</h2>
 
-<p>
-Air density can be calculated using the ideal gas equation:
-</p>
-
 <p><b>ρ = P / (R × T)</b></p>
 
 <ul>
-<li>ρ = Air density (kg/m³)</li>
 <li>P = Pressure (Pa)</li>
-<li>R = Specific gas constant (287 J/kg·K for air)</li>
+<li>R = 287 J/kg·K</li>
 <li>T = Temperature (K)</li>
 </ul>
 
+<!-- ✅ AD SLOT -->
+<div class="ad-slot"></div>
+
 <h2>Factors Affecting Air Density</h2>
 
-<h3>1. Temperature</h3>
-<p>
-As temperature increases, air expands and density decreases.
-</p>
-
-<h3>2. Pressure</h3>
-<p>
-Higher pressure increases air density.
-</p>
-
-<h3>3. Altitude</h3>
-<p>
-At higher altitudes, pressure decreases, leading to lower air density.
-</p>
-
-<h2>Why Air Density is Important</h2>
-
 <ul>
-<li>Determines flow rate in ducts and pipes</li>
-<li>Affects fan and blower performance</li>
-<li>Important in combustion calculations</li>
-<li>Used in aerodynamic design</li>
+<li>Temperature increases → density decreases</li>
+<li>Pressure increases → density increases</li>
+<li>Altitude increases → density decreases</li>
 </ul>
 
 <h2>Engineering Applications</h2>
 
-<p>
-Air density is widely used in:
-</p>
-
 <ul>
-<li>HVAC system design</li>
-<li>Industrial ventilation</li>
-<li>Power plant calculations</li>
-<li>Fluid mechanics analysis</li>
+<li>HVAC design</li>
+<li>Ventilation systems</li>
+<li>Aerodynamics</li>
+<li>Fluid flow calculations</li>
 </ul>
 
 <div class="cta">
-<a href="air-density.html">Use Air Density Calculator</a>
+<a href="air-density.html">Open Calculator</a>
 </div>
 
 </div>
 
+<!-- FIXED FOOTER -->
 <div class="footer">
-© 2026 Industrial Calculation Hub
+© 2026 Industrial Calculation Hub | Engineering Tools Portal
 </div>
 
 </body>
