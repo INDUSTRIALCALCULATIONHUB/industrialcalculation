@@ -4,98 +4,177 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pipe Flow Calculator | Industrial Calculation Hub</title>
+<title>Pipe Flow Rate Calculator | Industrial Calculation Hub</title>
+
+<meta name="description" content="Pipe Flow Rate Calculator for velocity, flow rate, and diameter calculations using engineering fluid mechanics formulas.">
+<meta name="keywords" content="pipe flow calculator, flow rate, velocity, diameter, fluid mechanics">
+<meta name="author" content="Industrial Calculation Hub">
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
+crossorigin="anonymous"></script>
+
+<!-- CMP -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: white;
+
+/* ================= GLOBAL THEME ================= */
+body{
+    margin:0;
+    font-family:Segoe UI, Arial, sans-serif;
+    background:linear-gradient(to right,#1e3c72,#2a5298);
+    color:white;
 }
 
-/* NAVBAR */
-.navbar {
-    position: sticky;
-    top: 0;
-    background: #1e3c72;
-    padding: 12px;
-    text-align: center;
-}
-.navbar a {
-    color: white;
-    margin: 8px;
-    text-decoration: none;
-}
-
-/* CONTAINER */
-.container {
-    width: 80%;
-    max-width: 600px;
-    margin: 20px auto;
-    background: white;
-    color: black;
-    padding: 20px;
-    border-radius: 10px;
+/* ================= FIXED HEADER ================= */
+.header-bar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:#444;
+    color:white;
+    padding:12px;
+    text-align:center;
+    z-index:1000;
 }
 
-/* INPUT */
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
+.header-bar a{
+    color:white;
+    margin:10px;
+    text-decoration:none;
+    font-weight:500;
 }
 
-/* REMOVE ARROWS */
+/* ================= FIXED FOOTER ================= */
+.footer-bar{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:#444;
+    color:white;
+    text-align:center;
+    padding:10px;
+    z-index:1000;
+}
+
+/* ================= MAIN CONTAINER (80% WIDTH STANDARD) ================= */
+.container{
+    width:80%;
+    max-width:900px;
+    margin:100px auto 80px auto;
+    background:white;
+    color:black;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* ================= TITLE ================= */
+h2{
+    text-align:center;
+    margin-top:0;
+}
+
+/* ================= INPUTS ================= */
+label{
+    font-weight:600;
+}
+
+input, select{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:1px solid #ccc;
+    border-radius:6px;
+    box-sizing:border-box;
+}
+
+/* REMOVE NUMBER SPINNERS (GLOBAL STANDARD) */
 input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
+input[type=number]::-webkit-outer-spin-button{
+    -webkit-appearance:none;
+    margin:0;
 }
-input[type=number] {
-    -moz-appearance: textfield;
-}
-
-/* BUTTON */
-button {
-    width: 100%;
-    padding: 12px;
-    background: #1e3c72;
-    color: white;
-    border: none;
-    cursor: pointer;
+input[type=number]{
+    -moz-appearance:textfield;
 }
 
-/* RESULT */
-.result {
-    margin-top: 15px;
-    font-weight: bold;
+/* ================= BUTTON ================= */
+button{
+    width:100%;
+    padding:12px;
+    background:#1e3c72;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
 }
 
-/* FOOTER */
-.footer {
-    position: sticky;
-    bottom: 0;
-    background: #1e3c72;
-    text-align: center;
-    padding: 10px;
+button:hover{
+    background:#16305a;
 }
+
+/* ================= RESULT ================= */
+.result{
+    margin-top:15px;
+    font-weight:bold;
+    text-align:center;
+    font-size:18px;
+}
+
+/* ================= CMP BANNER ================= */
+#consent-banner{
+    position:fixed;
+    bottom:50px;
+    left:50%;
+    transform:translateX(-50%);
+    width:80%;
+    max-width:900px;
+    background:#222;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+    display:none;
+    z-index:2000;
+    text-align:center;
+}
+
+#consent-banner button{
+    margin:5px;
+    padding:8px 12px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.accept{background:#4CAF50;color:white;}
+.reject{background:#f44336;color:white;}
+.manage{background:#2196F3;color:white;}
+
 </style>
 </head>
 
 <body>
 
-<div class="navbar">
+<!-- FIXED HEADER -->
+<div class="header-bar">
+🧰 Pipe Flow Rate Calculator |
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
 </div>
 
+<!-- MAIN CONTAINER -->
 <div class="container">
 
-<h2>Pipe Flow Calculator</h2>
+<h2>🔧 Pipe Flow Rate Calculator</h2>
 
 <label>Select Calculation Type</label>
-<select id="mode">
+<select id="mode" onchange="renderInputs()">
 <option value="flow">Flow Rate (Q)</option>
 <option value="velocity">Velocity (V)</option>
 <option value="diameter">Diameter (D)</option>
@@ -109,42 +188,57 @@ button {
 
 </div>
 
-<div class="footer">
+<!-- FIXED FOOTER -->
+<div class="footer-bar">
 © 2026 Industrial Calculation Hub
+</div>
+
+<!-- CMP CONSENT BANNER -->
+<div id="consent-banner">
+<p>This website uses cookies for analytics and personalized ads.</p>
+<button class="accept" onclick="acceptConsent()">Accept</button>
+<button class="reject" onclick="rejectConsent()">Reject</button>
+<button class="manage" onclick="manageConsent()">Manage</button>
 </div>
 
 <script>
 
-function renderInputs() {
+function renderInputs(){
     let mode = document.getElementById("mode").value;
     let html = "";
 
     if(mode === "flow"){
         html = `
-        Diameter (m): <input type="number" id="d">
-        Velocity (m/s): <input type="number" id="v">
+        <label>Diameter (m)</label>
+        <input type="number" id="d">
+
+        <label>Velocity (m/s)</label>
+        <input type="number" id="v">
         `;
     }
     else if(mode === "velocity"){
         html = `
-        Diameter (m): <input type="number" id="d">
-        Flow Rate (m³/s): <input type="number" id="q">
+        <label>Diameter (m)</label>
+        <input type="number" id="d">
+
+        <label>Flow Rate (m³/s)</label>
+        <input type="number" id="q">
         `;
     }
-    else {
+    else{
         html = `
-        Flow Rate (m³/s): <input type="number" id="q">
-        Velocity (m/s): <input type="number" id="v">
+        <label>Flow Rate (m³/s)</label>
+        <input type="number" id="q">
+
+        <label>Velocity (m/s)</label>
+        <input type="number" id="v">
         `;
     }
 
     document.getElementById("inputs").innerHTML = html;
 }
 
-document.getElementById("mode").addEventListener("change", renderInputs);
-renderInputs();
-
-function calculate() {
+function calculate(){
 
     let mode = document.getElementById("mode").value;
     let result = "";
@@ -152,7 +246,6 @@ function calculate() {
     if(mode === "flow"){
         let d = parseFloat(document.getElementById("d").value);
         let v = parseFloat(document.getElementById("v").value);
-
         let q = (Math.PI * d * d / 4) * v;
         result = "Flow Rate = " + q.toFixed(4) + " m³/s";
     }
@@ -160,21 +253,43 @@ function calculate() {
     else if(mode === "velocity"){
         let d = parseFloat(document.getElementById("d").value);
         let q = parseFloat(document.getElementById("q").value);
-
         let v = q / (Math.PI * d * d / 4);
         result = "Velocity = " + v.toFixed(4) + " m/s";
     }
 
-    else {
+    else{
         let q = parseFloat(document.getElementById("q").value);
         let v = parseFloat(document.getElementById("v").value);
-
         let d = Math.sqrt((4*q)/(Math.PI*v));
         result = "Diameter = " + d.toFixed(4) + " m";
     }
 
     document.getElementById("result").innerHTML = result;
 }
+
+/* CMP */
+function showBanner(){
+    if(!localStorage.getItem("consent")){
+        document.getElementById("consent-banner").style.display="block";
+    }
+}
+
+function acceptConsent(){
+    localStorage.setItem("consent","accepted");
+    document.getElementById("consent-banner").style.display="none";
+}
+
+function rejectConsent(){
+    localStorage.setItem("consent","rejected");
+    document.getElementById("consent-banner").style.display="none";
+}
+
+function manageConsent(){
+    alert("Open privacy settings page for detailed controls.");
+}
+
+window.onload = renderInputs;
+window.onload = showBanner;
 
 </script>
 
