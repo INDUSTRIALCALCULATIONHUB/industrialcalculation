@@ -3,15 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Weight Conversion Tool</title>
 
-<!-- Google AdSense -->
+<title>Weight Conversion Tool | Industrial Calculation Hub</title>
+
+<meta name="description" content="Convert weight and force units used in engineering applications including Newton, kg, kN, and tons.">
+<meta name="keywords" content="weight conversion, force converter, newton, kg to N, engineering calculator">
+
+<!-- AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612" crossorigin="anonymous"></script>
 
 <!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
 <style>
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
@@ -19,9 +27,13 @@ body {
     color: #333;
 }
 
+/* FIXED HEADER */
 .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     text-align: center;
-    background: #444;
+    background: #1e3c72;
     padding: 12px;
 }
 
@@ -29,64 +41,88 @@ body {
     color: white;
     margin: 10px;
     text-decoration: none;
+    font-weight: 500;
 }
 
+/* HEADER */
 .header {
     text-align: center;
     padding: 30px;
     color: white;
 }
 
+/* MAIN CONTAINER (70–80% WIDTH FIX) */
 .container {
     background: white;
-    padding: 25px;
+    padding: 22px;
     margin: 20px auto;
-    width: 90%;
-    max-width: 520px;
+    width: 78%;
+    max-width: 900px;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
+/* INPUT STANDARDIZATION */
 input, select {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
     border-radius: 8px;
     border: 1px solid #ccc;
+    font-size: 15px;
 }
 
+/* REMOVE NUMBER SPINNER */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* BUTTON STYLE */
 button {
     padding: 12px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    width: 45%;
+    width: 48%;
+    font-size: 14px;
 }
 
-.calc-btn {background:#2a5298;color:white;}
-.reset-btn {background:#ccc;}
+.calc-btn { background: #1e3c72; color: white; }
+.reset-btn { background: #ccc; }
 
+.btn-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* OUTPUT */
 #output {
-    width: 90%;
-    max-width: 600px;
+    width: 78%;
+    max-width: 900px;
     margin: 20px auto;
 }
 
+/* CARD */
 .card {
     background: white;
-    padding: 20px;
+    padding: 18px;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
+/* TABLE */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
 }
 
 th {
-    background: #2a5298;
+    background: #1e3c72;
     color: white;
 }
 
@@ -96,21 +132,24 @@ th, td {
     border-bottom: 1px solid #ddd;
 }
 
-/* ✅ ENGINEERING NOTES */
+/* SECTION */
 .section {
     background: white;
-    padding: 25px;
+    padding: 22px;
     margin: 20px auto;
-    width: 90%;
-    max-width: 520px;
+    width: 78%;
+    max-width: 900px;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
+/* FOOTER FIXED */
 .footer {
+    position: sticky;
+    bottom: 0;
     text-align: center;
-    margin: 30px;
+    background: #1e3c72;
     color: white;
+    padding: 10px;
 }
 </style>
 
@@ -120,17 +159,17 @@ th, td {
 
 <!-- NAVBAR -->
 <div class="navbar">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="privacy.html">Privacy</a>
-<a href="terms.html">Terms</a>
+<a href="index.html">🏠 Home</a>
+<a href="about.html">ℹ About</a>
+<a href="contact.html">✉ Contact</a>
+<a href="privacy.html">🔒 Privacy</a>
+<a href="terms.html">📄 Terms</a>
 </div>
 
 <!-- HEADER -->
 <div class="header">
-<h1>Weight Conversion Tool</h1>
-<p>Convert force and mass units used in engineering</p>
+<h1>⚖ Weight Conversion Tool</h1>
+<p>Engineering force and mass unit converter</p>
 </div>
 
 <!-- INPUT -->
@@ -139,15 +178,14 @@ th, td {
 <input type="number" id="inputValue" placeholder="Enter Value">
 
 <select id="unit">
-    <option value="kg">kg</option>
-    <option value="N">N</option>
-    <option value="kN">kN</option>
+    <option value="kg">Kilogram (kg)</option>
+    <option value="N">Newton (N)</option>
+    <option value="kN">Kilonewton (kN)</option>
     <option value="t">Metric Ton</option>
     <option value="lb">Pound (lb)</option>
-    <option value="kip">Kip</option>
 </select>
 
-<div style="text-align:center;">
+<div class="btn-row">
 <button class="calc-btn" onclick="calculate()">Calculate</button>
 <button class="reset-btn" onclick="resetForm()">Reset</button>
 </div>
@@ -158,28 +196,35 @@ th, td {
 <div id="output"></div>
 
 <!-- INFO -->
-<div class="container">
+<div class="section">
 <h2>About Weight Conversion</h2>
 <p>This tool converts engineering force and mass units using Newton as the base reference system.</p>
 
 <h3>Applications</h3>
 <ul>
 <li>Structural load calculations</li>
-<li>Mechanical engineering</li>
-<li>Material testing</li>
+<li>Mechanical engineering design</li>
+<li>Material testing & analysis</li>
 </ul>
 </div>
 
-<!-- ✅ ENGINEERING NOTES ADDED -->
+<!-- THEORY SECTION (STANDARDIZED) -->
 <div class="section">
-<h2>Engineering Notes</h2>
-<p>This calculator is based on standard engineering formulas used in real-world industrial design and analysis.</p>
+<h2>Theory</h2>
+<p>Weight conversion in engineering is based on Newton’s second law:</p>
+<p><b>F = m × g</b></p>
 
-<h3>Reference Standards</h3>
+<h3>Information</h3>
 <ul>
-<li>ISO engineering standards</li>
-<li>Standard atmospheric equations</li>
-<li>Material property constants</li>
+<li>g = 9.81 m/s² (standard gravity)</li>
+<li>Force is measured in Newton (N)</li>
+<li>Mass is measured in kg or tons</li>
+</ul>
+
+<h3>Notes</h3>
+<ul>
+<li>Always ensure unit consistency</li>
+<li>Engineering calculations require SI standard conversion</li>
 </ul>
 </div>
 
@@ -189,13 +234,13 @@ th, td {
 </div>
 
 <script>
+
 const TO_NEWTON = {
     kg: 9.81,
     N: 1,
     kN: 1000,
     t: 9810,
-    lb: 4.44822,
-    kip: 4448.22
+    lb: 4.44822
 };
 
 function calculate() {
@@ -204,7 +249,7 @@ let value = parseFloat(document.getElementById("inputValue").value);
 let unit = document.getElementById("unit").value;
 
 if(isNaN(value)){
-document.getElementById("output").innerHTML="Invalid input";
+document.getElementById("output").innerHTML = "<p style='color:red;text-align:center;'>Invalid input</p>";
 return;
 }
 
@@ -215,14 +260,13 @@ let results = {
 "Newton (N)": newton,
 "Kilonewton (kN)": newton / 1000,
 "Metric Ton": newton / 9810,
-"Pound (lb)": newton / 4.44822,
-"Kip": newton / 4448.22
+"Pound (lb)": newton / 4.44822
 };
 
 let table = `<div class="card"><h3>Results</h3><table><tr><th>Unit</th><th>Value</th></tr>`;
 
 for(let k in results){
-table += `<tr><td>${k}</td><td>${results[k].toFixed(2)}</td></tr>`;
+table += `<tr><td>${k}</td><td>${results[k].toFixed(3)}</td></tr>`;
 }
 
 table += `</table></div>`;
@@ -231,10 +275,11 @@ document.getElementById("output").innerHTML = table;
 }
 
 function resetForm(){
-document.getElementById("inputValue").value="";
-document.getElementById("unit").value="kg";
-document.getElementById("output").innerHTML="";
+document.getElementById("inputValue").value = "";
+document.getElementById("unit").value = "kg";
+document.getElementById("output").innerHTML = "";
 }
+
 </script>
 
 </body>
