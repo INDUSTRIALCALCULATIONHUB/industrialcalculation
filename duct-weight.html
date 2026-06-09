@@ -6,94 +6,134 @@
 
 <title>Duct Weight Calculator | Industrial Calculation Hub</title>
 
+<meta name="description" content="Calculate duct weight based on geometry, thickness, and material density for HVAC and industrial applications.">
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
+crossorigin="anonymous"></script>
+
+<!-- CMP -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: white;
+
+body{
+    margin:0;
+    font-family:Segoe UI, Arial, sans-serif;
+    background:linear-gradient(to right,#1e3c72,#2a5298);
+    color:#333;
 }
 
-/* NAVBAR */
-.navbar {
-    position: sticky;
-    top: 0;
-    background: #1e3c72;
-    padding: 12px;
-    text-align: center;
-}
-.navbar a {
-    color: white;
-    margin: 8px;
-    text-decoration: none;
-}
-
-/* CONTAINER */
-.container {
-    width: 80%;
-    max-width: 600px;
-    margin: 20px auto;
-    background: white;
-    color: black;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-/* INPUT */
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-}
-
-/* REMOVE ARROWS */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-}
-input[type=number] {
-    -moz-appearance: textfield;
-}
-
-/* BUTTON */
-button {
-    width: 100%;
-    padding: 12px;
-    background: #1e3c72;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-/* RESULT */
-.result {
-    margin-top: 15px;
-    font-weight: bold;
-    line-height: 1.6;
+/* HEADER */
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:#1e3c72;
+    color:white;
+    text-align:center;
+    padding:12px;
+    z-index:1000;
 }
 
 /* FOOTER */
-.footer {
-    position: sticky;
-    bottom: 0;
-    background: #1e3c72;
-    text-align: center;
-    padding: 10px;
+.footer{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:#1e3c72;
+    color:white;
+    text-align:center;
+    padding:10px;
+    z-index:1000;
+}
+
+/* NAV */
+.navbar a{
+    color:white;
+    margin:10px;
+    text-decoration:none;
+    font-size:14px;
+}
+
+/* MAIN CONTAINER (GLOBAL 70–80% RULE) */
+.container{
+    width:80%;
+    max-width:750px;
+    margin:100px auto 80px auto;
+    background:white;
+    color:black;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .container{
+        width:78%;
+    }
+}
+
+/* INPUTS */
+input, select{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border-radius:8px;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+}
+
+/* REMOVE SPINNERS */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{
+    -webkit-appearance:none;
+    margin:0;
+}
+input[type=number]{
+    -moz-appearance:textfield;
+}
+
+/* BUTTON */
+button{
+    width:100%;
+    padding:12px;
+    background:#1e3c72;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+/* RESULT */
+.result{
+    margin-top:15px;
+    font-weight:bold;
+    line-height:1.6;
 }
 </style>
 </head>
 
 <body>
 
-<div class="navbar">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
+<!-- HEADER -->
+<div class="header">
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
 </div>
 
 <div class="container">
 
-<h2>Duct Weight Calculator</h2>
+<h2>🏗 Duct Weight Calculator</h2>
 
 <label>Duct Type</label>
 <select id="type" onchange="renderInputs()">
@@ -122,6 +162,7 @@ button {
 
 </div>
 
+<!-- FOOTER -->
 <div class="footer">
 © 2026 Industrial Calculation Hub
 </div>
@@ -156,7 +197,7 @@ function calculate(){
     let density = parseFloat(document.getElementById("density").value);
 
     if(isNaN(thk) || isNaN(len)){
-        document.getElementById("result").innerHTML = "Enter all values";
+        document.getElementById("result").innerHTML = "Enter all required values";
         return;
     }
 
@@ -165,12 +206,10 @@ function calculate(){
     if(type === "rect"){
         let w = parseFloat(document.getElementById("w").value);
         let h = parseFloat(document.getElementById("h").value);
-
         area = 2 * (w + h) * len;
     }
-    else {
+    else{
         let d = parseFloat(document.getElementById("d").value);
-
         area = Math.PI * d * len;
     }
 
