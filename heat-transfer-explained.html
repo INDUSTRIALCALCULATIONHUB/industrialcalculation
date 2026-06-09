@@ -18,139 +18,178 @@ crossorigin="anonymous"></script>
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: #333;
+
+/* ================= GLOBAL THEME ================= */
+body{
+    margin:0;
+    font-family:Segoe UI, sans-serif;
+    background:#1e3c72;
+    color:#fff;
 }
 
-.navbar {
-    text-align: center;
-    background: #444;
-    padding: 12px;
+/* ================= FIXED HEADER ================= */
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:#2a2a2a;
+    padding:12px;
+    text-align:center;
+    z-index:1000;
 }
 
-.navbar a {
-    color: white;
-    margin: 10px;
-    text-decoration: none;
+header a{
+    color:#fff;
+    margin:0 10px;
+    text-decoration:none;
+    font-weight:500;
 }
 
-.header {
-    text-align: center;
-    padding: 30px;
-    color: white;
+/* ================= FIXED FOOTER ================= */
+footer{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:#2a2a2a;
+    text-align:center;
+    padding:10px;
+    font-size:14px;
 }
 
-.container {
-    background: white;
-    padding: 25px;
-    margin: 20px auto;
-    width: 90%;
-    max-width: 900px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    line-height: 1.7;
+/* ================= WRAPPER (70–80%) ================= */
+.wrapper{
+    width:80%;
+    max-width:1000px;
+    margin:90px auto 80px auto;
 }
 
-.button {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 12px 18px;
-    background: #2a5298;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
+/* ================= CARD STYLE ================= */
+.card{
+    background:#fff;
+    color:#333;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    line-height:1.7;
 }
 
-.footer {
-    text-align: center;
-    margin: 30px;
-    color: white;
+/* ================= HEADINGS ================= */
+h1,h2,h3{
+    color:#1e3c72;
 }
+
+h1{
+    text-align:center;
+}
+
+/* ================= BUTTON ================= */
+.button{
+    display:inline-block;
+    margin-top:15px;
+    padding:12px 18px;
+    background:#1e3c72;
+    color:#fff;
+    text-decoration:none;
+    border-radius:8px;
+    margin-right:10px;
+}
+
+.button:hover{
+    background:#16325c;
+}
+
+/* ================= LIST ================= */
+ul{
+    padding-left:20px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+    .wrapper{
+        width:92%;
+    }
+}
+
 </style>
 
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
+<!-- FIXED HEADER -->
+<header>
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
 <a href="privacy.html">Privacy</a>
 <a href="terms.html">Terms</a>
-</div>
-
-<!-- HEADER -->
-<div class="header">
-<h1>Heat Transfer Explained</h1>
-<p>Understanding Conduction, Convection & Radiation</p>
-</div>
+</header>
 
 <!-- CONTENT -->
-<div class="container">
+<div class="wrapper">
 
-<h2>📌 Introduction</h2>
+<div class="card">
+
+<h1>Heat Transfer Explained</h1>
+<p style="text-align:center;">Understanding Conduction, Convection & Radiation in Engineering Systems</p>
+
+<h2>Introduction</h2>
 <p>
-Heat transfer is the movement of thermal energy from a hotter object to a colder one.
-It is a fundamental concept in thermodynamics and plays a critical role in engineering systems.
+Heat transfer is the movement of thermal energy from a higher temperature region to a lower temperature region.
+It is a fundamental concept in thermodynamics and is widely used in mechanical, chemical, and thermal engineering.
 </p>
 
-<h2>🔥 Modes of Heat Transfer</h2>
+<h2>Modes of Heat Transfer</h2>
 
 <h3>1. Conduction</h3>
 <p>
-Heat transfer through direct contact of molecules in solids.
-Example: Heat flow through a metal rod.
+Conduction is heat transfer through direct molecular interaction in solids.
+Example: Heat flow through a metal rod or wall.
 </p>
 
 <p><b>Fourier’s Law:</b> Q = kA(dT/dx)</p>
 
 <h3>2. Convection</h3>
 <p>
-Heat transfer through fluid motion (liquids and gases).
-Example: Boiling water circulation.
+Convection is heat transfer through fluid motion (liquids and gases).
+Example: Boiling water or air circulation in HVAC systems.
 </p>
 
 <p><b>Newton’s Law of Cooling:</b> Q = hA(Ts - T∞)</p>
 
 <h3>3. Radiation</h3>
 <p>
-Heat transfer through electromagnetic waves without needing a medium.
-Example: Heat from the sun.
+Radiation is heat transfer through electromagnetic waves without requiring a medium.
+Example: Solar heat transfer to Earth.
 </p>
 
 <p><b>Stefan-Boltzmann Law:</b> Q = σεAT⁴</p>
 
-<h2>🏭 Engineering Applications</h2>
+<h2>Engineering Applications</h2>
 <ul>
-<li>Boilers and heat exchangers</li>
-<li>Power plants</li>
-<li>HVAC systems</li>
-<li>Industrial cooling systems</li>
+<li>Heat exchangers in power plants</li>
+<li>Boilers and thermal systems</li>
+<li>HVAC and refrigeration systems</li>
+<li>Industrial process cooling</li>
 </ul>
 
-<h2>🧮 Related Calculators</h2>
+<h2>Related Engineering Tools</h2>
 
-<p>Use our tools to perform real engineering calculations:</p>
-
-<a class="button" href="heat-transfer.html">
-👉 Heat Transfer Calculator
-</a>
-
-<a class="button" href="pump-power-calculator.html">
-👉 Pump Power Calculator
-</a>
+<a class="button" href="heat-transfer.html">Heat Transfer Calculator</a>
+<a class="button" href="pump-power-calculator.html">Pump Motor Selection</a>
 
 </div>
 
-<!-- FOOTER -->
-<div class="footer">
-© 2026 Industrial Calculation Hub
 </div>
+
+<!-- FIXED FOOTER -->
+<footer>
+© 2026 Industrial Calculation Hub |
+<a href="privacy.html" style="color:white;">Privacy</a> |
+<a href="terms.html" style="color:white;">Terms</a>
+</footer>
 
 </body>
 </html>
