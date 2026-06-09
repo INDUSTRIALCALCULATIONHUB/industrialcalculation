@@ -6,135 +6,162 @@
 
 <title>Hopper Valley Angle Calculator | Industrial Calculation Hub</title>
 
-<meta name="description" content="Calculate hopper valley angle, height, surface area and volume for industrial hopper design applications.">
-<meta name="keywords" content="hopper angle calculator, hopper design, valley angle, industrial hopper volume">
-<meta name="author" content="Industrial Calculation Hub">
+<meta name="description" content="Hopper valley angle calculator for industrial hopper design including plate angles, surface area, and volume calculations.">
 
 <!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
-crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612" crossorigin="anonymous"></script>
 
 <!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
 <style>
 
-/* ================= GLOBAL THEME ================= */
-body{
-    margin:0;
-    font-family:Segoe UI, sans-serif;
-    background:#1e3c72;
-    color:#fff;
-}
-
-/* ================= FIXED HEADER ================= */
-header{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    background:#2a2a2a;
-    padding:12px;
-    text-align:center;
-    z-index:1000;
-}
-
-header a{
-    color:#fff;
-    margin:0 10px;
-    text-decoration:none;
-    font-weight:500;
-}
-
-/* ================= FIXED FOOTER ================= */
-footer{
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:#2a2a2a;
-    text-align:center;
-    padding:10px;
-    font-size:14px;
-}
-
-/* ================= WRAPPER (70–80%) ================= */
-.wrapper{
-    width:80%;
-    max-width:750px;
-    margin:90px auto 80px auto;
-}
-
-/* ================= CARD ================= */
-.card{
-    background:#fff;
-    color:#333;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-
-/* ================= INPUT ================= */
-label{
-    font-weight:500;
-    display:block;
-    margin-top:10px;
-}
-
-input, select{
-    width:100%;
-    padding:12px;
-    margin:6px 0 12px 0;
-    border-radius:8px;
-    border:1px solid #ccc;
-    font-size:14px;
+/* ================= GLOBAL ================= */
+*{
     box-sizing:border-box;
 }
 
-/* REMOVE SPINNER */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button{
+body{
+    margin:0;
+    font-family:Segoe UI, sans-serif;
+    background:linear-gradient(to right,#1e3c72,#2a5298);
+    color:white;
+}
+
+/* Remove number spinners globally */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
     -webkit-appearance:none;
     margin:0;
 }
-
 input[type=number]{
     -moz-appearance:textfield;
 }
 
-/* BUTTON */
-button{
+/* ================= HEADER ================= */
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:#444;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:12px 10px;
+    z-index:1000;
+    font-weight:bold;
+}
+
+.header span{
+    margin-left:8px;
+}
+
+/* ================= FOOTER ================= */
+.footer{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:#444;
+    text-align:center;
+    padding:10px;
+    color:white;
+    font-size:13px;
+}
+
+/* ================= NAV LINKS ================= */
+.navbar{
+    display:none;
+}
+
+/* ================= LAYOUT ================= */
+.wrapper{
+    display:flex;
+    justify-content:center;
+    padding:90px 10px 80px 10px;
+}
+
+/* 70–80% width requirement */
+.card{
+    background:white;
+    color:#333;
+    width:78%;
+    max-width:750px;
+    padding:22px;
+    border-radius:14px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* ================= INPUTS ================= */
+input, select{
     width:100%;
     padding:12px;
+    margin:10px 0;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:14px;
+    outline:none;
+}
+
+/* ================= BUTTONS ================= */
+button{
+    width:48%;
+    padding:12px;
+    margin:10px 1%;
     border:none;
     border-radius:8px;
     cursor:pointer;
-    background:#1e3c72;
-    color:#fff;
-    font-size:15px;
-    margin-top:10px;
+    font-weight:bold;
+    font-size:14px;
 }
 
-/* RESULT */
+.calc{
+    background:#2a5298;
+    color:white;
+}
+
+.reset{
+    background:#ccc;
+}
+
+/* ================= RESULT ================= */
 .result{
     margin-top:15px;
     padding:15px;
     background:#f7f7f7;
-    color:#333;
     border-radius:10px;
-    line-height:1.6;
 }
 
-/* TITLE */
-h2{
-    text-align:center;
-    color:#1e3c72;
+/* ================= FORMULA BOX ================= */
+.formula{
+    margin-top:18px;
+    padding:15px;
+    background:#eef3ff;
+    border-radius:10px;
+    font-family:Arial;
+    line-height:1.7;
+    font-size:13px;
 }
 
-/* RESPONSIVE */
+/* ================= HEADER TITLE ================= */
+.title{
+    font-size:16px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+/* ================= MOBILE ================= */
 @media(max-width:768px){
-    .wrapper{
+    .card{
         width:92%;
+    }
+
+    button{
+        width:100%;
+        margin:8px 0;
     }
 }
 
@@ -144,134 +171,173 @@ h2{
 <body>
 
 <!-- FIXED HEADER -->
-<header>
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="privacy.html">Privacy</a>
-<a href="terms.html">Terms</a>
-</header>
+<div class="header">
+    <div class="title">🏗 Hopper Calculator <span>| Industrial Calculation Hub</span></div>
+</div>
 
 <div class="wrapper">
 
 <div class="card">
 
 <h2>Hopper Valley Angle Calculator</h2>
+<p>Plate Angle, Surface Area & Volume (Industrial Design)</p>
 
-<label>Select Calculation Mode</label>
-<select id="mode" onchange="renderInputs()">
-<option value="angle">Calculate Valley Angle</option>
-<option value="height">Calculate Hopper Height</option>
+<select id="mode" onchange="toggleMode()">
+    <option value="1">Calculate from Hopper Height</option>
+    <option value="2">Calculate Height from Valley Angle</option>
 </select>
 
-<div id="inputs"></div>
+<input id="Lt" type="number" placeholder="Top Length (mm)">
+<input id="Wt" type="number" placeholder="Top Width (mm)">
+<input id="Lb" type="number" placeholder="Bottom Length (mm)">
+<input id="Wb" type="number" placeholder="Bottom Width (mm)">
+<input id="H" type="number" placeholder="Hopper Height (mm)">
 
-<button onclick="calculate()">Calculate</button>
+<input id="thetaV" type="number" placeholder="Valley Angle (deg)" style="display:none;">
 
-<div class="result" id="result"></div>
+<div style="display:flex;justify-content:space-between;flex-wrap:wrap;">
+<button class="calc" onclick="calc()">Calculate</button>
+<button class="reset" onclick="reset()">Reset</button>
+</div>
+
+<div id="output"></div>
+
+<div class="formula">
+<h3>Engineering Formulas</h3>
+
+<p>
+ΔL = (L<sub>t</sub> − L<sub>b</sub>) / 2<br>
+ΔW = (W<sub>t</sub> − W<sub>b</sub>) / 2
+</p>
+
+<p>
+θ<sub>L</sub> = tan⁻¹ ( H / ΔL )<br>
+θ<sub>W</sub> = tan⁻¹ ( H / ΔW )<br>
+θ<sub>V</sub> = tan⁻¹ ( H / √(ΔL² + ΔW²) )
+</p>
+
+<p>
+H = tan(θ<sub>V</sub>) × √(ΔL² + ΔW²)
+</p>
+
+<p>
+Volume = (H / 3) × (A<sub>top</sub> + A<sub>bottom</sub> + √(A<sub>top</sub>A<sub>bottom</sub>))
+</p>
 
 </div>
 
+</div>
 </div>
 
 <!-- FIXED FOOTER -->
-<footer>
-© 2026 Industrial Calculation Hub |
-<a href="privacy.html" style="color:white;">Privacy</a> |
-<a href="terms.html" style="color:white;">Terms</a>
-</footer>
+<div class="footer">
+© 2026 Industrial Calculation Hub | Engineering Tools Portal
+</div>
 
 <script>
 
-function renderInputs(){
-
-    let mode = document.getElementById("mode").value;
-    let html = "";
-
-    if(mode === "angle"){
-        html = `
-        <label>Hopper Length (m)</label>
-        <input type="number" id="L">
-
-        <label>Hopper Width (m)</label>
-        <input type="number" id="W">
-
-        <label>Hopper Height (m)</label>
-        <input type="number" id="H">
-        `;
-    }
-    else{
-        html = `
-        <label>Hopper Length (m)</label>
-        <input type="number" id="L">
-
-        <label>Hopper Width (m)</label>
-        <input type="number" id="W">
-
-        <label>Valley Angle (deg)</label>
-        <input type="number" id="A">
-        `;
-    }
-
-    document.getElementById("inputs").innerHTML = html;
+function toggleMode(){
+document.getElementById("thetaV").style.display =
+document.getElementById("mode").value == "2" ? "block" : "none";
 }
 
-renderInputs();
+function calc(){
 
-function calculate(){
+let Lt = parseFloat(document.getElementById("Lt").value);
+let Wt = parseFloat(document.getElementById("Wt").value);
+let Lb = parseFloat(document.getElementById("Lb").value);
+let Wb = parseFloat(document.getElementById("Wb").value);
+let Hinput = parseFloat(document.getElementById("H").value);
+let mode = document.getElementById("mode").value;
 
-    let mode = document.getElementById("mode").value;
+if([Lt,Wt,Lb,Wb].some(isNaN)){
+document.getElementById("output").innerHTML =
+"<div class='result' style='color:red'>Enter all dimensions</div>";
+return;
+}
 
-    let L = parseFloat(document.getElementById("L").value);
-    let W = parseFloat(document.getElementById("W").value);
+let dL = (Lt - Lb)/2;
+let dW = (Wt - Wb)/2;
 
-    if(isNaN(L) || isNaN(W)){
-        document.getElementById("result").innerHTML = "Please enter valid values.";
-        return;
-    }
+if(dL<=0 || dW<=0){
+document.getElementById("output").innerHTML =
+"<div class='result' style='color:red'>Invalid geometry</div>";
+return;
+}
 
-    let result = "";
+let diag = Math.sqrt(dL*dL + dW*dW);
 
-    if(mode === "angle"){
+let H;
 
-        let H = parseFloat(document.getElementById("H").value);
+if(mode == "1"){
+H = Hinput;
+if(isNaN(H) || H<=0){
+document.getElementById("output").innerHTML =
+"<div class='result' style='color:red'>Enter valid height</div>";
+return;
+}
+}
+else{
+let thetaV_input = parseFloat(document.getElementById("thetaV").value);
+if(isNaN(thetaV_input) || thetaV_input<=0){
+document.getElementById("output").innerHTML =
+"<div class='result' style='color:red'>Enter valley angle</div>";
+return;
+}
+H = Math.tan(thetaV_input*Math.PI/180) * diag;
+}
 
-        if(isNaN(H)){
-            document.getElementById("result").innerHTML = "Please enter height.";
-            return;
-        }
+/* ANGLES */
+let thetaL = Math.atan(H/dL) * 180/Math.PI;
+let thetaW = Math.atan(H/dW) * 180/Math.PI;
+let thetaV = Math.atan(H/diag) * 180/Math.PI;
 
-        let angle = Math.atan((2*H)/W) * 180/Math.PI;
+/* CONVERSION */
+let Lt_m = Lt/1000, Wt_m = Wt/1000;
+let Lb_m = Lb/1000, Wb_m = Wb/1000;
+let H_m = H/1000;
 
-        let area = 2 * L * Math.sqrt((W/2)*(W/2) + H*H);
-        let volume = (L * W * H) / 2;
+/* SLANT HEIGHT */
+let sL = Math.sqrt(H*H + dL*dL);
+let sW = Math.sqrt(H*H + dW*dW);
 
-        result =
-        "Valley Angle = " + angle.toFixed(2) + "°<br>" +
-        "Plate Surface Area = " + area.toFixed(2) + " m²<br>" +
-        "Hopper Volume = " + volume.toFixed(2) + " m³";
-    }
-    else{
+/* AREA */
+let areaL = ((Lt_m + Lb_m)/2) * (sL/1000);
+let areaW = ((Wt_m + Wb_m)/2) * (sW/1000);
+let surfaceArea = 2*(areaL + areaW);
 
-        let A = parseFloat(document.getElementById("A").value);
+/* VOLUME */
+let A1 = Lt_m * Wt_m;
+let A2 = Lb_m * Wb_m;
+let volume = (H_m/3) * (A1 + A2 + Math.sqrt(A1*A2));
 
-        if(isNaN(A)){
-            document.getElementById("result").innerHTML = "Please enter angle.";
-            return;
-        }
+document.getElementById("output").innerHTML = `
+<div class="result">
+<h3>Results</h3>
 
-        let H = (W/2) * Math.tan(A * Math.PI/180);
+<p><b>Plate Angle (Length side):</b> ${thetaL.toFixed(2)}°</p>
+<p><b>Plate Angle (Width side):</b> ${thetaW.toFixed(2)}°</p>
+<p><b>Valley Angle:</b> ${thetaV.toFixed(2)}°</p>
 
-        let area = 2 * L * Math.sqrt((W/2)*(W/2) + H*H);
-        let volume = (L * W * H) / 2;
+<hr>
 
-        result =
-        "Hopper Height = " + H.toFixed(2) + " m<br>" +
-        "Plate Surface Area = " + area.toFixed(2) + " m²<br>" +
-        "Hopper Volume = " + volume.toFixed(2) + " m³";
-    }
+<p><b>Plate Surface Area:</b> ${surfaceArea.toFixed(2)} m²</p>
+<p><b>Hopper Volume:</b> ${volume.toFixed(2)} m³</p>
 
-    document.getElementById("result").innerHTML = result;
+${mode=="2" ? `<p><b>Calculated Height:</b> ${H.toFixed(2)} mm</p>` : ""}
+
+</div>
+`;
+}
+
+function reset(){
+document.getElementById("Lt").value="";
+document.getElementById("Wt").value="";
+document.getElementById("Lb").value="";
+document.getElementById("Wb").value="";
+document.getElementById("H").value="";
+document.getElementById("thetaV").value="";
+document.getElementById("output").innerHTML="";
 }
 
 </script>
