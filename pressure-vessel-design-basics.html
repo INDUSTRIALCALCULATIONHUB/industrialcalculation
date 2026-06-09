@@ -11,62 +11,117 @@
 <meta name="author" content="Industrial Calculation Hub">
 
 <!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
-crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612" crossorigin="anonymous"></script>
 
 <!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
 <style>
-body {
+* {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
+}
+
+body {
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(to right, #1e3c72, #2a5298);
     color: #333;
 }
 
-.navbar {
-    text-align: center;
-    background: #444;
-    padding: 12px;
+/* FIXED TOP HEADER */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #1f1f1f;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    z-index: 1000;
 }
 
-.navbar a {
+.topbar a {
     color: white;
-    margin: 10px;
+    margin: 5px 12px;
     text-decoration: none;
+    font-size: 14px;
 }
 
-.header {
-    text-align: center;
-    padding: 30px;
-    color: white;
+/* PAGE WRAPPER */
+.page {
+    padding-top: 70px;
+    padding-bottom: 70px;
 }
 
+/* MAIN CONTAINER (75% WIDTH STANDARD) */
 .container {
+    width: 75%;
+    max-width: 1100px;
+    margin: auto;
     background: white;
     padding: 25px;
-    margin: 20px auto;
-    width: 90%;
-    max-width: 900px;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     line-height: 1.7;
 }
 
-.section {
-    margin-top: 20px;
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .container {
+        width: 92%;
+    }
 }
 
-.footer {
+/* HEADER SECTION */
+.header {
     text-align: center;
-    margin: 30px;
     color: white;
+    margin-bottom: 20px;
 }
 
-a {
-    color: #2a5298;
+.header h1 {
+    font-size: 28px;
+}
+
+/* SECTION STYLE */
+.section {
+    margin-top: 22px;
+}
+
+.section h2 {
+    color: #1e3c72;
+    margin-bottom: 8px;
+}
+
+/* FIX LIST STYLE */
+ul {
+    padding-left: 20px;
+}
+
+/* FORMULA BOX */
+.formula {
+    background: #f4f6f8;
+    padding: 10px;
+    border-left: 4px solid #2a5298;
+    margin: 10px 0;
     font-weight: bold;
+}
+
+/* FIXED FOOTER */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #1f1f1f;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 13px;
 }
 </style>
 
@@ -74,8 +129,8 @@ a {
 
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
+<!-- FIXED HEADER -->
+<div class="topbar">
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
@@ -83,19 +138,21 @@ a {
 <a href="terms.html">Terms</a>
 </div>
 
-<!-- HEADER -->
+<div class="page">
+
+<!-- TITLE -->
 <div class="header">
-<h1>Pressure Vessel Design Basics</h1>
-<p>Understanding stress and design principles in industrial pressure systems</p>
+<h1>⚙️ Pressure Vessel Design Basics</h1>
+<p>Engineering stress concepts used in industrial pressure systems</p>
 </div>
 
-<!-- CONTENT -->
+<!-- MAIN CONTENT -->
 <div class="container">
 
 <div class="section">
 <h2>⚙️ What is a Pressure Vessel?</h2>
 <p>
-A pressure vessel is a container designed to hold gases or liquids at a pressure substantially different from the ambient pressure.
+A pressure vessel is a container designed to hold gases or liquids at a pressure substantially different from ambient pressure.
 They are widely used in chemical plants, refineries, and power industries.
 </p>
 </div>
@@ -103,24 +160,17 @@ They are widely used in chemical plants, refineries, and power industries.
 <div class="section">
 <h2>📐 Key Design Stresses</h2>
 <ul>
-<li><b>Hoop Stress:</b> Circumferential stress in the vessel wall</li>
-<li><b>Longitudinal Stress:</b> Stress along the length of the vessel</li>
-<li><b>Radial Stress:</b> Stress acting inward/outward (usually small)</li>
+<li><b>Hoop Stress:</b> Circumferential stress in vessel wall</li>
+<li><b>Longitudinal Stress:</b> Stress along vessel length</li>
+<li><b>Radial Stress:</b> Usually small compared to other stresses</li>
 </ul>
 </div>
 
 <div class="section">
 <h2>📊 Basic Formulas</h2>
 
-<p><b>Hoop Stress:</b></p>
-<p style="font-size:18px;">
-σh = (P × r) / t
-</p>
-
-<p><b>Longitudinal Stress:</b></p>
-<p style="font-size:18px;">
-σl = (P × r) / (2t)
-</p>
+<div class="formula">Hoop Stress: σh = (P × r) / t</div>
+<div class="formula">Longitudinal Stress: σl = (P × r) / (2t)</div>
 
 <ul>
 <li>P = Internal pressure</li>
@@ -135,19 +185,19 @@ They are widely used in chemical plants, refineries, and power industries.
 <li>Carbon steel</li>
 <li>Stainless steel</li>
 <li>Alloy steel</li>
-<li>Composite materials (advanced applications)</li>
+<li>Composite materials</li>
 </ul>
 </div>
 
 <div class="section">
-<h2>⚠️ Safety Factors</h2>
+<h2>⚠️ Safety Considerations</h2>
 <p>
-Pressure vessels must be designed with safety factors to avoid failure due to overpressure, corrosion, or fatigue.
+Design includes safety factors for pressure surges, corrosion allowance, and fatigue life to prevent catastrophic failure.
 </p>
 </div>
 
 <div class="section">
-<h2>📊 Industrial Applications</h2>
+<h2>📊 Applications</h2>
 <ul>
 <li>Boilers and steam systems</li>
 <li>Oil & gas separators</li>
@@ -157,7 +207,7 @@ Pressure vessels must be designed with safety factors to avoid failure due to ov
 </div>
 
 <div class="section">
-<h2>🔗 Related Calculators</h2>
+<h2>🔗 Related Tools</h2>
 <ul>
 <li><a href="pressure-conversion.html">Pressure Conversion Tool</a></li>
 <li><a href="heat-transfer.html">Heat Transfer Calculator</a></li>
@@ -165,18 +215,22 @@ Pressure vessels must be designed with safety factors to avoid failure due to ov
 </ul>
 </div>
 
+<!-- STANDARD THEORY SECTION -->
 <div class="section">
-<h2>📌 Summary</h2>
+<h2>📘 Theory / Information / Notes</h2>
 <p>
-Pressure vessel design is critical in industrial safety. Proper stress calculation ensures safe and efficient operation under high pressure conditions.
+Pressure vessel design follows thin and thick cylinder theory depending on thickness ratio.
+Proper stress distribution ensures safe operation under high internal pressure conditions.
+Material selection and corrosion allowance are critical for long-term reliability.
 </p>
 </div>
 
 </div>
+</div>
 
-<!-- FOOTER -->
+<!-- FIXED FOOTER -->
 <div class="footer">
-© 2026 Industrial Calculation Hub
+© 2026 Industrial Calculation Hub | Engineering Design Portal
 </div>
 
 </body>
