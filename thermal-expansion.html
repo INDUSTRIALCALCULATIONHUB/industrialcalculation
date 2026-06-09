@@ -3,111 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thermal Expansion Calculator</title>
 
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612" crossorigin="anonymous"></script>
-
-<!-- CMP -->
-<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+<title>Thermal Expansion Calculator | Industrial Calculation Hub</title>
 
 <style>
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: Arial, sans-serif;
     background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: #333;
+    color: white;
 }
 
+/* NAVBAR */
 .navbar {
-    text-align: center;
-    background: #444;
+    position: sticky;
+    top: 0;
+    background: #1e3c72;
     padding: 12px;
+    text-align: center;
 }
-
 .navbar a {
     color: white;
-    margin: 10px;
+    margin: 8px;
     text-decoration: none;
 }
 
-.header {
-    text-align: center;
-    padding: 30px;
-    color: white;
-}
-
+/* CONTAINER */
 .container {
-    background: white;
-    padding: 25px;
-    margin: 20px auto;
-    width: 90%;
-    max-width: 520px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-select, input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-}
-
-button {
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 45%;
-}
-
-.calc-btn {background:#2a5298;color:white;}
-.reset-btn {background:#ccc;}
-
-#output {
-    width: 90%;
+    width: 80%;
     max-width: 600px;
     margin: 20px auto;
-}
-
-.card {
     background: white;
+    color: black;
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
 }
 
-.result-item {
+/* INPUT */
+input, select {
+    width: 100%;
+    padding: 10px;
     margin: 8px 0;
 }
 
-.success {
-    margin-top: 15px;
+/* REMOVE ARROWS */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
     padding: 12px;
-    background: #d4edda;
-    color: #155724;
-    border-radius: 8px;
-    font-weight: bold;
-    text-align: center;
-}
-
-/* ✅ ENGINEERING NOTES */
-.section {
-    background: white;
-    padding: 25px;
-    margin: 20px auto;
-    width: 90%;
-    max-width: 520px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.footer {
-    text-align: center;
-    margin: 30px;
+    background: #1e3c72;
     color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* RESULT */
+.result {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* FOOTER */
+.footer {
+    position: sticky;
+    bottom: 0;
+    background: #1e3c72;
+    text-align: center;
+    padding: 10px;
 }
 </style>
 </head>
@@ -118,95 +88,65 @@ button {
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
-<a href="privacy.html">Privacy</a>
-<a href="terms.html">Terms</a>
-</div>
-
-<div class="header">
-<h1>Thermal Expansion Calculator</h1>
-<p>Calculate linear expansion of engineering materials</p>
 </div>
 
 <div class="container">
 
+<h2>Thermal Expansion Calculator</h2>
+
+<label>Initial Length (m)</label>
+<input type="number" id="length">
+
+<label>Temperature Change (°C)</label>
+<input type="number" id="temp">
+
+<label>Select Material</label>
 <select id="material">
-    <option value="">Select Material</option>
+<option value="12e-6">Mild Steel</option>
+<option value="12e-6">IS 2062</option>
+<option value="12e-6">Carbon Steel</option>
+<option value="17e-6">Stainless Steel 304</option>
+<option value="16e-6">Stainless Steel 316</option>
+<option value="16e-6">Stainless Steel 316L</option>
+<option value="23e-6">Aluminium</option>
+<option value="11e-6">Cast Iron</option>
+<option value="17e-6">Copper</option>
+<option value="19e-6">Brass</option>
+<option value="18e-6">Bronze</option>
+<option value="8.5e-6">Titanium</option>
+<option value="13e-6">Nickel</option>
 </select>
 
-<input type="number" id="length" placeholder="Length (mm)">
-<input type="number" id="deltaTemp" placeholder="Temperature Difference (°C)">
+<button onclick="calculate()">Calculate Expansion</button>
 
-<div style="text-align:center;">
-<button class="calc-btn" onclick="calculate()">Calculate</button>
-<button class="reset-btn" onclick="resetForm()">Reset</button>
-</div>
+<div class="result" id="result"></div>
 
 </div>
 
-<div id="output"></div>
-
-<!-- ✅ ENGINEERING NOTES ADDED -->
-<div class="section">
-<h2>Engineering Notes</h2>
-<p>This calculator is based on standard engineering formulas used in real-world industrial design and analysis.</p>
-
-<h3>Reference Standards</h3>
-<ul>
-<li>ISO engineering standards</li>
-<li>Standard atmospheric equations</li>
-<li>Material property constants</li>
-</ul>
+<div class="footer">
+© 2026 Industrial Calculation Hub
 </div>
 
 <script>
-const coefficients = {
-    "Aluminium 5083": 23.8e-6,
-    "Aluminium 6061": 23.6e-6,
-    "Brass": 19.0e-6,
-    "Bronze": 18.0e-6,
-    "Carbon Steel (A36)": 12.0e-6,
-    "Copper": 16.5e-6,
-    "Stainless Steel 304": 17.3e-6,
-    "Stainless Steel 316": 16.0e-6
-};
 
-const materialSelect = document.getElementById("material");
-Object.keys(coefficients).sort().forEach(m=>{
-    let opt=document.createElement("option");
-    opt.value=m;
-    opt.text=m;
-    materialSelect.appendChild(opt);
-});
+function calculate() {
 
-function calculate(){
+    let L = parseFloat(document.getElementById("length").value);
+    let dT = parseFloat(document.getElementById("temp").value);
+    let alpha = parseFloat(document.getElementById("material").value);
 
-let mat=document.getElementById("material").value;
-let L=parseFloat(document.getElementById("length").value);
-let dT=parseFloat(document.getElementById("deltaTemp").value);
+    if(isNaN(L) || isNaN(dT)){
+        document.getElementById("result").innerHTML = "Please enter all values";
+        return;
+    }
 
-if(!mat||isNaN(L)||isNaN(dT)){
-document.getElementById("output").innerHTML="Invalid input";
-return;
+    let expansion = L * alpha * dT;
+
+    document.getElementById("result").innerHTML =
+        "Expansion = " + expansion.toFixed(6) + " m<br>" +
+        "Expansion = " + (expansion * 1000).toFixed(3) + " mm";
 }
 
-let alpha=coefficients[mat];
-let expansion=alpha*L*dT;
-
-document.getElementById("output").innerHTML=`
-<div class="card">
-<h3>Result</h3>
-<div class="result-item">Material: ${mat}</div>
-<div class="result-item">Expansion: ${expansion.toFixed(3)} mm</div>
-<div class="success">Calculation Completed</div>
-</div>`;
-}
-
-function resetForm(){
-document.getElementById("material").value="";
-document.getElementById("length").value="";
-document.getElementById("deltaTemp").value="";
-document.getElementById("output").innerHTML="";
-}
 </script>
 
 </body>
