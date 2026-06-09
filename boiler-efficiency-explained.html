@@ -6,115 +6,173 @@
 
 <title>Boiler Efficiency Explained | Industrial Calculation Hub</title>
 
-<meta name="description" content="Learn boiler efficiency, losses, formula, and how industrial boilers convert fuel energy into useful steam energy.">
-<meta name="keywords" content="boiler efficiency, boiler calculation, thermal efficiency, steam boiler, industrial boiler, energy efficiency">
-<meta name="author" content="Industrial Calculation Hub">
+<meta name="description" content="Learn boiler efficiency, losses, formula, and industrial applications in thermal engineering systems.">
 
-<!-- AdSense -->
+<meta name="keywords" content="boiler efficiency, steam boiler, thermal efficiency, heat loss, industrial boiler">
+
+<!-- ================= ADSENSE ================= -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
-crossorigin="anonymous"></script>
+ crossorigin="anonymous"></script>
 
-<!-- CMP -->
+<!-- ================= CMP ================= -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
 <style>
-body {
+
+/* ================= RESET ================= */
+* {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ================= BODY ================= */
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
     background: linear-gradient(to right, #1e3c72, #2a5298);
     color: #333;
 }
 
-.navbar {
-    text-align: center;
-    background: #444;
-    padding: 12px;
-}
-
-.navbar a {
-    color: white;
-    margin: 10px;
-    text-decoration: none;
-}
-
+/* ================= FIXED HEADER ================= */
 .header {
-    text-align: center;
-    padding: 30px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #1e3c72;
     color: white;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    padding: 12px;
+    z-index: 1000;
 }
 
+.header a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* ================= FIXED FOOTER ================= */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #1e3c72;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 13px;
+}
+
+/* ================= MAIN CONTAINER (70–80%) ================= */
 .container {
-    background: white;
-    padding: 25px;
-    margin: 20px auto;
-    width: 90%;
+    width: 75%;
     max-width: 900px;
+    margin: 85px auto 85px auto;
+    background: #ffffff;
+    padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
     line-height: 1.7;
 }
 
+/* ================= MOBILE FIX ================= */
+@media (max-width: 768px) {
+    .container {
+        width: 78%;
+        padding: 18px;
+    }
+
+    .header {
+        flex-wrap: wrap;
+        font-size: 12px;
+    }
+}
+
+/* ================= HEADINGS ================= */
+h1, h2, h3 {
+    color: #1e3c72;
+    margin-bottom: 10px;
+}
+
+/* ================= TEXT ================= */
+p, ul {
+    margin-bottom: 12px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+/* ================= SECTION BOX ================= */
 .section {
     margin-top: 20px;
+    padding: 15px 0;
 }
 
-.footer {
+/* ================= AD SLOT ================= */
+.ad-slot {
+    width: 100%;
+    min-height: 90px;
+    margin: 20px 0;
     text-align: center;
-    margin: 30px;
-    color: white;
 }
 
+/* ================= LINKS ================= */
 a {
     color: #2a5298;
-    font-weight: bold;
+    font-weight: 600;
+    text-decoration: none;
 }
-</style>
 
+a:hover {
+    text-decoration: underline;
+}
+
+</style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="privacy.html">Privacy</a>
-<a href="terms.html">Terms</a>
-</div>
-
-<!-- HEADER -->
+<!-- FIXED HEADER -->
 <div class="header">
-<h1>Boiler Efficiency Explained</h1>
-<p>Understanding how industrial boilers convert fuel into useful energy</p>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
 </div>
 
-<!-- CONTENT -->
+<!-- MAIN CONTENT -->
 <div class="container">
 
+<h1>Boiler Efficiency Explained</h1>
+<p>Understanding how industrial boilers convert fuel energy into useful steam energy.</p>
+
+<!-- AD SLOT -->
+<div class="ad-slot"></div>
+
 <div class="section">
-<h2>🔥 What is Boiler Efficiency?</h2>
+<h2>What is Boiler Efficiency?</h2>
 <p>
-Boiler efficiency is the ratio of useful heat energy output (steam) to the energy input from fuel.
-It shows how effectively a boiler converts fuel into usable thermal energy.
+Boiler efficiency is the ratio of useful heat output to the heat input from fuel combustion.
+It indicates how effectively a boiler converts fuel energy into steam energy.
 </p>
 </div>
 
 <div class="section">
-<h2>📐 Boiler Efficiency Formula</h2>
-
-<p style="font-size:18px;">
-<b>Efficiency (%) = (Heat Output / Heat Input) × 100</b>
-</p>
+<h2>Boiler Efficiency Formula</h2>
+<p><b>Efficiency (%) = (Heat Output / Heat Input) × 100</b></p>
 
 <ul>
-<li>Heat Output = Energy in steam produced</li>
+<li>Heat Output = Energy in generated steam</li>
 <li>Heat Input = Energy from fuel combustion</li>
 </ul>
 </div>
 
 <div class="section">
-<h2>⚙️ Types of Boiler Losses</h2>
+<h2>Types of Boiler Losses</h2>
 <ul>
 <li>Flue gas loss</li>
 <li>Radiation loss</li>
@@ -123,51 +181,50 @@ It shows how effectively a boiler converts fuel into usable thermal energy.
 </ul>
 </div>
 
+<!-- AD SLOT -->
+<div class="ad-slot"></div>
+
 <div class="section">
-<h2>🏭 Factors Affecting Efficiency</h2>
+<h2>Factors Affecting Efficiency</h2>
 <ul>
 <li>Fuel quality</li>
-<li>Excess air in combustion</li>
+<li>Excess air ratio</li>
 <li>Heat transfer surface condition</li>
-<li>Operating pressure and load</li>
+<li>Load variation</li>
 </ul>
 </div>
 
 <div class="section">
-<h2>📊 Industrial Applications</h2>
+<h2>Industrial Applications</h2>
 <ul>
 <li>Power plants</li>
 <li>Refineries</li>
 <li>Chemical industries</li>
-<li>Textile and food processing</li>
+<li>Food processing plants</li>
 </ul>
 </div>
 
 <div class="section">
-<h2>📚 Try Related Tools</h2>
-<p>
-Explore our engineering calculators:
-</p>
-
+<h2>Related Engineering Tools</h2>
 <ul>
 <li><a href="heat-transfer.html">Heat Transfer Calculator</a></li>
-<li><a href="pump-power-calculator.html">Pump Power Calculator</a></li>
-<li><a href="pipe-flow-calculator.html">Pipe Flow Calculator</a></li>
+<li><a href="pump-power-calculator.html">Pump Motor Selection</a></li>
+<li><a href="pipe-flow-calculator.html">Pipe Flow Rate Calculator</a></li>
 </ul>
 </div>
 
 <div class="section">
-<h2>📌 Summary</h2>
+<h2>Summary</h2>
 <p>
-Higher boiler efficiency means lower fuel consumption, reduced emissions, and better industrial performance.
+Higher boiler efficiency reduces fuel consumption, lowers emissions, and improves industrial performance.
 </p>
 </div>
 
 </div>
 
-<!-- FOOTER -->
+<!-- FIXED FOOTER -->
 <div class="footer">
-© 2026 Industrial Calculation Hub
+© 2026 Industrial Calculation Hub | Engineering Tools Portal
 </div>
 
 </body>
