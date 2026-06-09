@@ -1,1 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Flange Weight Calculator | Industrial Calculation Hub</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: white;
+}
+
+/* NAVBAR */
+.navbar {
+    position: sticky;
+    top: 0;
+    background: #1e3c72;
+    padding: 12px;
+    text-align: center;
+}
+.navbar a {
+    color: white;
+    margin: 8px;
+    text-decoration: none;
+}
+
+/* CONTAINER */
+.container {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* INPUT */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+}
+
+/* REMOVE ARROWS */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #1e3c72;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* RESULT */
+.result {
+    margin-top: 15px;
+    font-weight: bold;
+    line-height: 1.6;
+}
+
+/* FOOTER */
+.footer {
+    position: sticky;
+    bottom: 0;
+    background: #1e3c72;
+    text-align: center;
+    padding: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</div>
+
+<div class="container">
+
+<h2>Flange Weight Calculator</h2>
+
+<label>Outer Diameter (m)</label>
+<input type="number" id="OD">
+
+<label>Inner Diameter (m)</label>
+<input type="number" id="ID">
+
+<label>Thickness (mm)</label>
+<input type="number" id="thk">
+
+<label>No. of Bolt Holes</label>
+<input type="number" id="holes">
+
+<label>Bolt Hole Diameter (m)</label>
+<input type="number" id="hdia">
+
+<label>Material</label>
+<select id="density">
+<option value="7850">Steel</option>
+<option value="8000">Stainless Steel</option>
+<option value="2700">Aluminium</option>
+</select>
+
+<button onclick="calculate()">Calculate</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<div class="footer">
+© 2026 Industrial Calculation Hub
+</div>
+
+<script>
+
+function calculate(){
+
+    let OD = parseFloat(document.getElementById("OD").value);
+    let ID = parseFloat(document.getElementById("ID").value);
+    let thk = parseFloat(document.getElementById("thk").value) / 1000;
+    let holes = parseFloat(document.getElementById("holes").value);
+    let hdia = parseFloat(document.getElementById("hdia").value);
+    let density = parseFloat(document.getElementById("density").value);
+
+    if(isNaN(OD) || isNaN(ID) || isNaN(thk)){
+        document.getElementById("result").innerHTML = "Enter all values";
+        return;
+    }
+
+    // Main flange area
+    let area = (Math.PI/4) * (OD*OD - ID*ID);
+
+    // Hole deduction
+    let holeArea = holes * (Math.PI/4) * (hdia*hdia);
+
+    let netArea = area - holeArea;
+
+    let volume = netArea * thk;
+    let weight = volume * density;
+
+    document.getElementById("result").innerHTML =
+        "Net Area = " + netArea.toFixed(3) + " m²<br>" +
+        "Weight = " + weight.toFixed(2) + " kg";
+}
+
+</script>
+
+</body>
+</html>
