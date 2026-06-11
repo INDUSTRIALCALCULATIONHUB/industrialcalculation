@@ -240,11 +240,13 @@ let P0 = 101325;
 let T0 = 288.16;
 let L = 0.0065;
 let g = 9.80665;
-let M = 0.0289644;
 let R = 287.058;
 
-let exponent = (g * M) / (R * L);
-let P = P0 * Math.pow((1 - (L * altitude) / T0), exponent);
+let exponent = g / (R * L);
+
+let T_atm = T0 - (L * altitude);
+let P = P0 * Math.pow((T_atm / T0), exponent);
+
 let T = temp + 273.15;
 let rho = P / (R * T);
 
