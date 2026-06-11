@@ -15,124 +15,8 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
  crossorigin="anonymous"></script>
 
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: white;
-    padding-top: 70px;
-    padding-bottom: 90px;
-}
-
-/* NAVBAR (MATCH INDEX) */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #0f2f5f;
-    padding: 14px;
-    text-align: center;
-    z-index: 1000;
-}
-
-.navbar a {
-    color: white;
-    margin: 0 12px;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.navbar a:hover {
-    text-decoration: underline;
-}
-
-/* CONTAINER */
-.container {
-    width: 80%;
-    max-width: 700px;
-    margin: 20px auto;
-    background: white;
-    color: #333;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-    .container {
-        width: 92%;
-    }
-}
-
-/* FORM */
-input, textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #2a5298;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 6px;
-}
-
-button:hover {
-    background-color: #1e3c72;
-}
-
-/* INFO */
-.info {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.info a {
-    color: #2a5298;
-    text-decoration: none;
-}
-
-/* FOOTER (MATCH INDEX) */
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: #0f2f5f;
-    text-align: center;
-    padding: 10px;
-    font-size: 13px;
-    z-index: 1000;
-}
-
-.footer-links {
-    margin-top: 5px;
-}
-
-.footer-links a {
-    color: #ddd;
-    margin: 0 8px;
-    text-decoration: none;
-    font-size: 12px;
-}
-
-.footer-links a:hover {
-    text-decoration: underline;
-}
-</style>
+<!-- GLOBAL STYLE -->
+<link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -146,26 +30,31 @@ button:hover {
     <a href="index.html#blogs">Knowledge</a>
 </div>
 
-<!-- CONTACT BOX -->
+<!-- HEADER -->
+<div class="header">
+    <h1>Contact Us</h1>
+    <p>We’d love to hear from you</p>
+</div>
+
+<!-- CONTENT -->
 <div class="container">
 
-<h2 style="text-align:center;">Contact Us</h2>
-<p style="text-align:center;">We’d love to hear from you</p>
-
 <div class="info">
-<p>Email:</p>
-<a href="mailto:contact@industrialcalculation.com">
-contact@industrialcalculation.com
-</a>
+    <p><strong>Email:</strong></p>
+    <a href="mailto:contact@industrialcalculation.com">
+        contact@industrialcalculation.com
+    </a>
 </div>
+
+<h2>Send a Message</h2>
 
 <form action="mailto:contact@industrialcalculation.com" method="post" enctype="text/plain">
 
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Your Email" required>
-<textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
 
-<button type="submit">Send Message</button>
+    <button type="submit">Send Message</button>
 
 </form>
 
@@ -180,10 +69,10 @@ We typically respond within 24–48 hours.
 © 2026 Industrial Calculation Hub | Engineering Tools Portal
 
 <div class="footer-links">
-<a href="index.html">Home</a>
-<a href="contact.html">Contact</a>
-<a href="privacy.html">Privacy</a>
-<a href="terms.html">Terms</a>
+    <a href="index.html">Home</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
 </div>
 
 </div>
