@@ -27,12 +27,12 @@ body{
     overflow-x:hidden;
 }
 
-/* FIXED NAVBAR */
+/* ✅ MATCHED COLOR (AIR DENSITY STYLE) */
 .navbar{
     position:fixed;
     top:0;
     width:100%;
-    background:#1f1f1f;
+    background:#0f2f5f;
     padding:12px;
     text-align:center;
     z-index:1000;
@@ -66,12 +66,12 @@ body{
     outline:none;
 }
 
-/* MAIN WRAPPER (GLOBAL 78% RULE) */
+/* WRAPPER */
 .wrapper{
     width:78%;
     max-width:1100px;
     margin:auto;
-    padding-bottom:120px; /* ✅ FIX: prevents footer overlap */
+    padding-bottom:120px;
 }
 
 /* SECTION */
@@ -112,7 +112,6 @@ body{
     transform:translateY(-4px);
 }
 
-/* ICON */
 .card span{
     margin-right:8px;
 }
@@ -121,20 +120,16 @@ body{
 @media (max-width:768px){
     .wrapper{
         width:88%;
-        padding-bottom:140px; /* extra safe space */
-    }
-
-    .card{
-        width:100%;
+        padding-bottom:140px;
     }
 }
 
-/* FIXED FOOTER */
+/* ✅ MATCHED FOOTER COLOR */
 .footer{
     position:fixed;
     bottom:0;
     width:100%;
-    background:#1f1f1f;
+    background:#0f2f5f;
     text-align:center;
     padding:10px;
     font-size:13px;
@@ -177,11 +172,16 @@ body{
 <a class="card" href="duct-flow-calculator.html"><span>🌬️</span>Duct Flow Rate</a>
 <a class="card" href="air-density.html"><span>🌫️</span>Air Density</a>
 <a class="card" href="heat-transfer.html"><span>🔥</span>Heat Transfer</a>
-<a class="card" href="hopper-valley-angle-calculator.html"><span>📐</span>Hopper Valley Angle</a>
-<a class="card" href="thermal-expansion.html"><span>🌡️</span>Thermal Expansion</a>
 
+<!-- ✅ FIXED ICON -->
+<a class="card" href="hopper-valley-angle-calculator.html"><span>⛰️</span>Hopper Valley Angle</a>
+
+<a class="card" href="thermal-expansion.html"><span>🌡️</span>Thermal Expansion</a>
 <a class="card" href="duct-weight.html"><span>🏗️</span>Duct Weight</a>
-<a class="card" href="plate-weight.html"><span>🧱</span>Plate Weight</a>
+
+<!-- ✅ FIXED ICON -->
+<a class="card" href="plate-weight.html"><span>📏</span>Plate Weight</a>
+
 <a class="card" href="flange-weight.html"><span>🔩</span>Flange Weight</a>
 
 </div>
@@ -195,7 +195,10 @@ body{
 
 <a class="card" href="weight-conversion.html"><span>⚖️</span>Weight</a>
 <a class="card" href="length-conversion.html"><span>📏</span>Length</a>
-<a class="card" href="pressure-conversion.html"><span>🧪</span>Pressure</a>
+
+<!-- ✅ FIXED ICON -->
+<a class="card" href="pressure-conversion.html"><span>📊</span>Pressure</a>
+
 <a class="card" href="temperature-conversion.html"><span>🌡️</span>Temperature</a>
 <a class="card" href="area-conversion.html"><span>📐</span>Area</a>
 <a class="card" href="volume-conversion.html"><span>🧊</span>Volume</a>
@@ -209,10 +212,20 @@ body{
 
 <div class="grid">
 
+<!-- EXISTING -->
 <a class="card" href="reynolds-number-explained.html">Reynolds Number</a>
 <a class="card" href="bernoulli-equation-explained.html">Bernoulli Equation</a>
 <a class="card" href="heat-transfer-explained.html">Heat Transfer</a>
 <a class="card" href="pipe-flow-basics.html">Pipe Flow Basics</a>
+
+<!-- ✅ NEWLY ADDED PAGES -->
+<a class="card" href="air-density-explained.html">Air Density Explained</a>
+<a class="card" href="boiler-efficiency-explained.html">Boiler Efficiency</a>
+<a class="card" href="engineering-calculations-in-real-world.html">Real-World Engineering Calculations</a>
+<a class="card" href="pressure-vessel-design-basics.html">Pressure Vessel Design</a>
+<a class="card" href="pump-power-basics.html">Pump Power Basics</a>
+<a class="card" href="thermal-expansion-explained.html">Thermal Expansion Explained</a>
+<a class="card" href="unit-conversion-explained.html">Unit Conversion Guide</a>
 
 </div>
 </div>
