@@ -1,4 +1,12 @@
-/* GLOBAL RESET */
+/* =========================================================
+   INDUSTRIAL CALCULATION HUB - GLOBAL STYLE.CSS
+   SAFE STRUCTURE FOR ALL PAGES (INDEX + CONTENT + TOOLS)
+========================================================= */
+
+
+/* =========================
+   RESET
+========================= */
 * {
     margin: 0;
     padding: 0;
@@ -6,19 +14,24 @@
     font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-/* BODY */
+
+/* =========================
+   BODY
+========================= */
 body {
     background: linear-gradient(to right, #1e3c72, #2a5298);
     color: #333;
     min-height: 100vh;
-    padding-top: 70px;
-    padding-bottom: 80px;
 }
 
-/* NAVBAR */
+
+/* =========================
+   NAVBAR (GLOBAL)
+========================= */
 .navbar {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     background: #0f2f5f;
     text-align: center;
@@ -33,21 +46,18 @@ body {
     font-size: 14px;
 }
 
-/* CONTENT BOX */
-.container {
-    width: 78%;
-    max-width: 900px;
-    margin: 20px auto;
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    line-height: 1.7;
+.navbar a:hover {
+    text-decoration: underline;
 }
 
-/* FOOTER */
+
+/* =========================
+   FOOTER (GLOBAL)
+========================= */
 .footer {
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
     background: #0f2f5f;
     text-align: center;
@@ -61,4 +71,182 @@ body {
     margin: 0 8px;
     text-decoration: none;
     font-size: 12px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   PAGE HEADER (ALL PAGES)
+========================= */
+.header {
+    text-align: center;
+    padding: 90px 20px 20px;
+    color: white;
+}
+
+.header h1 {
+    font-size: 26px;
+}
+
+.header p {
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   CONTENT PAGES ONLY (ABOUT / PRIVACY / TERMS / CONTACT)
+========================================================= */
+.container {
+    width: 78%;
+    max-width: 900px;
+    margin: 100px auto 100px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   FORM ELEMENTS (CONTACT PAGE)
+========================= */
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #2a5298;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background: #1e3c72;
+}
+
+
+/* =========================================================
+   INDEX PAGE LAYOUT ONLY
+========================================================= */
+.wrapper {
+    width: 78%;
+    max-width: 1100px;
+    margin: auto;
+    padding-bottom: 120px;
+}
+
+.section {
+    margin-top: 40px;
+}
+
+.section h2 {
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+
+/* =========================
+   TOOL CARDS (INDEX)
+========================= */
+.card {
+    background: white;
+    color: #222;
+    padding: 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 500;
+    min-height: 70px;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+
+/* =========================
+   SEARCH BOX (INDEX)
+========================= */
+.search-box {
+    text-align: center;
+    margin: 20px;
+}
+
+.search-box input {
+    width: 70%;
+    max-width: 500px;
+    padding: 12px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+}
+
+
+/* =========================
+   TABLE (FOR FUTURE TOOLS)
+========================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th {
+    background: #2a5298;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 768px) {
+
+    .container {
+        width: 92%;
+    }
+
+    .wrapper {
+        width: 88%;
+    }
+
+    .search-box input {
+        width: 90%;
+    }
+
+    .card {
+        min-height: 60px;
+    }
 }
