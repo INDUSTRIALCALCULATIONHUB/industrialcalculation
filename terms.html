@@ -8,58 +8,74 @@
 
 <meta name="description" content="Terms and Conditions of Industrial Calculation Hub - engineering calculators usage policy and guidelines.">
 
-<!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612" crossorigin="anonymous"></script>
-
 <!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612" crossorigin="anonymous"></script>
+
 <style>
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(to right, #1e3c72, #2a5298);
     color: #333;
+    padding-top: 70px;
+    padding-bottom: 90px;
 }
 
-/* HEADER */
+/* NAVBAR (MATCH INDEX) */
 .navbar {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 1000;
-    background: #1e3c72;
+    width: 100%;
+    background: #0f2f5f;
     text-align: center;
-    padding: 12px;
+    padding: 14px;
+    z-index: 1000;
 }
 
 .navbar a {
     color: white;
-    margin: 10px;
+    margin: 0 12px;
     text-decoration: none;
-    font-weight: 500;
+    font-size: 14px;
 }
 
-/* PAGE TITLE */
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* HEADER */
 .header {
     text-align: center;
-    padding: 30px;
     color: white;
+    padding: 30px 20px 10px;
 }
 
-/* MAIN CONTAINER (70–80% FIX) */
+.header h1 {
+    font-size: 26px;
+}
+
+.header p {
+    opacity: 0.9;
+}
+
+/* CONTENT */
 .container {
-    background: white;
     width: 78%;
-    max-width: 1000px;
-    margin: 25px auto;
+    max-width: 900px;
+    margin: 20px auto;
+    background: white;
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     line-height: 1.7;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 /* HEADINGS */
@@ -68,48 +84,56 @@ h2 {
     margin-top: 20px;
 }
 
-p {
-    font-size: 15px;
-}
-
-/* FOOTER FIXED STYLE */
+/* FOOTER (MATCH INDEX) */
 .footer {
-    position: sticky;
+    position: fixed;
     bottom: 0;
-    background: #1e3c72;
-    color: white;
+    width: 100%;
+    background: #0f2f5f;
     text-align: center;
-    padding: 12px;
+    padding: 10px;
+    font-size: 13px;
+    z-index: 1000;
 }
 
-.footer a {
-    color: white;
-    text-decoration: none;
+.footer-links {
+    margin-top: 5px;
+}
+
+.footer-links a {
+    color: #ddd;
     margin: 0 8px;
+    text-decoration: none;
+    font-size: 12px;
 }
 
-.footer a:hover {
+.footer-links a:hover {
     text-decoration: underline;
 }
-</style>
 
+/* MOBILE */
+@media (max-width: 768px) {
+    .container {
+        width: 92%;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <!-- NAVBAR -->
 <div class="navbar">
-<a href="index.html">🏠 Home</a>
-<a href="about.html">ℹ About</a>
-<a href="contact.html">✉ Contact</a>
-<a href="privacy.html">🔒 Privacy</a>
-<a href="terms.html">📄 Terms</a>
+    <a href="index.html">Home</a>
+    <a href="index.html#tools">Tools</a>
+    <a href="index.html#converters">Converters</a>
+    <a href="index.html#blogs">Knowledge</a>
 </div>
 
 <!-- HEADER -->
 <div class="header">
-<h1>Terms and Conditions</h1>
-<p>Rules for using engineering calculators and tools responsibly</p>
+    <h1>Terms and Conditions</h1>
+    <p>Rules for using engineering calculators and tools responsibly</p>
 </div>
 
 <!-- CONTENT -->
@@ -141,25 +165,24 @@ Copying or redistribution without permission is not allowed.
 
 <h2>5. Ads & Third-Party Services</h2>
 <p>
-We use Google AdSense and similar services which may use cookies for personalized ads.
+We use Google AdSense and related services which may use cookies for personalized ads.
 We do not control third-party content.
 </p>
 
 <h2>6. Cookies Policy</h2>
 <p>
-Cookies may be used to improve experience and show relevant ads.
-By continuing to use this site, you agree to cookie usage.
+Cookies may be used to improve user experience and ad relevance.
 </p>
 
 <h2>7. Updates</h2>
 <p>
-These terms may be updated at any time without notice.
-Users are encouraged to review this page regularly.
+These terms may be updated anytime without prior notice.
+Users should review this page regularly.
 </p>
 
 <h2>8. Contact</h2>
 <p>
-For any questions regarding these Terms:
+For questions about these Terms, contact:
 <br><br>
 <strong>contact@industrialcalculation.com</strong>
 </p>
@@ -168,10 +191,15 @@ For any questions regarding these Terms:
 
 <!-- FOOTER -->
 <div class="footer">
-© 2026 Industrial Calculation Hub |
+© 2026 Industrial Calculation Hub | Engineering Tools Portal
+
+<div class="footer-links">
 <a href="index.html">Home</a>
-<a href="privacy.html">Privacy</a>
 <a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+</div>
+
 </div>
 
 </body>
