@@ -29,10 +29,10 @@ body {
     background: linear-gradient(to right, #1e3c72, #2a5298);
     color: white;
     padding-top: 70px;
-    padding-bottom: 80px;
+    padding-bottom: 90px;
 }
 
-/* ✅ NAVBAR MATCHED WITH INDEX */
+/* NAVBAR (MATCH INDEX) */
 .navbar {
     position: fixed;
     top: 0;
@@ -87,7 +87,7 @@ h2 {
     margin-top: 20px;
 }
 
-/* ✅ FOOTER MATCHED WITH INDEX */
+/* FOOTER (MATCH INDEX) */
 .footer {
     position: fixed;
     bottom: 0;
@@ -99,13 +99,18 @@ h2 {
     z-index: 1000;
 }
 
-.footer a {
-    color: #ddd;
-    margin: 0 6px;
-    text-decoration: none;
+.footer-links {
+    margin-top: 5px;
 }
 
-.footer a:hover {
+.footer-links a {
+    color: #ddd;
+    margin: 0 8px;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.footer-links a:hover {
     text-decoration: underline;
 }
 
@@ -160,11 +165,16 @@ Our mission is to provide accurate, easy-to-use calculation tools that improve p
 
 <!-- FOOTER -->
 <div class="footer">
-© 2026 Industrial Calculation Hub |
-<a href="index.html">Home</a> |
-<a href="contact.html">Contact</a> |
-<a href="privacy.html">Privacy Policy</a> |
+© 2026 Industrial Calculation Hub | Engineering Tools Portal
+
+<div class="footer-links">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy</a>
 <a href="terms.html">Terms</a>
+</div>
+
 </div>
 
 </body>
