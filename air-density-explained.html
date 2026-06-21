@@ -6,9 +6,9 @@
 
 <title>Air Density | Industrial Calculation Hub</title>
 
-<meta name="description" content="Air density fundamentals, formula, influencing parameters and detailed engineering applications including fans, HVAC and process systems.">
+<meta name="description" content="Air density fundamentals, formula, influencing parameters and engineering applications in fans, HVAC, and process systems.">
 
-<!-- CMP (LOAD FIRST) -->
+<!-- CMP (MUST LOAD FIRST) -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
 <!-- ADSENSE -->
@@ -18,20 +18,54 @@
 <!-- GLOBAL CSS -->
 <link rel="stylesheet" href="style.css">
 
-<!-- FIX FOR HEADER (IMPORTANT) -->
+<!-- PAGE FIXES -->
 <style>
-.header {
+/* TOP FIXED BAR */
+.topbar {
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
+    background: #1e3c72;
+    color: white;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    padding: 12px;
     z-index: 1000;
 }
 
-/* Prevent content hiding behind header */
+.topbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* BOTTOM FIXED BAR */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #1e3c72;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 13px;
+}
+
+.footer-links {
+    margin-top: 5px;
+}
+
+.footer-links a {
+    color: white;
+    margin: 0 8px;
+    text-decoration: none;
+}
+
+/* CONTENT SPACING */
 .container {
     margin-top: 90px;
-    margin-bottom: 80px;
+    margin-bottom: 90px;
 }
 </style>
 
@@ -39,8 +73,8 @@
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
+<!-- TOP BAR -->
+<div class="topbar">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
@@ -54,25 +88,29 @@
 <h1>Air Density</h1>
 
 <p style="margin-bottom:20px;">
-Air density is a fundamental thermophysical property defined as mass per unit volume of air. 
-It plays a critical role in engineering design calculations involving fluid flow, heat transfer, combustion systems, and air handling equipment.
+Air density is defined as mass per unit volume of air and is a critical parameter in fluid flow, thermal systems, and air handling equipment design. 
+It directly influences performance of fans, blowers, combustion systems, and HVAC applications.
 </p>
 
 <!-- AD SLOT -->
 <div class="ad-slot"></div>
 
 <div class="section">
-<h2>Theory</h2>
 
-<p>
-Air density (ρ) is governed by pressure, temperature, and altitude. It directly affects performance of fans, blowers and thermal systems.
-</p>
+<h2>Fundamentals</h2>
 
 <ul>
 <li>ρ = Mass / Volume</li>
 <li>Unit: kg/m³</li>
-<li>Standard value: 1.225 kg/m³ (15°C, 1 atm)</li>
+<li>Standard density: 1.225 kg/m³ (15°C, 1 atm)</li>
+</ul>
+
+<h3>Equation</h3>
+<ul>
 <li>ρ = P / (R × T)</li>
+<li>P = Pressure (Pa)</li>
+<li>R = 287 J/kg·K</li>
+<li>T = Temperature (K)</li>
 </ul>
 
 </div>
@@ -81,7 +119,8 @@ Air density (ρ) is governed by pressure, temperature, and altitude. It directly
 <div class="ad-slot"></div>
 
 <div class="section">
-<h2>Key Factors</h2>
+
+<h2>Influencing Parameters</h2>
 
 <ul>
 <li>Temperature ↑ → Density ↓</li>
@@ -93,43 +132,60 @@ Air density (ρ) is governed by pressure, temperature, and altitude. It directly
 </div>
 
 <div class="section">
-<h2>Engineering Relevance</h2>
+
+<h2>Engineering Applications</h2>
 
 <ul>
-<li>Fan performance (ID, FD, Axial, Centrifugal)</li>
+<li>Fan design (ID Fan, FD Fan, PA Fan, Axial & Centrifugal)</li>
 <li>Duct airflow and pressure calculations</li>
-<li>Combustion air requirement</li>
-<li>APC systems (ESP, Bag Filter, Scrubber)</li>
-<li>Cooling tower air handling</li>
+<li>HVAC system design and load estimation</li>
+<li>Cooling tower air handling performance</li>
+<li>Combustion air and boiler efficiency calculations</li>
+<li>Air pollution control systems (ESP, Bag Filter, Scrubber)</li>
 </ul>
 
 </div>
 
 <div class="section">
+
 <h2>Engineering Note</h2>
 
 <ul>
-<li>Flow ≈ constant</li>
-<li>Pressure ∝ Density</li>
-<li>Power ∝ Density</li>
+<li>Flow ≈ constant with density variation</li>
+<li>Static pressure ∝ air density</li>
+<li>Power consumption ∝ air density</li>
 </ul>
 
 <p>
-Always apply density correction for accurate fan and system design.
+Fan and blower performance curves are based on standard air conditions. 
+Density correction is essential for accurate equipment selection and system design.
 </p>
 
 </div>
 
 <div class="section" style="text-align:center;">
+
 <h3>Use Calculator</h3>
-<a href="air-density.html" class="calc-btn">Open Air Density Calculator</a>
-</div>
+
+<a href="air-density.html" class="calc-btn">Air Density Calculator</a>
 
 </div>
 
-<!-- FOOTER -->
+</div>
+
+<!-- BOTTOM BAR -->
 <div class="footer">
-© 2026 Industrial Calculation Hub | Engineering Tools Portal
+
+<div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
+
+<div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+</div>
+
 </div>
 
 </body>
