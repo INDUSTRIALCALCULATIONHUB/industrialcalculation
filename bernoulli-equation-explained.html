@@ -4,11 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>What is Bernoulli Equation? | Industrial Calculation Hub</title>
+<title>Bernoulli Equation | Industrial Calculation Hub</title>
 
-<meta name="description" content="Learn Bernoulli equation in fluid mechanics with engineering explanation, formula, and applications in pipelines, pumps, and flow systems.">
-
-<meta name="keywords" content="bernoulli equation, fluid mechanics, pipe flow, pump head, pressure velocity energy">
+<meta name="description" content="Bernoulli equation fundamentals, derivation, assumptions and engineering applications in pumps, pipelines, fans and industrial systems.">
 
 <!-- ================= ADSENSE ================= -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
@@ -17,115 +15,9 @@
 <!-- ================= CMP ================= -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
-<style>
+<!-- ================= MAIN CSS ================= -->
+<link rel="stylesheet" href="style.css">
 
-/* ================= RESET ================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* ================= BODY ================= */
-body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: #333;
-}
-
-/* ================= FIXED HEADER ================= */
-.header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: #1e3c72;
-    color: white;
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-    padding: 12px;
-    z-index: 1000;
-}
-
-.header a {
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-/* ================= FIXED FOOTER ================= */
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: #1e3c72;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-size: 13px;
-}
-
-/* ================= MAIN CONTAINER (70–80%) ================= */
-.container {
-    width: 75%;
-    max-width: 900px;
-    margin: 85px auto 85px auto;
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-    line-height: 1.7;
-}
-
-/* ================= MOBILE FIX ================= */
-@media (max-width: 768px) {
-    .container {
-        width: 78%;
-        padding: 18px;
-    }
-
-    .header {
-        flex-wrap: wrap;
-        font-size: 12px;
-    }
-}
-
-/* ================= HEADINGS ================= */
-h1, h2, h3 {
-    color: #1e3c72;
-    margin-bottom: 10px;
-}
-
-/* ================= TEXT ================= */
-p, ul {
-    margin-bottom: 12px;
-}
-
-ul {
-    padding-left: 20px;
-}
-
-/* ================= BUTTON LINKS ================= */
-.button {
-    display: inline-block;
-    margin-top: 15px;
-    margin-right: 10px;
-    padding: 12px 18px;
-    background: #2a5298;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-}
-
-/* ================= AD SLOT ================= */
-.ad-slot {
-    width: 100%;
-    min-height: 90px;
-    margin: 20px 0;
-    text-align: center;
-}
-
-</style>
 </head>
 
 <body>
@@ -139,57 +31,192 @@ ul {
     <a href="terms.html">Terms</a>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <div class="container">
 
-<h1>What is Bernoulli Equation?</h1>
-<p>Fundamental principle of fluid mechanics used to relate pressure, velocity, and elevation energy in flowing fluids.</p>
+<h1>Bernoulli Equation</h1>
+
+<p style="margin-bottom:20px;">
+The Bernoulli equation is a fundamental principle of fluid mechanics that represents conservation of mechanical energy in a flowing fluid. 
+It establishes the relationship between pressure, velocity, and elevation in steady flow systems.
+</p>
 
 <!-- AD SLOT -->
 <div class="ad-slot"></div>
 
-<h2>Introduction</h2>
+<!-- ================= THEORY ================= -->
+<div class="section">
+
+<h2>Theory</h2>
+
 <p>
-The Bernoulli equation is one of the most important principles in fluid mechanics.
-It describes energy conservation in flowing fluids.
+For an incompressible, frictionless flow along a streamline, the total energy remains constant. 
+This energy consists of pressure energy, kinetic energy, and potential energy.
 </p>
 
-<h2>Bernoulli Equation</h2>
-<p><b>P/ρg + V²/2g + h = constant</b></p>
-
+<h3>Bernoulli Equation</h3>
 <ul>
-<li>P = Pressure energy</li>
-<li>ρ = Fluid density</li>
-<li>V = Velocity</li>
-<li>g = Gravity (9.81 m/s²)</li>
-<li>h = Height</li>
+<li>P/ρg + V²/2g + z = constant</li>
 </ul>
 
-<h2>Physical Meaning</h2>
+<h3>Terms Explanation</h3>
+<ul>
+<li>P/ρg → Pressure head</li>
+<li>V²/2g → Velocity head</li>
+<li>z → Elevation head</li>
+<li>Total = Constant total head</li>
+</ul>
+
+<h3>SI Form (Energy Form)</h3>
+<ul>
+<li>P + (½ρV²) + (ρgz) = constant</li>
+</ul>
+
+</div>
+
+<!-- AD SLOT -->
+<div class="ad-slot"></div>
+
+<!-- ================= ASSUMPTIONS ================= -->
+<div class="section">
+
+<h2>Assumptions</h2>
+
+<ul>
+<li>Steady flow</li>
+<li>Incompressible fluid</li>
+<li>Negligible viscosity (no friction loss)</li>
+<li>Flow along a streamline</li>
+<li>No shaft work or heat transfer</li>
+</ul>
+
+</div>
+
+<!-- ================= PHYSICAL MEANING ================= -->
+<div class="section">
+
+<h2>Physical Interpretation</h2>
+
 <p>
-When fluid velocity increases, pressure decreases. This is fundamental in pump and pipeline systems.
+An increase in fluid velocity results in a decrease in pressure, and vice versa. 
+This principle explains flow acceleration in converging sections and pressure recovery in diffusers.
 </p>
+
+<ul>
+<li>High velocity → Low pressure</li>
+<li>Low velocity → High pressure</li>
+</ul>
+
+</div>
+
+<!-- ================= ENGINEERING APPLICATION ================= -->
+<div class="section">
 
 <h2>Engineering Applications</h2>
+
+<h3>1. Pump and Piping Systems</h3>
 <ul>
-<li>Pump and turbine design</li>
-<li>Pipe flow systems</li>
-<li>Aircraft wing lift</li>
-<li>Water distribution networks</li>
+<li>Total head calculation for pump selection</li>
+<li>Suction and discharge pressure analysis</li>
+<li>Determination of pump NPSH requirements</li>
 </ul>
 
-<!-- AD SLOT -->
-<div class="ad-slot"></div>
+<h3>2. Fan and Air Handling Systems</h3>
+<ul>
+<li>Velocity pressure and static pressure relationship</li>
+<li>Duct design and airflow balancing</li>
+<li>ID Fan / FD Fan system pressure analysis</li>
+<li>Axial and centrifugal fan performance evaluation</li>
+</ul>
 
-<h2>Related Tools</h2>
+<h3>3. Flow Measurement Devices</h3>
+<ul>
+<li>Venturi meter</li>
+<li>Orifice meter</li>
+<li>Pitot tube (velocity measurement)</li>
+</ul>
 
-<a class="button" href="pump-power-calculator.html">
-Pump Motor Selection
-</a>
+<h3>4. HVAC and Duct Systems</h3>
+<ul>
+<li>Air velocity and pressure distribution</li>
+<li>Duct sizing and pressure drop calculations</li>
+</ul>
 
-<a class="button" href="pipe-flow-calculator.html">
-Pipe Flow Rate Calculator
-</a>
+<h3>5. Cooling Towers and Process Systems</h3>
+<ul>
+<li>Air and water flow energy balance</li>
+<li>Pressure drop across packing and nozzles</li>
+</ul>
+
+<h3>6. Air Pollution Control Systems</h3>
+<ul>
+<li>Gas flow behavior in ducts and stacks</li>
+<li>Pressure distribution across ESP, bag filters, scrubbers</li>
+</ul>
+
+<h3>7. Aerospace and Aerodynamics</h3>
+<ul>
+<li>Lift generation on aircraft wings</li>
+<li>Flow over airfoils</li>
+</ul>
+
+</div>
+
+<!-- ================= EXTENDED FORM ================= -->
+<div class="section">
+
+<h2>Extended Bernoulli Equation (Real Systems)</h2>
+
+<p>
+For practical engineering systems, losses and external work must be included:
+</p>
+
+<ul>
+<li>P₁/ρg + V₁²/2g + z₁ + Hp = P₂/ρg + V₂²/2g + z₂ + Hf</li>
+</ul>
+
+<ul>
+<li>Hp → Pump head added</li>
+<li>Hf → Head loss due to friction</li>
+</ul>
+
+</div>
+
+<!-- ================= ENGINEERING NOTE ================= -->
+<div class="section">
+
+<h2>Engineering Note</h2>
+
+<p>
+In real industrial systems, friction losses, turbulence, fittings, bends, and equipment significantly affect energy distribution. 
+Therefore, Bernoulli equation is always used along with head loss calculations (Darcy-Weisbach or empirical methods).
+</p>
+
+</div>
+
+<!-- ================= REFERENCES ================= -->
+<div class="section">
+
+<h2>References</h2>
+
+<ul>
+<li>Fluid Mechanics – Frank M. White</li>
+<li>Fox & McDonald – Introduction to Fluid Mechanics</li>
+<li>Crane Technical Paper No. 410</li>
+<li>ASHRAE Handbook – Fundamentals</li>
+</ul>
+
+</div>
+
+<!-- ================= CTA ================= -->
+<div class="section" style="text-align:center;">
+
+<h3>Related Tools</h3>
+
+<a href="pump-power-calculator.html" class="calc-btn">Pump Power Calculator</a>
+<a href="pipe-flow-calculator.html" class="calc-btn">Pipe Flow Calculator</a>
+
+</div>
 
 </div>
 
