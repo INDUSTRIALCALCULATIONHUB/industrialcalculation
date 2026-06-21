@@ -1,24 +1,17 @@
-give me updated file of bernoulli-equation-explained.html
-remove irrelevent data.
-keep only related data for knowledge. it should be professional and useful for engineers.
-links to be provided for only available pages on our website or home page
-don’t forget to use style.css, CMP and adsense
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Industrial Calculation Hub | Engineering Tools</title>
+<title>Bernoulli Equation | Industrial Calculation Hub</title>
 
-<meta name="description" content="Professional engineering calculators, converters, and industrial tools for mechanical, civil, and process engineering applications.">
+<meta name="description" content="Bernoulli equation fundamentals, assumptions and practical engineering applications in pipelines, pumps and duct systems.">
 
-<!-- CMP (MUST LOAD FIRST) -->
+<!-- CMP (LOAD FIRST) -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
-<!-- AdSense -->
+<!-- ADSENSE -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
  crossorigin="anonymous"></script>
 
@@ -29,91 +22,8 @@ don’t forget to use style.css, CMP and adsense
 
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
-    <a href="index.html">Home</a>
-    <a href="#tools">Tools</a>
-    <a href="#converters">Converters</a>
-    <a href="#blogs">Knowledge</a>
-</div>
-
 <!-- HEADER -->
 <div class="header">
-    <h1>Industrial Calculation Hub</h1>
-    <p>Engineering Tools • Converters • Knowledge Base</p>
-</div>
-
-<!-- SEARCH -->
-<div class="search-box">
-    <input id="searchInput" placeholder="Search tools...">
-</div>
-
-<div class="wrapper">
-
-<!-- TOOLS -->
-<div class="section" id="tools">
-<h2>🔧 Engineering Tools</h2>
-
-<div class="grid">
-
-<a class="card" href="pump-power-calculator.html">⚡ Pump Motor Selection</a>
-<a class="card" href="pipe-flow-calculator.html">🚰 Pipe Flow Rate</a>
-<a class="card" href="duct-flow-calculator.html">🌬️ Duct Flow Rate</a>
-<a class="card" href="air-density.html">🌫️ Air Density</a>
-<a class="card" href="heat-transfer.html">🔥 Heat Transfer</a>
-<a class="card" href="hopper-valley-angle-calculator.html">⛰️ Hopper Valley Angle</a>
-<a class="card" href="thermal-expansion.html">🌡️ Thermal Expansion</a>
-<a class="card" href="duct-weight.html">🏗️ Duct Weight</a>
-<a class="card" href="plate-weight.html">📏 Plate Weight</a>
-<a class="card" href="flange-weight.html">🔩 Flange Weight</a>
-
-</div>
-</div>
-
-<!-- CONVERTERS -->
-<div class="section" id="converters">
-<h2>⚙️ Unit Converters</h2>
-
-<div class="grid">
-
-<a class="card" href="weight-conversion.html">⚖️ Weight</a>
-<a class="card" href="length-conversion.html">📏 Length</a>
-<a class="card" href="pressure-conversion.html">📊 Pressure</a>
-<a class="card" href="temperature-conversion.html">🌡️ Temperature</a>
-<a class="card" href="area-conversion.html">📐 Area</a>
-<a class="card" href="volume-conversion.html">🧊 Volume</a>
-
-</div>
-</div>
-
-<!-- KNOWLEDGE -->
-<div class="section" id="blogs">
-<h2>📘 Engineering Knowledge</h2>
-
-<div class="grid">
-
-<a class="card" href="reynolds-number-explained.html">Reynolds Number</a>
-<a class="card" href="bernoulli-equation-explained.html">Bernoulli Equation</a>
-<a class="card" href="heat-transfer-explained.html">Heat Transfer</a>
-<a class="card" href="pipe-flow-basics.html">Pipe Flow Basics</a>
-<a class="card" href="air-density-explained.html">Air Density Explained</a>
-<a class="card" href="boiler-efficiency-explained.html">Boiler Efficiency</a>
-<a class="card" href="engineering-calculations-in-real-world.html">Real-World Engineering Calculations</a>
-<a class="card" href="pressure-vessel-design-basics.html">Pressure Vessel Design</a>
-<a class="card" href="pump-power-basics.html">Pump Power Basics</a>
-<a class="card" href="thermal-expansion-explained.html">Thermal Expansion Explained</a>
-<a class="card" href="unit-conversion-explained.html">Unit Conversion Guide</a>
-
-</div>
-</div>
-
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-© 2026 Industrial Calculation Hub | Engineering Tools Portal
-
-<div class="footer-links">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
@@ -121,20 +31,113 @@ don’t forget to use style.css, CMP and adsense
     <a href="terms.html">Terms</a>
 </div>
 
+<!-- MAIN -->
+<div class="container">
+
+<h1>Bernoulli Equation</h1>
+
+<p style="margin-bottom:20px;">
+The Bernoulli equation represents conservation of mechanical energy in a flowing fluid. 
+It relates pressure, velocity, and elevation, and is widely used in analysis of pipelines, ducts, and pumping systems.
+</p>
+
+<!-- AD SLOT -->
+<div class="ad-slot"></div>
+
+<div class="section">
+
+<h2>Equation</h2>
+
+<ul>
+<li><b>P/ρg + V²/2g + z = constant</b></li>
+</ul>
+
+<ul>
+<li>P → Pressure (Pa)</li>
+<li>ρ → Fluid density (kg/m³)</li>
+<li>V → Velocity (m/s)</li>
+<li>g → Gravity (9.81 m/s²)</li>
+<li>z → Elevation (m)</li>
+</ul>
+
 </div>
 
-<!-- SEARCH SCRIPT -->
-<script>
-document.getElementById("searchInput").addEventListener("keyup", function () {
-    let val = this.value.toLowerCase();
+<div class="section">
 
-    document.querySelectorAll(".card").forEach(card => {
-        card.style.display = card.textContent.toLowerCase().includes(val)
-            ? "flex"
-            : "none";
-    });
-});
-</script>
+<h2>Physical Meaning</h2>
+
+<ul>
+<li>Increase in velocity → decrease in pressure</li>
+<li>Decrease in velocity → increase in pressure</li>
+<li>Total energy along a streamline remains constant</li>
+</ul>
+
+</div>
+
+<!-- AD SLOT -->
+<div class="ad-slot"></div>
+
+<div class="section">
+
+<h2>Assumptions</h2>
+
+<ul>
+<li>Steady flow</li>
+<li>Incompressible fluid</li>
+<li>Negligible friction losses</li>
+<li>Flow along a streamline</li>
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>Engineering Relevance</h2>
+
+<ul>
+<li>Pump head calculation in piping systems</li>
+<li>Pressure and velocity analysis in ducts</li>
+<li>Flow measurement using Venturi and orifice meters</li>
+<li>Fan system pressure distribution (ID / FD systems)</li>
+<li>Basis for pressure drop and energy balance calculations</li>
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>Practical Form (With Losses)</h2>
+
+<ul>
+<li>P₁/ρg + V₁²/2g + z₁ + Hp = P₂/ρg + V₂²/2g + z₂ + Hf</li>
+</ul>
+
+<ul>
+<li>Hp → Pump head added</li>
+<li>Hf → Head loss due to friction</li>
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>Related Tools</h2>
+
+<ul>
+<li><a href="pipe-flow-calculator.html">Pipe Flow Calculator</a></li>
+<li><a href="pump-power-calculator.html">Pump Power Calculator</a></li>
+<li><a href="air-density.html">Air Density Calculator</a></li>
+<li><a href="index.html">View All Tools</a></li>
+</ul>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+© 2026 Industrial Calculation Hub | Engineering Tools Portal
+</div>
 
 </body>
 </html>
