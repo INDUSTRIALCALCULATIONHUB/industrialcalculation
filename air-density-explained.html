@@ -4,142 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Air Density Explained | Industrial Calculation Hub</title>
+<title>Air Density | Industrial Calculation Hub</title>
 
-<meta name="description" content="Understand air density, formula, factors and engineering applications.">
+<meta name="description" content="Air density fundamentals, formula, influencing parameters and detailed engineering applications including fans, HVAC and process systems.">
 
-<!-- ✅ ADSENSE -->
+<!-- ================= ADSENSE ================= -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
  crossorigin="anonymous"></script>
 
-<!-- ✅ CMP (Google Funding Choices) -->
+<!-- ================= CMP ================= -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
-<style>
+<!-- ================= MAIN CSS ================= -->
+<link rel="stylesheet" href="style.css">
 
-/* ================= GLOBAL RESET ================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* ================= BODY ================= */
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: #333;
-}
-
-/* ================= FIXED HEADER ================= */
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #1e3c72;
-    color: white;
-    padding: 12px 10px;
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-    z-index: 1000;
-}
-
-.header a {
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-/* ================= FIXED FOOTER ================= */
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #1e3c72;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-size: 13px;
-}
-
-/* ================= MAIN CONTAINER (70–80%) ================= */
-.container {
-    width: 75%;
-    max-width: 900px;
-    margin: 80px auto 80px auto;
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-/* ================= RESPONSIVE MOBILE ================= */
-@media (max-width: 768px) {
-    .container {
-        width: 78%;
-        padding: 18px;
-    }
-
-    .header {
-        flex-wrap: wrap;
-        font-size: 12px;
-    }
-}
-
-/* ================= HEADINGS ================= */
-h1, h2, h3 {
-    color: #1e3c72;
-    margin-bottom: 10px;
-}
-
-/* ================= TEXT ================= */
-p, ul {
-    line-height: 1.6;
-    margin-bottom: 12px;
-}
-
-ul {
-    padding-left: 20px;
-}
-
-/* ================= CTA BUTTON ================= */
-.cta {
-    text-align: center;
-    margin-top: 25px;
-}
-
-.cta a {
-    background: #1e3c72;
-    color: white;
-    padding: 12px 18px;
-    text-decoration: none;
-    border-radius: 6px;
-    display: inline-block;
-}
-
-/* ================= ADS PLACEHOLDER (CLS SAFE) ================= */
-.ad-slot {
-    width: 100%;
-    min-height: 90px;
-    margin: 20px 0;
-    text-align: center;
-}
-
-/* ================= REMOVE NUMBER SPINNERS ================= */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type=number] {
-    -moz-appearance: textfield;
-}
-
-</style>
 </head>
 
 <body>
@@ -153,64 +31,173 @@ input[type=number] {
     <a href="terms.html">Terms</a>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <div class="container">
 
-<h1>Air Density Explained</h1>
+<h1>Air Density</h1>
 
-<p>
-Air density is the mass of air per unit volume. It is an important property in engineering calculations involving fluid flow, heat transfer, HVAC systems, and aerodynamics.
+<p style="margin-bottom:20px;">
+Air density is a fundamental thermophysical property defined as mass per unit volume of air. 
+It plays a critical role in engineering design calculations involving fluid flow, heat transfer, combustion systems, and air handling equipment.
 </p>
 
-<!-- ✅ AD SLOT (SAFE PLACE FOR ADSENSE) -->
-<div class="ad-slot">
-    <!-- AdSense Ad Unit can be inserted here later -->
-</div>
+<!-- AD SLOT -->
+<div class="ad-slot"></div>
 
-<h2>What is Air Density?</h2>
-<p>Air density (ρ) is defined as mass per unit volume.</p>
+<!-- ================= THEORY SECTION ================= -->
+<div class="section">
 
-<p><b>Density = Mass / Volume</b></p>
+<h2>Theory</h2>
+<p>
+Air density (ρ) is governed by pressure, temperature, and altitude. It directly affects the performance of fans, blowers, compressors, and thermal systems. 
+Engineering calculations typically assume standard atmospheric conditions unless site-specific corrections are required.
+</p>
 
-<h2>Standard Air Density</h2>
+<h3>Definition</h3>
+<ul>
+<li>ρ = Mass / Volume</li>
+<li>Unit: kg/m³</li>
+</ul>
+
+<h3>Standard Conditions</h3>
 <ul>
 <li>Temperature: 15°C</li>
-<li>Pressure: 1 atm</li>
-<li>Air Density ≈ 1.225 kg/m³</li>
+<li>Pressure: 101325 Pa (1 atm)</li>
+<li>Standard Air Density: 1.225 kg/m³</li>
 </ul>
 
-<h2>Air Density Formula</h2>
-
-<p><b>ρ = P / (R × T)</b></p>
-
+<h3>Formula</h3>
 <ul>
-<li>P = Pressure (Pa)</li>
-<li>R = 287 J/kg·K</li>
-<li>T = Temperature (K)</li>
+<li>ρ = P / (R × T)</li>
+<li>P = Absolute pressure (Pa)</li>
+<li>R = Specific gas constant for air (287 J/kg·K)</li>
+<li>T = Absolute temperature (K)</li>
 </ul>
 
-<!-- ✅ AD SLOT -->
+<h3>Atmospheric Variation</h3>
+<ul>
+<li>Temperature decreases with altitude</li>
+<li>Pressure decreases exponentially with altitude</li>
+<li>Density reduces significantly at higher elevations</li>
+</ul>
+
+</div>
+
+<!-- AD SLOT -->
 <div class="ad-slot"></div>
+
+<!-- ================= FACTORS ================= -->
+<div class="section">
 
 <h2>Factors Affecting Air Density</h2>
 
 <ul>
-<li>Temperature increases → density decreases</li>
-<li>Pressure increases → density increases</li>
-<li>Altitude increases → density decreases</li>
+<li><b>Temperature:</b> Increase in temperature reduces density due to expansion of air</li>
+<li><b>Pressure:</b> Increase in pressure increases density</li>
+<li><b>Altitude:</b> Higher altitude leads to lower pressure and lower density</li>
+<li><b>Humidity:</b> Moist air is less dense than dry air</li>
 </ul>
+
+</div>
+
+<!-- ================= ENGINEERING APPLICATION ================= -->
+<div class="section">
 
 <h2>Engineering Applications</h2>
 
+<p>
+Air density is a key parameter in the design, selection, and performance evaluation of various industrial systems:
+</p>
+
+<h3>1. Fan and Blower Design</h3>
 <ul>
-<li>HVAC design</li>
-<li>Ventilation systems</li>
-<li>Aerodynamics</li>
-<li>Fluid flow calculations</li>
+<li>Induced Draft (ID) Fans – performance drops at low density</li>
+<li>Forced Draft (FD) Fans – combustion air supply depends on density</li>
+<li>Primary Air (PA) Fans – coal combustion systems</li>
+<li>Axial Flow Fans – highly sensitive to density variation</li>
+<li>Centrifugal Fans – pressure and flow correction required</li>
 </ul>
 
-<div class="cta">
-<a href="air-density.html">Open Calculator</a>
+<h3>2. Cooling Towers</h3>
+<ul>
+<li>Air density impacts heat rejection efficiency</li>
+<li>Fan power and airflow rate depend on density correction</li>
+</ul>
+
+<h3>3. HVAC and Ventilation Systems</h3>
+<ul>
+<li>Duct sizing and airflow calculations (CFM correction)</li>
+<li>Static pressure and fan selection adjustments</li>
+<li>Load calculations considering air properties</li>
+</ul>
+
+<h3>4. Air Pollution Control Systems</h3>
+<ul>
+<li>ESP (Electrostatic Precipitator) performance</li>
+<li>Bag filter sizing and filtration velocity</li>
+<li>Scrubber efficiency and gas flow behavior</li>
+</ul>
+
+<h3>5. Combustion Systems</h3>
+<ul>
+<li>Air-fuel ratio calculations</li>
+<li>Boiler and furnace efficiency</li>
+<li>Draft system design</li>
+</ul>
+
+<h3>6. Fluid Flow & Process Engineering</h3>
+<ul>
+<li>Reynolds number and flow regime determination</li>
+<li>Pressure drop calculations in ducts and pipelines</li>
+<li>Gas flow measurement and instrumentation</li>
+</ul>
+
+</div>
+
+<!-- ================= ENGINEERING NOTE ================= -->
+<div class="section">
+
+<h2>Engineering Note</h2>
+
+<p>
+Fan and blower performance curves are typically developed at standard air density (1.225 kg/m³). 
+For actual operating conditions, correction factors must be applied:
+</p>
+
+<ul>
+<li>Flow rate remains nearly constant</li>
+<li>Static pressure ∝ air density</li>
+<li>Power consumption ∝ air density</li>
+</ul>
+
+<p>
+Failure to apply density correction can result in undersized equipment, reduced efficiency, and operational instability.
+</p>
+
+</div>
+
+<!-- ================= REFERENCES ================= -->
+<div class="section">
+
+<h2>References</h2>
+
+<ul>
+<li>International Standard Atmosphere (ISA)</li>
+<li>ASHRAE Handbook – Fundamentals</li>
+<li>Fluid Mechanics – Frank M. White</li>
+<li>Fan Engineering – Buffalo Forge</li>
+</ul>
+
+</div>
+
+<!-- ================= CTA ================= -->
+<div class="section" style="text-align:center;">
+
+<h3>Use Calculator</h3>
+<p>Perform accurate air density calculation based on altitude and temperature.</p>
+
+<a href="air-density.html" class="calc-btn">Open Air Density Calculator</a>
+
 </div>
 
 </div>
