@@ -8,21 +8,38 @@
 
 <meta name="description" content="Air density fundamentals, formula, influencing parameters and detailed engineering applications including fans, HVAC and process systems.">
 
-<!-- ================= ADSENSE ================= -->
+<!-- CMP (LOAD FIRST) -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+
+<!-- ADSENSE -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
  crossorigin="anonymous"></script>
 
-<!-- ================= CMP ================= -->
-<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
-
-<!-- ================= MAIN CSS ================= -->
+<!-- GLOBAL CSS -->
 <link rel="stylesheet" href="style.css">
+
+<!-- FIX FOR HEADER (IMPORTANT) -->
+<style>
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Prevent content hiding behind header */
+.container {
+    margin-top: 90px;
+    margin-bottom: 80px;
+}
+</style>
 
 </head>
 
 <body>
 
-<!-- FIXED HEADER -->
+<!-- HEADER -->
 <div class="header">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -44,41 +61,18 @@ It plays a critical role in engineering design calculations involving fluid flow
 <!-- AD SLOT -->
 <div class="ad-slot"></div>
 
-<!-- ================= THEORY SECTION ================= -->
 <div class="section">
-
 <h2>Theory</h2>
+
 <p>
-Air density (ρ) is governed by pressure, temperature, and altitude. It directly affects the performance of fans, blowers, compressors, and thermal systems. 
-Engineering calculations typically assume standard atmospheric conditions unless site-specific corrections are required.
+Air density (ρ) is governed by pressure, temperature, and altitude. It directly affects performance of fans, blowers and thermal systems.
 </p>
 
-<h3>Definition</h3>
 <ul>
 <li>ρ = Mass / Volume</li>
 <li>Unit: kg/m³</li>
-</ul>
-
-<h3>Standard Conditions</h3>
-<ul>
-<li>Temperature: 15°C</li>
-<li>Pressure: 101325 Pa (1 atm)</li>
-<li>Standard Air Density: 1.225 kg/m³</li>
-</ul>
-
-<h3>Formula</h3>
-<ul>
+<li>Standard value: 1.225 kg/m³ (15°C, 1 atm)</li>
 <li>ρ = P / (R × T)</li>
-<li>P = Absolute pressure (Pa)</li>
-<li>R = Specific gas constant for air (287 J/kg·K)</li>
-<li>T = Absolute temperature (K)</li>
-</ul>
-
-<h3>Atmospheric Variation</h3>
-<ul>
-<li>Temperature decreases with altitude</li>
-<li>Pressure decreases exponentially with altitude</li>
-<li>Density reduces significantly at higher elevations</li>
 </ul>
 
 </div>
@@ -86,123 +80,54 @@ Engineering calculations typically assume standard atmospheric conditions unless
 <!-- AD SLOT -->
 <div class="ad-slot"></div>
 
-<!-- ================= FACTORS ================= -->
 <div class="section">
-
-<h2>Factors Affecting Air Density</h2>
+<h2>Key Factors</h2>
 
 <ul>
-<li><b>Temperature:</b> Increase in temperature reduces density due to expansion of air</li>
-<li><b>Pressure:</b> Increase in pressure increases density</li>
-<li><b>Altitude:</b> Higher altitude leads to lower pressure and lower density</li>
-<li><b>Humidity:</b> Moist air is less dense than dry air</li>
+<li>Temperature ↑ → Density ↓</li>
+<li>Pressure ↑ → Density ↑</li>
+<li>Altitude ↑ → Density ↓</li>
+<li>Humidity ↑ → Density ↓</li>
 </ul>
 
 </div>
 
-<!-- ================= ENGINEERING APPLICATION ================= -->
 <div class="section">
+<h2>Engineering Relevance</h2>
 
-<h2>Engineering Applications</h2>
-
-<p>
-Air density is a key parameter in the design, selection, and performance evaluation of various industrial systems:
-</p>
-
-<h3>1. Fan and Blower Design</h3>
 <ul>
-<li>Induced Draft (ID) Fans – performance drops at low density</li>
-<li>Forced Draft (FD) Fans – combustion air supply depends on density</li>
-<li>Primary Air (PA) Fans – coal combustion systems</li>
-<li>Axial Flow Fans – highly sensitive to density variation</li>
-<li>Centrifugal Fans – pressure and flow correction required</li>
-</ul>
-
-<h3>2. Cooling Towers</h3>
-<ul>
-<li>Air density impacts heat rejection efficiency</li>
-<li>Fan power and airflow rate depend on density correction</li>
-</ul>
-
-<h3>3. HVAC and Ventilation Systems</h3>
-<ul>
-<li>Duct sizing and airflow calculations (CFM correction)</li>
-<li>Static pressure and fan selection adjustments</li>
-<li>Load calculations considering air properties</li>
-</ul>
-
-<h3>4. Air Pollution Control Systems</h3>
-<ul>
-<li>ESP (Electrostatic Precipitator) performance</li>
-<li>Bag filter sizing and filtration velocity</li>
-<li>Scrubber efficiency and gas flow behavior</li>
-</ul>
-
-<h3>5. Combustion Systems</h3>
-<ul>
-<li>Air-fuel ratio calculations</li>
-<li>Boiler and furnace efficiency</li>
-<li>Draft system design</li>
-</ul>
-
-<h3>6. Fluid Flow & Process Engineering</h3>
-<ul>
-<li>Reynolds number and flow regime determination</li>
-<li>Pressure drop calculations in ducts and pipelines</li>
-<li>Gas flow measurement and instrumentation</li>
+<li>Fan performance (ID, FD, Axial, Centrifugal)</li>
+<li>Duct airflow and pressure calculations</li>
+<li>Combustion air requirement</li>
+<li>APC systems (ESP, Bag Filter, Scrubber)</li>
+<li>Cooling tower air handling</li>
 </ul>
 
 </div>
 
-<!-- ================= ENGINEERING NOTE ================= -->
 <div class="section">
-
 <h2>Engineering Note</h2>
 
-<p>
-Fan and blower performance curves are typically developed at standard air density (1.225 kg/m³). 
-For actual operating conditions, correction factors must be applied:
-</p>
-
 <ul>
-<li>Flow rate remains nearly constant</li>
-<li>Static pressure ∝ air density</li>
-<li>Power consumption ∝ air density</li>
+<li>Flow ≈ constant</li>
+<li>Pressure ∝ Density</li>
+<li>Power ∝ Density</li>
 </ul>
 
 <p>
-Failure to apply density correction can result in undersized equipment, reduced efficiency, and operational instability.
+Always apply density correction for accurate fan and system design.
 </p>
 
 </div>
 
-<!-- ================= REFERENCES ================= -->
-<div class="section">
-
-<h2>References</h2>
-
-<ul>
-<li>International Standard Atmosphere (ISA)</li>
-<li>ASHRAE Handbook – Fundamentals</li>
-<li>Fluid Mechanics – Frank M. White</li>
-<li>Fan Engineering – Buffalo Forge</li>
-</ul>
-
-</div>
-
-<!-- ================= CTA ================= -->
 <div class="section" style="text-align:center;">
-
 <h3>Use Calculator</h3>
-<p>Perform accurate air density calculation based on altitude and temperature.</p>
-
 <a href="air-density.html" class="calc-btn">Open Air Density Calculator</a>
-
 </div>
 
 </div>
 
-<!-- FIXED FOOTER -->
+<!-- FOOTER -->
 <div class="footer">
 © 2026 Industrial Calculation Hub | Engineering Tools Portal
 </div>
