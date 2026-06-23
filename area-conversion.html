@@ -8,36 +8,25 @@
 
 <meta name="description" content="Convert area units like m², ft², acre, hectare with engineering accuracy.">
 
-<!-- ================= ADSENSE ================= -->
+<!-- CMP (MUST LOAD FIRST) -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+
+<!-- ADSENSE -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
  crossorigin="anonymous"></script>
 
-<!-- ================= CMP ================= -->
-<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+<!-- GLOBAL CSS -->
+<link rel="stylesheet" href="style.css">
 
+<!-- PAGE FIX -->
 <style>
 
-/* ================= GLOBAL RESET ================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* ================= BODY ================= */
-body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: #333;
-}
-
-/* ================= FIXED HEADER ================= */
-.header {
+/* TOP BAR */
+.topbar {
     position: fixed;
     top: 0;
     width: 100%;
     background: #1e3c72;
-    color: white;
     display: flex;
     justify-content: center;
     gap: 18px;
@@ -45,13 +34,13 @@ body {
     z-index: 1000;
 }
 
-.header a {
+.topbar a {
     color: white;
     text-decoration: none;
     font-size: 14px;
 }
 
-/* ================= FIXED FOOTER ================= */
+/* FOOTER */
 .footer {
     position: fixed;
     bottom: 0;
@@ -63,139 +52,56 @@ body {
     font-size: 13px;
 }
 
-/* ================= MAIN CONTAINER (70–80%) ================= */
+.footer-links {
+    margin-top: 5px;
+}
+
+.footer-links a {
+    color: white;
+    margin: 0 8px;
+    text-decoration: none;
+}
+
+/* CONTENT SPACING */
 .container {
-    width: 75%;
-    max-width: 850px;
-    margin: 85px auto 85px auto;
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    margin-top: 90px;
+    margin-bottom: 110px;
 }
 
-/* ================= MOBILE FIX ================= */
-@media (max-width: 768px) {
-    .container {
-        width: 78%;
-        padding: 18px;
+/* BUTTON FIX */
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.calc-btn, .reset-btn {
+    padding: 10px 16px;
+    min-width: 120px;
+    font-size: 14px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .btn-group {
+        flex-direction: column;
+        align-items: center;
     }
 
-    .header {
-        flex-wrap: wrap;
-        font-size: 12px;
+    .calc-btn, .reset-btn {
+        width: 80%;
     }
-}
-
-/* ================= HEADINGS ================= */
-h1, h2, h3 {
-    color: #1e3c72;
-    margin-bottom: 10px;
-}
-
-/* ================= TEXT ================= */
-p, ul {
-    line-height: 1.6;
-    margin-bottom: 12px;
-}
-
-ul {
-    padding-left: 20px;
-}
-
-/* ================= INPUTS ================= */
-input, select {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    outline: none;
-}
-
-/* REMOVE NUMBER SPINNER (GLOBAL RULE) */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type=number] {
-    -moz-appearance: textfield;
-}
-
-/* ================= BUTTONS ================= */
-button {
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 48%;
-}
-
-.calc-btn {
-    background: #2a5298;
-    color: white;
-}
-
-.reset-btn {
-    background: #ccc;
-}
-
-/* ================= OUTPUT ================= */
-#output {
-    width: 100%;
-    margin-top: 20px;
-}
-
-.card {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* ================= TABLE ================= */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th {
-    background: #2a5298;
-    color: white;
-}
-
-th, td {
-    padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-}
-
-/* ================= SECTION ================= */
-.section {
-    background: white;
-    padding: 25px;
-    margin-top: 20px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* ================= AD SLOT ================= */
-.ad-slot {
-    width: 100%;
-    min-height: 90px;
-    margin: 20px 0;
-    text-align: center;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<!-- FIXED HEADER -->
-<div class="header">
+<!-- TOP BAR -->
+<div class="topbar">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
@@ -207,7 +113,7 @@ th, td {
 <div class="container">
 
 <h1>Area Conversion Tool</h1>
-<p>Convert engineering and land measurement units with accuracy.</p>
+<p>Convert engineering and land measurement units with standard accuracy.</p>
 
 <!-- AD SLOT -->
 <div class="ad-slot"></div>
@@ -222,37 +128,56 @@ th, td {
 <option value="hectare">Hectare</option>
 </select>
 
-<div style="text-align:center;">
-<button class="calc-btn" onclick="calculate()">Calculate</button>
-<button class="reset-btn" onclick="resetForm()">Reset</button>
+<div class="btn-group">
+    <button class="calc-btn" onclick="calculate()">Calculate</button>
+    <button class="reset-btn" onclick="resetForm()">Reset</button>
 </div>
 
 <div id="output"></div>
 
-<!-- THEORY SECTION (STANDARDIZED FORMAT) -->
+<!-- ENGINEERING SECTION -->
 <div class="section">
-<h2>Theory</h2>
-<p>Area conversion is based on standard SI unit relationships used in engineering and surveying.</p>
 
-<h3>Information</h3>
+<h2>Engineering Basis</h2>
+
 <ul>
-<li>SI unit: m²</li>
-<li>Used in civil engineering and land measurement</li>
-<li>Based on ISO standards</li>
+<li>SI unit: square meter (m²)</li>
+<li>All conversions referenced to m²</li>
+<li>Standard factors used in civil and industrial applications</li>
 </ul>
 
-<h3>Notes</h3>
+<h3>Key Conversions</h3>
 <ul>
 <li>1 acre = 4046.86 m²</li>
-<li>1 hectare = 10000 m²</li>
+<li>1 hectare = 10,000 m²</li>
+<li>1 ft² = 0.092903 m²</li>
 </ul>
-</div>
+
+<h3>Engineering Applications</h3>
+<ul>
+<li>Land and site area calculations</li>
+<li>Plant layout and equipment spacing</li>
+<li>HVAC coverage and floor planning</li>
+<li>Civil and structural design</li>
+</ul>
 
 </div>
 
-<!-- FIXED FOOTER -->
+</div>
+
+<!-- FOOTER -->
 <div class="footer">
-© 2026 Industrial Calculation Hub | Engineering Tools Portal
+
+<div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
+
+<div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+</div>
+
 </div>
 
 <script>
