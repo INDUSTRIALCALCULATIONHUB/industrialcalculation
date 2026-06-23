@@ -18,17 +18,47 @@
 <!-- GLOBAL CSS -->
 <link rel="stylesheet" href="style.css">
 
+<!-- FIXED HEADER & FOOTER ADJUSTMENT -->
+<style>
+.topbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #1e3c72;
+    color: white;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    padding: 12px;
+    z-index: 1000;
+}
+
+.topbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.wrapper {
+    margin-top: 70px;
+    margin-bottom: 100px;
+}
+</style>
+
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
+<!-- TOP FIXED BAR -->
+<div class="topbar">
     <a href="index.html">Home</a>
-    <a href="#tools">Tools</a>
-    <a href="#converters">Converters</a>
-    <a href="#blogs">Knowledge</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
 </div>
+
+<div class="wrapper">
 
 <!-- HEADER -->
 <div class="header">
@@ -40,8 +70,6 @@
 <div class="search-box">
     <input id="searchInput" placeholder="Search tools...">
 </div>
-
-<div class="wrapper">
 
 <!-- TOOLS -->
 <div class="section" id="tools">
@@ -89,13 +117,13 @@
 <a class="card" href="bernoulli-equation-explained.html">Bernoulli Equation</a>
 <a class="card" href="heat-transfer-explained.html">Heat Transfer</a>
 <a class="card" href="pipe-flow-basics.html">Pipe Flow Basics</a>
-<a class="card" href="air-density-explained.html">Air Density Explained</a>
+<a class="card" href="air-density-explained.html">Air Density</a>
 <a class="card" href="boiler-efficiency-explained.html">Boiler Efficiency</a>
-<a class="card" href="engineering-calculations-in-real-world.html">Real-World Engineering Calculations</a>
+<a class="card" href="engineering-calculations-in-real-world.html">Engineering Calculations</a>
 <a class="card" href="pressure-vessel-design-basics.html">Pressure Vessel Design</a>
-<a class="card" href="pump-power-basics.html">Pump Power Basics</a>
-<a class="card" href="thermal-expansion-explained.html">Thermal Expansion Explained</a>
-<a class="card" href="unit-conversion-explained.html">Unit Conversion Guide</a>
+<a class="card" href="pump-power-basics.html">Pump Power</a>
+<a class="card" href="thermal-expansion-explained.html">Thermal Expansion</a>
+<a class="card" href="unit-conversion-explained.html">Unit Conversion</a>
 
 </div>
 </div>
