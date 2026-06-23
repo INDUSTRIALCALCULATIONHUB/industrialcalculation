@@ -112,7 +112,6 @@ body {
     gap: 15px;
 }
 
-/* ================= CARD (UPDATED COLOR) ================= */
 .card {
     display: flex;
     align-items: center;
@@ -123,13 +122,13 @@ body {
     padding: 15px;
     border-radius: 10px;
     text-decoration: none;
-    color: #ffffff;
+    color: #1e1e1e;   /* FIXED: dark text for visibility */
 
     transition: 0.25s ease;
     font-weight: 500;
 
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
 }
 
 /* HOVER EFFECT */
