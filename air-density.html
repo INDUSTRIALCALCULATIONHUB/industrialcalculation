@@ -8,36 +8,25 @@
 
 <meta name="description" content="Calculate air density using altitude and temperature with engineering accuracy.">
 
-<!-- ================= ADSENSE ================= -->
+<!-- CMP (MUST LOAD FIRST) -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+
+<!-- ADSENSE -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
  crossorigin="anonymous"></script>
 
-<!-- ================= CMP (Funding Choices) ================= -->
-<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+<!-- GLOBAL CSS -->
+<link rel="stylesheet" href="style.css">
 
+<!-- PAGE FIX -->
 <style>
 
-/* ================= GLOBAL RESET ================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* ================= BODY ================= */
-body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: #333;
-}
-
-/* ================= FIXED HEADER ================= */
-.header {
+/* TOP BAR */
+.topbar {
     position: fixed;
     top: 0;
     width: 100%;
     background: #1e3c72;
-    color: white;
     display: flex;
     justify-content: center;
     gap: 18px;
@@ -45,13 +34,13 @@ body {
     z-index: 1000;
 }
 
-.header a {
+.topbar a {
     color: white;
     text-decoration: none;
     font-size: 14px;
 }
 
-/* ================= FIXED FOOTER ================= */
+/* BOTTOM BAR */
 .footer {
     position: fixed;
     bottom: 0;
@@ -63,117 +52,30 @@ body {
     font-size: 13px;
 }
 
-/* ================= MAIN CONTAINER (70–80%) ================= */
-.container {
-    width: 75%;
-    max-width: 850px;
-    margin: 85px auto 85px auto;
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+.footer-links {
+    margin-top: 5px;
 }
 
-/* ================= MOBILE FIX ================= */
-@media (max-width: 768px) {
-    .container {
-        width: 78%;
-        padding: 18px;
-    }
-
-    .header {
-        flex-wrap: wrap;
-        font-size: 12px;
-    }
-}
-
-/* ================= HEADINGS ================= */
-h1, h2, h3 {
-    color: #1e3c72;
-    margin-bottom: 10px;
-}
-
-/* ================= TEXT ================= */
-p, ul {
-    line-height: 1.6;
-    margin-bottom: 12px;
-}
-
-ul {
-    padding-left: 20px;
-}
-
-/* ================= INPUT FIX ================= */
-input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    outline: none;
-}
-
-/* REMOVE SPINNER (GLOBAL REQUIREMENT) */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type=number] {
-    -moz-appearance: textfield;
-}
-
-/* ================= BUTTONS ================= */
-button {
-    padding: 12px 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.calc-btn {
-    background: #2a5298;
+.footer-links a {
     color: white;
+    margin: 0 8px;
+    text-decoration: none;
 }
 
-.reset-btn {
-    background: #ccc;
-}
-
-/* ================= OUTPUT CARD ================= */
-.card {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* ================= AD SLOT (CLS SAFE) ================= */
-.ad-slot {
-    width: 100%;
-    min-height: 90px;
-    margin: 20px 0;
-    text-align: center;
-}
-
-/* ================= SECTION BOX ================= */
-.section {
-    background: white;
-    padding: 25px;
-    margin: 20px auto;
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+/* CONTENT SPACING */
+.container {
+    margin-top: 90px;
+    margin-bottom: 90px;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<!-- FIXED HEADER -->
-<div class="header">
+<!-- TOP BAR -->
+<div class="topbar">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
@@ -185,17 +87,20 @@ button {
 <div class="container">
 
 <h1>Air Density Calculator</h1>
-<p style="margin-bottom: 20px;">
-Calculate air density using altitude and temperature based on engineering atmospheric model.
+
+<p style="margin-bottom:20px;">
+Calculate air density based on altitude and temperature using International Standard Atmosphere (ISA) relations. 
+Used in fan selection, HVAC design, and process engineering calculations.
 </p>
 
-<!-- ADS SLOT -->
+<!-- AD SLOT -->
 <div class="ad-slot"></div>
 
 <input type="number" id="altitude" placeholder="Altitude (m)" min="0" max="11000">
 <input type="number" id="temperature" placeholder="Temperature (°C)" min="-50" max="60">
-<p><small>Enter altitude in meters and temperature in °C</small></p>
- 
+
+<p><small>Enter altitude (m) and temperature (°C)</small></p>
+
 <div style="text-align:center;">
     <button class="calc-btn" onclick="calculate()">Calculate</button>
     <button class="reset-btn" onclick="resetForm()">Reset</button>
@@ -203,66 +108,72 @@ Calculate air density using altitude and temperature based on engineering atmosp
 
 <div id="output"></div>
 
-<!-- THEORY SECTION (STANDARDIZED FORMAT REQUIREMENT) -->
+<!-- THEORY -->
 <div class="section">
-<h2>Theory</h2>
-<p>Air density is mass per unit volume of air and varies with temperature and pressure.</p>
 
-<h3>Information</h3>
-<ul>
-<li>Higher temperature reduces density</li>
-<li>Higher pressure increases density</li>
-<li>HVAC system design (airflow, duct sizing, load calculation)</li>
-<li>Fan and blower selection (CFM, static pressure, performance correction)</li>
-<li>Duct and chimney draft calculations</li>
-<li>Aerodynamic analysis (drag and lift estimation)</li>
-<li>Air pollution control systems (ESP, bag filter, scrubber sizing)</li>
-<li>Combustion air requirement calculations</li>
-<li>Process engineering and fluid flow analysis</li>
-</ul>
+<h2>Engineering Basis</h2>
 
-<h3>Notes</h3>
-<ul>
-<li>Standard density at sea level: 1.225 kg/m³</li>
-<li>Based on ideal gas law</li>
-<li>Valid for standard atmosphere (0–11 km altitude)</li>
-</ul>
- <h3>Formula</h3>
 <ul>
 <li>ρ = P / (R × T)</li>
-<li>P = P₀ × (T_atm / T₀)^(g / (R × L))</li>
-<li>T_atm = T₀ − L × altitude</li>
+<li>Pressure varies with altitude (ISA model)</li>
+<li>Temperature decreases with altitude</li>
+<li>Valid for 0–11 km standard atmosphere</li>
 </ul>
- <h3>Example</h3>
-<p>At sea level (0 m) and 15°C:</p>
+
+<h3>Standard Condition</h3>
 <ul>
-<li>Density ≈ 1.225 kg/m³</li>
+<li>Density: 1.225 kg/m³</li>
+<li>Temperature: 15°C</li>
+<li>Pressure: 1 atm</li>
 </ul>
- <h3>Engineering Note</h3>
-<p>Fan performance depends on air density. At lower density (high temperature or altitude), flow rate and pressure reduce. Always apply density correction while selecting fans and blowers.</p>
-<h3>References</h3>
+
+<h3>Engineering Relevance</h3>
 <ul>
-<li>International Standard Atmosphere (ISA)</li>
-<li>ASHRAE Handbook – Fundamentals</li>
-<li>Fluid Mechanics – Frank M. White</li>
+<li>Fan performance (ID / FD / Axial / Centrifugal)</li>
+<li>Duct flow and pressure calculations</li>
+<li>Combustion air requirement</li>
+<li>HVAC system design</li>
+<li>Air pollution control systems</li>
 </ul>
+
+<h3>Engineering Note</h3>
+<ul>
+<li>Flow ≈ constant</li>
+<li>Pressure ∝ Density</li>
+<li>Power ∝ Density</li>
+</ul>
+
 </div>
 
- <div class="section">
+<!-- RELATED -->
+<div class="section">
+
 <h3>Related Tools</h3>
+
 <ul>
 <li><a href="duct-flow-calculator.html">Duct Flow Calculator</a></li>
-<li>Fan Power Calculator (Coming Soon)</li>
-<li>Reynolds Number Calculator (Coming Soon)</li>
+<li><a href="pipe-flow-calculator.html">Pipe Flow Calculator</a></li>
+<li><a href="pump-power-calculator.html">Pump Power Calculator</a></li>
+<li><a href="index.html">View All Tools</a></li>
 </ul>
-</div>
- 
+
 </div>
 
+</div>
 
-<!-- FIXED FOOTER -->
+<!-- FOOTER -->
 <div class="footer">
-© 2026 Industrial Calculation Hub | Engineering Tools Portal
+
+<div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
+
+<div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+</div>
+
 </div>
 
 <script>
@@ -280,7 +191,7 @@ document.getElementById("output").innerHTML =
 "<div class='card'>Valid altitude range: 0 to 11,000 m</div>";
 return;
 }
- 
+
 let P0 = 101325;
 let T0 = 288.15;
 let L = 0.0065;
