@@ -5,71 +5,81 @@
     box-sizing: border-box;
 }
 
-/* ================= BODY ================= */
 body {
     font-family: "Segoe UI", Arial, sans-serif;
     background: linear-gradient(to right, #1e3c72, #2a5298);
     color: #333;
+    overflow-x: hidden;
 }
 
-/* ================= TOP BAR (FIXED 2 LINES) ================= */
+/* ================= TOP BAR FIXED ================= */
 .topbar {
     position: fixed;
     top: 0;
     width: 100%;
     background: #1e3c72;
     z-index: 1000;
+    padding: 5px 0;
 }
 
-/* BOTH LINES */
+/* BOTH ROWS */
 .topbar-line {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     gap: 18px;
-    padding: 8px;
+    padding: 6px 10px;
     text-align: center;
 }
 
-/* separator between two rows */
+/* TOP ROW SEPARATOR */
 .topbar-line:first-child {
-    border-bottom: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
 }
 
+/* LINKS */
 .topbar a {
-    color: white;
+    color: #ffffff;
     text-decoration: none;
     font-size: 14px;
-    transition: 0.2s;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: 0.2s ease;
 }
 
+/* HOVER EFFECT */
 .topbar a:hover {
-    opacity: 0.8;
+    background: rgba(255,255,255,0.15);
 }
 
 /* ================= WRAPPER ================= */
 .wrapper {
-    margin-top: 110px;
+    margin-top: 120px;
     margin-bottom: 110px;
 }
 
-/* ================= HEADER ================= */
+/* ================= HEADER FIX ================= */
 .header {
     text-align: center;
     color: white;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .header h1 {
-    font-size: 28px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;   /* FIX: was dark, now visible */
 }
 
 .header p {
     font-size: 14px;
-    opacity: 0.9;
+    opacity: 0.95;
+    color: #e8f0ff;
 }
 
-/* ================= SEARCH ================= */
+/* ================= SEARCH BOX ================= */
 .search-box {
     text-align: center;
     margin-bottom: 20px;
@@ -77,22 +87,22 @@ body {
 
 .search-box input {
     width: 60%;
-    max-width: 400px;
-    padding: 10px;
+    max-width: 420px;
+    padding: 10px 12px;
     border-radius: 8px;
     border: none;
     outline: none;
 }
 
-/* ================= SECTION ================= */
+/* ================= SECTION BOX ================= */
 .section {
-    width: 80%;
+    width: 85%;
     max-width: 1000px;
     margin: 20px auto;
     background: #ffffff;
     padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
 /* ================= GRID ================= */
@@ -109,13 +119,14 @@ body {
     justify-content: center;
     text-align: center;
 
-    background: #f9f9f9;
+    background: #f7f7f7;
     padding: 15px;
     border-radius: 10px;
     text-decoration: none;
     color: #333;
 
-    transition: 0.25s;
+    transition: 0.25s ease;
+    font-weight: 500;
 }
 
 .card:hover {
@@ -127,6 +138,7 @@ body {
 /* ================= HEADINGS ================= */
 h1, h2, h3 {
     color: #1e3c72;
+    text-align: center;
     margin-bottom: 12px;
 }
 
@@ -150,7 +162,7 @@ input, select, textarea {
     outline: none;
 }
 
-/* remove number arrows */
+/* REMOVE NUMBER ARROWS */
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -169,28 +181,11 @@ button {
     min-width: 120px;
     background: #2a5298;
     color: white;
-    transition: 0.2s;
+    font-weight: 500;
 }
 
 button:hover {
     opacity: 0.9;
-}
-
-/* ================= CONTACT FORM ================= */
-form {
-    max-width: 600px;
-    margin: auto;
-}
-
-/* ================= CONTAINER (OLD SUPPORT) ================= */
-.container {
-    width: 75%;
-    max-width: 850px;
-    margin: 110px auto;
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
 /* ================= FOOTER ================= */
@@ -219,23 +214,15 @@ form {
     opacity: 0.8;
 }
 
-/* ================= AD SLOT ================= */
-.ad-slot {
-    width: 100%;
-    min-height: 90px;
-    margin: 20px 0;
-    text-align: center;
-}
-
 /* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
 
     .section {
-        width: 90%;
+        width: 92%;
     }
 
     .search-box input {
-        width: 80%;
+        width: 85%;
     }
 
     .topbar-line {
@@ -243,6 +230,6 @@ form {
     }
 
     .wrapper {
-        margin-top: 130px;
+        margin-top: 135px;
     }
 }
