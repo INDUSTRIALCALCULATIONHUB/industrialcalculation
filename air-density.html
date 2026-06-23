@@ -13,114 +13,48 @@
 
 <!-- ADSENSE -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
- crossorigin="anonymous"></script>
+crossorigin="anonymous"></script>
 
 <!-- GLOBAL CSS -->
 <link rel="stylesheet" href="style.css">
-
-<!-- PAGE FIX -->
-<style>
-
-/* TOP BAR */
-.topbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: #1e3c72;
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-    padding: 12px;
-    z-index: 1000;
-}
-
-.topbar a {
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-/* FOOTER */
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: #1e3c72;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-size: 13px;
-}
-
-.footer-links {
-    margin-top: 5px;
-}
-
-.footer-links a {
-    color: white;
-    margin: 0 8px;
-    text-decoration: none;
-}
-
-/* CONTENT SPACING */
-.container {
-    margin-top: 90px;
-    margin-bottom: 110px;
-}
-
-/* BUTTON FIX */
-.btn-group {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 10px;
-}
-
-.calc-btn, .reset-btn {
-    padding: 10px 16px;
-    min-width: 120px;
-    font-size: 14px;
-}
-
-/* MOBILE */
-@media (max-width: 600px) {
-    .btn-group {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .calc-btn, .reset-btn {
-        width: 80%;
-    }
-}
-
-</style>
 
 </head>
 
 <body>
 
-<!-- TOP BAR -->
+<!-- ================= TOP BAR (2 LINES) ================= -->
 <div class="topbar">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="terms.html">Terms</a>
+
+    <div class="topbar-line">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
+    <div class="topbar-line">
+        <a href="index.html#tools">Engineering Tools</a>
+        <a href="index.html#converters">Unit Conversion</a>
+        <a href="index.html#blogs">Engineering Knowledge</a>
+    </div>
+
 </div>
 
-<!-- MAIN -->
-<div class="container">
+<!-- ================= WRAPPER ================= -->
+<div class="wrapper">
 
-<h1>Air Density Calculator</h1>
-
-<p style="margin-bottom:20px;">
-Calculate air density based on altitude and temperature using standard atmospheric relations. 
-Applicable for fan selection, HVAC systems, and process engineering calculations.
-</p>
+<!-- HEADER -->
+<div class="header center">
+    <h1>Air Density Calculator</h1>
+    <p>Calculate air density based on altitude and temperature using standard atmospheric relations.</p>
+</div>
 
 <!-- AD SLOT -->
 <div class="ad-slot"></div>
+
+<!-- INPUTS -->
+<div class="section">
 
 <input type="number" id="altitude" placeholder="Altitude (m)" min="0" max="11000">
 <input type="number" id="temperature" placeholder="Temperature (°C)" min="-50" max="60">
@@ -133,6 +67,8 @@ Applicable for fan selection, HVAC systems, and process engineering calculations
 </div>
 
 <div id="output"></div>
+
+</div>
 
 <!-- ENGINEERING SECTION -->
 <div class="section">
@@ -187,18 +123,18 @@ Applicable for fan selection, HVAC systems, and process engineering calculations
 
 </div>
 
-<!-- FOOTER -->
+<!-- ================= FOOTER (2 LINES) ================= -->
 <div class="footer">
 
-<div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
+    <div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
 
-<div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="terms.html">Terms</a>
-</div>
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
 
 </div>
 
