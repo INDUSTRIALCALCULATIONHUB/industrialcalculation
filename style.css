@@ -3,248 +3,225 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
 }
 
+/* ================= BODY ================= */
 body {
-    font-family: "Segoe UI", Arial, sans-serif;
     background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: #333;
-    overflow-x: hidden;
+    color: #222;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* ================= SMOOTH SCROLL ================= */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Fix anchor jump offset */
+section, .section {
+    scroll-margin-top: 80px;
 }
 
 /* ================= TOP BAR ================= */
 .topbar {
-    position: fixed;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 10px 0;
+    position: sticky;
     top: 0;
-    width: 100%;
-    background: #1e3c72;
-    z-index: 1000;
+    z-index: 999;
+    backdrop-filter: blur(6px);
 }
 
-/* TWO LINES */
 .topbar-line {
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
     gap: 18px;
-    padding: 7px 10px;
-    text-align: center;
-}
-
-.topbar-line:first-child {
-    border-bottom: 1px solid rgba(255,255,255,0.15);
+    flex-wrap: wrap;
+    padding: 4px 10px;
 }
 
 .topbar a {
     color: #fff;
     text-decoration: none;
+    font-weight: 500;
     font-size: 14px;
-    padding: 4px 8px;
+    padding: 6px 10px;
     border-radius: 6px;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 .topbar a:hover {
-    background: rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.15);
 }
 
 /* ================= WRAPPER ================= */
 .wrapper {
-    margin-top: 120px;
-    margin-bottom: 110px;
+    width: 92%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px 0;
 }
 
 /* ================= HEADER ================= */
 .header {
     text-align: center;
-    color: white;
-    margin-bottom: 25px;
+    padding: 30px 10px;
+    color: #fff;
 }
 
 .header h1 {
-    font-size: 34px;
-    font-weight: 700;
-    color: #ffffff;
+    font-size: 32px;
+    margin-bottom: 10px;
 }
 
 .header p {
-    font-size: 14px;
-    opacity: 0.95;
-    color: #eaf2ff;
+    font-size: 16px;
+    opacity: 0.9;
 }
 
-/* ================= SEARCH BOX FIX ================= */
+/* ================= SEARCH BOX ================= */
 .search-box {
     text-align: center;
-    margin-bottom: 25px;
+    margin: 20px 0;
 }
 
-/* FIXED SEARCH WIDTH + STYLE */
 .search-box input {
-    width: 45%;
-    max-width: 450px;
-    min-width: 220px;
-
+    width: 60%;
+    max-width: 500px;
     padding: 12px 14px;
     border-radius: 10px;
     border: none;
     outline: none;
-
-    font-size: 14px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    transition: 0.2s;
-}
-
-.search-box input:focus {
-    width: 50%;
+    font-size: 15px;
 }
 
 /* ================= SECTION ================= */
 .section {
-    width: 85%;
-    max-width: 1050px;
-    margin: 20px auto;
+    margin: 40px 0;
+}
 
-    background: #ffffff;
-    padding: 28px;
-    border-radius: 16px;
-
-    box-shadow: 0 8px 22px rgba(0,0,0,0.15);
+.section h2 {
+    margin-bottom: 20px;
+    color: #fff;
 }
 
 /* ================= GRID ================= */
 .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
 }
 
-/* ================= CARD FIX (IMPORTANT) ================= */
+/* ================= CARD (FIXED VISIBILITY + SIZE) ================= */
 .card {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
 
-    /* FIX: better contrast than white */
-    background: linear-gradient(135deg, #f7f9fc, #e9eef7);
-    border: 1px solid rgba(30,60,114,0.15);
+    width: auto;
+    max-width: 260px;
 
-    padding: 16px;
+    padding: 14px 18px;
+
+    background: #ffffff;
+    color: #1f1f1f;
+
     border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.08);
 
     text-decoration: none;
-    color: #1e3c72;
     font-weight: 600;
+    text-align: center;
+
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
 
     transition: all 0.25s ease;
+
+    white-space: nowrap;
 }
 
-/* HOVER EFFECT */
+/* hover improvement */
 .card:hover {
-    background: linear-gradient(135deg, #2a5298, #1e3c72);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    background: #f8faff;
 }
 
-/* ================= HEADINGS ================= */
-h1, h2, h3 {
-    color: #1e3c72;
-    text-align: center;
-    margin-bottom: 12px;
+/* ================= SEARCH RESULT FIX ================= */
+/* ensures filtered single item does NOT stretch full width */
+.grid .card[style*="display: flex"],
+.grid .card[style*="display:flex"] {
+    width: auto !important;
 }
 
-/* ================= TEXT ================= */
-p, ul {
-    line-height: 1.6;
-    margin-bottom: 12px;
+/* ================= CONTACT FORM ================= */
+.contact-form {
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-ul {
-    padding-left: 20px;
-}
-
-/* ================= INPUTS ================= */
-input, select, textarea {
-    width: 100%;
+.contact-form input,
+.contact-form textarea {
     padding: 12px;
-    margin: 10px 0;
-
     border-radius: 10px;
     border: 1px solid #ccc;
+    font-size: 14px;
     outline: none;
 }
 
-/* REMOVE NUMBER ARROWS */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-}
-
-input[type=number] {
-    -moz-appearance: textfield;
-}
-
-/* ================= BUTTON ================= */
-button {
-    padding: 11px 18px;
+.contact-form button {
+    padding: 12px;
+    background: #1e3c72;
+    color: white;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    min-width: 120px;
-
-    background: #2a5298;
-    color: white;
-    font-weight: 600;
-
-    transition: 0.2s;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-button:hover {
-    opacity: 0.9;
+.contact-form button:hover {
+    background: #2a5298;
 }
 
 /* ================= FOOTER ================= */
 .footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: #1e3c72;
-    color: white;
+    background: rgba(0,0,0,0.4);
+    color: #fff;
     text-align: center;
-    padding: 10px;
-    font-size: 13px;
+    padding: 20px 10px;
+    margin-top: 40px;
 }
 
 .footer-links {
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .footer-links a {
-    color: white;
-    margin: 0 8px;
+    color: #fff;
+    margin: 0 10px;
     text-decoration: none;
+    font-size: 14px;
 }
 
 .footer-links a:hover {
-    opacity: 0.8;
+    text-decoration: underline;
 }
 
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
-
-    .section {
-        width: 92%;
-        padding: 20px;
-    }
-
     .search-box input {
-        width: 80%;
+        width: 85%;
     }
 
-    .wrapper {
-        margin-top: 135px;
+    .card {
+        max-width: 90%;
+        white-space: normal;
     }
 }
