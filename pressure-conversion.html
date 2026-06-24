@@ -7,199 +7,54 @@
 <title>Pressure Conversion Tool | Industrial Calculation Hub</title>
 
 <meta name="description" content="Convert pressure units like Pa, bar, psi, atm, mmWC using engineering-standard formulas.">
-<meta name="keywords" content="pressure conversion, psi to bar, atm conversion, engineering calculator">
-<meta name="author" content="Industrial Calculation Hub">
 
-<!-- AdSense -->
+<!-- CMP (MUST LOAD FIRST) -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+
+<!-- ADSENSE -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
 crossorigin="anonymous"></script>
 
-<!-- CMP -->
-<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+<!-- GLOBAL CSS -->
+<link rel="stylesheet" href="style.css">
 
-<style>
-
-/* ================= GLOBAL THEME ================= */
-body{
-    margin:0;
-    font-family:Segoe UI, Arial, sans-serif;
-    background:linear-gradient(to right,#1e3c72,#2a5298);
-    color:white;
-}
-
-/* ================= FIXED HEADER ================= */
-.header-bar{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    background:#444;
-    color:white;
-    padding:12px;
-    text-align:center;
-    z-index:1000;
-}
-
-.header-bar a{
-    color:white;
-    margin:10px;
-    text-decoration:none;
-    font-weight:500;
-}
-
-/* ================= FIXED FOOTER ================= */
-.footer-bar{
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:#444;
-    color:white;
-    text-align:center;
-    padding:10px;
-    z-index:1000;
-}
-
-/* ================= MAIN CONTAINER (80% STANDARD) ================= */
-.container{
-    width:80%;
-    max-width:900px;
-    margin:100px auto 80px auto;
-    background:white;
-    color:black;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.25);
-}
-
-/* ================= TITLE ================= */
-h1,h2{
-    text-align:center;
-    margin-top:0;
-}
-
-/* ================= INPUTS ================= */
-input, select{
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    border:1px solid #ccc;
-    border-radius:8px;
-    box-sizing:border-box;
-    font-size:15px;
-}
-
-/* REMOVE SPINNERS (GLOBAL STANDARD) */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button{
-    -webkit-appearance:none;
-    margin:0;
-}
-input[type=number]{
-    -moz-appearance:textfield;
-}
-
-/* ================= BUTTONS ================= */
-.button-group{
-    display:flex;
-    gap:10px;
-}
-
-button{
-    flex:1;
-    padding:12px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:15px;
-}
-
-.calc-btn{
-    background:#2a5298;
-    color:white;
-}
-
-.reset-btn{
-    background:#ccc;
-}
-
-/* ================= OUTPUT ================= */
-#output{
-    margin-top:20px;
-}
-
-.card{
-    background:white;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.15);
-}
-
-/* TABLE */
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:10px;
-}
-
-th{
-    background:#2a5298;
-    color:white;
-    padding:10px;
-}
-
-td{
-    padding:10px;
-    text-align:center;
-    border-bottom:1px solid #ddd;
-}
-
-/* ================= CMP BANNER ================= */
-#consent-banner{
-    position:fixed;
-    bottom:50px;
-    left:50%;
-    transform:translateX(-50%);
-    width:80%;
-    max-width:900px;
-    background:#222;
-    color:white;
-    padding:15px;
-    border-radius:10px;
-    display:none;
-    z-index:2000;
-    text-align:center;
-}
-
-#consent-banner button{
-    margin:5px;
-    padding:8px 12px;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-}
-
-.accept{background:#4CAF50;color:white;}
-.reject{background:#f44336;color:white;}
-.manage{background:#2196F3;color:white;}
-
-</style>
 </head>
 
 <body>
 
-<!-- FIXED HEADER -->
-<div class="header-bar">
-⚙️ Pressure Conversion Tool |
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
+<!-- ================= TOP BAR ================= -->
+<div class="topbar">
+
+    <div class="topbar-line">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
+    <div class="topbar-line">
+        <a href="index.html#tools">Engineering Tools</a>
+        <a href="index.html#converters">Unit Conversion</a>
+        <a href="index.html#blogs">Engineering Knowledge</a>
+    </div>
+
 </div>
 
-<!-- MAIN CONTAINER -->
-<div class="container">
+<!-- ================= WRAPPER ================= -->
+<div class="wrapper">
 
-<h2>📊 Pressure Unit Conversion</h2>
+<!-- HEADER -->
+<div class="header center">
+    <h1>Pressure Conversion Tool</h1>
+    <p>Engineering pressure unit conversion</p>
+</div>
+
+<!-- AD -->
+<div class="ad-slot"></div>
+
+<!-- ================= INPUT ================= -->
+<div class="section">
 
 <input type="number" id="inputValue" placeholder="Enter Pressure Value">
 
@@ -212,28 +67,52 @@ td{
     <option value="mmWC">mm Water Column</option>
 </select>
 
-<div class="button-group">
-<button class="calc-btn" onclick="calculate()">Calculate</button>
-<button class="reset-btn" onclick="resetForm()">Reset</button>
-</div>
-
 <div id="output"></div>
 
 </div>
 
-<!-- FIXED FOOTER -->
-<div class="footer-bar">
-© 2026 Industrial Calculation Hub
+<!-- ================= ENGINEERING INFO ================= -->
+<div class="section">
+<h2>Engineering Reference</h2>
+
+<p>Pressure conversion is based on SI units using Pascal (Pa) as the base unit. Accurate conversion is essential in mechanical, process, and fluid engineering applications.</p>
+
+<h3>Key Conversions</h3>
+<ul>
+<li>1 bar = 100,000 Pa</li>
+<li>1 atm = 101,325 Pa</li>
+<li>1 psi = 6,894.76 Pa</li>
+<li>1 mmWC = 9.80665 Pa</li>
+</ul>
+
+<h3>Applications</h3>
+<ul>
+<li>Piping and duct system design</li>
+<li>Boiler and pressure vessel calculations</li>
+<li>HVAC and airflow systems</li>
+<li>Pump and compressor selection</li>
+</ul>
+
 </div>
 
-<!-- CMP BANNER -->
-<div id="consent-banner">
-<p>This website uses cookies for analytics and personalized ads.</p>
-<button class="accept" onclick="acceptConsent()">Accept</button>
-<button class="reject" onclick="rejectConsent()">Reject</button>
-<button class="manage" onclick="manageConsent()">Manage</button>
 </div>
 
+<!-- ================= FOOTER ================= -->
+<div class="footer">
+
+<div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
+
+<div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+</div>
+
+</div>
+
+<!-- ================= SCRIPT ================= -->
 <script>
 
 const TO_PASCAL = {
@@ -247,66 +126,41 @@ const TO_PASCAL = {
 
 function calculate(){
 
-    let value = parseFloat(document.getElementById("inputValue").value);
-    let unit = document.getElementById("unit").value;
+let value = parseFloat(document.getElementById("inputValue").value);
+let unit = document.getElementById("unit").value;
 
-    if(isNaN(value)){
-        document.getElementById("output").innerHTML =
-        "<p style='color:red;text-align:center;'>Please enter valid value</p>";
-        return;
-    }
-
-    let pa = value * TO_PASCAL[unit];
-
-    let results = {
-        "Pascal (Pa)": pa,
-        "Kilopascal (kPa)": pa / 1000,
-        "Bar": pa / 100000,
-        "Atmosphere (atm)": pa / 101325,
-        "PSI": pa / 6894.76,
-        "mm Water Column": pa / 9.80665
-    };
-
-    let table = `<div class="card"><h3>Converted Values</h3><table>
-    <tr><th>Unit</th><th>Value</th></tr>`;
-
-    for(let k in results){
-        table += `<tr><td>${k}</td><td>${results[k].toFixed(3)}</td></tr>`;
-    }
-
-    table += `</table></div>`;
-
-    document.getElementById("output").innerHTML = table;
-}
-
-function resetForm(){
-    document.getElementById("inputValue").value = "";
-    document.getElementById("unit").value = "Pa";
+if(isNaN(value)){
     document.getElementById("output").innerHTML = "";
+    return;
 }
 
-/* CMP */
-function showBanner(){
-    if(!localStorage.getItem("consent")){
-        document.getElementById("consent-banner").style.display="block";
-    }
+let pa = value * TO_PASCAL[unit];
+
+let results = {
+"Pascal (Pa)": pa,
+"Kilopascal (kPa)": pa / 1000,
+"Bar": pa / 100000,
+"Atmosphere (atm)": pa / 101325,
+"PSI": pa / 6894.76,
+"mm Water Column": pa / 9.80665
+};
+
+let table = `<div class="card"><h3>Conversion Results</h3>
+<table>
+<tr><th>Unit</th><th>Value</th></tr>`;
+
+for(let k in results){
+table += `<tr><td>${k}</td><td>${results[k].toFixed(2)}</td></tr>`;
 }
 
-function acceptConsent(){
-    localStorage.setItem("consent","accepted");
-    document.getElementById("consent-banner").style.display="none";
+table += `</table></div>`;
+
+document.getElementById("output").innerHTML = table;
 }
 
-function rejectConsent(){
-    localStorage.setItem("consent","rejected");
-    document.getElementById("consent-banner").style.display="none";
-}
-
-function manageConsent(){
-    alert("Open privacy settings page.");
-}
-
-window.onload = showBanner;
+/* LIVE CONVERSION */
+document.getElementById("inputValue").addEventListener("input", calculate);
+document.getElementById("unit").addEventListener("change", calculate);
 
 </script>
 
