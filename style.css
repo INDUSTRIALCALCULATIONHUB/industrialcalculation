@@ -222,7 +222,7 @@ button:hover {
 
 /* ================= FIXED TABLE ================= */
 .result-table {
-    width: 100%;
+    width: 80%;
     border-collapse: collapse;
     table-layout: fixed;
     min-width: 320px;
