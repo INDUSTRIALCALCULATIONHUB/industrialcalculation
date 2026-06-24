@@ -8,166 +8,105 @@
 
 <meta name="description" content="Convert area units like m², ft², acre, hectare with engineering accuracy.">
 
-<!-- CMP (MUST LOAD FIRST) -->
+<!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
 <!-- ADSENSE -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
- crossorigin="anonymous"></script>
+crossorigin="anonymous"></script>
 
-<!-- GLOBAL CSS -->
 <link rel="stylesheet" href="style.css">
 
-<!-- PAGE FIX -->
 <style>
-
-/* TOP BAR */
-.topbar {
-    position: fixed;
-    top: 0;
+.result-table {
     width: 100%;
-    background: #1e3c72;
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-    padding: 12px;
-    z-index: 1000;
-}
-
-.topbar a {
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-/* FOOTER */
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: #1e3c72;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-size: 13px;
-}
-
-.footer-links {
-    margin-top: 5px;
-}
-
-.footer-links a {
-    color: white;
-    margin: 0 8px;
-    text-decoration: none;
-}
-
-/* CONTENT SPACING */
-.container {
-    margin-top: 90px;
-    margin-bottom: 110px;
-}
-
-/* BUTTON FIX */
-.btn-group {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
+    border-collapse: collapse;
     margin-top: 10px;
 }
 
-.calc-btn, .reset-btn {
-    padding: 10px 16px;
-    min-width: 120px;
-    font-size: 14px;
+.result-table th {
+    background: #1e3c72;
+    color: white;
+    padding: 10px;
 }
 
-/* MOBILE */
-@media (max-width: 600px) {
-    .btn-group {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .calc-btn, .reset-btn {
-        width: 80%;
-    }
+.result-table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
 }
 
+.result-card {
+    margin-top: 15px;
+}
 </style>
 
 </head>
 
 <body>
 
-<!-- TOP BAR -->
+<!-- ================= TOP BAR ================= -->
 <div class="topbar">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="terms.html">Terms</a>
+
+    <div class="topbar-line">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
+    <div class="topbar-line">
+        <a href="index.html#tools">Engineering Tools</a>
+        <a href="index.html#converters">Unit Conversion</a>
+        <a href="index.html#blogs">Engineering Knowledge</a>
+    </div>
+
 </div>
 
-<!-- MAIN -->
-<div class="container">
+<!-- ================= WRAPPER ================= -->
+<div class="wrapper">
 
-<h1>Area Conversion Tool</h1>
-<p>Convert engineering and land measurement units with standard accuracy.</p>
-
-<!-- AD SLOT -->
-<div class="ad-slot"></div>
-
-<input type="number" id="inputValue" placeholder="Enter Value">
-
-<select id="unit">
-<option value="sqm">Square Meter (m²)</option>
-<option value="sqft">Square Foot (ft²)</option>
-<option value="sqin">Square Inch (in²)</option>
-<option value="acre">Acre</option>
-<option value="hectare">Hectare</option>
-</select>
-
-<div class="btn-group">
-    <button class="calc-btn" onclick="calculate()">Calculate</button>
-    <button class="reset-btn" onclick="resetForm()">Reset</button>
+<!-- HEADER -->
+<div class="header">
+    <h1>Area Conversion Tool</h1>
+    <p>Engineering & Civil Measurement Converter</p>
 </div>
 
-<div id="output"></div>
-
-<!-- ENGINEERING SECTION -->
+<!-- INPUT SECTION -->
 <div class="section">
 
-<h2>Engineering Basis</h2>
+    <input type="number" id="inputValue" placeholder="Enter Value">
 
-<ul>
-<li>SI unit: square meter (m²)</li>
-<li>All conversions referenced to m²</li>
-<li>Standard factors used in civil and industrial applications</li>
-</ul>
+    <select id="unit">
+        <option value="sqm">Square Meter (m²)</option>
+        <option value="sqft">Square Foot (ft²)</option>
+        <option value="sqin">Square Inch (in²)</option>
+        <option value="acre">Acre</option>
+        <option value="hectare">Hectare</option>
+    </select>
 
-<h3>Key Conversions</h3>
+    <div id="output"></div>
+
+</div>
+
+<!-- ENGINEERING NOTE -->
+<div class="section">
+<h2>Engineering Note</h2>
 <ul>
+<li>All conversions are based on SI unit (m²)</li>
 <li>1 acre = 4046.86 m²</li>
 <li>1 hectare = 10,000 m²</li>
 <li>1 ft² = 0.092903 m²</li>
+<li>Used in civil, HVAC, and layout design calculations</li>
+<li>All values rounded to 2 decimals</li>
 </ul>
-
-<h3>Engineering Applications</h3>
-<ul>
-<li>Land and site area calculations</li>
-<li>Plant layout and equipment spacing</li>
-<li>HVAC coverage and floor planning</li>
-<li>Civil and structural design</li>
-</ul>
-
 </div>
 
 </div>
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 <div class="footer">
-
 <div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
 
 <div class="footer-links">
@@ -177,51 +116,67 @@
     <a href="privacy.html">Privacy</a>
     <a href="terms.html">Terms</a>
 </div>
-
 </div>
 
 <script>
+
 const TO_SQM = {
-sqm:1,
-sqft:0.092903,
-sqin:0.00064516,
-acre:4046.86,
-hectare:10000
+    sqm: 1,
+    sqft: 0.092903,
+    sqin: 0.00064516,
+    acre: 4046.86,
+    hectare: 10000
 };
 
-function calculate(){
-let val = parseFloat(document.getElementById("inputValue").value);
-let unit = document.getElementById("unit").value;
+function convert() {
 
-if(isNaN(val)){
-document.getElementById("output").innerHTML = "<div class='card'>Invalid input</div>";
-return;
+    let val = parseFloat(document.getElementById("inputValue").value);
+    let unit = document.getElementById("unit").value;
+
+    if (isNaN(val)) {
+        document.getElementById("output").innerHTML = "";
+        return;
+    }
+
+    let sqm = val * TO_SQM[unit];
+
+    let res = {
+        "Square Meter (m²)": sqm,
+        "Square Foot (ft²)": sqm / 0.092903,
+        "Square Inch (in²)": sqm / 0.00064516,
+        "Acre": sqm / 4046.86,
+        "Hectare": sqm / 10000
+    };
+
+    let html = `
+    <div class="section result-card">
+        <h3>Converted Values</h3>
+
+        <table class="result-table">
+            <tr>
+                <th>Unit</th>
+                <th>Value</th>
+            </tr>
+    `;
+
+    for (let k in res) {
+        html += `
+            <tr>
+                <td>${k}</td>
+                <td>${res[k].toFixed(2)}</td>
+            </tr>
+        `;
+    }
+
+    html += `</table></div>`;
+
+    document.getElementById("output").innerHTML = html;
 }
 
-let sqm = val * TO_SQM[unit];
+/* LIVE CONVERSION */
+document.getElementById("inputValue").addEventListener("input", convert);
+document.getElementById("unit").addEventListener("change", convert);
 
-let res = {
-"Square Meter": sqm,
-"Square Foot": sqm / 0.092903,
-"Square Inch": sqm / 0.00064516,
-"Acre": sqm / 4046.86,
-"Hectare": sqm / 10000
-};
-
-let html = `<div class="card"><table><tr><th>Unit</th><th>Value</th></tr>`;
-for(let k in res){
-html += `<tr><td>${k}</td><td>${res[k].toFixed(2)}</td></tr>`;
-}
-html += `</table></div>`;
-
-document.getElementById("output").innerHTML = html;
-}
-
-function resetForm(){
-document.getElementById("inputValue").value = "";
-document.getElementById("unit").value = "sqm";
-document.getElementById("output").innerHTML = "";
-}
 </script>
 
 </body>
