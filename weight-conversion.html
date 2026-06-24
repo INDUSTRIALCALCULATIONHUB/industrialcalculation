@@ -8,16 +8,14 @@
 
 <meta name="description" content="Convert weight and force units including kg, Newton, kN, ton and lb using engineering standard conversions.">
 
-<!-- CMP (MUST LOAD FIRST) -->
+<!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
 <!-- ADSENSE -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
 crossorigin="anonymous"></script>
 
-<!-- GLOBAL CSS -->
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
@@ -45,17 +43,12 @@ crossorigin="anonymous"></script>
 <div class="wrapper">
 
 <!-- HEADER -->
-<div class="header center">
+<div class="header">
     <h1>Weight Conversion Tool</h1>
     <p>Engineering force and mass unit converter</p>
 </div>
 
-<!-- AD -->
-<div class="section center">
-    <div class="ad-slot"></div>
-</div>
-
-<!-- ================= INPUT ================= -->
+<!-- INPUT SECTION -->
 <div class="section">
 
 <input type="number" id="inputValue" placeholder="Enter Value">
@@ -103,6 +96,7 @@ crossorigin="anonymous"></script>
 </div>
 
 <!-- ================= SCRIPT ================= -->
+
 <script>
 
 const TO_NEWTON = {
@@ -133,24 +127,24 @@ function convert(){
         "Pound (lb)": newton / 4.44822
     };
 
-let table = `
-<div class="result-card">
-<h3>Converted Values</h3>
-<table class="result-table">
-<tr><th>Unit</th><th>Value</th></tr>
-`;
+    let table = `
+    <div class="result-card">
+    <h3>Converted Values</h3>
+    <table class="result-table">
+    <tr><th>Unit</th><th>Value</th></tr>
+    `;
 
-for (let k in results) {
+    for (let k in results) {
+        table += `
+        <tr>
+            <td>${k}</td>
+            <td>${results[k].toFixed(2)}</td>
+        </tr>`;
+    }
+
     table += `
-    <tr>
-        <td>${k}</td>
-        <td>${results[k].toFixed(2)}</td>
-    </tr>`;
-}
-
-table += `
-</table>
-</div>`;
+    </table>
+    </div>`;
 
     document.getElementById("output").innerHTML = table;
 }
