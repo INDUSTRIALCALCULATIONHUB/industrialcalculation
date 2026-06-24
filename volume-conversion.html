@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Length Conversion Tool | Industrial Calculation Hub</title>
+<title>Volume Conversion Tool | Industrial Calculation Hub</title>
 
-<meta name="description" content="Convert length units like meter, mm, cm, km, inch, foot and yard using engineering standard conversions.">
+<meta name="description" content="Convert volume units like cubic meter, litre, cubic foot, cubic inch and gallons for engineering applications.">
 
 <!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
@@ -15,13 +15,14 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
 crossorigin="anonymous"></script>
 
+<!-- GLOBAL CSS -->
 <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<!-- TOP BAR -->
+<!-- ================= TOP BAR ================= -->
 <div class="topbar">
 
     <div class="topbar-line">
@@ -40,50 +41,61 @@ crossorigin="anonymous"></script>
 
 </div>
 
-<!-- WRAPPER -->
+<!-- ================= WRAPPER ================= -->
 <div class="wrapper">
 
 <!-- HEADER -->
 <div class="header">
-    <h1>Length Conversion Tool</h1>
-    <p>Engineering length unit converter</p>
+    <h1>Volume Conversion Tool</h1>
+    <p>Engineering fluid and storage volume converter</p>
 </div>
 
 <!-- INPUT SECTION -->
 <div class="section">
 
-<input type="number" id="inputValue" placeholder="Enter Value">
+    <input type="number" id="inputValue" placeholder="Enter Volume Value">
 
-<select id="unit">
-    <option value="m">Meter (m)</option>
-    <option value="mm">Millimeter (mm)</option>
-    <option value="cm">Centimeter (cm)</option>
-    <option value="km">Kilometer (km)</option>
-    <option value="in">Inch (in)</option>
-    <option value="ft">Foot (ft)</option>
-    <option value="yd">Yard (yd)</option>
-</select>
+    <select id="unit">
+        <option value="m3">Cubic Meter (m³)</option>
+        <option value="litre">Litre (L)</option>
+        <option value="ft3">Cubic Foot (ft³)</option>
+        <option value="in3">Cubic Inch (in³)</option>
+        <option value="gallon">US Gallon</option>
+    </select>
 
-<div id="output"></div>
+    <button onclick="calculate()">Convert</button>
+    <button onclick="resetForm()">Reset</button>
+
+    <div id="output" class="result-box"></div>
 
 </div>
 
 <!-- ENGINEERING NOTE -->
 <div class="section">
-<h2>Engineering Note</h2>
+
+<h2>Engineering Basis</h2>
+
 <ul>
-<li>All conversions are based on SI unit (meter)</li>
-<li>1 inch = 25.4 mm</li>
-<li>1 foot = 0.3048 m</li>
-<li>1 yard = 0.9144 m</li>
-<li>Engineering calculations always use SI base unit</li>
+<li>SI unit: cubic meter (m³)</li>
+<li>All conversions referenced to m³</li>
+<li>Standard engineering conversion factors used</li>
 </ul>
-</div>
+
+<h3>Key Applications</h3>
+<ul>
+<li>Fluid system design</li>
+<li>Tank and reservoir sizing</li>
+<li>Process engineering calculations</li>
+<li>HVAC and hydraulic systems</li>
+</ul>
 
 </div>
 
-<!-- FOOTER -->
+</div>
+
+<!-- ================= FOOTER ================= -->
 <div class="footer">
+
 <div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
 
 <div class="footer-links">
@@ -93,57 +105,69 @@ crossorigin="anonymous"></script>
     <a href="privacy.html">Privacy</a>
     <a href="terms.html">Terms</a>
 </div>
+
 </div>
 
 <script>
 
-const TO_METER = {
-    m: 1,
-    mm: 0.001,
-    cm: 0.01,
-    km: 1000,
-    in: 0.0254,
-    ft: 0.3048,
-    yd: 0.9144
+const TO_M3 = {
+    m3: 1,
+    litre: 0.001,
+    ft3: 0.0283168,
+    in3: 0.0000163871,
+    gallon: 0.00378541
 };
 
-function convert() {
+function calculate() {
 
-    let value = parseFloat(document.getElementById("inputValue").value);
+    let val = parseFloat(document.getElementById("inputValue").value);
     let unit = document.getElementById("unit").value;
 
-    if (isNaN(value)) {
+    if (isNaN(val)) {
         document.getElementById("output").innerHTML = "";
         return;
     }
 
-    let meter = value * TO_METER[unit];
+    let m3 = val * TO_M3[unit];
 
-    let results = {
-        "Meter (m)": meter,
-        "Millimeter (mm)": meter / 0.001,
-        "Centimeter (cm)": meter / 0.01,
-        "Kilometer (km)": meter / 1000,
-        "Inch (in)": meter / 0.0254,
-        "Foot (ft)": meter / 0.3048,
-        "Yard (yd)": meter / 0.9144
+    let res = {
+        "Cubic Meter (m³)": m3,
+        "Litre (L)": m3 / 0.001,
+        "Cubic Foot (ft³)": m3 / 0.0283168,
+        "Cubic Inch (in³)": m3 / 0.0000163871,
+        "US Gallon": m3 / 0.00378541
     };
 
-    let html = `<div class="card"><table>
-    <tr><th>Unit</th><th>Value</th></tr>`;
+    let html = `
+    <div class="result-card">
+        <h3>Converted Values</h3>
+        <table class="result-table">
+            <tr>
+                <th>Unit</th>
+                <th>Value</th>
+            </tr>
+    `;
 
-    for (let k in results) {
-        html += `<tr><td>${k}</td><td>${results[k].toFixed(2)}</td></tr>`;
+    for (let k in res) {
+        html += `
+            <tr>
+                <td>${k}</td>
+                <td>${res[k].toFixed(2)}</td>
+            </tr>`;
     }
 
-    html += `</table></div>`;
+    html += `
+        </table>
+    </div>`;
 
     document.getElementById("output").innerHTML = html;
 }
 
-/* LIVE CONVERSION */
-document.getElementById("inputValue").addEventListener("input", convert);
-document.getElementById("unit").addEventListener("change", convert);
+function resetForm() {
+    document.getElementById("inputValue").value = "";
+    document.getElementById("unit").value = "m3";
+    document.getElementById("output").innerHTML = "";
+}
 
 </script>
 
