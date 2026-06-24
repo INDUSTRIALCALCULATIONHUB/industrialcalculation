@@ -6,190 +6,38 @@
 
 <title>Temperature Conversion Tool | Industrial Calculation Hub</title>
 
-<meta name="description" content="Convert Celsius, Fahrenheit, and Kelvin with this engineering temperature conversion tool used in thermodynamics and industrial applications.">
-<meta name="keywords" content="temperature conversion, celsius fahrenheit kelvin, thermodynamics calculator, engineering tools">
-<meta name="author" content="Industrial Calculation Hub">
-
-<!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612" crossorigin="anonymous"></script>
+<meta name="description" content="Convert Celsius, Fahrenheit, and Kelvin using engineering thermodynamic relationships.">
 
 <!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
+<!-- ADSENSE -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
+crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="style.css">
+
 <style>
-/* =========================
-GLOBAL RESET
-========================= */
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: #333;
-    padding-top: 60px;
-    padding-bottom: 60px;
-}
-
-/* =========================
-FIXED HEADER
-========================= */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    background: #1f2d3d;
-    padding: 12px;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-}
-
-.navbar a {
-    color: white;
-    margin: 10px;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-/* =========================
-HEADER SECTION
-========================= */
-.header {
-    text-align: center;
-    padding: 30px 15px;
-    color: white;
-}
-
-/* =========================
-MAIN CONTAINER (70–80% WIDTH RULE)
-========================= */
-.container {
-    background: white;
-    width: 80%;
-    max-width: 700px;
-    margin: 20px auto;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-/* =========================
-INPUT STYLING
-========================= */
-input, select {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 15px;
-}
-
-/* Remove number spinner globally */
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type=number] {
-    -moz-appearance: textfield;
-}
-
-/* =========================
-BUTTONS
-========================= */
-.button-group {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-button {
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 100%;
-    font-weight: 600;
-}
-
-.calc-btn {
-    background: #2a5298;
-    color: white;
-}
-
-.reset-btn {
-    background: #ccc;
-    color: black;
-}
-
-/* =========================
-OUTPUT CARD
-========================= */
-.card {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    margin-top: 20px;
-}
-
-/* =========================
-TABLE
-========================= */
-table {
+.result-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
 }
 
-th {
-    background: #2a5298;
+.result-table th {
+    background: #1e3c72;
     color: white;
+    padding: 10px;
 }
 
-th, td {
+.result-table td {
     padding: 10px;
     text-align: center;
     border-bottom: 1px solid #ddd;
 }
 
-/* =========================
-FOOTER
-========================= */
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    background: #1f2d3d;
-    color: white;
-    padding: 10px;
-    font-size: 14px;
-}
-
-/* =========================
-RESPONSIVE
-========================= */
-@media screen and (max-width: 768px) {
-    .container {
-        width: 92%;
-    }
-
-    .navbar a {
-        font-size: 14px;
-        margin: 5px;
-    }
-
-    .button-group {
-        flex-direction: column;
-    }
+.result-card {
+    margin-top: 15px;
 }
 </style>
 
@@ -197,131 +45,137 @@ RESPONSIVE
 
 <body>
 
-<!-- FIXED NAVBAR -->
-<div class="navbar">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="privacy.html">Privacy</a>
-<a href="terms.html">Terms</a>
+<!-- ================= TOP BAR ================= -->
+<div class="topbar">
+
+    <div class="topbar-line">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
+    <div class="topbar-line">
+        <a href="index.html#tools">Engineering Tools</a>
+        <a href="index.html#converters">Unit Conversion</a>
+        <a href="index.html#blogs">Engineering Knowledge</a>
+    </div>
+
 </div>
+
+<!-- ================= WRAPPER ================= -->
+<div class="wrapper">
 
 <!-- HEADER -->
 <div class="header">
-<h1>Temperature Conversion Tool</h1>
-<p>Engineering Thermodynamics Conversion Calculator</p>
+    <h1>Temperature Conversion Tool</h1>
+    <p>Engineering Thermodynamics Converter</p>
 </div>
 
-<!-- INPUT -->
-<div class="container">
+<!-- INPUT SECTION -->
+<div class="section">
 
-<input type="number" id="inputValue" placeholder="Enter Temperature Value">
+    <input type="number" id="inputValue" placeholder="Enter Temperature Value">
 
-<select id="unit">
-    <option value="C">Celsius (°C)</option>
-    <option value="F">Fahrenheit (°F)</option>
-    <option value="K">Kelvin (K)</option>
-</select>
+    <select id="unit">
+        <option value="C">Celsius (°C)</option>
+        <option value="F">Fahrenheit (°F)</option>
+        <option value="K">Kelvin (K)</option>
+    </select>
 
-<div class="button-group">
-<button class="calc-btn" onclick="calculate()">Calculate</button>
-<button class="reset-btn" onclick="resetForm()">Reset</button>
-</div>
+    <div id="output"></div>
 
 </div>
 
-<!-- OUTPUT -->
-<div id="output" class="container"></div>
-
-<!-- INFO -->
-<div class="container">
-<h2>About Temperature Conversion</h2>
-<p>
-This tool converts temperature values using standard thermodynamic relationships between Celsius, Fahrenheit, and Kelvin scales used in engineering calculations.
-</p>
-
-<h3>Applications</h3>
+<!-- ENGINEERING NOTE -->
+<div class="section">
+<h2>Engineering Note</h2>
 <ul>
-<li>Thermodynamics</li>
-<li>HVAC Systems</li>
-<li>Process Engineering</li>
-<li>Industrial Design Calculations</li>
+<li>Conversions based on standard thermodynamic relationships</li>
+<li>Kelvin is absolute temperature scale</li>
+<li>Celsius and Fahrenheit are relative scales</li>
+<li>Kelvin is mandatory in thermodynamic equations</li>
+<li>All values rounded to 2 decimals</li>
 </ul>
 </div>
 
-<!-- ENGINEERING NOTES -->
-<div class="container">
-<h2>Theory</h2>
-<p>
-Temperature conversion is based on linear relationships between absolute and relative temperature scales used in SI and imperial systems.
-</p>
-
-<h3>Information</h3>
-<ul>
-<li>Celsius is based on water freezing/boiling points</li>
-<li>Kelvin is absolute thermodynamic scale</li>
-<li>Fahrenheit is commonly used in legacy systems</li>
-</ul>
-
-<h3>Notes</h3>
-<ul>
-<li>Always use Kelvin for thermodynamic equations</li>
-<li>Negative Kelvin values are not physically possible</li>
-</ul>
 </div>
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 <div class="footer">
-© 2026 Industrial Calculation Hub
+<div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
+
+<div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+</div>
 </div>
 
 <script>
-function calculate() {
+
+function convert() {
 
 let value = parseFloat(document.getElementById("inputValue").value);
 let unit = document.getElementById("unit").value;
 
-if(isNaN(value)){
-document.getElementById("output").innerHTML =
-"<div class='card' style='color:red;text-align:center;'>Invalid input</div>";
-return;
+if (isNaN(value)) {
+    document.getElementById("output").innerHTML = "";
+    return;
 }
 
-let C, F, K;
+let C;
 
-if(unit === "C"){
+if (unit === "C") {
     C = value;
-} else if(unit === "F"){
-    C = (value - 32) * 5/9;
-} else if(unit === "K"){
+} else if (unit === "F") {
+    C = (value - 32) * 5 / 9;
+} else if (unit === "K") {
     C = value - 273.15;
 }
 
-F = (C * 9/5) + 32;
-K = C + 273.15;
+let F = (C * 9 / 5) + 32;
+let K = C + 273.15;
 
-let results = {
-"Celsius (°C)": C,
-"Fahrenheit (°F)": F,
-"Kelvin (K)": K
-};
+let html = `
+<div class="section result-card">
+<h3>Converted Values</h3>
 
-let table = `<div class="card"><h3>Results</h3><table><tr><th>Unit</th><th>Value</th></tr>`;
+<table class="result-table">
+<tr>
+<th>Unit</th>
+<th>Value</th>
+</tr>
 
-for(let k in results){
-table += `<tr><td>${k}</td><td>${results[k].toFixed(2)}</td></tr>`;
+<tr>
+<td>Celsius (°C)</td>
+<td>${C.toFixed(2)}</td>
+</tr>
+
+<tr>
+<td>Fahrenheit (°F)</td>
+<td>${F.toFixed(2)}</td>
+</tr>
+
+<tr>
+<td>Kelvin (K)</td>
+<td>${K.toFixed(2)}</td>
+</tr>
+
+</table>
+</div>
+`;
+
+document.getElementById("output").innerHTML = html;
 }
 
-table += `</table></div>`;
+/* LIVE CONVERSION */
+document.getElementById("inputValue").addEventListener("input", convert);
+document.getElementById("unit").addEventListener("change", convert);
 
-document.getElementById("output").innerHTML = table;
-}
-
-function resetForm(){
-document.getElementById("inputValue").value = "";
-document.getElementById("unit").value = "C";
-document.getElementById("output").innerHTML = "";
-}
 </script>
 
 </body>
