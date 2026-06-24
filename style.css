@@ -130,20 +130,27 @@ input, select, textarea {
     font-family: inherit;
 }
 
-/* DEFAULT BEHAVIOR (ONLY FOR FORMS INSIDE SECTION) */
+/* FORM INPUT FULL WIDTH */
 .section input,
 .section select,
 .section textarea {
     width: 100%;
 }
 
-/* SEARCH BOX SPECIAL CONTROL */
+/* ================= SEARCH BOX FIX (CENTER + LEFT TEXT) ================= */
+.search-box {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
 .search-box input {
     width: 60%;
     max-width: 420px;
     display: inline-block;
+    text-align: left;   /* typing left aligned */
 }
 
+/* REMOVE SPINNERS */
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -198,6 +205,8 @@ button:hover {
 /* ================= RESULT BOX ================= */
 .result-box {
     margin-top: 15px;
+    display: flex;
+    justify-content: center;   /* CENTER TABLE */
 }
 
 /* RESULT CARD */
@@ -208,7 +217,7 @@ button:hover {
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     border: 1px solid rgba(30, 60, 114, 0.15);
 
-    width: 100%;
+    width: fit-content;
     max-width: 100%;
     overflow-x: auto;
 }
@@ -218,15 +227,16 @@ button:hover {
     margin-bottom: 10px;
     font-size: 18px;
     color: #1e3c72;
+    text-align: center;
 }
 
-/* ================= FIXED TABLE ================= */
+/* ================= FIXED PROFESSIONAL TABLE ================= */
 .result-table {
-    width: 80%;
-    border-collapse: collapse;
-    table-layout: fixed;
+    width: auto;              /* FIX: no stretching */
     min-width: 320px;
+    border-collapse: collapse;
     font-size: 14px;
+    margin: auto;
 }
 
 .result-table th {
@@ -242,10 +252,7 @@ button:hover {
     border-bottom: 1px solid #eee;
 
     font-variant-numeric: tabular-nums;
-
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 /* STRIPES */
@@ -258,14 +265,9 @@ button:hover {
 }
 
 /* COLUMN BALANCE */
-.result-table th:first-child,
-.result-table td:first-child {
-    width: 50%;
-}
-
-.result-table th:last-child,
-.result-table td:last-child {
-    width: 50%;
+.result-table th,
+.result-table td {
+    min-width: 120px;
 }
 
 /* ================= RESPONSIVE ================= */
@@ -277,5 +279,9 @@ button:hover {
 
     .wrapper {
         margin-top: 135px;
+    }
+
+    .search-box input {
+        width: 85%;
     }
 }
