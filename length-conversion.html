@@ -20,48 +20,68 @@ crossorigin="anonymous"></script>
 <style>
 .container { margin-top:120px; margin-bottom:120px; }
 
-.converter {
-    display:flex;
-    gap:10px;
-    align-items:center;
-    justify-content:center;
-    flex-wrap:wrap;
+.converter-box{
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    max-width:900px;
+    margin:auto;
 }
 
-.converter input, .converter select {
+.converter{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+}
+
+.converter input, .converter select{
     padding:10px;
     font-size:14px;
 }
 
-.swap-btn {
+.swap-btn{
     padding:8px 12px;
     cursor:pointer;
 }
 
-.quick-btns {
+.quick-btns{
     text-align:center;
-    margin:10px 0;
+    margin:15px 0;
 }
 
-.quick-btns button {
+.quick-btns button{
     margin:5px;
     padding:6px 10px;
     cursor:pointer;
 }
 
-.result-box {
+.result-box{
     text-align:center;
     margin-top:15px;
+    font-weight:600;
 }
 
-.history {
-    margin-top:20px;
-    font-size:13px;
-}
-
-.copy-btn {
+.copy-btn{
     margin-left:10px;
     cursor:pointer;
+}
+
+.history{
+    margin-top:20px;
+    font-size:13px;
+    background:#f5f5f5;
+    padding:10px;
+    border-radius:8px;
+    max-height:150px;
+    overflow:auto;
+}
+
+.clear-btn{
+    margin-top:10px;
+    cursor:pointer;
+    padding:6px 10px;
 }
 </style>
 
@@ -69,7 +89,7 @@ crossorigin="anonymous"></script>
 
 <body>
 
-<!-- TOPBAR -->
+<!-- ================= TOP BAR ================= -->
 <div class="topbar">
     <div class="topbar-line">
         <a href="index.html">Home</a>
@@ -89,8 +109,9 @@ crossorigin="anonymous"></script>
 
 <h1 class="center">Length Conversion Tool</h1>
 
-<!-- AD -->
 <div class="ad-slot"></div>
+
+<div class="converter-box">
 
 <div class="converter">
 
@@ -123,10 +144,10 @@ crossorigin="anonymous"></script>
 </div>
 
 <div class="quick-btns">
-<button onclick="quickSet(1,'m','ft')">m → ft</button>
-<button onclick="quickSet(1,'mm','in')">mm → in</button>
-<button onclick="quickSet(1,'km','m')">km → m</button>
-<button onclick="quickSet(1,'ft','m')">ft → m</button>
+<button onclick="quickSet('m','ft')">m → ft</button>
+<button onclick="quickSet('mm','in')">mm → in</button>
+<button onclick="quickSet('km','m')">km → m</button>
+<button onclick="quickSet('ft','m')">ft → m</button>
 </div>
 
 <div class="result-box">
@@ -135,24 +156,26 @@ crossorigin="anonymous"></script>
 </div>
 
 <div class="history" id="history"></div>
+<button class="clear-btn" onclick="clearHistory()">Clear History</button>
 
-<!-- AD -->
+</div>
+
 <div class="ad-slot"></div>
 
 <div class="section">
 <h3>Engineering Note</h3>
 <ul>
-<li>All conversions are based on SI standard units</li>
+<li>All conversions follow SI unit standards</li>
 <li>1 meter = 1000 mm = 100 cm</li>
 <li>1 inch = 25.4 mm</li>
-<li>Precision is limited to 2 decimals for practical engineering use</li>
-<li>Use consistent units in design calculations to avoid errors</li>
+<li>Maintain consistent units in calculations</li>
+<li>Precision limited to 2 decimals for engineering practicality</li>
 </ul>
 </div>
 
 </div>
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 <div class="footer">
 <div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
 <div class="footer-links">
@@ -176,13 +199,13 @@ ft:0.3048,
 yd:0.9144
 };
 
-function convert(fromInput){
+function convert(from){
 let v1 = parseFloat(input1.value);
 let v2 = parseFloat(input2.value);
 let u1 = unit1.value;
 let u2 = unit2.value;
 
-if(fromInput===1 && !isNaN(v1)){
+if(from===1 && !isNaN(v1)){
 let m = v1 * TO_M[u1];
 let res = m / TO_M[u2];
 input2.value = res.toFixed(2);
@@ -190,7 +213,7 @@ updateResult(v1,u1,res,u2);
 addHistory(v1,u1,res,u2);
 }
 
-if(fromInput===2 && !isNaN(v2)){
+if(from===2 && !isNaN(v2)){
 let m = v2 * TO_M[u2];
 let res = m / TO_M[u1];
 input1.value = res.toFixed(2);
@@ -208,10 +231,11 @@ unit2.value = u1;
 let v1 = input1.value;
 input1.value = input2.value;
 input2.value = v1;
+
 convert(1);
 }
 
-function quickSet(side,u1,u2){
+function quickSet(u1,u2){
 unit1.value = u1;
 unit2.value = u2;
 convert(1);
@@ -229,6 +253,10 @@ function addHistory(v1,u1,v2,u2){
 let h = document.getElementById("history");
 let entry = `${v1} ${u1} = ${v2.toFixed(2)} ${u2}`;
 h.innerHTML = entry + "<br>" + h.innerHTML;
+}
+
+function clearHistory(){
+document.getElementById("history").innerHTML="";
 }
 
 input1.addEventListener("input",()=>convert(1));
