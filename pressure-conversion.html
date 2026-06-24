@@ -48,48 +48,36 @@ crossorigin="anonymous"></script>
     <p>Engineering pressure unit converter</p>
 </div>
 
-<!-- ================= INPUT SECTION ================= -->
+<!-- INPUT SECTION -->
 <div class="section">
 
-    <h2>Input</h2>
+<input type="number" id="inputValue" placeholder="Enter Pressure Value">
 
-    <input type="number" id="inputValue" placeholder="Enter Pressure Value">
+<select id="unit">
+    <option value="Pa">Pascal (Pa)</option>
+    <option value="kPa">Kilopascal (kPa)</option>
+    <option value="bar">Bar</option>
+    <option value="atm">Atmosphere (atm)</option>
+    <option value="psi">PSI</option>
+    <option value="mmWC">mm Water Column</option>
+</select>
 
-    <select id="unit">
-        <option value="Pa">Pascal (Pa)</option>
-        <option value="kPa">Kilopascal (kPa)</option>
-        <option value="bar">Bar</option>
-        <option value="atm">Atmosphere (atm)</option>
-        <option value="psi">PSI</option>
-        <option value="mmWC">mm Water Column</option>
-    </select>
-
-</div>
-
-<!-- ================= RESULT SECTION ================= -->
-<div class="section">
-
-    <h2>Result</h2>
-
-    <div id="output"></div>
+<div id="output" class="result-box"></div>
 
 </div>
 
 <!-- ================= ENGINEERING NOTE ================= -->
 <div class="section">
-
 <h2>Engineering Note</h2>
-
 <ul>
 <li>All conversions are based on SI unit (Pascal)</li>
 <li>1 bar = 100,000 Pa</li>
 <li>1 atm = 101,325 Pa</li>
 <li>1 psi = 6,894.76 Pa</li>
 <li>1 mmWC = 9.80665 Pa</li>
-<li>Values are rounded to 2 decimals for engineering use</li>
-<li>Ensure consistent units in fluid and pressure calculations</li>
+<li>Values are rounded to 2 decimals</li>
+<li>Use consistent units in fluid mechanics calculations</li>
 </ul>
-
 </div>
 
 </div>
@@ -110,7 +98,6 @@ crossorigin="anonymous"></script>
 </div>
 
 <!-- ================= SCRIPT ================= -->
-
 <script>
 
 const TO_PA = {
@@ -145,27 +132,29 @@ function convert(){
 
     let table = `
     <div class="result-card">
-    <h3>Converted Values</h3>
-    <table class="result-table">
-    <tr><th>Unit</th><th>Value</th></tr>
+        <h3>Converted Values</h3>
+        <table class="result-table">
+            <tr>
+                <th>Unit</th>
+                <th>Value</th>
+            </tr>
     `;
 
     for (let k in results) {
         table += `
-        <tr>
-            <td>${k}</td>
-            <td>${results[k].toFixed(2)}</td>
-        </tr>`;
+            <tr>
+                <td>${k}</td>
+                <td>${results[k].toFixed(2)}</td>
+            </tr>`;
     }
 
     table += `
-    </table>
+        </table>
     </div>`;
 
     document.getElementById("output").innerHTML = table;
 }
 
-/* LIVE CONVERSION */
 document.getElementById("inputValue").addEventListener("input", convert);
 document.getElementById("unit").addEventListener("change", convert);
 
