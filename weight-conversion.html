@@ -15,112 +15,159 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
 crossorigin="anonymous"></script>
 
-<!-- GLOBAL CSS -->
 <link rel="stylesheet" href="style.css">
+
+<style>
+.container { margin-top:120px; margin-bottom:120px; }
+
+.converter {
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.converter input, .converter select {
+    padding:10px;
+}
+
+.swap-btn {
+    padding:8px 12px;
+    cursor:pointer;
+}
+
+.quick-btns {
+    text-align:center;
+    margin:10px 0;
+}
+
+.quick-btns button {
+    margin:5px;
+    padding:6px 10px;
+    cursor:pointer;
+}
+
+.result-box {
+    text-align:center;
+    margin-top:10px;
+}
+
+.copy-btn {
+    margin-left:10px;
+    cursor:pointer;
+}
+
+.history {
+    margin-top:20px;
+    font-size:13px;
+}
+</style>
 
 </head>
 
 <body>
 
-<!-- ================= TOP BAR (2 LINES) ================= -->
+<!-- ================= TOP BAR ================= -->
 <div class="topbar">
 
-    <div class="topbar-line">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-    </div>
+<div class="topbar-line">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+</div>
 
-    <div class="topbar-line">
-        <a href="index.html#tools">Engineering Tools</a>
-        <a href="index.html#converters">Unit Conversion</a>
-        <a href="index.html#blogs">Engineering Knowledge</a>
-    </div>
+<div class="topbar-line">
+<a href="index.html#tools">Engineering Tools</a>
+<a href="index.html#converters">Unit Conversion</a>
+<a href="index.html#blogs">Engineering Knowledge</a>
+</div>
 
 </div>
 
-<!-- ================= WRAPPER ================= -->
-<div class="wrapper">
+<div class="container">
 
-<!-- HEADER -->
-<div class="header center">
-    <h1>Weight Conversion Tool</h1>
-    <p>Engineering force and mass unit converter</p>
-</div>
+<h1 class="center">Weight Conversion Tool</h1>
+<p class="center">Engineering force and mass unit converter</p>
 
-<!-- AD SLOT -->
 <div class="ad-slot"></div>
 
-<!-- INPUT SECTION -->
-<div class="section">
+<!-- ================= CONVERTER ================= -->
+<div class="converter">
 
-<input type="number" id="inputValue" placeholder="Enter Value">
+<input type="number" id="input1" placeholder="Enter value">
 
-<select id="unit">
-    <option value="kg">Kilogram (kg)</option>
-    <option value="N">Newton (N)</option>
-    <option value="kN">Kilonewton (kN)</option>
-    <option value="t">Metric Ton</option>
-    <option value="lb">Pound (lb)</option>
+<select id="unit1">
+<option value="kg">kg</option>
+<option value="N">N</option>
+<option value="kN">kN</option>
+<option value="t">ton</option>
+<option value="lb">lb</option>
 </select>
 
-<div class="btn-group">
-    <button class="calc-btn" onclick="calculate()">Calculate</button>
-    <button class="reset-btn" onclick="resetForm()">Reset</button>
+<button class="swap-btn" onclick="swapUnits()">⇄</button>
+
+<input type="number" id="input2" placeholder="Result">
+
+<select id="unit2">
+<option value="N">N</option>
+<option value="kg">kg</option>
+<option value="kN">kN</option>
+<option value="t">ton</option>
+<option value="lb">lb</option>
+</select>
+
 </div>
 
-<div id="output"></div>
-
+<!-- QUICK BUTTONS -->
+<div class="quick-btns">
+<button onclick="quickSet('kg','N')">kg → N</button>
+<button onclick="quickSet('N','kg')">N → kg</button>
+<button onclick="quickSet('kN','kg')">kN → kg</button>
+<button onclick="quickSet('lb','kg')">lb → kg</button>
 </div>
 
-<!-- INFO -->
+<!-- RESULT -->
+<div class="result-box">
+<span id="resultText"></span>
+<button class="copy-btn" onclick="copyResult()">Copy</button>
+</div>
+
+<!-- HISTORY -->
+<div class="history" id="history"></div>
+
+<div class="ad-slot"></div>
+
+<!-- ================= ENGINEERING INFO ================= -->
 <div class="section">
-<h2>About Weight Conversion</h2>
-<p>This tool converts engineering force and mass units using Newton as the base reference system.</p>
 
-<h3>Applications</h3>
+<h3>Engineering Note</h3>
+
 <ul>
-<li>Structural load calculations</li>
-<li>Mechanical engineering design</li>
-<li>Material testing & analysis</li>
-</ul>
-</div>
-
-<!-- THEORY -->
-<div class="section">
-<h2>Theory</h2>
-<p>Weight conversion in engineering is based on Newton’s second law:</p>
-<p><b>F = m × g</b></p>
-
-<h3>Information</h3>
-<ul>
-<li>g = 9.81 m/s² (standard gravity)</li>
-<li>Force is measured in Newton (N)</li>
-<li>Mass is measured in kg or tons</li>
+<li>Force conversion is based on standard gravity (g = 9.81 m/s²)</li>
+<li>1 kg = 9.81 N</li>
+<li>1 kN = 1000 N</li>
+<li>1 ton = 1000 kg</li>
+<li>All values rounded to 2 decimals for engineering practicality</li>
+<li>Ensure unit consistency in load and structural calculations</li>
 </ul>
 
-<h3>Notes</h3>
-<ul>
-<li>Always ensure unit consistency</li>
-<li>Engineering calculations require SI standard conversion</li>
-</ul>
 </div>
 
 </div>
 
-<!-- ================= FOOTER (2 LINES) ================= -->
+<!-- ================= FOOTER ================= -->
 <div class="footer">
 
 <div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
 
 <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="terms.html">Terms</a>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
 </div>
 
 </div>
@@ -128,49 +175,72 @@ crossorigin="anonymous"></script>
 <script>
 
 const TO_NEWTON = {
-    kg: 9.81,
-    N: 1,
-    kN: 1000,
-    t: 9810,
-    lb: 4.44822
+kg:9.81,
+N:1,
+kN:1000,
+t:9810,
+lb:4.44822
 };
 
-function calculate() {
+function convert(from){
+let v1=parseFloat(input1.value);
+let v2=parseFloat(input2.value);
+let u1=unit1.value;
+let u2=unit2.value;
 
-let value = parseFloat(document.getElementById("inputValue").value);
-let unit = document.getElementById("unit").value;
-
-if(isNaN(value)){
-document.getElementById("output").innerHTML = "<div class='card'>Invalid input</div>";
-return;
+if(from===1 && !isNaN(v1)){
+let N=v1*TO_NEWTON[u1];
+let res=N/TO_NEWTON[u2];
+input2.value=res.toFixed(2);
+update(v1,u1,res,u2);
+addHistory(v1,u1,res,u2);
 }
 
-let newton = value * TO_NEWTON[unit];
-
-let results = {
-"Kilogram (kg)": newton / 9.81,
-"Newton (N)": newton,
-"Kilonewton (kN)": newton / 1000,
-"Metric Ton": newton / 9810,
-"Pound (lb)": newton / 4.44822
-};
-
-let table = "<div class='card'><h3>Results</h3><table><tr><th>Unit</th><th>Value</th></tr>";
-
-for(let k in results){
-table += "<tr><td>" + k + "</td><td>" + results[k].toFixed(2) + "</td></tr>";
+if(from===2 && !isNaN(v2)){
+let N=v2*TO_NEWTON[u2];
+let res=N/TO_NEWTON[u1];
+input1.value=res.toFixed(2);
+update(res,u1,v2,u2);
+addHistory(res,u1,v2,u2);
+}
 }
 
-table += "</table></div>";
+function swapUnits(){
+let t=unit1.value;
+unit1.value=unit2.value;
+unit2.value=t;
 
-document.getElementById("output").innerHTML = table;
+let v=input1.value;
+input1.value=input2.value;
+input2.value=v;
+
+convert(1);
 }
 
-function resetForm(){
-document.getElementById("inputValue").value = "";
-document.getElementById("unit").value = "kg";
-document.getElementById("output").innerHTML = "";
+function quickSet(u1,u2){
+unit1.value=u1;
+unit2.value=u2;
+convert(1);
 }
+
+function update(v1,u1,v2,u2){
+resultText.innerHTML=`${v1} ${u1} = ${v2.toFixed(2)} ${u2}`;
+}
+
+function copyResult(){
+navigator.clipboard.writeText(resultText.innerText);
+}
+
+function addHistory(v1,u1,v2,u2){
+let h=document.getElementById("history");
+let entry=`${v1} ${u1} = ${v2.toFixed(2)} ${u2}`;
+h.innerHTML=entry+"<br>"+h.innerHTML;
+}
+
+input1.addEventListener("input",()=>convert(1));
+input2.addEventListener("input",()=>convert(2));
+unit1.addEventListener("change",()=>convert(1));
+unit2.addEventListener("change",()=>convert(1));
 
 </script>
 
