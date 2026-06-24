@@ -15,7 +15,9 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
 crossorigin="anonymous"></script>
 
+<!-- GLOBAL CSS -->
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -48,10 +50,8 @@ crossorigin="anonymous"></script>
     <p>Engineering length unit converter</p>
 </div>
 
-<!-- ================= INPUT SECTION ================= -->
+<!-- INPUT SECTION -->
 <div class="section">
-
-    <h2>Input</h2>
 
     <input type="number" id="inputValue" placeholder="Enter Value">
 
@@ -65,32 +65,22 @@ crossorigin="anonymous"></script>
         <option value="yd">Yard (yd)</option>
     </select>
 
-</div>
-
-<!-- ================= RESULT SECTION ================= -->
-<div class="section">
-
-    <h2>Result</h2>
-
-    <div id="output"></div>
+    <div id="output" class="result-box"></div>
 
 </div>
 
-<!-- ================= ENGINEERING NOTE ================= -->
+<!-- ENGINEERING NOTE -->
 <div class="section">
-
 <h2>Engineering Note</h2>
-
 <ul>
 <li>All conversions are based on SI unit (meter)</li>
 <li>1 meter = 1000 mm = 100 cm</li>
 <li>1 inch = 25.4 mm</li>
 <li>1 foot = 0.3048 m</li>
 <li>1 yard = 0.9144 m</li>
-<li>Values are rounded to 2 decimals for engineering use</li>
-<li>Maintain consistent units in design and calculations</li>
+<li>Values are rounded to 2 decimals</li>
+<li>Maintain consistent units in engineering design</li>
 </ul>
-
 </div>
 
 </div>
@@ -148,21 +138,24 @@ function convert(){
 
     let table = `
     <div class="result-card">
-    <h3>Converted Values</h3>
-    <table class="result-table">
-    <tr><th>Unit</th><th>Value</th></tr>
+        <h3>Converted Values</h3>
+        <table class="result-table">
+            <tr>
+                <th>Unit</th>
+                <th>Value</th>
+            </tr>
     `;
 
     for (let k in results) {
         table += `
-        <tr>
-            <td>${k}</td>
-            <td>${results[k].toFixed(2)}</td>
-        </tr>`;
+            <tr>
+                <td>${k}</td>
+                <td>${results[k].toFixed(2)}</td>
+            </tr>`;
     }
 
     table += `
-    </table>
+        </table>
     </div>`;
 
     document.getElementById("output").innerHTML = table;
