@@ -8,21 +8,16 @@
 
 <meta name="description" content="Convert volume units like cubic meter, litre, cubic foot, cubic inch and gallons for engineering applications.">
 
-<!-- CMP -->
-<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
-
-<!-- ADSENSE -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
-crossorigin="anonymous"></script>
-
-<!-- GLOBAL CSS -->
 <link rel="stylesheet" href="style.css">
+
+<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
 
-<!-- ================= TOP BAR ================= -->
+<!-- TOP BAR -->
 <div class="topbar">
 
     <div class="topbar-line">
@@ -41,32 +36,31 @@ crossorigin="anonymous"></script>
 
 </div>
 
-<!-- ================= WRAPPER ================= -->
 <div class="wrapper">
 
 <!-- HEADER -->
 <div class="header">
-    <h1>Volume Conversion</h1>
-    <p>Unit Converter For Volume</p>
+    <h1>Volume Conversion Tool</h1>
+    <p>Engineering Fluid & Storage Unit Converter</p>
 </div>
 
-<!-- INPUT SECTION -->
+<!-- INPUT -->
 <div class="section">
 
-    <input type="number" id="inputValue" placeholder="Enter Volume Value">
+<input type="number" id="inputValue" placeholder="Enter Volume Value">
 
-    <select id="unit">
-        <option value="m3">Cubic Meter (m³)</option>
-        <option value="litre">Litre (L)</option>
-        <option value="ft3">Cubic Foot (ft³)</option>
-        <option value="in3">Cubic Inch (in³)</option>
-        <option value="gallon">US Gallon</option>
-    </select>
+<select id="unit">
+    <option value="m3">Cubic Meter (m³)</option>
+    <option value="litre">Litre (L)</option>
+    <option value="ft3">Cubic Foot (ft³)</option>
+    <option value="in3">Cubic Inch (in³)</option>
+    <option value="gallon">US Gallon</option>
+</select>
 
-    <button onclick="calculate()">Convert</button>
-    <button onclick="resetForm()">Reset</button>
+<button onclick="calculate()">Convert</button>
+<button onclick="resetForm()">Reset</button>
 
-    <div id="output" class="result-box"></div>
+<div id="output" class="result-box"></div>
 
 </div>
 
@@ -75,45 +69,42 @@ crossorigin="anonymous"></script>
 
 <h2>Engineering Knowledge</h2>
 
+<p>
+Volume is a derived physical quantity representing three-dimensional space (L³),
+used extensively in fluid mechanics, thermodynamics, and process engineering.
+</p>
+
 <h3>Fundamental Basis</h3>
 <ul>
-<li>Volume measurements are derived from the SI base unit: cubic meter (m³)</li>
-<li>All conversions are standardized through SI traceable relationships</li>
-<li>Used as a primary reference in fluid mechanics and process engineering calculations</li>
-<li>Ensures dimensional consistency in storage, flow, and system design applications</li>
+<li>SI base unit: cubic meter (m³)</li>
+<li>Derived from length cubed (L³ dimensional form)</li>
+<li>Standardized using internationally accepted SI constants</li>
+<li>Ensures consistency in engineering calculations</li>
 </ul>
 
 <h3>Standard Conversion Factors</h3>
 <ul>
-<li>1 cubic meter (m³) = 1000 liters (L)</li>
-<li>1 cubic foot (ft³) = 0.0283168 m³</li>
-<li>1 cubic inch (in³) = 0.0000163871 m³</li>
+<li>1 m³ = 1000 liters</li>
+<li>1 ft³ = 0.0283168 m³</li>
+<li>1 in³ = 0.0000163871 m³</li>
 <li>1 US gallon = 0.00378541 m³</li>
 </ul>
 
-<h3>Engineering Application Areas</h3>
+<h3>Engineering Applications</h3>
 <ul>
-<li>Fluid system design and pipeline capacity calculations</li>
+<li>Pipeline and fluid transport system design</li>
 <li>Tank, vessel, and reservoir sizing</li>
-<li>Chemical and process industry mass balance calculations</li>
-<li>HVAC, hydraulic, and thermal system design</li>
+<li>Process engineering mass balance calculations</li>
+<li>HVAC and hydraulic system design</li>
 </ul>
 
 </div>
-    
-<!-- ================= FOOTER ================= -->
-<div class="footer">
 
-<div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
-
-<div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="terms.html">Terms</a>
 </div>
 
+<!-- FOOTER -->
+<div class="footer">
+<div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
 </div>
 
 <script>
@@ -131,42 +122,28 @@ function calculate() {
     let val = parseFloat(document.getElementById("inputValue").value);
     let unit = document.getElementById("unit").value;
 
-    if (isNaN(val)) {
-        document.getElementById("output").innerHTML = "";
-        return;
-    }
+    if (isNaN(val)) return;
 
     let m3 = val * TO_M3[unit];
 
     let res = {
-        "Cubic Meter (m³)": m3,
-        "Litre (L)": m3 / 0.001,
-        "Cubic Foot (ft³)": m3 / 0.0283168,
-        "Cubic Inch (in³)": m3 / 0.0000163871,
+        "Cubic Meter": m3,
+        "Litre": m3 / 0.001,
+        "Cubic Foot": m3 / 0.0283168,
+        "Cubic Inch": m3 / 0.0000163871,
         "US Gallon": m3 / 0.00378541
     };
 
-    let html = `
-    <div class="result-card">
-        <h3>Converted Values</h3>
-        <table class="result-table">
-            <tr>
-                <th>Unit</th>
-                <th>Value</th>
-            </tr>
-    `;
+    let html = `<div class="result-card">
+    <h3>Converted Values</h3>
+    <table class="result-table">
+    <tr><th>Unit</th><th>Value</th></tr>`;
 
     for (let k in res) {
-        html += `
-            <tr>
-                <td>${k}</td>
-                <td>${res[k].toFixed(2)}</td>
-            </tr>`;
+        html += `<tr><td>${k}</td><td>${res[k].toFixed(2)}</td></tr>`;
     }
 
-    html += `
-        </table>
-    </div>`;
+    html += `</table></div>`;
 
     document.getElementById("output").innerHTML = html;
 }
