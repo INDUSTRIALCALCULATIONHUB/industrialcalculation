@@ -15,31 +15,8 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
 crossorigin="anonymous"></script>
 
+<!-- GLOBAL CSS -->
 <link rel="stylesheet" href="style.css">
-
-<style>
-.result-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-.result-table th {
-    background: #1e3c72;
-    color: white;
-    padding: 10px;
-}
-
-.result-table td {
-    padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-}
-
-.result-card {
-    margin-top: 15px;
-}
-</style>
 
 </head>
 
@@ -70,7 +47,7 @@ crossorigin="anonymous"></script>
 <!-- HEADER -->
 <div class="header">
     <h1>Area Conversion Tool</h1>
-    <p>Engineering & Civil Measurement Converter</p>
+    <p>Engineering and land measurement converter</p>
 </div>
 
 <!-- INPUT SECTION -->
@@ -86,27 +63,38 @@ crossorigin="anonymous"></script>
         <option value="hectare">Hectare</option>
     </select>
 
-    <div id="output"></div>
+    <button onclick="calculate()">Convert</button>
+    <button onclick="resetForm()">Reset</button>
+
+    <div id="output" class="result-box"></div>
 
 </div>
 
 <!-- ENGINEERING NOTE -->
 <div class="section">
-<h2>Engineering Note</h2>
+
+<h2>Engineering Basis</h2>
 <ul>
-<li>All conversions are based on SI unit (m²)</li>
+<li>SI unit: square meter (m²)</li>
+<li>All conversions referenced to m²</li>
+<li>Standard engineering conversion factors used</li>
+</ul>
+
+<h3>Key Values</h3>
+<ul>
 <li>1 acre = 4046.86 m²</li>
 <li>1 hectare = 10,000 m²</li>
 <li>1 ft² = 0.092903 m²</li>
-<li>Used in civil, HVAC, and layout design calculations</li>
-<li>All values rounded to 2 decimals</li>
+<li>1 in² = 0.00064516 m²</li>
 </ul>
+
 </div>
 
 </div>
 
 <!-- ================= FOOTER ================= -->
 <div class="footer">
+
 <div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
 
 <div class="footer-links">
@@ -116,6 +104,7 @@ crossorigin="anonymous"></script>
     <a href="privacy.html">Privacy</a>
     <a href="terms.html">Terms</a>
 </div>
+
 </div>
 
 <script>
@@ -128,7 +117,7 @@ const TO_SQM = {
     hectare: 10000
 };
 
-function convert() {
+function calculate() {
 
     let val = parseFloat(document.getElementById("inputValue").value);
     let unit = document.getElementById("unit").value;
@@ -149,9 +138,8 @@ function convert() {
     };
 
     let html = `
-    <div class="section result-card">
+    <div class="result-card">
         <h3>Converted Values</h3>
-
         <table class="result-table">
             <tr>
                 <th>Unit</th>
@@ -164,18 +152,21 @@ function convert() {
             <tr>
                 <td>${k}</td>
                 <td>${res[k].toFixed(2)}</td>
-            </tr>
-        `;
+            </tr>`;
     }
 
-    html += `</table></div>`;
+    html += `
+        </table>
+    </div>`;
 
     document.getElementById("output").innerHTML = html;
 }
 
-/* LIVE CONVERSION */
-document.getElementById("inputValue").addEventListener("input", convert);
-document.getElementById("unit").addEventListener("change", convert);
+function resetForm() {
+    document.getElementById("inputValue").value = "";
+    document.getElementById("unit").value = "sqm";
+    document.getElementById("output").innerHTML = "";
+}
 
 </script>
 
