@@ -122,12 +122,26 @@ body {
 
 /* ================= INPUTS ================= */
 input, select, textarea {
-    width: 100%;
     padding: 12px;
     margin: 10px 0;
     border-radius: 8px;
     border: 1px solid #ccc;
     outline: none;
+    font-family: inherit;
+}
+
+/* DEFAULT BEHAVIOR (ONLY FOR FORMS INSIDE SECTION) */
+.section input,
+.section select,
+.section textarea {
+    width: 100%;
+}
+
+/* SEARCH BOX SPECIAL CONTROL */
+.search-box input {
+    width: 60%;
+    max-width: 420px;
+    display: inline-block;
 }
 
 input[type=number]::-webkit-inner-spin-button,
