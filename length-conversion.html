@@ -6,7 +6,7 @@
 
 <title>Length Conversion Tool | Industrial Calculation Hub</title>
 
-<meta name="description" content="Convert length units used in engineering including meter, mm, cm, km, inch, foot and yard.">
+<meta name="description" content="Convert length units like meter, mm, cm, km, inch, foot and yard using engineering standard conversions.">
 
 <!-- CMP (MUST LOAD FIRST) -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
@@ -47,11 +47,13 @@ crossorigin="anonymous"></script>
 <!-- HEADER -->
 <div class="header center">
     <h1>Length Conversion Tool</h1>
-    <p>Engineering unit conversion for length measurement</p>
+    <p>Engineering length unit converter</p>
 </div>
 
 <!-- AD -->
-<div class="ad-slot"></div>
+<div class="section center">
+    <div class="ad-slot"></div>
+</div>
 
 <!-- ================= INPUT ================= -->
 <div class="section">
@@ -72,29 +74,18 @@ crossorigin="anonymous"></script>
 
 </div>
 
-<!-- ================= ENGINEERING INFO ================= -->
+<!-- ================= ENGINEERING NOTE ================= -->
 <div class="section">
-<h2>Engineering Reference</h2>
-
-<p>This tool performs length unit conversions based on SI standards widely used in mechanical, civil, and industrial engineering.</p>
-
-<h3>Key Conversions</h3>
+<h2>Engineering Note</h2>
 <ul>
-<li>1 meter = 1000 millimeters</li>
-<li>1 meter = 100 centimeters</li>
-<li>1 inch = 25.4 millimeters</li>
-<li>1 foot = 0.3048 meters</li>
-<li>1 yard = 0.9144 meters</li>
+<li>All conversions are based on SI unit (meter)</li>
+<li>1 meter = 1000 mm = 100 cm</li>
+<li>1 inch = 25.4 mm</li>
+<li>1 foot = 0.3048 m</li>
+<li>1 yard = 0.9144 m</li>
+<li>Values are rounded to 2 decimals for engineering use</li>
+<li>Maintain consistent units in design and calculations</li>
 </ul>
-
-<h3>Applications</h3>
-<ul>
-<li>Engineering design calculations</li>
-<li>Fabrication and machining</li>
-<li>Piping and structural layout</li>
-<li>Drawing interpretation (mm/inch systems)</li>
-</ul>
-
 </div>
 
 </div>
@@ -127,44 +118,42 @@ const TO_METER = {
     yd: 0.9144
 };
 
-function calculate(){
+function convert(){
 
-let value = parseFloat(document.getElementById("inputValue").value);
-let unit = document.getElementById("unit").value;
+    let value = parseFloat(document.getElementById("inputValue").value);
+    let unit = document.getElementById("unit").value;
 
-if(isNaN(value)){
-    document.getElementById("output").innerHTML = "";
-    return;
-}
+    if(isNaN(value)){
+        document.getElementById("output").innerHTML = "";
+        return;
+    }
 
-let meter = value * TO_METER[unit];
+    let meter = value * TO_METER[unit];
 
-let results = {
-"Meter (m)": meter,
-"Millimeter (mm)": meter / 0.001,
-"Centimeter (cm)": meter / 0.01,
-"Kilometer (km)": meter / 1000,
-"Inch (in)": meter / 0.0254,
-"Foot (ft)": meter / 0.3048,
-"Yard (yd)": meter / 0.9144
-};
+    let results = {
+        "Meter (m)": meter,
+        "Millimeter (mm)": meter / 0.001,
+        "Centimeter (cm)": meter / 0.01,
+        "Kilometer (km)": meter / 1000,
+        "Inch (in)": meter / 0.0254,
+        "Foot (ft)": meter / 0.3048,
+        "Yard (yd)": meter / 0.9144
+    };
 
-let table = `<div class="card"><h3>Conversion Results</h3>
-<table>
-<tr><th>Unit</th><th>Value</th></tr>`;
+    let table = "<div class='card'><h3>Converted Values</h3><table><tr><th>Unit</th><th>Value</th></tr>";
 
-for(let k in results){
-table += `<tr><td>${k}</td><td>${results[k].toFixed(2)}</td></tr>`;
-}
+    for(let k in results){
+        table += "<tr><td>" + k + "</td><td>" + results[k].toFixed(2) + "</td></tr>";
+    }
 
-table += `</table></div>`;
+    table += "</table></div>";
 
-document.getElementById("output").innerHTML = table;
+    document.getElementById("output").innerHTML = table;
 }
 
 /* LIVE CONVERSION */
-document.getElementById("inputValue").addEventListener("input", calculate);
-document.getElementById("unit").addEventListener("change", calculate);
+document.getElementById("inputValue").addEventListener("input", convert);
+document.getElementById("unit").addEventListener("change", convert);
 
 </script>
 
