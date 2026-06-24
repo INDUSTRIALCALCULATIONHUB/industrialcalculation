@@ -8,22 +8,21 @@
 
 <meta name="description" content="Convert pressure units like Pa, bar, psi, atm, mmWC using engineering standard conversions.">
 
-<!-- CMP (MUST LOAD FIRST) -->
+<!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
 <!-- ADSENSE -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
 crossorigin="anonymous"></script>
 
-<!-- GLOBAL CSS -->
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
 <!-- ================= TOP BAR ================= -->
 <div class="topbar">
+
     <div class="topbar-line">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -37,43 +36,50 @@ crossorigin="anonymous"></script>
         <a href="index.html#converters">Unit Conversion</a>
         <a href="index.html#blogs">Engineering Knowledge</a>
     </div>
+
 </div>
 
 <!-- ================= WRAPPER ================= -->
 <div class="wrapper">
 
 <!-- HEADER -->
-<div class="header center">
+<div class="header">
     <h1>Pressure Conversion Tool</h1>
     <p>Engineering pressure unit converter</p>
 </div>
 
-<!-- AD -->
-<div class="section center">
-    <div class="ad-slot"></div>
-</div>
-
-<!-- ================= INPUT ================= -->
+<!-- ================= INPUT SECTION ================= -->
 <div class="section">
 
-<input type="number" id="inputValue" placeholder="Enter Pressure Value">
+    <h2>Input</h2>
 
-<select id="unit">
-    <option value="Pa">Pascal (Pa)</option>
-    <option value="kPa">Kilopascal (kPa)</option>
-    <option value="bar">Bar</option>
-    <option value="atm">Atmosphere (atm)</option>
-    <option value="psi">PSI</option>
-    <option value="mmWC">mm Water Column</option>
-</select>
+    <input type="number" id="inputValue" placeholder="Enter Pressure Value">
 
-<div id="output"></div>
+    <select id="unit">
+        <option value="Pa">Pascal (Pa)</option>
+        <option value="kPa">Kilopascal (kPa)</option>
+        <option value="bar">Bar</option>
+        <option value="atm">Atmosphere (atm)</option>
+        <option value="psi">PSI</option>
+        <option value="mmWC">mm Water Column</option>
+    </select>
+
+</div>
+
+<!-- ================= RESULT SECTION ================= -->
+<div class="section">
+
+    <h2>Result</h2>
+
+    <div id="output"></div>
 
 </div>
 
 <!-- ================= ENGINEERING NOTE ================= -->
 <div class="section">
+
 <h2>Engineering Note</h2>
+
 <ul>
 <li>All conversions are based on SI unit (Pascal)</li>
 <li>1 bar = 100,000 Pa</li>
@@ -83,6 +89,7 @@ crossorigin="anonymous"></script>
 <li>Values are rounded to 2 decimals for engineering use</li>
 <li>Ensure consistent units in fluid and pressure calculations</li>
 </ul>
+
 </div>
 
 </div>
@@ -103,6 +110,7 @@ crossorigin="anonymous"></script>
 </div>
 
 <!-- ================= SCRIPT ================= -->
+
 <script>
 
 const TO_PA = {
@@ -135,24 +143,24 @@ function convert(){
         "mm Water Column": pa / 9.80665
     };
 
-let table = `
-<div class="result-card">
-<h3>Converted Values</h3>
-<table class="result-table">
-<tr><th>Unit</th><th>Value</th></tr>
-`;
+    let table = `
+    <div class="result-card">
+    <h3>Converted Values</h3>
+    <table class="result-table">
+    <tr><th>Unit</th><th>Value</th></tr>
+    `;
 
-for (let k in results) {
+    for (let k in results) {
+        table += `
+        <tr>
+            <td>${k}</td>
+            <td>${results[k].toFixed(2)}</td>
+        </tr>`;
+    }
+
     table += `
-    <tr>
-        <td>${k}</td>
-        <td>${results[k].toFixed(2)}</td>
-    </tr>`;
-}
-
-table += `
-</table>
-</div>`;
+    </table>
+    </div>`;
 
     document.getElementById("output").innerHTML = table;
 }
