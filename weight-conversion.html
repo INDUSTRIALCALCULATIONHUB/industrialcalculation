@@ -6,7 +6,7 @@
 
 <title>Weight Conversion Tool | Industrial Calculation Hub</title>
 
-<meta name="description" content="Convert weight and force units used in engineering applications including Newton, kg, kN, and tons.">
+<meta name="description" content="Convert weight and force units including kg, Newton, kN, ton and lb using engineering standard conversions.">
 
 <!-- CMP (MUST LOAD FIRST) -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
@@ -15,49 +15,8 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
 crossorigin="anonymous"></script>
 
+<!-- GLOBAL CSS -->
 <link rel="stylesheet" href="style.css">
-
-<style>
-.container {
-    margin-top: 120px;
-    margin-bottom: 120px;
-}
-
-.input-section {
-    max-width: 500px;
-    margin: auto;
-}
-
-input, select {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 15px;
-}
-
-/* RESULT TABLE */
-.result-table {
-    margin-top: 20px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th {
-    background: #1e3c72;
-    color: white;
-}
-
-th, td {
-    padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-}
-</style>
 
 </head>
 
@@ -82,18 +41,24 @@ th, td {
 
 </div>
 
-<!-- ================= CONTENT ================= -->
-<div class="container">
+<!-- ================= WRAPPER ================= -->
+<div class="wrapper">
 
-<h1 class="center">Weight Conversion Tool</h1>
-<p class="center">Engineering force and mass unit converter</p>
+<!-- HEADER -->
+<div class="header center">
+    <h1>Weight Conversion Tool</h1>
+    <p>Engineering force and mass unit converter</p>
+</div>
 
 <!-- AD -->
-<div class="ad-slot"></div>
+<div class="section center">
+    <div class="ad-slot"></div>
+</div>
 
-<div class="input-section">
+<!-- ================= INPUT ================= -->
+<div class="section">
 
-<input type="number" id="inputValue" placeholder="Enter value">
+<input type="number" id="inputValue" placeholder="Enter Value">
 
 <select id="unit">
     <option value="kg">Kilogram (kg)</option>
@@ -103,24 +68,20 @@ th, td {
     <option value="lb">Pound (lb)</option>
 </select>
 
+<div id="output"></div>
+
 </div>
 
-<!-- OUTPUT -->
-<div id="output" class="result-table"></div>
-
-<!-- AD -->
-<div class="ad-slot"></div>
-
-<!-- ENGINEERING KNOWLEDGE -->
+<!-- ================= ENGINEERING NOTE ================= -->
 <div class="section">
-<h3>Engineering Note</h3>
+<h2>Engineering Note</h2>
 <ul>
-<li>Force is calculated using F = m × g</li>
-<li>Standard gravity (g) = 9.81 m/s²</li>
+<li>Weight-force conversion is based on standard gravity (g = 9.81 m/s²)</li>
 <li>1 kg = 9.81 N</li>
 <li>1 kN = 1000 N</li>
 <li>1 metric ton = 1000 kg</li>
-<li>Always maintain SI unit consistency in engineering calculations</li>
+<li>All values are rounded to 2 decimals for engineering accuracy</li>
+<li>Maintain unit consistency in load and structural calculations</li>
 </ul>
 </div>
 
@@ -141,6 +102,7 @@ th, td {
 
 </div>
 
+<!-- ================= SCRIPT ================= -->
 <script>
 
 const TO_NEWTON = {
@@ -151,40 +113,40 @@ const TO_NEWTON = {
     lb: 4.44822
 };
 
-function calculate() {
+function convert(){
 
-let value = parseFloat(document.getElementById("inputValue").value);
-let unit = document.getElementById("unit").value;
+    let value = parseFloat(document.getElementById("inputValue").value);
+    let unit = document.getElementById("unit").value;
 
-if(isNaN(value)){
-document.getElementById("output").innerHTML = "";
-return;
-}
+    if(isNaN(value)){
+        document.getElementById("output").innerHTML = "";
+        return;
+    }
 
-let newton = value * TO_NEWTON[unit];
+    let newton = value * TO_NEWTON[unit];
 
-let results = {
-"Kilogram (kg)": newton / 9.81,
-"Newton (N)": newton,
-"Kilonewton (kN)": newton / 1000,
-"Metric Ton": newton / 9810,
-"Pound (lb)": newton / 4.44822
-};
+    let results = {
+        "Kilogram (kg)": newton / 9.81,
+        "Newton (N)": newton,
+        "Kilonewton (kN)": newton / 1000,
+        "Metric Ton": newton / 9810,
+        "Pound (lb)": newton / 4.44822
+    };
 
-let table = "<table><tr><th>Unit</th><th>Value</th></tr>";
+    let table = "<div class='card'><h3>Converted Values</h3><table><tr><th>Unit</th><th>Value</th></tr>";
 
-for(let k in results){
-table += "<tr><td>" + k + "</td><td>" + results[k].toFixed(2) + "</td></tr>";
-}
+    for(let k in results){
+        table += "<tr><td>" + k + "</td><td>" + results[k].toFixed(2) + "</td></tr>";
+    }
 
-table += "</table>";
+    table += "</table></div>";
 
-document.getElementById("output").innerHTML = table;
+    document.getElementById("output").innerHTML = table;
 }
 
 /* LIVE CONVERSION */
-document.getElementById("inputValue").addEventListener("input", calculate);
-document.getElementById("unit").addEventListener("change", calculate);
+document.getElementById("inputValue").addEventListener("input", convert);
+document.getElementById("unit").addEventListener("change", convert);
 
 </script>
 
