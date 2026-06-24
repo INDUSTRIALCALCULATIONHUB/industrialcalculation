@@ -200,7 +200,7 @@ button:hover {
     opacity: 0.8;
 }
 
-/* ================= RESULT BOX ================= */
+/* ================= RESULT CARD ================= */
 .result-box {
     margin-top: 15px;
 }
@@ -222,41 +222,52 @@ button:hover {
     color: #1e3c72;
 }
 
-/* ================= FIXED PROFESSIONAL TABLE ================= */
+/* ================= FINAL PROFESSIONAL TABLE FIX ================= */
 .result-table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed;   /* 🔥 FIX: prevents stretching */
+    table-layout: fixed;
     font-size: 14px;
 }
 
-/* HEADERS */
-.result-table th {
-    background: #1e3c72;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
+/* LEFT COLUMN (UNITS) */
+.result-table th:nth-child(1),
+.result-table td:nth-child(1) {
+    width: 55%;
+    text-align: left;
 }
 
-/* CELLS */
+/* RIGHT COLUMN (VALUES) */
+.result-table th:nth-child(2),
+.result-table td:nth-child(2) {
+    width: 45%;
+    text-align: right;
+}
+
+/* CELL STYLING */
+.result-table th,
 .result-table td {
-    padding: 10px;
-    text-align: center;
+    padding: 12px 14px;
+}
 
-    border-bottom: 1px solid #eee;
-
-    /* 🔥 FIX NUMBER OVERFLOW */
+/* NUMERIC STYLING (ENGINEERING STANDARD) */
+.result-table td {
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
-/* ROW STRIPE */
+/* HEADER STYLE */
+.result-table th {
+    background: #1e3c72;
+    color: white;
+}
+
+/* STRIPED ROWS */
 .result-table tr:nth-child(even) {
     background: #f6f9ff;
 }
 
+/* HOVER EFFECT */
 .result-table tr:hover {
     background: #eef4ff;
 }
