@@ -12,102 +12,123 @@
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
 <!-- ADSENSE -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612" crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
+crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="style.css">
 
 <style>
-.container { margin-top:120px; margin-bottom:120px; }
 
-.converter {
-display:flex;
-gap:10px;
-justify-content:center;
-flex-wrap:wrap;
+.container{
+    margin-top:120px;
+    margin-bottom:120px;
 }
 
-.converter input, .converter select {
-padding:10px;
-font-size:14px;
+/* MAIN CARD */
+.converter-box{
+    max-width:900px;
+    margin:auto;
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.15);
 }
 
-.swap-btn {
-padding:8px 12px;
-cursor:pointer;
+/* INPUT ROW */
+.converter{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
 }
 
-.result-card {
-background:#fff;
-padding:18px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-margin-top:15px;
+.converter input,
+.converter select{
+    padding:12px;
+    font-size:15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    min-width:120px;
 }
 
-.primary-result {
-font-size:20px;
-font-weight:600;
-text-align:center;
-margin-bottom:10px;
-color:#1e3c72;
+/* SWAP */
+.swap-btn{
+    padding:10px 14px;
+    cursor:pointer;
+    border:none;
+    background:#1e3c72;
+    color:#fff;
+    border-radius:8px;
 }
 
-table {
-width:100%;
-border-collapse:collapse;
+/* QUICK BUTTONS */
+.quick-btns{
+    margin-top:15px;
+    text-align:center;
 }
 
-th {
-background:#1e3c72;
-color:#fff;
+.quick-btns button{
+    margin:6px;
+    padding:8px 12px;
+    border:none;
+    background:#eee;
+    border-radius:6px;
+    cursor:pointer;
 }
 
-td, th {
-padding:8px;
-text-align:center;
-border-bottom:1px solid #ddd;
+/* RESULT */
+.result-box{
+    margin-top:20px;
+    text-align:center;
+    font-size:18px;
+    font-weight:600;
 }
 
-.quick-btns button {
-margin:5px;
-padding:6px 10px;
-cursor:pointer;
+.copy-btn{
+    margin-left:10px;
+    padding:6px 10px;
+    cursor:pointer;
 }
 
-.copy-btn {
-margin-left:10px;
-cursor:pointer;
+/* HISTORY */
+.history{
+    margin-top:20px;
+    background:#f5f5f5;
+    padding:12px;
+    border-radius:8px;
+    max-height:150px;
+    overflow:auto;
+    font-size:13px;
 }
 
-.history {
-margin-top:20px;
-font-size:13px;
+.clear-btn{
+    margin-top:10px;
+    padding:6px 10px;
+    cursor:pointer;
 }
 
-.clear-btn {
-margin-top:5px;
-cursor:pointer;
-}
 </style>
 
 </head>
 
 <body>
 
-<!-- TOPBAR -->
+<!-- ================= TOP BAR ================= -->
 <div class="topbar">
-<div class="topbar-line">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="privacy.html">Privacy</a>
-<a href="terms.html">Terms</a>
-</div>
-<div class="topbar-line">
-<a href="index.html#tools">Engineering Tools</a>
-<a href="index.html#converters">Unit Conversion</a>
-<a href="index.html#blogs">Engineering Knowledge</a>
-</div>
+    <div class="topbar-line">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
+    <div class="topbar-line">
+        <a href="index.html#tools">Engineering Tools</a>
+        <a href="index.html#converters">Unit Conversion</a>
+        <a href="index.html#blogs">Engineering Knowledge</a>
+    </div>
 </div>
 
 <div class="container">
@@ -116,6 +137,8 @@ cursor:pointer;
 <p class="center">Engineering force and mass unit converter</p>
 
 <div class="ad-slot"></div>
+
+<div class="converter-box">
 
 <!-- CONVERTER -->
 <div class="converter">
@@ -145,7 +168,7 @@ cursor:pointer;
 </div>
 
 <!-- QUICK -->
-<div class="quick-btns center">
+<div class="quick-btns">
 <button onclick="quickSet('kg','N')">kg → N</button>
 <button onclick="quickSet('N','kg')">N → kg</button>
 <button onclick="quickSet('kN','kg')">kN → kg</button>
@@ -153,11 +176,16 @@ cursor:pointer;
 </div>
 
 <!-- RESULT -->
-<div id="output"></div>
+<div class="result-box">
+<span id="resultText"></span>
+<button class="copy-btn" onclick="copyResult()">Copy</button>
+</div>
 
 <!-- HISTORY -->
 <div class="history" id="history"></div>
 <button class="clear-btn" onclick="clearHistory()">Clear History</button>
+
+</div>
 
 <div class="ad-slot"></div>
 
@@ -165,17 +193,18 @@ cursor:pointer;
 <div class="section">
 <h3>Engineering Note</h3>
 <ul>
-<li>Force conversion uses standard gravity (g = 9.81 m/s²)</li>
+<li>Force conversion is based on standard gravity (g = 9.81 m/s²)</li>
 <li>1 kg = 9.81 N</li>
 <li>1 kN = 1000 N</li>
-<li>All results rounded to 2 decimals</li>
-<li>Maintain unit consistency in structural and mechanical design</li>
+<li>1 ton = 1000 kg</li>
+<li>All values rounded to 2 decimals for engineering practicality</li>
+<li>Ensure unit consistency in load calculations</li>
 </ul>
 </div>
 
 </div>
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 <div class="footer">
 <div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
 <div class="footer-links">
@@ -189,7 +218,7 @@ cursor:pointer;
 
 <script>
 
-const TO_N = {
+const TO_NEWTON = {
 kg:9.81,
 N:1,
 kN:1000,
@@ -204,57 +233,31 @@ let u1=unit1.value;
 let u2=unit2.value;
 
 if(from===1 && !isNaN(v1)){
-let N=v1*TO_N[u1];
-let res=N/TO_N[u2];
+let N=v1*TO_NEWTON[u1];
+let res=N/TO_NEWTON[u2];
 input2.value=res.toFixed(2);
-render(v1,u1,res,u2,N);
+update(v1,u1,res,u2);
 addHistory(v1,u1,res,u2);
 }
 
 if(from===2 && !isNaN(v2)){
-let N=v2*TO_N[u2];
-let res=N/TO_N[u1];
+let N=v2*TO_NEWTON[u2];
+let res=N/TO_NEWTON[u1];
 input1.value=res.toFixed(2);
-render(res,u1,v2,u2,N);
+update(res,u1,v2,u2);
 addHistory(res,u1,v2,u2);
 }
 }
 
-function render(v1,u1,v2,u2,N){
-
-let results = {
-"Kilogram (kg)": N/9.81,
-"Newton (N)": N,
-"Kilonewton (kN)": N/1000,
-"Metric Ton": N/9810,
-"Pound (lb)": N/4.44822
-};
-
-let html = `<div class="result-card">
-<div class="primary-result">${v1} ${u1} = ${v2.toFixed(2)} ${u2}
-<button class="copy-btn" onclick="copyResult()">Copy</button>
-</div>
-
-<table>
-<tr><th>Unit</th><th>Value</th></tr>`;
-
-for(let k in results){
-html += `<tr><td>${k}</td><td>${results[k].toFixed(2)}</td></tr>`;
-}
-
-html += `</table></div>`;
-
-output.innerHTML = html;
-}
-
 function swapUnits(){
-let t=unit1.value;
-unit1.value=unit2.value;
-unit2.value=t;
+let u1=unit1.value;
+let u2=unit2.value;
+unit1.value=u2;
+unit2.value=u1;
 
-let v=input1.value;
+let v1=input1.value;
 input1.value=input2.value;
-input2.value=v;
+input2.value=v1;
 
 convert(1);
 }
@@ -265,8 +268,12 @@ unit2.value=u2;
 convert(1);
 }
 
+function update(v1,u1,v2,u2){
+resultText.innerHTML=`${v1} ${u1} = ${v2.toFixed(2)} ${u2}`;
+}
+
 function copyResult(){
-navigator.clipboard.writeText(document.querySelector(".primary-result").innerText);
+navigator.clipboard.writeText(resultText.innerText);
 }
 
 function addHistory(v1,u1,v2,u2){
