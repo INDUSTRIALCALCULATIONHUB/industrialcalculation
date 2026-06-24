@@ -67,6 +67,7 @@ body {
 }
 
 .header h1 {
+    text-align: center;
     font-size: 34px;
     font-weight: 700;
     color: #ffffff;
@@ -186,7 +187,7 @@ input, select, textarea {
 }
 
 .search-box input {
-    width: 60%;
+    width: 80%;
     max-width: 420px;
     display: inline-block;
     text-align: left;
