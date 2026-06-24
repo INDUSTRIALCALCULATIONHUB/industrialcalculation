@@ -6,7 +6,7 @@
 
 <title>Temperature Conversion Tool | Industrial Calculation Hub</title>
 
-<meta name="description" content="Convert Celsius, Fahrenheit, and Kelvin using engineering thermodynamic relationships.">
+<meta name="description" content="Convert Celsius, Fahrenheit, and Kelvin with engineering accuracy for thermodynamics applications.">
 
 <!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
@@ -16,31 +16,6 @@
 crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="style.css">
-
-<style>
-.result-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-.result-table th {
-    background: #1e3c72;
-    color: white;
-    padding: 10px;
-}
-
-.result-table td {
-    padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-}
-
-.result-card {
-    margin-top: 15px;
-}
-</style>
-
 </head>
 
 <body>
@@ -70,33 +45,48 @@ crossorigin="anonymous"></script>
 <!-- HEADER -->
 <div class="header">
     <h1>Temperature Conversion Tool</h1>
-    <p>Engineering Thermodynamics Converter</p>
+    <p>Engineering Thermodynamics Conversion Calculator</p>
 </div>
 
 <!-- INPUT SECTION -->
 <div class="section">
 
-    <input type="number" id="inputValue" placeholder="Enter Temperature Value">
+<input type="number" id="inputValue" placeholder="Enter Temperature Value">
 
-    <select id="unit">
-        <option value="C">Celsius (°C)</option>
-        <option value="F">Fahrenheit (°F)</option>
-        <option value="K">Kelvin (K)</option>
-    </select>
+<select id="unit">
+    <option value="C">Celsius (°C)</option>
+    <option value="F">Fahrenheit (°F)</option>
+    <option value="K">Kelvin (K)</option>
+</select>
 
-    <div id="output"></div>
+<div id="output" class="result-box"></div>
 
 </div>
 
-<!-- ENGINEERING NOTE -->
+<!-- ================= INFO ================= -->
 <div class="section">
-<h2>Engineering Note</h2>
+<h2>About Temperature Conversion</h2>
+<p>
+This tool converts temperature values using standard thermodynamic relationships between Celsius, Fahrenheit, and Kelvin scales.
+</p>
+
+<h3>Engineering Applications</h3>
 <ul>
-<li>Conversions based on standard thermodynamic relationships</li>
-<li>Kelvin is absolute temperature scale</li>
-<li>Celsius and Fahrenheit are relative scales</li>
-<li>Kelvin is mandatory in thermodynamic equations</li>
-<li>All values rounded to 2 decimals</li>
+<li>Thermodynamics</li>
+<li>HVAC Systems</li>
+<li>Process Engineering</li>
+<li>Industrial Design Calculations</li>
+</ul>
+</div>
+
+<!-- ================= THEORY ================= -->
+<div class="section">
+<h2>Theory</h2>
+<ul>
+<li>Celsius is based on water freezing/boiling points</li>
+<li>Kelvin is absolute thermodynamic scale</li>
+<li>Fahrenheit is used in legacy systems</li>
+<li>Always use Kelvin for thermodynamic equations</li>
 </ul>
 </div>
 
@@ -104,6 +94,7 @@ crossorigin="anonymous"></script>
 
 <!-- ================= FOOTER ================= -->
 <div class="footer">
+
 <div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
 
 <div class="footer-links">
@@ -113,68 +104,68 @@ crossorigin="anonymous"></script>
     <a href="privacy.html">Privacy</a>
     <a href="terms.html">Terms</a>
 </div>
+
 </div>
 
+<!-- ================= SCRIPT ================= -->
 <script>
 
-function convert() {
+function calculate() {
 
-let value = parseFloat(document.getElementById("inputValue").value);
-let unit = document.getElementById("unit").value;
+    let value = parseFloat(document.getElementById("inputValue").value);
+    let unit = document.getElementById("unit").value;
 
-if (isNaN(value)) {
-    document.getElementById("output").innerHTML = "";
-    return;
+    if (isNaN(value)) {
+        document.getElementById("output").innerHTML = "";
+        return;
+    }
+
+    let C;
+
+    if (unit === "C") {
+        C = value;
+    } else if (unit === "F") {
+        C = (value - 32) * 5 / 9;
+    } else if (unit === "K") {
+        C = value - 273.15;
+    }
+
+    let F = (C * 9 / 5) + 32;
+    let K = C + 273.15;
+
+    let results = {
+        "Celsius (°C)": C,
+        "Fahrenheit (°F)": F,
+        "Kelvin (K)": K
+    };
+
+    let table = `
+    <div class="result-card">
+        <h3>Converted Values</h3>
+        <table class="result-table">
+            <tr>
+                <th>Unit</th>
+                <th>Value</th>
+            </tr>
+    `;
+
+    for (let k in results) {
+        table += `
+            <tr>
+                <td>${k}</td>
+                <td>${results[k].toFixed(2)}</td>
+            </tr>`;
+    }
+
+    table += `
+        </table>
+    </div>`;
+
+    document.getElementById("output").innerHTML = table;
 }
 
-let C;
-
-if (unit === "C") {
-    C = value;
-} else if (unit === "F") {
-    C = (value - 32) * 5 / 9;
-} else if (unit === "K") {
-    C = value - 273.15;
-}
-
-let F = (C * 9 / 5) + 32;
-let K = C + 273.15;
-
-let html = `
-<div class="section result-card">
-<h3>Converted Values</h3>
-
-<table class="result-table">
-<tr>
-<th>Unit</th>
-<th>Value</th>
-</tr>
-
-<tr>
-<td>Celsius (°C)</td>
-<td>${C.toFixed(2)}</td>
-</tr>
-
-<tr>
-<td>Fahrenheit (°F)</td>
-<td>${F.toFixed(2)}</td>
-</tr>
-
-<tr>
-<td>Kelvin (K)</td>
-<td>${K.toFixed(2)}</td>
-</tr>
-
-</table>
-</div>
-`;
-
-document.getElementById("output").innerHTML = html;
-}
-
-/* LIVE CONVERSION */
-document.getElementById("inputValue").addEventListener("input", convert);
-document.getElementById("unit").addEventListener("change", convert);
+document.getElementById("inputValue").addEventListener("input", calculate);
+document.getElementById("unit").addEventListener("change", calculate);
 
 </script>
 
