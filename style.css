@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
     background: linear-gradient(to right, #1e3c72, #2a5298);
     color: #1f2a3a;
     overflow-x: hidden;
@@ -76,6 +76,7 @@ body {
 }
 
 .header p {
+    text-align: center;
     font-size: 15px;
     opacity: 0.95;
     color: #e8f0ff;
@@ -115,17 +116,19 @@ h3 {
 p {
     line-height: 1.7;
     margin-bottom: 14px;
-    text-align: justify;
+    text-align: left;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
-
 ul {
     padding-left: 22px;
     margin-bottom: 15px;
 }
 
 li {
-    margin-bottom: 6px;
-    line-height: 1.6;
+    margin-bottom: 8px;
+    line-height: 1.7;
 }
 
 /* ================= GRID ================= */
