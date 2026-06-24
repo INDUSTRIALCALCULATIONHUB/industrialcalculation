@@ -8,21 +8,16 @@
 
 <meta name="description" content="Convert area units like m², ft², acre, hectare with engineering accuracy.">
 
-<!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612" crossorigin="anonymous"></script>
 
-<!-- ADSENSE -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
-crossorigin="anonymous"></script>
-
-<!-- GLOBAL CSS -->
 <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<!-- ================= TOP BAR ================= -->
+<!-- TOP BAR -->
 <div class="topbar">
 
     <div class="topbar-line">
@@ -41,95 +36,82 @@ crossorigin="anonymous"></script>
 
 </div>
 
-<!-- ================= WRAPPER ================= -->
 <div class="wrapper">
 
 <!-- HEADER -->
 <div class="header">
-    <h1>Area Conversion</h1>
-    <p>Unit Converter For Area</p>
+    <h1>Area Conversion Tool</h1>
+    <p>Engineering Surface Area Unit Converter</p>
 </div>
 
-<!-- INPUT SECTION -->
+<!-- INPUT -->
 <div class="section">
 
-    <input type="number" id="inputValue" placeholder="Enter Value">
+<input type="number" id="inputValue" placeholder="Enter Area Value">
 
-    <select id="unit">
-        <option value="sqm">Square Meter (m²)</option>
-        <option value="sqft">Square Foot (ft²)</option>
-        <option value="sqin">Square Inch (in²)</option>
-        <option value="acre">Acre</option>
-        <option value="hectare">Hectare</option>
-    </select>
+<select id="unit">
+    <option value="sqm">Square Meter (m²)</option>
+    <option value="sqft">Square Foot (ft²)</option>
+    <option value="sqin">Square Inch (in²)</option>
+    <option value="acre">Acre</option>
+    <option value="hectare">Hectare</option>
+</select>
 
-    <button onclick="calculate()">Convert</button>
-    <button onclick="resetForm()">Reset</button>
+<button onclick="calculate()">Convert</button>
+<button onclick="resetForm()">Reset</button>
 
-    <div id="output" class="result-box"></div>
+<div id="output" class="result-box"></div>
 
 </div>
 
-    <!-- ================= ENGINEERING KNOWLEDGE ================= -->
+<!-- ENGINEERING KNOWLEDGE -->
 <div class="section">
 
 <h2>Engineering Knowledge</h2>
 
 <p>
-Area is a derived physical quantity representing two-dimensional spatial measurement,
-calculated as the square of linear dimensions (L²). It is a fundamental parameter in civil,
-mechanical, and industrial engineering design calculations.
+Area is a two-dimensional physical quantity representing surface extent, expressed as L² in dimensional analysis. It is widely used in civil, mechanical, HVAC, and industrial design engineering.
 </p>
 
 <h3>Fundamental Basis</h3>
 <ul>
-<li>Area measurements are derived from the SI base unit: square meter (m²)</li>
-<li>It is a derived unit based on length squared (L² dimensional form)</li>
-<li>All unit conversions are standardized using internationally accepted SI constants</li>
-<li>Ensures uniformity in engineering design, estimation, and analysis</li>
+<li>SI base unit: square meter (m²)</li>
+<li>Derived from length squared (L² dimensional form)</li>
+<li>Standardized using internationally accepted SI conversion constants</li>
+<li>Ensures engineering consistency in design and estimation</li>
 </ul>
 
 <h3>Standard Conversion Factors</h3>
 <ul>
-<li>1 acre = 4046.86 m² (land measurement and surveying applications)</li>
-<li>1 hectare = 10,000 m² (standard SI-derived land unit)</li>
-<li>1 square foot (ft²) = 0.092903 m² (construction and building design)</li>
-<li>1 square inch (in²) = 0.00064516 m² (precision mechanical applications)</li>
+<li>1 acre = 4046.86 m²</li>
+<li>1 hectare = 10,000 m²</li>
+<li>1 ft² = 0.092903 m²</li>
+<li>1 in² = 0.00064516 m²</li>
 </ul>
 
-<h3>Engineering Application Areas</h3>
+<h3>Engineering Applications</h3>
 <ul>
-<li>Industrial plant layout and space utilization planning</li>
-<li>Structural design and load distribution estimation</li>
-<li>HVAC system sizing and airflow coverage analysis</li>
-<li>Material estimation (painting, flooring, insulation, cladding)</li>
-<li>Land acquisition, surveying, and real estate development</li>
+<li>Industrial plant layout and space planning</li>
+<li>Structural load distribution and design estimation</li>
+<li>HVAC airflow and thermal coverage calculations</li>
+<li>Material estimation (painting, flooring, insulation)</li>
+<li>Land surveying and real estate development</li>
 </ul>
 
 <h3>Engineering Reliability Note</h3>
 <ul>
-<li>Values are based on standardized international conversion constants</li>
-<li>Suitable for engineering estimation and design-level calculations</li>
-<li>For legal land surveying, certified survey instruments should be used</li>
+<li>Values are based on internationally accepted engineering constants</li>
+<li>Suitable for estimation-level and design-level calculations</li>
+<li>Legal surveying requires certified measurement instruments</li>
 </ul>
 
 </div>
-    
+
 </div>
 
-<!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 <div class="footer">
-
 <div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
-
-<div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="terms.html">Terms</a>
-</div>
-
 </div>
 
 <script>
@@ -145,44 +127,31 @@ const TO_SQM = {
 function calculate() {
 
     let val = parseFloat(document.getElementById("inputValue").value);
-    let unit = document.getElementById("unit").value;
 
-    if (isNaN(val)) {
-        document.getElementById("output").innerHTML = "";
-        return;
-    }
+    if (isNaN(val)) return;
+
+    let unit = document.getElementById("unit").value;
 
     let sqm = val * TO_SQM[unit];
 
     let res = {
-        "Square Meter (m²)": sqm,
-        "Square Foot (ft²)": sqm / 0.092903,
-        "Square Inch (in²)": sqm / 0.00064516,
+        "Square Meter": sqm,
+        "Square Foot": sqm / 0.092903,
+        "Square Inch": sqm / 0.00064516,
         "Acre": sqm / 4046.86,
         "Hectare": sqm / 10000
     };
 
-    let html = `
-    <div class="result-card">
-        <h3>Converted Values</h3>
-        <table class="result-table">
-            <tr>
-                <th>Unit</th>
-                <th>Value</th>
-            </tr>
-    `;
+    let html = `<div class="result-card">
+    <h3>Converted Values</h3>
+    <table class="result-table">
+    <tr><th>Unit</th><th>Value</th></tr>`;
 
     for (let k in res) {
-        html += `
-            <tr>
-                <td>${k}</td>
-                <td>${res[k].toFixed(2)}</td>
-            </tr>`;
+        html += `<tr><td>${k}</td><td>${res[k].toFixed(2)}</td></tr>`;
     }
 
-    html += `
-        </table>
-    </div>`;
+    html += `</table></div>`;
 
     document.getElementById("output").innerHTML = html;
 }
