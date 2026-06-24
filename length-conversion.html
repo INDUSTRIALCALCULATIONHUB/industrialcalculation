@@ -140,13 +140,24 @@ function convert(){
         "Yard (yd)": meter / 0.9144
     };
 
-    let table = "<div class='card'><h3>Converted Values</h3><table><tr><th>Unit</th><th>Value</th></tr>";
+let table = `
+<div class="result-card">
+<h3>Converted Values</h3>
+<table class="result-table">
+<tr><th>Unit</th><th>Value</th></tr>
+`;
 
-    for(let k in results){
-        table += "<tr><td>" + k + "</td><td>" + results[k].toFixed(2) + "</td></tr>";
-    }
+for (let k in results) {
+    table += `
+    <tr>
+        <td>${k}</td>
+        <td>${results[k].toFixed(2)}</td>
+    </tr>`;
+}
 
-    table += "</table></div>";
+table += `
+</table>
+</div>`;
 
     document.getElementById("output").innerHTML = table;
 }
