@@ -21,7 +21,7 @@ body {
     width: 100%;
     background: #1e3c72;
     z-index: 1000;
-    padding: 6px 0;
+    padding: 2px 0;
 }
 
 .topbar-line {
@@ -29,8 +29,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 16px;
-    padding: 6px 10px;
+    gap: 14px;
+    padding: 4px 8px;
     text-align: center;
 }
 
@@ -54,8 +54,8 @@ body {
 
 /* ================= WRAPPER ================= */
 .wrapper {
-    margin-top: 125px;
-    margin-bottom: 110px;
+    margin-top: 95px;
+    margin-bottom: 90px;
 }
 
 /* ================= HEADER ================= */
@@ -78,6 +78,9 @@ body {
     font-size: 15px;
     opacity: 0.95;
     color: #e8f0ff;
+    text-align: center;
+    display: block;
+    width: 100%;
 }
 
 /* ================= SECTION ================= */
@@ -143,7 +146,7 @@ li {
     text-align: center;
 
     background: #e6eef8;
-    padding: 18px;
+    padding: 14px;
     border-radius: 10px;
 
     color: #1e2a3a;
@@ -153,7 +156,7 @@ li {
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 
     transition: all 0.25s ease;
-    min-height: 140px;   /* equal height */
+    min-height: 90px;   /* equal height */
 }
 
 /* FIX TEXT INSIDE CARD */
@@ -327,16 +330,45 @@ button:hover {
 /* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
 
-    .section {
-        width: 92%;
-        padding: 20px;
+    .topbar-line {
+        gap: 8px;
+        padding: 3px 5px;
+    }
+
+    .topbar a {
+        font-size: 12px;
+        padding: 2px 4px;
     }
 
     .wrapper {
-        margin-top: 135px;
+        margin-top: 125px;
+        margin-bottom: 95px;
+    }
+
+    .section {
+        width: 95%;
+        padding: 18px;
+    }
+
+    .header h1 {
+        font-size: 28px;
+    }
+
+    .header p {
+        font-size: 14px;
     }
 
     .search-box input {
-        width: 85%;
+        width: 90%;
     }
 }
+
+/* ================= CARD TEXT CENTERING ================= */
+
+.card p,
+.card div,
+.card span {
+    text-align: center !important;
+    width: 100%;
+}
+
