@@ -372,3 +372,13 @@ button:hover {
     width: 100%;
 }
 
+/* ================= LEBEL ADDED ================= */
+
+label {
+    display: block;
+    font-weight: 600;
+    color: #1e3c72;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
