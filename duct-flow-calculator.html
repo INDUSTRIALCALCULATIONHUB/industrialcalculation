@@ -94,46 +94,84 @@ function renderInputs(){
 
     let html = "";
 
+    // ---------------- FLOW ----------------
     if(mode === "flow"){
         if(type === "rect"){
             html = `
-            Width (m): <input type="number" id="w">
-            Height (m): <input type="number" id="h">
-            Velocity (m/s): <input type="number" id="v">
-            `;
+Width (m): <input type="number" id="w">
+Height (m): <input type="number" id="h">
+Velocity (m/s): <input type="number" id="v">
+
+Flow Unit:
+<select id="flowUnit">
+  <option value="m3s">m³/s</option>
+  <option value="m3hr">m³/hr</option>
+  <option value="cfm">CFM</option>
+</select>
+`;
         } else {
             html = `
-            Diameter (m): <input type="number" id="d">
-            Velocity (m/s): <input type="number" id="v">
-            `;
+Diameter (m): <input type="number" id="d">
+Velocity (m/s): <input type="number" id="v">
+
+Flow Unit:
+<select id="flowUnit">
+  <option value="m3s">m³/s</option>
+  <option value="m3hr">m³/hr</option>
+  <option value="cfm">CFM</option>
+</select>
+`;
         }
     }
 
+    // ---------------- VELOCITY ----------------
     else if(mode === "velocity"){
         if(type === "rect"){
             html = `
-            Width (m): <input type="number" id="w">
-            Height (m): <input type="number" id="h">
-            Flow Rate (m³/s): <input type="number" id="q">
-            `;
+Width (m): <input type="number" id="w">
+Height (m): <input type="number" id="h">
+Flow Rate (m³/s): <input type="number" id="q">
+
+Velocity Unit:
+<select id="velUnit">
+  <option value="ms">m/s</option>
+  <option value="fts">ft/s</option>
+</select>
+`;
         } else {
             html = `
-            Diameter (m): <input type="number" id="d">
-            Flow Rate (m³/s): <input type="number" id="q">
-            `;
+Diameter (m): <input type="number" id="d">
+Flow Rate (m³/s): <input type="number" id="q">
+
+Velocity Unit:
+<select id="velUnit">
+  <option value="ms">m/s</option>
+  <option value="fts">ft/s</option>
+</select>
+`;
         }
     }
 
+    // ---------------- SIZE ----------------
     else {
         html = `
-        Flow Rate (m³/s): <input type="number" id="q">
-        Velocity (m/s): <input type="number" id="v">
-        `;
+Flow Rate (m³/s):
+<input type="number" id="q">
+
+Velocity (m/s):
+<input type="number" id="v">
+
+Diameter Unit:
+<select id="lenUnit">
+  <option value="m">m</option>
+  <option value="mm">mm</option>
+  <option value="ft">ft</option>
+</select>
+`;
     }
 
-document.getElementById("inputs").innerHTML = html;
-
-attachEvents();
+    document.getElementById("inputs").innerHTML = html;
+    attachEvents();
 }
 
 document.getElementById("mode").addEventListener("change", () => {
@@ -162,98 +200,152 @@ function calculate(){
     let mode = document.getElementById("mode").value;
     let type = document.getElementById("ductType").value;
 
+    let flowUnit = "m3s";   // fixed internal base
+    let velUnit = "ms";
+    let lenUnit = "m";
+
     let result = 0;
 
-    // FLOW RATE Q
+    // ---------------- FLOW RATE ----------------
     if(mode === "flow"){
 
+        let v, area;
+
         if(type === "rect"){
 
             let w = parseFloat(document.getElementById("w").value);
             let h = parseFloat(document.getElementById("h").value);
-            let v = parseFloat(document.getElementById("v").value);
+            v = parseFloat(document.getElementById("v").value);
 
-            if(isNaN(w) || isNaN(h) || isNaN(v) || w <= 0 || h <= 0 || v <= 0){
+            if(isNaN(w) || isNaN(h) || isNaN(v) || w<=0 || h<=0 || v<=0){
                 document.getElementById("output").innerHTML = "";
                 return;
             }
 
-            result = w * h * v; // Q = A * V
+            area = w * h;
 
         } else {
 
             let d = parseFloat(document.getElementById("d").value);
-            let v = parseFloat(document.getElementById("v").value);
+            v = parseFloat(document.getElementById("v").value);
 
-            if(isNaN(d) || isNaN(v) || d <= 0 || v <= 0){
+            if(isNaN(d) || isNaN(v) || d<=0 || v<=0){
                 document.getElementById("output").innerHTML = "";
                 return;
             }
 
-            let area = Math.PI * Math.pow(d/2, 2);
-            result = area * v;
+            area = Math.PI * Math.pow(d/2,2);
+        }
+
+        let Q = area * v; // m³/s
+
+        // UNIT CONVERSION
+        let unit = document.getElementById("flowUnit")?.value || "m3s";
+
+        if(unit === "m3hr"){
+            result = Q * 3600;
+            unit = "m³/hr";
+        }
+        else if(unit === "cfm"){
+            result = Q * 2118.88;
+            unit = "CFM";
+        }
+        else{
+            result = Q;
+            unit = "m³/s";
         }
 
         document.getElementById("output").innerHTML =
-            "Flow Rate (Q) = " + result.toFixed(3) + " m³/s";
+            "Flow Rate = " + result.toFixed(3) + " " + unit;
     }
 
-    // VELOCITY
+    // ---------------- VELOCITY ----------------
     if(mode === "velocity"){
 
+        let Q, area;
+
         if(type === "rect"){
 
             let w = parseFloat(document.getElementById("w").value);
             let h = parseFloat(document.getElementById("h").value);
-            let q = parseFloat(document.getElementById("q").value);
+            Q = parseFloat(document.getElementById("q").value);
 
-            if(isNaN(w) || isNaN(h) || isNaN(q) || w <= 0 || h <= 0 || q <= 0){
+            if(isNaN(w) || isNaN(h) || isNaN(Q) || w<=0 || h<=0 || Q<=0){
                 document.getElementById("output").innerHTML = "";
                 return;
             }
 
-            result = q / (w * h);
+            area = w * h;
 
         } else {
 
             let d = parseFloat(document.getElementById("d").value);
-            let q = parseFloat(document.getElementById("q").value);
+            Q = parseFloat(document.getElementById("q").value);
 
-            if(isNaN(d) || isNaN(q) || d <= 0 || q <= 0){
+            if(isNaN(d) || isNaN(Q) || d<=0 || Q<=0){
                 document.getElementById("output").innerHTML = "";
                 return;
             }
 
-            let area = Math.PI * Math.pow(d/2, 2);
-            result = q / area;
+            area = Math.PI * Math.pow(d/2,2);
+        }
+
+        let V = Q / area;
+
+        let unit = document.getElementById("velUnit")?.value || "ms";
+
+        if(unit === "fts"){
+            result = V * 3.28084;
+            unit = "ft/s";
+        } else {
+            result = V;
+            unit = "m/s";
         }
 
         document.getElementById("output").innerHTML =
-            "Velocity (V) = " + result.toFixed(3) + " m/s";
+            "Velocity = " + result.toFixed(3) + " " + unit;
     }
 
-    // DUCT SIZE (DIAMETER OR AREA)
+    // ---------------- SIZE ----------------
     if(mode === "size"){
 
-        let q = parseFloat(document.getElementById("q").value);
-        let v = parseFloat(document.getElementById("v").value);
+        let Q = parseFloat(document.getElementById("q").value);
+        let V = parseFloat(document.getElementById("v").value);
 
-        if(isNaN(q) || isNaN(v) || q <= 0 || v <= 0){
+        if(isNaN(Q) || isNaN(V) || Q<=0 || V<=0){
             document.getElementById("output").innerHTML = "";
             return;
         }
 
-        let area = q / v;
+        let area = Q / V; // m²
+
+        let unit = document.getElementById("lenUnit")?.value || "m";
 
         if(type === "rect"){
-            document.getElementById("output").innerHTML =
-                "Required Area = " + area.toFixed(3) + " m²";
-        } else {
 
-            let diameter = Math.sqrt((4 * area) / Math.PI);
+            result = area;
+            document.getElementById("output").innerHTML =
+                "Required Area = " + result.toFixed(3) + " m²";
+        }
+        else{
+
+            let d = Math.sqrt((4 * area) / Math.PI);
+
+            if(unit === "mm"){
+                result = d * 1000;
+                unit = "mm";
+            }
+            else if(unit === "ft"){
+                result = d * 3.28084;
+                unit = "ft";
+            }
+            else{
+                result = d;
+                unit = "m";
+            }
 
             document.getElementById("output").innerHTML =
-                "Required Diameter = " + diameter.toFixed(3) + " m";
+                "Required Diameter = " + result.toFixed(3) + " " + unit;
         }
     }
 }
