@@ -141,35 +141,69 @@ function renderInputs() {
 
     if (mode === "flow") {
 
-        html = `
-        <label>Pipe Diameter, D (m)</label>
-        <input type="number" id="d" placeholder="Enter diameter">
+html = `
+<label>Pipe Diameter, D</label>
+<input type="number" id="d" placeholder="Enter diameter">
 
-        <label>Velocity, V (m/s)</label>
-        <input type="number" id="v" placeholder="Enter velocity">
-        `;
+<select id="dUnit">
+    <option value="mm" selected>mm</option>
+    <option value="m">m</option>
+    <option value="ft">ft</option>
+</select>
+
+<label>Velocity, V</label>
+<input type="number" id="v" placeholder="Enter velocity">
+
+<select id="vUnit">
+    <option value="ms" selected>m/s</option>
+    <option value="fts">ft/s</option>
+</select>
+`;
     }
 
     else if (mode === "velocity") {
 
-        html = `
-        <label>Pipe Diameter, D (m)</label>
-        <input type="number" id="d" placeholder="Enter diameter">
+html = `
+<label>Pipe Diameter, D</label>
+<input type="number" id="d" placeholder="Enter diameter">
 
-        <label>Flow Rate, Q (m³/s)</label>
-        <input type="number" id="q" placeholder="Enter flow rate">
-        `;
+<select id="dUnit">
+    <option value="mm" selected>mm</option>
+    <option value="m">m</option>
+    <option value="ft">ft</option>
+</select>
+
+<label>Flow Rate, Q</label>
+<input type="number" id="q" placeholder="Enter flow rate">
+
+<select id="qUnit">
+    <option value="m3hr" selected>m³/hr</option>
+    <option value="m3s">m³/s</option>
+    <option value="cfm">CFM</option>
+</select>
+`;
     }
 
     else {
 
-        html = `
-        <label>Flow Rate, Q (m³/s)</label>
-        <input type="number" id="q" placeholder="Enter flow rate">
+html = `
+<label>Flow Rate, Q</label>
+<input type="number" id="q" placeholder="Enter flow rate">
 
-        <label>Velocity, V (m/s)</label>
-        <input type="number" id="v" placeholder="Enter velocity">
-        `;
+<select id="qUnit">
+    <option value="m3hr" selected>m³/hr</option>
+    <option value="m3s">m³/s</option>
+    <option value="cfm">CFM</option>
+</select>
+
+<label>Velocity, V</label>
+<input type="number" id="v" placeholder="Enter velocity">
+
+<select id="vUnit">
+    <option value="ms" selected>m/s</option>
+    <option value="fts">ft/s</option>
+</select>
+`;
     }
 
     document.getElementById("inputs").innerHTML = html;
@@ -179,13 +213,43 @@ function renderInputs() {
 
 function attachEvents() {
 
-    const inputs = document.querySelectorAll("#inputs input");
+    const controls =
+        document.querySelectorAll("#inputs input, #inputs select");
 
-    inputs.forEach(input => {
-        input.addEventListener("input", calculate);
+    controls.forEach(control => {
+
+        control.addEventListener("input", calculate);
+        control.addEventListener("change", calculate);
+
     });
 }
 
+function convertDiameterToM(value, unit){
+
+    if(unit === "mm") return value / 1000;
+
+    if(unit === "ft") return value * 0.3048;
+
+    return value;
+}
+
+function convertVelocityToMS(value, unit){
+
+    if(unit === "fts") return value * 0.3048;
+
+    return value;
+}
+
+function convertFlowToM3S(value, unit){
+
+    if(unit === "m3hr") return value / 3600;
+
+    if(unit === "cfm") return value * 0.00047194745;
+
+    return value;
+}
+
+    
 function calculate() {
 
     const mode = document.getElementById("mode").value;
@@ -194,8 +258,18 @@ function calculate() {
 
     if (mode === "flow") {
 
-        const d = parseFloat(document.getElementById("d").value);
-        const v = parseFloat(document.getElementById("v").value);
+let d = parseFloat(document.getElementById("d").value);
+let v = parseFloat(document.getElementById("v").value);
+
+d = convertDiameterToM(
+    d,
+    document.getElementById("dUnit").value
+);
+
+v = convertVelocityToMS(
+    v,
+    document.getElementById("vUnit").value
+);
 
         if (isNaN(d) || isNaN(v) || d <= 0 || v <= 0) {
             document.getElementById("output").innerHTML = "";
@@ -210,16 +284,27 @@ function calculate() {
 
         <table class="result-table">
         <tr><th>Parameter</th><th>Value</th></tr>
-        <tr><td>Flow Rate</td><td>${q.toFixed(4)} m³/s</td></tr>
-        <tr><td>Flow Rate</td><td>${(q*3600).toFixed(2)} m³/hr</td></tr>
+<tr><td>Flow Rate</td><td>${q.toFixed(4)} m³/s</td></tr>
+<tr><td>Flow Rate</td><td>${(q*3600).toFixed(2)} m³/hr</td></tr>
+<tr><td>Flow Rate</td><td>${(q/0.00047194745).toFixed(1)} CFM</td></tr>
         </table>
         </div>`;
     }
 
     else if (mode === "velocity") {
 
-        const d = parseFloat(document.getElementById("d").value);
-        const q = parseFloat(document.getElementById("q").value);
+let d = parseFloat(document.getElementById("d").value);
+let q = parseFloat(document.getElementById("q").value);
+
+d = convertDiameterToM(
+    d,
+    document.getElementById("dUnit").value
+);
+
+q = convertFlowToM3S(
+    q,
+    document.getElementById("qUnit").value
+);
 
         if (isNaN(d) || isNaN(q) || d <= 0 || q <= 0) {
             document.getElementById("output").innerHTML = "";
@@ -235,15 +320,26 @@ function calculate() {
 
         <table class="result-table">
         <tr><th>Parameter</th><th>Value</th></tr>
-        <tr><td>Velocity</td><td>${v.toFixed(3)} m/s</td></tr>
+<tr><td>Velocity</td><td>${v.toFixed(3)} m/s</td></tr>
+<tr><td>Velocity</td><td>${(v/0.3048).toFixed(3)} ft/s</td></tr>
         </table>
         </div>`;
     }
 
     else {
 
-        const q = parseFloat(document.getElementById("q").value);
-        const v = parseFloat(document.getElementById("v").value);
+let q = parseFloat(document.getElementById("q").value);
+let v = parseFloat(document.getElementById("v").value);
+
+q = convertFlowToM3S(
+    q,
+    document.getElementById("qUnit").value
+);
+
+v = convertVelocityToMS(
+    v,
+    document.getElementById("vUnit").value
+);
 
         if (isNaN(q) || isNaN(v) || q <= 0 || v <= 0) {
             document.getElementById("output").innerHTML = "";
@@ -258,8 +354,9 @@ function calculate() {
 
         <table class="result-table">
         <tr><th>Parameter</th><th>Value</th></tr>
-        <tr><td>Pipe Diameter</td><td>${d.toFixed(4)} m</td></tr>
-        <tr><td>Pipe Diameter</td><td>${(d*1000).toFixed(1)} mm</td></tr>
+<tr><td>Pipe Diameter</td><td>${(d*1000).toFixed(1)} mm</td></tr>
+<tr><td>Pipe Diameter</td><td>${d.toFixed(4)} m</td></tr>
+<tr><td>Pipe Diameter</td><td>${(d/0.3048).toFixed(4)} ft</td></tr>
         </table>
         </div>`;
     }
