@@ -162,8 +162,9 @@ function calculate(){
     let mode = document.getElementById("mode").value;
     let type = document.getElementById("ductType").value;
 
-    let result = "";
+    let result = 0;
 
+    // FLOW RATE Q
     if(mode === "flow"){
 
         if(type === "rect"){
@@ -172,25 +173,32 @@ function calculate(){
             let h = parseFloat(document.getElementById("h").value);
             let v = parseFloat(document.getElementById("v").value);
 
-            if(isNaN(w) || isNaN(h) || isNaN(v) ||
-               w <= 0 || h <= 0 || v <= 0){
+            if(isNaN(w) || isNaN(h) || isNaN(v) || w <= 0 || h <= 0 || v <= 0){
                 document.getElementById("output").innerHTML = "";
                 return;
             }
 
-        }else{
+            result = w * h * v; // Q = A * V
+
+        } else {
 
             let d = parseFloat(document.getElementById("d").value);
             let v = parseFloat(document.getElementById("v").value);
 
-            if(isNaN(d) || isNaN(v) ||
-               d <= 0 || v <= 0){
+            if(isNaN(d) || isNaN(v) || d <= 0 || v <= 0){
                 document.getElementById("output").innerHTML = "";
                 return;
             }
+
+            let area = Math.PI * Math.pow(d/2, 2);
+            result = area * v;
         }
+
+        document.getElementById("output").innerHTML =
+            "Flow Rate (Q) = " + result.toFixed(3) + " m³/s";
     }
 
+    // VELOCITY
     if(mode === "velocity"){
 
         if(type === "rect"){
@@ -199,36 +207,56 @@ function calculate(){
             let h = parseFloat(document.getElementById("h").value);
             let q = parseFloat(document.getElementById("q").value);
 
-            if(isNaN(w) || isNaN(h) || isNaN(q) ||
-               w <= 0 || h <= 0 || q <= 0){
+            if(isNaN(w) || isNaN(h) || isNaN(q) || w <= 0 || h <= 0 || q <= 0){
                 document.getElementById("output").innerHTML = "";
                 return;
             }
 
-        }else{
+            result = q / (w * h);
+
+        } else {
 
             let d = parseFloat(document.getElementById("d").value);
             let q = parseFloat(document.getElementById("q").value);
 
-            if(isNaN(d) || isNaN(q) ||
-               d <= 0 || q <= 0){
+            if(isNaN(d) || isNaN(q) || d <= 0 || q <= 0){
                 document.getElementById("output").innerHTML = "";
                 return;
             }
+
+            let area = Math.PI * Math.pow(d/2, 2);
+            result = q / area;
         }
+
+        document.getElementById("output").innerHTML =
+            "Velocity (V) = " + result.toFixed(3) + " m/s";
     }
 
+    // DUCT SIZE (DIAMETER OR AREA)
     if(mode === "size"){
 
         let q = parseFloat(document.getElementById("q").value);
         let v = parseFloat(document.getElementById("v").value);
 
-        if(isNaN(q) || isNaN(v) ||
-           q <= 0 || v <= 0){
+        if(isNaN(q) || isNaN(v) || q <= 0 || v <= 0){
             document.getElementById("output").innerHTML = "";
             return;
         }
+
+        let area = q / v;
+
+        if(type === "rect"){
+            document.getElementById("output").innerHTML =
+                "Required Area = " + area.toFixed(3) + " m²";
+        } else {
+
+            let diameter = Math.sqrt((4 * area) / Math.PI);
+
+            document.getElementById("output").innerHTML =
+                "Required Diameter = " + diameter.toFixed(3) + " m";
+        }
     }
+}
 </script>
 
 </body>
