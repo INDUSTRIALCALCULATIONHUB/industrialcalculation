@@ -15,122 +15,38 @@ crossorigin="anonymous"></script>
 <!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
-<style>
-body{
-    margin:0;
-    font-family:Segoe UI, Arial, sans-serif;
-    background:linear-gradient(to right,#1e3c72,#2a5298);
-    color:#333;
-}
-
-/* HEADER */
-.header{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    background:#1e3c72;
-    color:white;
-    text-align:center;
-    padding:12px;
-    z-index:1000;
-}
-
-/* FOOTER */
-.footer{
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:#1e3c72;
-    color:white;
-    text-align:center;
-    padding:10px;
-    z-index:1000;
-}
-
-/* NAV LINKS */
-.navbar a{
-    color:white;
-    margin:10px;
-    text-decoration:none;
-    font-size:14px;
-}
-
-/* MAIN CONTAINER (70–80% WIDTH RULE) */
-.container{
-    background:white;
-    color:black;
-    width:80%;
-    max-width:750px;
-    margin:100px auto 80px auto;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
-}
-
-/* MOBILE FIX */
-@media(max-width:768px){
-    .container{
-        width:78%;
-    }
-}
-
-/* INPUT FIELDS */
-input, select{
-    width:100%;
-    padding:12px;
-    margin:8px 0;
-    border-radius:8px;
-    border:1px solid #ccc;
-    box-sizing:border-box;
-}
-
-/* REMOVE SPINNERS */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button{
-    -webkit-appearance:none;
-    margin:0;
-}
-input[type=number]{
-    -moz-appearance:textfield;
-}
-
-/* BUTTON */
-button{
-    width:100%;
-    padding:12px;
-    background:#1e3c72;
-    color:white;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    margin-top:10px;
-}
-
-/* RESULT */
-.result{
-    margin-top:15px;
-    font-weight:bold;
-    line-height:1.6;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-    <div class="navbar">
+<!-- TOP BAR -->
+<div class="topbar">
+
+    <div class="topbar-line">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
     </div>
+
+    <div class="topbar-line">
+        <a href="index.html#tools">Engineering Tools</a>
+        <a href="index.html#converters">Unit Conversion</a>
+        <a href="index.html#blogs">Engineering Knowledge</a>
+    </div>
+
 </div>
 
-<div class="container">
+<div class="wrapper">
+
+<div class="header">
+    <h1>Duct Flow Rate</h1>
+    <p>Calculate airflow, velocity and duct size</p>
+</div>
+
+<div class="section">
 
 <h2>🌬 Duct Flow Calculator</h2>
 
@@ -149,15 +65,25 @@ button{
 
 <div id="inputs"></div>
 
-<button onclick="calculate()">Calculate</button>
-
-<div class="result" id="result"></div>
+<div id="output" class="result-box"></div>
 
 </div>
-
+</div>
 <!-- FOOTER -->
 <div class="footer">
-© 2026 Industrial Calculation Hub
+
+<div>
+© 2026 Industrial Calculation Hub | Engineering Tools Portal
+</div>
+
+<div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+</div>
+
 </div>
 
 <script>
@@ -205,18 +131,50 @@ function renderInputs(){
         `;
     }
 
-    document.getElementById("inputs").innerHTML = html;
+document.getElementById("inputs").innerHTML = html;
+
+attachEvents();
 }
 
-document.getElementById("mode").addEventListener("change", renderInputs);
-document.getElementById("ductType").addEventListener("change", renderInputs);
+document.getElementById("mode").addEventListener("change", () => {
+    renderInputs();
+    document.getElementById("output").innerHTML = "";
+});
 
+document.getElementById("ductType").addEventListener("change", () => {
+    renderInputs();
+    document.getElementById("output").innerHTML = "";
+});
 renderInputs();
 
-function calculate(){
+function attachEvents(){
 
+    const controls =
+        document.querySelectorAll("#inputs input");
+
+    controls.forEach(control => {
+        control.addEventListener("input", calculate);
+    });
+}
+    
+function calculate(){
+    
     let mode = document.getElementById("mode").value;
     let type = document.getElementById("ductType").value;
+    
+if(mode === "flow"){
+    if(type === "rect"){
+        let w = parseFloat(document.getElementById("w").value);
+        let h = parseFloat(document.getElementById("h").value);
+        let v = parseFloat(document.getElementById("v").value);
+
+        if(isNaN(w) || isNaN(h) || isNaN(v) || w <= 0 || h <= 0 || v <= 0){
+            document.getElementById("output").innerHTML = "";
+            return;
+        }
+    }
+}
+    
     let result = "";
 
     if(mode === "flow"){
@@ -265,7 +223,7 @@ function calculate(){
         "Equivalent Circular Diameter = " + diameter.toFixed(3) + " m";
     }
 
-    document.getElementById("result").innerHTML = result;
+document.getElementById("output").innerHTML = result;
 }
 
 </script>
