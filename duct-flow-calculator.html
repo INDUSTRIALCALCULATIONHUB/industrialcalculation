@@ -158,74 +158,77 @@ function attachEvents(){
 }
     
 function calculate(){
-    
+
     let mode = document.getElementById("mode").value;
     let type = document.getElementById("ductType").value;
-    
-if(mode === "flow"){
-    if(type === "rect"){
-        let w = parseFloat(document.getElementById("w").value);
-        let h = parseFloat(document.getElementById("h").value);
+
+    let result = "";
+
+    if(mode === "flow"){
+
+        if(type === "rect"){
+
+            let w = parseFloat(document.getElementById("w").value);
+            let h = parseFloat(document.getElementById("h").value);
+            let v = parseFloat(document.getElementById("v").value);
+
+            if(isNaN(w) || isNaN(h) || isNaN(v) ||
+               w <= 0 || h <= 0 || v <= 0){
+                document.getElementById("output").innerHTML = "";
+                return;
+            }
+
+        }else{
+
+            let d = parseFloat(document.getElementById("d").value);
+            let v = parseFloat(document.getElementById("v").value);
+
+            if(isNaN(d) || isNaN(v) ||
+               d <= 0 || v <= 0){
+                document.getElementById("output").innerHTML = "";
+                return;
+            }
+        }
+    }
+
+    if(mode === "velocity"){
+
+        if(type === "rect"){
+
+            let w = parseFloat(document.getElementById("w").value);
+            let h = parseFloat(document.getElementById("h").value);
+            let q = parseFloat(document.getElementById("q").value);
+
+            if(isNaN(w) || isNaN(h) || isNaN(q) ||
+               w <= 0 || h <= 0 || q <= 0){
+                document.getElementById("output").innerHTML = "";
+                return;
+            }
+
+        }else{
+
+            let d = parseFloat(document.getElementById("d").value);
+            let q = parseFloat(document.getElementById("q").value);
+
+            if(isNaN(d) || isNaN(q) ||
+               d <= 0 || q <= 0){
+                document.getElementById("output").innerHTML = "";
+                return;
+            }
+        }
+    }
+
+    if(mode === "size"){
+
+        let q = parseFloat(document.getElementById("q").value);
         let v = parseFloat(document.getElementById("v").value);
 
-        if(isNaN(w) || isNaN(h) || isNaN(v) || w <= 0 || h <= 0 || v <= 0){
+        if(isNaN(q) || isNaN(v) ||
+           q <= 0 || v <= 0){
             document.getElementById("output").innerHTML = "";
             return;
         }
     }
-}
-    
-    let result = "";
-
-    if(mode === "flow"){
-        let v = parseFloat(document.getElementById("v").value);
-        let area;
-
-        if(type === "rect"){
-            let w = parseFloat(document.getElementById("w").value);
-            let h = parseFloat(document.getElementById("h").value);
-            area = w * h;
-        } else {
-            let d = parseFloat(document.getElementById("d").value);
-            area = Math.PI * d * d / 4;
-        }
-
-        let q = area * v;
-        result = "Flow Rate = " + q.toFixed(3) + " m³/s";
-    }
-
-    else if(mode === "velocity"){
-        let q = parseFloat(document.getElementById("q").value);
-        let area;
-
-        if(type === "rect"){
-            let w = parseFloat(document.getElementById("w").value);
-            let h = parseFloat(document.getElementById("h").value);
-            area = w * h;
-        } else {
-            let d = parseFloat(document.getElementById("d").value);
-            area = Math.PI * d * d / 4;
-        }
-
-        let v = q / area;
-        result = "Velocity = " + v.toFixed(2) + " m/s";
-    }
-
-    else {
-        let q = parseFloat(document.getElementById("q").value);
-        let v = parseFloat(document.getElementById("v").value);
-
-        let area = q / v;
-        let diameter = Math.sqrt((4 * area) / Math.PI);
-
-        result =
-        "Required Area = " + area.toFixed(3) + " m²<br>" +
-        "Equivalent Circular Diameter = " + diameter.toFixed(3) + " m";
-    }
-
-document.getElementById("output").innerHTML = result;
-}
-
 </script>
 
 </body>
