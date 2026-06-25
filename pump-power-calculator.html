@@ -6,7 +6,7 @@
 
 <title>Pump Motor Selection Calculator | Industrial Calculation Hub</title>
 
-<meta name="description" content="Calculate pump power and select suitable motor size based on flow rate, head, and efficiency.">
+<meta name="description" content="Free pump motor selection calculator. Calculate hydraulic power, shaft power, motor input power and recommended motor size using flow rate, total dynamic head, pump efficiency and safety factor.">
 <meta name="keywords" content="pump power calculator, pump motor selection, hydraulic power, fluid mechanics calculator">
 <meta name="author" content="Industrial Calculation Hub">
 
@@ -53,13 +53,19 @@
 <div class="section">
 
 <label for="flow">Flow Rate, Q (m³/hr)</label>
-<input type="number" id="flow">
+<input type="number" id="flow" placeholder="Enter flow rate">
 
 <label for="head">Total Dynamic Head, H (m)</label>
-<input type="number" id="head">
+<input type="number" id="head" placeholder="Enter total dynamic head">
 
-<label for="eff">Pump Efficiency, η (%)</label>
-<input type="number" id="eff">
+<label for="pumpEff">Pump Efficiency, ηp (%)</label>
+<input type="number" id="pumpEff" placeholder="Enter pump efficiency">
+
+<label for="motorEff">Motor Efficiency, ηm (%)</label>
+<input type="number" id="motorEff" placeholder="Enter motor efficiency">
+    
+<label for="sf">Design Margin / Safety Factor (%)</label>
+<input type="number" id="sf" placeholder="Enter safety factor (Typical 10–15%)">
 
 <div id="output" class="result-box"></div>
 
@@ -81,6 +87,7 @@ and future operating margins.
 
 <ul>
 <li>Hydraulic Power (kW) = (ρ × g × Q × H) ÷ 1000</li>
+<li>For water: Hydraulic Power (kW) = 9.81 × Q × H</li>
 <li>ρ = Fluid density (kg/m³)</li>
 <li>g = 9.81 m/s²</li>
 <li>Q = Flow rate (m³/s)</li>
@@ -90,7 +97,9 @@ and future operating margins.
 <h3>Engineering Considerations</h3>
 
 <ul>
-<li>Motor sizing should normally include 10–15% design margin.</li>
+<li>Typical pump efficiency: 60–85%.</li>
+<li>Typical motor efficiency: 88–96%.</li>
+<li>Typical design margin for motor selection: 10–15%.</li>
 <li>Pump efficiency significantly affects operating power consumption.</li>
 <li>Oversized motors reduce efficiency at partial loads.</li>
 <li>High head applications require careful NPSH and cavitation evaluation.</li>
@@ -131,45 +140,69 @@ const motors = [
 110,132,160,200,250,315,355
 ];
 
+function selectMotor(power) {
+
+    for (let i = 0; i < motors.length; i++) {
+        if (power <= motors[i]) {
+            return motors[i];
+        }
+    }
+
+    return "Above 355";
+}
+    
 function calculate() {
 
-let Q = parseFloat(document.getElementById("flow").value);
-let H = parseFloat(document.getElementById("head").value);
-let eff = parseFloat(document.getElementById("eff").value);
+    let Q = parseFloat(document.getElementById("flow").value);
+    let H = parseFloat(document.getElementById("head").value);
+    let pumpEff = parseFloat(document.getElementById("pumpEff").value);
+    let motorEff = parseFloat(document.getElementById("motorEff").value);
+    let sf = parseFloat(document.getElementById("sf").value);
 
-if(isNaN(Q) || isNaN(H) || isNaN(eff) || eff<=0){
+    if (
+        isNaN(Q) || isNaN(H) ||
+        isNaN(pumpEff) || isNaN(motorEff) ||
+        isNaN(sf)
+    ) {
+        document.getElementById("output").innerHTML = "";
+        return;
+    }
 
-document.getElementById("output").innerHTML="";
-return;
+    Q = Q / 3600; // m³/hr to m³/s
 
+if (
+    pumpEff < 20 || pumpEff > 100 ||
+    motorEff < 50 || motorEff > 100 ||
+    sf < 0
+) {
+    document.getElementById("output").innerHTML =
+    "<div class='result-card'><h3>Invalid Input</h3>Please enter valid efficiencies (0-100%) and safety factor ≥ 0.</div>";
+    return;
 }
 
-Q = Q / 3600;
-eff = eff / 100;
+pumpEff = pumpEff / 100;
+motorEff = motorEff / 100;
+sf = 1 + (sf / 100);
 
-let hydraulicPower = (1000 * 9.81 * Q * H) / 1000;
-let shaftPower = hydraulicPower / eff;
-let designPower = shaftPower * 1.15;
+    // Hydraulic Power
+    let hydraulicPower = (1000 * 9.81 * Q * H) / 1000;
 
-let motor = "Above Standard Range";
+    // Shaft Power
+    let shaftPower = hydraulicPower / pumpEff;
 
-for(let i=0;i<motors.length;i++){
+    // Motor Input Power
+    let motorPower = shaftPower / motorEff;
 
-if(designPower <= motors[i]){
-motor = motors[i];
-break;
-}
+    // Apply Safety Factor
+    let designPower = motorPower * sf;
 
-}
+    let recommendedMotor = selectMotor(designPower);
 
 document.getElementById("output").innerHTML = `
-
 <div class="result-card">
-
 <h3>Calculation Results</h3>
 
 <table class="result-table">
-
 <tr>
 <th>Parameter</th>
 <th>Value</th>
@@ -181,30 +214,35 @@ document.getElementById("output").innerHTML = `
 </tr>
 
 <tr>
-<td>Shaft Power</td>
+<td>Pump Shaft Power</td>
 <td>${shaftPower.toFixed(2)} kW</td>
 </tr>
 
 <tr>
-<td>Design Power (+15%)</td>
+<td>Motor Input Power</td>
+<td>${motorPower.toFixed(2)} kW</td>
+</tr>
+
+<tr>
+<td>Design Power</td>
 <td>${designPower.toFixed(2)} kW</td>
 </tr>
 
 <tr>
 <td>Recommended Motor</td>
-<td>${motor} kW</td>
+<td><strong>${recommendedMotor} kW (Nearest Standard IEC Motor)</strong></td>
 </tr>
 
 </table>
-
 </div>
 `;
-
 }
 
 document.getElementById("flow").addEventListener("input", calculate);
 document.getElementById("head").addEventListener("input", calculate);
-document.getElementById("eff").addEventListener("input", calculate);
+document.getElementById("pumpEff").addEventListener("input", calculate);
+document.getElementById("motorEff").addEventListener("input", calculate);
+document.getElementById("sf").addEventListener("input", calculate);
 
 </script>
 
