@@ -46,20 +46,19 @@ crossorigin="anonymous"></script>
 
 <!-- HEADER -->
 <div class="header center">
-    <h1>Air Density Calculator</h1>
-    <p>Calculate air density based on altitude and temperature using standard atmospheric relations.</p>
+    <h1>Air Density</h1>
+    <p>Calculate air density using altitude and air temperature based on the International Standard Atmosphere (ISA). Suitable for HVAC, ventilation, combustion, and industrial engineering applications.</p>
 </div>
 
-<!-- AD SLOT -->
-<div class="ad-slot"></div>
 
 <!-- INPUTS -->
 <div class="section">
 
-<input type="number" id="altitude" placeholder="Altitude (m)" min="0" max="11000">
-<input type="number" id="temperature" placeholder="Temperature (°C)" min="-50" max="60">
+<label>Altitude (m)</label>
+<input type="number" id="altitude" min="0" max="11000">
 
-<p><small>Enter altitude (m) and temperature (°C)</small></p>
+<label>Air Temperature (°C)</label>
+<input type="number" id="temperature" min="-50" max="60">
 
 <div class="btn-group">
     <button class="calc-btn" onclick="calculate()">Calculate</button>
@@ -73,51 +72,112 @@ crossorigin="anonymous"></script>
 <!-- ENGINEERING SECTION -->
 <div class="section">
 
-<h2>Engineering Basis</h2>
+<h2>Engineering Knowledge</h2>
 
-<ul>
-<li>ρ = P / (R × T)</li>
-<li>Pressure varies with altitude (ISA model)</li>
-<li>Temperature decreases with altitude</li>
-<li>Valid for 0–11 km standard atmosphere</li>
-</ul>
+<h3>What is Air Density?</h3>
 
-<h3>Standard Condition</h3>
-<ul>
-<li>Density: 1.225 kg/m³</li>
-<li>Temperature: 15°C</li>
-<li>Pressure: 1 atm</li>
-</ul>
+<p>
+Air density is the mass of air contained in a unit volume. It varies with atmospheric pressure,
+temperature, humidity, and altitude. Air density directly influences airflow measurements,
+fan performance, combustion efficiency, and pressure loss calculations.
+</p>
 
-<h3>Engineering Applications</h3>
-<ul>
-<li>Fan and blower performance correction</li>
-<li>Duct airflow and pressure calculations</li>
-<li>Combustion air requirement</li>
-<li>HVAC system design</li>
-<li>Air pollution control systems</li>
-</ul>
+<h3>Engineering Formula</h3>
 
-<h3>Engineering Note</h3>
-<ul>
-<li>Flow ≈ constant</li>
-<li>Pressure ∝ Density</li>
-<li>Power ∝ Density</li>
-</ul>
+<div class="result-card">
+<table class="result-table">
 
+<tr>
+<th>Formula</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>ρ = P / (R × T)</td>
+<td>Ideal Gas Law</td>
+</tr>
+
+<tr>
+<td>P</td>
+<td>Absolute Pressure (Pa)</td>
+</tr>
+
+<tr>
+<td>R</td>
+<td>Specific Gas Constant = 287.058 J/kg·K</td>
+</tr>
+
+<tr>
+<td>T</td>
+<td>Absolute Temperature (K)</td>
+</tr>
+
+</table>
 </div>
 
-<!-- RELATED -->
-<div class="section">
+<h3>Standard Atmospheric Conditions</h3>
 
-<h3>Related Tools</h3>
+<div class="result-card">
+<table class="result-table">
+
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+
+<tr>
+<td>Air Density</td>
+<td>1.225 kg/m³</td>
+</tr>
+
+<tr>
+<td>Temperature</td>
+<td>15°C</td>
+</tr>
+
+<tr>
+<td>Pressure</td>
+<td>101.325 kPa</td>
+</tr>
+
+<tr>
+<td>Altitude</td>
+<td>Sea Level</td>
+</tr>
+
+</table>
+</div>
+
+<h3>Engineering Notes</h3>
 
 <ul>
-<li><a href="duct-flow-calculator.html">Duct Flow Rate</a></li>
-<li><a href="pipe-flow-calculator.html">Pipe Flow Rate</a></li>
-<li><a href="pump-power-calculator.html">Pump Motor Selection</a></li>
-<li><a href="index.html">View All Tools</a></li>
+<li>Air density decreases with increasing temperature.</li>
+<li>Air density decreases as altitude increases.</li>
+<li>Lower air density reduces fan pressure, fan power, and mass flow rate.</li>
+<li>Higher temperatures decrease air density and increase the required volumetric flow.</li>
+<li>Air density corrections are recommended for installations above approximately 300 m elevation.</li>
+<li>Correct air density should be used when sizing fans, blowers, ducts, and ventilation systems.</li>
+<li>This calculator is based on the International Standard Atmosphere (ISA) model for altitudes up to 11 km.</li>
 </ul>
+
+<h3>Typical Applications</h3>
+
+<ul>
+<li>HVAC system design</li>
+<li>Industrial ventilation</li>
+<li>Fan and blower performance correction</li>
+<li>Duct sizing calculations</li>
+<li>Combustion air calculations</li>
+<li>Stack and chimney analysis</li>
+<li>Air pollution control equipment</li>
+<li>Process engineering calculations</li>
+</ul>
+
+<h3>Calculation Limits</h3>
+
+<p>
+This calculator is based on the International Standard Atmosphere (ISA) and is intended for elevations from 0 to 11,000 m. It assumes dry air and does not account for humidity, making it suitable for most HVAC and industrial engineering calculations.
+</p>
 
 </div>
 
@@ -169,8 +229,34 @@ let T = temp + 273.15;
 let rho = P / (R * T);
 
 document.getElementById("output").innerHTML =
-"<div class='card'><h3>Result</h3>" +
-"<p><strong>Air Density:</strong> " + rho.toFixed(3) + " kg/m³</p>" +
+"<div class='result-card'><h3>Calculation Result</h3>" +
+document.getElementById("output").innerHTML =
+`
+<div class="result-card">
+
+<h3>Calculation Result</h3>
+
+<table class="result-table">
+
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+
+<tr>
+<td>Air Density</td>
+<td>${rho.toFixed(3)} kg/m³</td>
+</tr>
+
+<tr>
+<td>Calculation Method</td>
+<td>International Standard Atmosphere (ISA)</td>
+</tr>
+
+</table>
+
+</div>
+`;
 "<p><small>Based on International Standard Atmosphere (ISA)</small></p></div>";
 }
 
