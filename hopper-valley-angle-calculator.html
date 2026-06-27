@@ -8,202 +8,76 @@
 
 <meta name="description" content="Hopper valley angle calculator for industrial hopper design including plate angles, surface area, and volume calculations.">
 
-<!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612" crossorigin="anonymous"></script>
-
 <!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
-<style>
+<!-- ADSENSE -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612" crossorigin="anonymous"></script>
 
-/* ================= GLOBAL ================= */
-*{
-    box-sizing:border-box;
-}
+<!-- GLOBAL CSS (same system as Area Tool) -->
+<link rel="stylesheet" href="style.css">
 
-body{
-    margin:0;
-    font-family:Segoe UI, sans-serif;
-    background:linear-gradient(to right,#1e3c72,#2a5298);
-    color:white;
-}
-
-/* Remove number spinners globally */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button{
-    -webkit-appearance:none;
-    margin:0;
-}
-input[type=number]{
-    -moz-appearance:textfield;
-}
-
-/* ================= HEADER ================= */
-.header{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    background:#444;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:12px 10px;
-    z-index:1000;
-    font-weight:bold;
-}
-
-.header span{
-    margin-left:8px;
-}
-
-/* ================= FOOTER ================= */
-.footer{
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:#444;
-    text-align:center;
-    padding:10px;
-    color:white;
-    font-size:13px;
-}
-
-/* ================= NAV LINKS ================= */
-.navbar{
-    display:none;
-}
-
-/* ================= LAYOUT ================= */
-.wrapper{
-    display:flex;
-    justify-content:center;
-    padding:90px 10px 80px 10px;
-}
-
-/* 70–80% width requirement */
-.card{
-    background:white;
-    color:#333;
-    width:78%;
-    max-width:750px;
-    padding:22px;
-    border-radius:14px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.25);
-}
-
-/* ================= INPUTS ================= */
-input, select{
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    border-radius:8px;
-    border:1px solid #ccc;
-    font-size:14px;
-    outline:none;
-}
-
-/* ================= BUTTONS ================= */
-button{
-    width:48%;
-    padding:12px;
-    margin:10px 1%;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:bold;
-    font-size:14px;
-}
-
-.calc{
-    background:#2a5298;
-    color:white;
-}
-
-.reset{
-    background:#ccc;
-}
-
-/* ================= RESULT ================= */
-.result{
-    margin-top:15px;
-    padding:15px;
-    background:#f7f7f7;
-    border-radius:10px;
-}
-
-/* ================= FORMULA BOX ================= */
-.formula{
-    margin-top:18px;
-    padding:15px;
-    background:#eef3ff;
-    border-radius:10px;
-    font-family:Arial;
-    line-height:1.7;
-    font-size:13px;
-}
-
-/* ================= HEADER TITLE ================= */
-.title{
-    font-size:16px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-}
-
-/* ================= MOBILE ================= */
-@media(max-width:768px){
-    .card{
-        width:92%;
-    }
-
-    button{
-        width:100%;
-        margin:8px 0;
-    }
-}
-
-</style>
 </head>
 
 <body>
 
-<!-- FIXED HEADER -->
-<div class="header">
-    <div class="title">🏗 Hopper Calculator <span>| Industrial Calculation Hub</span></div>
+<!-- ================= TOP BAR ================= -->
+<div class="topbar">
+
+    <div class="topbar-line">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
+    <div class="topbar-line">
+        <a href="index.html#tools">Engineering Tools</a>
+        <a href="index.html#converters">Unit Conversion</a>
+        <a href="index.html#blogs">Engineering Knowledge</a>
+    </div>
+
 </div>
 
+<!-- ================= WRAPPER ================= -->
 <div class="wrapper">
 
-<div class="card">
-
-<h2>Hopper Valley Angle Calculator</h2>
-<p>Plate Angle, Surface Area & Volume (Industrial Design)</p>
-
-<select id="mode" onchange="toggleMode()">
-    <option value="1">Calculate from Hopper Height</option>
-    <option value="2">Calculate Height from Valley Angle</option>
-</select>
-
-<input id="Lt" type="number" placeholder="Top Length (mm)">
-<input id="Wt" type="number" placeholder="Top Width (mm)">
-<input id="Lb" type="number" placeholder="Bottom Length (mm)">
-<input id="Wb" type="number" placeholder="Bottom Width (mm)">
-<input id="H" type="number" placeholder="Hopper Height (mm)">
-
-<input id="thetaV" type="number" placeholder="Valley Angle (deg)" style="display:none;">
-
-<div style="display:flex;justify-content:space-between;flex-wrap:wrap;">
-<button class="calc" onclick="calc()">Calculate</button>
-<button class="reset" onclick="reset()">Reset</button>
+<!-- HEADER -->
+<div class="header">
+    <h1>Hopper Valley Angle Calculator</h1>
+    <p>Plate Angle, Surface Area & Volume (Industrial Design)</p>
 </div>
 
-<div id="output"></div>
+<!-- ================= INPUT SECTION ================= -->
+<div class="section">
 
-<div class="formula">
-<h3>Engineering Formulas</h3>
+    <select id="mode" onchange="toggleMode()">
+        <option value="1">Calculate from Hopper Height</option>
+        <option value="2">Calculate Height from Valley Angle</option>
+    </select>
+
+    <input type="number" id="Lt" placeholder="Top Length (mm)">
+    <input type="number" id="Wt" placeholder="Top Width (mm)">
+    <input type="number" id="Lb" placeholder="Bottom Length (mm)">
+    <input type="number" id="Wb" placeholder="Bottom Width (mm)">
+    <input type="number" id="H" placeholder="Hopper Height (mm)">
+
+    <input type="number" id="thetaV" placeholder="Valley Angle (deg)" style="display:none;">
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="calc" onclick="calc()">Calculate</button>
+        <button class="reset" onclick="reset()">Reset</button>
+    </div>
+
+    <div id="output" class="result-box"></div>
+
+</div>
+
+<!-- ================= ENGINEERING KNOWLEDGE ================= -->
+<div class="section">
+
+<h2>Engineering Formulas</h2>
 
 <p>
 ΔL = (L<sub>t</sub> − L<sub>b</sub>) / 2<br>
@@ -227,18 +101,27 @@ Volume = (H / 3) × (A<sub>top</sub> + A<sub>bottom</sub> + √(A<sub>top</sub>A
 </div>
 
 </div>
+
+<!-- ================= FOOTER ================= -->
+<div class="footer">
+
+<div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
+
+<div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
 </div>
 
-<!-- FIXED FOOTER -->
-<div class="footer">
-© 2026 Industrial Calculation Hub | Engineering Tools Portal
 </div>
 
 <script>
 
 function toggleMode(){
-document.getElementById("thetaV").style.display =
-document.getElementById("mode").value == "2" ? "block" : "none";
+    document.getElementById("thetaV").style.display =
+    document.getElementById("mode").value == "2" ? "block" : "none";
 }
 
 function calc(){
@@ -252,7 +135,7 @@ let mode = document.getElementById("mode").value;
 
 if([Lt,Wt,Lb,Wb].some(isNaN)){
 document.getElementById("output").innerHTML =
-"<div class='result' style='color:red'>Enter all dimensions</div>";
+"<div class='result-card'><p style='color:red'>Enter all dimensions</p></div>";
 return;
 }
 
@@ -261,7 +144,7 @@ let dW = (Wt - Wb)/2;
 
 if(dL<=0 || dW<=0){
 document.getElementById("output").innerHTML =
-"<div class='result' style='color:red'>Invalid geometry</div>";
+"<div class='result-card'><p style='color:red'>Invalid geometry</p></div>";
 return;
 }
 
@@ -273,7 +156,7 @@ if(mode == "1"){
 H = Hinput;
 if(isNaN(H) || H<=0){
 document.getElementById("output").innerHTML =
-"<div class='result' style='color:red'>Enter valid height</div>";
+"<div class='result-card'><p style='color:red'>Enter valid height</p></div>";
 return;
 }
 }
@@ -281,7 +164,7 @@ else{
 let thetaV_input = parseFloat(document.getElementById("thetaV").value);
 if(isNaN(thetaV_input) || thetaV_input<=0){
 document.getElementById("output").innerHTML =
-"<div class='result' style='color:red'>Enter valley angle</div>";
+"<div class='result-card'><p style='color:red'>Enter valley angle</p></div>";
 return;
 }
 H = Math.tan(thetaV_input*Math.PI/180) * diag;
@@ -312,19 +195,21 @@ let A2 = Lb_m * Wb_m;
 let volume = (H_m/3) * (A1 + A2 + Math.sqrt(A1*A2));
 
 document.getElementById("output").innerHTML = `
-<div class="result">
+<div class="result-card">
 <h3>Results</h3>
 
-<p><b>Plate Angle (Length side):</b> ${thetaL.toFixed(2)}°</p>
-<p><b>Plate Angle (Width side):</b> ${thetaW.toFixed(2)}°</p>
-<p><b>Valley Angle:</b> ${thetaV.toFixed(2)}°</p>
+<table class="result-table">
+<tr><th>Parameter</th><th>Value</th></tr>
 
-<hr>
+<tr><td>Plate Angle (Length)</td><td>${thetaL.toFixed(2)}°</td></tr>
+<tr><td>Plate Angle (Width)</td><td>${thetaW.toFixed(2)}°</td></tr>
+<tr><td>Valley Angle</td><td>${thetaV.toFixed(2)}°</td></tr>
+<tr><td>Surface Area</td><td>${surfaceArea.toFixed(2)} m²</td></tr>
+<tr><td>Volume</td><td>${volume.toFixed(2)} m³</td></tr>
 
-<p><b>Plate Surface Area:</b> ${surfaceArea.toFixed(2)} m²</p>
-<p><b>Hopper Volume:</b> ${volume.toFixed(2)} m³</p>
+${mode=="2" ? `<tr><td>Calculated Height</td><td>${H.toFixed(2)} mm</td></tr>` : ""}
 
-${mode=="2" ? `<p><b>Calculated Height:</b> ${H.toFixed(2)} mm</p>` : ""}
+</table>
 
 </div>
 `;
