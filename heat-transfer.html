@@ -73,6 +73,35 @@ Calculate heat transfer using Fourier's Law of Conduction.
     <div id="output"></div>
 </div>
 
+
+<h3>Engineering Knowledge</h3>
+
+<p>
+Heat transfer through a solid material occurs due to temperature difference.
+According to Fourier’s Law, heat flows from higher temperature to lower temperature
+and depends on material properties and geometry.
+</p>
+
+<p>
+<b>Fourier’s Law:</b>
+</p>
+
+<p class="formula">
+Q = (k × A × ΔT) / L
+</p>
+
+<ul>
+
+<li>Higher thermal conductivity increases heat transfer</li>
+
+<li>Greater thickness reduces heat flow</li>
+
+<li>Larger temperature difference increases heat transfer rate</li>
+
+<li>Metals like copper conduct heat efficiently</li>
+
+</ul>
+
 </div>
 
 </div>
@@ -116,32 +145,27 @@ function calculateLive() {
 
     let Q = (k * A * dT) / L;
 
-    output.innerHTML = `
-    <div class="result-card">
+output.innerHTML = `
+<div class="result-card">
 
-        <h3>Result</h3>
+    <h3>Result</h3>
 
-        <table class="result-table">
+    <table class="result-table">
 
-            <tr>
-                <th>Parameter</th>
-                <th>Value</th>
-            </tr>
+        <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+        </tr>
 
-            <tr>
-                <td>Heat Transfer Rate (Q)</td>
-                <td>${Q.toFixed(2)} W</td>
-            </tr>
+        <tr>
+            <td>Heat Transfer Rate (Q)</td>
+            <td>${Q.toFixed(2)} W</td>
+        </tr>
 
-            <tr>
-                <td>Formula</td>
-                <td>Q = (k × A × ΔT) / L</td>
-            </tr>
+    </table>
 
-        </table>
-
-    </div>
-    `;
+</div>
+`;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
