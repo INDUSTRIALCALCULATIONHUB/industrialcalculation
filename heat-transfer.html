@@ -1,248 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Heat Transfer Calculator | Industrial Calculation Hub</title>
 
-<meta name="description" content="Calculate heat transfer rate using Fourier's law of conduction. Engineering calculator for thermal design applications.">
-<meta name="keywords" content="heat transfer calculator, Fourier law calculator, thermal conduction, engineering calculator">
-<meta name="author" content="Industrial Calculation Hub">
+<meta name="description" content="Calculate heat transfer rate using Fourier's Law of Conduction. Suitable for thermal engineering, insulation, HVAC, and industrial heat transfer applications.">
 
-<!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
+<meta name="keywords" content="heat transfer calculator, Fourier law calculator, thermal conductivity calculator, conduction calculator, engineering calculator">
+
+<meta name="author" content="Industrial Calculation Hub">
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://industrialcalculationhub.com/heat-transfer-calculator.html">
+
+<meta name="theme-color" content="#1e3c72">
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<!-- Common Styles -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Google AdSense -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
 crossorigin="anonymous"></script>
 
-<!-- CMP -->
-<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+<!-- Google Funding Choices -->
+<script async
+src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
-<style>
-
-/* ================= GLOBAL THEME ================= */
-body{
-    margin:0;
-    font-family:Segoe UI, sans-serif;
-    background:#1e3c72;
-    color:#fff;
-}
-
-/* ================= FIXED HEADER ================= */
-header{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    background:#2a2a2a;
-    padding:12px;
-    text-align:center;
-    z-index:1000;
-}
-
-header a{
-    color:#fff;
-    margin:0 10px;
-    text-decoration:none;
-    font-weight:500;
-}
-
-/* ================= FIXED FOOTER ================= */
-footer{
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:#2a2a2a;
-    text-align:center;
-    padding:10px;
-    font-size:14px;
-}
-
-/* ================= WRAPPER (70–80%) ================= */
-.wrapper{
-    width:80%;
-    max-width:650px;
-    margin:90px auto 80px auto;
-}
-
-/* ================= CARD ================= */
-.card{
-    background:#fff;
-    color:#333;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-
-/* ================= INPUT ================= */
-label{
-    font-weight:500;
-    display:block;
-    margin-top:10px;
-}
-
-input{
-    width:100%;
-    padding:12px;
-    margin:6px 0 12px 0;
-    border-radius:8px;
-    border:1px solid #ccc;
-    font-size:14px;
-    box-sizing:border-box;
-}
-
-/* REMOVE SPINNER */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button{
-    -webkit-appearance:none;
-    margin:0;
-}
-
-input[type=number]{
-    -moz-appearance:textfield;
-}
-
-/* BUTTONS */
-button{
-    width:48%;
-    padding:12px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:15px;
-    margin-top:10px;
-}
-
-.calc-btn{
-    background:#1e3c72;
-    color:#fff;
-}
-
-.reset-btn{
-    background:#ccc;
-    color:#000;
-}
-
-/* OUTPUT */
-.output{
-    margin-top:20px;
-}
-
-.result-card{
-    background:#fff;
-    color:#333;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 3px 10px rgba(0,0,0,0.15);
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-    .wrapper{
-        width:92%;
-    }
-
-    button{
-        width:100%;
-        margin-top:8px;
-    }
-}
-
-h2{
-    text-align:center;
-    color:#1e3c72;
-}
-
-</style>
 </head>
 
 <body>
 
-<!-- FIXED HEADER -->
-<header>
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="privacy.html">Privacy</a>
-<a href="terms.html">Terms</a>
+<!-- ================= HEADER ================= -->
+
+<header class="top-bar">
+
+    <div class="brand-bar">
+
+        <div class="top-line">
+            Industrial Calculation Hub
+        </div>
+
+        <div class="page-title">
+            Heat Transfer Calculator
+        </div>
+
+    </div>
+
+    <nav class="nav-bar">
+
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+
+    </nav>
+
 </header>
 
-<div class="wrapper">
+<!-- ================= MAIN CONTENT ================= -->
+
+<main class="container">
 
 <div class="card">
 
 <h2>Heat Transfer Calculator</h2>
-<p style="text-align:center;">Fourier’s Law of Heat Conduction</p>
 
-<label>Thermal Conductivity (k) [W/m·K]</label>
-<input type="number" id="k">
+<p class="description">
+Calculate heat transfer using Fourier's Law of Conduction.
+Suitable for thermal engineering, insulation design, HVAC systems,
+heat exchangers, and industrial engineering applications.
+</p>
 
-<label>Area (A) [m²]</label>
-<input type="number" id="area">
+<h3>Input Parameters</h3>
 
-<label>Temperature Difference (ΔT) [°C]</label>
-<input type="number" id="tempDiff">
+<div class="input-group">
 
-<label>Thickness (L) [m]</label>
-<input type="number" id="thickness">
+<label for="k">
+Thermal Conductivity (k) [W/m·K]
+</label>
 
-<div style="text-align:center;">
-<button class="calc-btn" onclick="calculate()">Calculate</button>
-<button class="reset-btn" onclick="resetForm()">Reset</button>
+<input
+type="number"
+id="k"
+step="any"
+min="0"
+placeholder="Example: 205">
+
+<label for="area">
+Heat Transfer Area (A) [m²]
+</label>
+
+<input
+type="number"
+id="area"
+step="any"
+min="0"
+placeholder="Example: 2.5">
+
+<label for="tempDiff">
+Temperature Difference (ΔT) [°C]
+</label>
+
+<input
+type="number"
+id="tempDiff"
+step="any"
+placeholder="Example: 60">
+
+<label for="thickness">
+Material Thickness (L) [m]
+</label>
+
+<input
+type="number"
+id="thickness"
+step="any"
+min="0.000001"
+placeholder="Example: 0.05">
+
 </div>
 
-<div class="output" id="output"></div>
+
+<div id="output">
+
+<!-- Result will appear here -->
 
 </div>
 
+<!-- ================= ENGINEERING KNOWLEDGE ================= -->
+
+<div class="knowledge-card">
+
+<h3>Engineering Knowledge</h3>
+
+<p>
+
+<b>Fourier's Law of Heat Conduction</b> states that the rate of heat transfer through a solid material is directly proportional to the thermal conductivity of the material, the cross-sectional area, and the temperature difference across the material, while being inversely proportional to its thickness.
+
+</p>
+
+<br>
+
+<p>
+
+The governing equation is:
+
+</p>
+
+<p class="formula">
+
+Q = (k × A × ΔT) / L
+
+</p>
+
+<table class="result-table">
+
+<tr>
+<th>Symbol</th>
+<th>Description</th>
+<th>SI Unit</th>
+</tr>
+
+<tr>
+<td>Q</td>
+<td>Heat Transfer Rate</td>
+<td>W</td>
+</tr>
+
+<tr>
+<td>k</td>
+<td>Thermal Conductivity</td>
+<td>W/m·K</td>
+</tr>
+
+<tr>
+<td>A</td>
+<td>Heat Transfer Area</td>
+<td>m²</td>
+</tr>
+
+<tr>
+<td>ΔT</td>
+<td>Temperature Difference</td>
+<td>°C or K</td>
+</tr>
+
+<tr>
+<td>L</td>
+<td>Material Thickness</td>
+<td>m</td>
+</tr>
+
+</table>
+
+<br>
+
+<h4>Applications</h4>
+
+<ul>
+
+<li>Building insulation design</li>
+
+<li>Heat exchanger calculations</li>
+
+<li>Boiler and furnace design</li>
+
+<li>HVAC engineering</li>
+
+<li>Industrial process heating</li>
+
+<li>Thermal equipment design</li>
+
+<li>Electronic equipment cooling</li>
+
+</ul>
+
+<br>
+
+<h4>Engineering Notes</h4>
+
+<ul>
+
+<li>Higher thermal conductivity results in greater heat transfer.</li>
+
+<li>Increasing insulation thickness reduces heat loss.</li>
+
+<li>A larger temperature difference increases heat transfer rate.</li>
+
+<li>Copper and aluminum are excellent heat conductors.</li>
+
+<li>Insulation materials have very low thermal conductivity.</li>
+
+</ul>
+
 </div>
 
-<!-- FIXED FOOTER -->
+<!-- ================= FOOTER ================= -->
+
 <footer>
+
+<p>
+
 © 2026 Industrial Calculation Hub |
-<a href="privacy.html" style="color:white;">Privacy</a> |
-<a href="terms.html" style="color:white;">Terms</a>
+<a href="privacy.html">Privacy Policy</a> |
+<a href="terms.html">Terms & Conditions</a>
+
+</p>
+
 </footer>
 
 <script>
 
-function calculate(){
 
-let k = parseFloat(document.getElementById("k").value);
-let A = parseFloat(document.getElementById("area").value);
-let dT = parseFloat(document.getElementById("tempDiff").value);
-let L = parseFloat(document.getElementById("thickness").value);
+<script>
 
-if(isNaN(k) || isNaN(A) || isNaN(dT) || isNaN(L)){
-    document.getElementById("output").innerHTML =
-    "<div class='result-card' style='color:red;'>Please enter all values correctly</div>";
-    return;
+// ---------------- LIVE CALCULATION ----------------
+
+function calculateLive() {
+
+    let k = parseFloat(document.getElementById("k").value);
+    let A = parseFloat(document.getElementById("area").value);
+    let dT = parseFloat(document.getElementById("tempDiff").value);
+    let L = parseFloat(document.getElementById("thickness").value);
+
+    let output = document.getElementById("output");
+
+    // If any field is empty → clear output
+    if (isNaN(k) || isNaN(A) || isNaN(dT) || isNaN(L)) {
+        output.innerHTML = "";
+        return;
+    }
+
+    // Validation
+    if (k < 0 || A < 0 || L <= 0) {
+        output.innerHTML = `
+        <div class="result-card error">
+            Please enter valid positive values (Thickness must be > 0).
+        </div>`;
+        return;
+    }
+
+    // Calculation
+    let Q = (k * A * dT) / L;
+
+    // Output (same format as your latest calculators)
+    output.innerHTML = `
+    <div class="result-card">
+
+        <h3>Calculation Result</h3>
+
+        <table class="result-table">
+
+            <tr>
+                <th>Parameter</th>
+                <th>Value</th>
+            </tr>
+
+            <tr>
+                <td>Heat Transfer Rate (Q)</td>
+                <td>${Q.toFixed(2)} W</td>
+            </tr>
+
+            <tr>
+                <td>Formula</td>
+                <td>Q = (k × A × ΔT) / L</td>
+            </tr>
+
+        </table>
+
+    </div>
+    `;
 }
 
-if(L <= 0){
-    document.getElementById("output").innerHTML =
-    "<div class='result-card' style='color:red;'>Thickness must be greater than 0</div>";
-    return;
-}
 
-let Q = (k * A * dT) / L;
+// ---------------- EVENT LISTENERS (LIVE UPDATE) ----------------
 
-document.getElementById("output").innerHTML = `
-<div class="result-card">
-<h3>Result</h3>
-<p><b>Heat Transfer Rate (Q):</b> ${Q.toFixed(2)} W</p>
-</div>`;
-}
+document.addEventListener("DOMContentLoaded", function () {
 
-function resetForm(){
-document.getElementById("k").value="";
-document.getElementById("area").value="";
-document.getElementById("tempDiff").value="";
-document.getElementById("thickness").value="";
-document.getElementById("output").innerHTML="";
-}
+    const inputs = document.querySelectorAll("#k, #area, #tempDiff, #thickness");
+
+    inputs.forEach(input => {
+        input.addEventListener("input", calculateLive);
+    });
+
+});
 
 </script>
+
+
+<!-- ================= OPTIONAL: SMALL SEO / UX IMPROVEMENT ================= -->
+
+<style>
+/* Only minimal fallback styling in case style.css misses anything */
+
+.result-card.error {
+    color: #b00020;
+    font-weight: 500;
+}
+
+.formula {
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+</style>
+
+<!-- ================= END SCRIPT ================= -->
 
 </body>
 </html>
