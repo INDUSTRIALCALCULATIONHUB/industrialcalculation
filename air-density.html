@@ -54,16 +54,17 @@ crossorigin="anonymous"></script>
 <!-- INPUTS -->
 <div class="section">
 
-<label>Altitude (m)</label>
-<input type="number" id="altitude" min="0" max="11000">
+<input type="number"
+       id="altitude"
+       min="0"
+       max="11000"
+       oninput="calculate()">
 
-<label>Air Temperature (°C)</label>
-<input type="number" id="temperature" min="-50" max="60">
-
-<div class="btn-group">
-    <button class="calc-btn" onclick="calculate()">Calculate</button>
-    <button class="reset-btn" onclick="resetForm()">Reset</button>
-</div>
+<input type="number"
+       id="temperature"
+       min="-50"
+       max="60"
+       oninput="calculate()">
 
 <div id="output"></div>
 
@@ -199,72 +200,68 @@ This calculator is based on the International Standard Atmosphere (ISA) and is i
 </div>
 
 <script>
+
 function calculate() {
-let altitude = parseFloat(document.getElementById("altitude").value);
-let temp = parseFloat(document.getElementById("temperature").value);
 
-if (isNaN(altitude) || isNaN(temp)) {
-document.getElementById("output").innerHTML = "<div class='card'>Invalid input</div>";
-return;
+    let altitude = parseFloat(document.getElementById("altitude").value);
+    let temp = parseFloat(document.getElementById("temperature").value);
+    let output = document.getElementById("output");
+
+    // Nothing entered
+    if (isNaN(altitude) || isNaN(temp)) {
+        output.innerHTML = "";
+        return;
+    }
+
+    if (altitude < 0 || altitude > 11000) {
+        output.innerHTML =
+        "<div class='result-card'>Valid altitude range: 0 to 11,000 m</div>";
+        return;
+    }
+
+    const P0 = 101325;
+    const T0 = 288.15;
+    const L = 0.0065;
+    const g = 9.80665;
+    const R = 287.058;
+
+    const exponent = g / (R * L);
+
+    const T_atm = T0 - L * altitude;
+    const P = P0 * Math.pow((T_atm / T0), exponent);
+
+    const T = temp + 273.15;
+
+    const rho = P / (R * T);
+
+    output.innerHTML = `
+    <div class="result-card">
+
+        <h3>Calculation Result</h3>
+
+        <table class="result-table">
+
+            <tr>
+                <th>Parameter</th>
+                <th>Value</th>
+            </tr>
+
+            <tr>
+                <td>Air Density</td>
+                <td>${rho.toFixed(3)} kg/m³</td>
+            </tr>
+
+            <tr>
+                <td>Calculation Method</td>
+                <td>International Standard Atmosphere (ISA)</td>
+            </tr>
+
+        </table>
+
+    </div>
+    `;
 }
 
-if (altitude < 0 || altitude > 11000) {
-document.getElementById("output").innerHTML =
-"<div class='card'>Valid altitude range: 0 to 11,000 m</div>";
-return;
-}
-
-let P0 = 101325;
-let T0 = 288.15;
-let L = 0.0065;
-let g = 9.80665;
-let R = 287.058;
-
-let exponent = g / (R * L);
-
-let T_atm = Math.max(1, T0 - (L * altitude));
-let P = P0 * Math.pow((T_atm / T0), exponent);
-
-let T = temp + 273.15;
-let rho = P / (R * T);
-
-document.getElementById("output").innerHTML =
-"<div class='result-card'><h3>Calculation Result</h3>" +
-document.getElementById("output").innerHTML =
-`
-<div class="result-card">
-
-<h3>Calculation Result</h3>
-
-<table class="result-table">
-
-<tr>
-<th>Parameter</th>
-<th>Value</th>
-</tr>
-
-<tr>
-<td>Air Density</td>
-<td>${rho.toFixed(3)} kg/m³</td>
-</tr>
-
-<tr>
-<td>Calculation Method</td>
-<td>International Standard Atmosphere (ISA)</td>
-</tr>
-
-</table>
-
-</div>
-`;
-"<p><small>Based on International Standard Atmosphere (ISA)</small></p></div>";
-}
-
-function resetForm() {
-document.getElementById("altitude").value = "";
-document.getElementById("temperature").value = "";
-document.getElementById("output").innerHTML = "";
-}
 </script>
 
 </body>
