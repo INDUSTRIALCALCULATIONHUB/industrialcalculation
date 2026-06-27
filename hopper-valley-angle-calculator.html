@@ -79,11 +79,6 @@
     <input type="number" id="thetaV" placeholder="Enter Valley Angle (deg)">
 </div>
 
-    <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <button class="calc" onclick="calc()">Calculate</button>
-        <button class="reset" onclick="reset()">Reset</button>
-    </div>
-
     <div id="output" class="result-box"></div>
 
 </div>
@@ -162,27 +157,6 @@ The geometry of a hopper directly affects flow efficiency, material blockage (ar
 
 <script>
 
-function toggleMode(){
-
-    let mode = document.getElementById("mode").value;
-
-    if(mode === "1"){
-        // Calculate Valley Angle from Height
-        document.getElementById("heightGroup").style.display = "block";
-        document.getElementById("valleyGroup").style.display = "none";
-
-        document.getElementById("thetaV").value = "";
-    }
-    else{
-        // Calculate Height from Valley Angle
-        document.getElementById("heightGroup").style.display = "none";
-        document.getElementById("valleyGroup").style.display = "block";
-
-        document.getElementById("H").value = "";
-    }
-
-}
-
 function calc(){
 
 let Lt = parseFloat(document.getElementById("Lt").value);
@@ -193,8 +167,7 @@ let Hinput = parseFloat(document.getElementById("H").value);
 let mode = document.getElementById("mode").value;
 
 if([Lt,Wt,Lb,Wb].some(isNaN)){
-document.getElementById("output").innerHTML =
-"<div class='result-card'><p style='color:red'>Enter all dimensions</p></div>";
+document.getElementById("output").innerHTML = "";
 return;
 }
 
@@ -214,16 +187,14 @@ let H;
 if(mode == "1"){
 H = Hinput;
 if(isNaN(H) || H<=0){
-document.getElementById("output").innerHTML =
-"<div class='result-card'><p style='color:red'>Enter valid height</p></div>";
+document.getElementById("output").innerHTML = "";
 return;
 }
 }
 else{
 let thetaV_input = parseFloat(document.getElementById("thetaV").value);
 if(isNaN(thetaV_input) || thetaV_input<=0){
-document.getElementById("output").innerHTML =
-"<div class='result-card'><p style='color:red'>Enter valley angle</p></div>";
+document.getElementById("output").innerHTML = "";
 return;
 }
 H = Math.tan(thetaV_input*Math.PI/180) * diag;
@@ -262,11 +233,11 @@ document.getElementById("output").innerHTML = `
 
 <tr><td>Plate Angle (Length)</td><td>${thetaL.toFixed(2)}°</td></tr>
 <tr><td>Plate Angle (Width)</td><td>${thetaW.toFixed(2)}°</td></tr>
-<tr><td>Valley Angle</td><td>${thetaV.toFixed(2)}°</td></tr>
+${mode=="1" ? `<tr><td>Valley Angle</td><td>${thetaV.toFixed(2)}°</td></tr>` : ""}
+${mode=="2" ? `<tr><td>Calculated Height</td><td>${H.toFixed(2)} mm</td></tr>` : ""}
+
 <tr><td>Surface Area</td><td>${surfaceArea.toFixed(2)} m²</td></tr>
 <tr><td>Volume</td><td>${volume.toFixed(2)} m³</td></tr>
-
-${mode=="2" ? `<tr><td>Calculated Height</td><td>${H.toFixed(2)} mm</td></tr>` : ""}
 
 </table>
 
@@ -274,17 +245,41 @@ ${mode=="2" ? `<tr><td>Calculated Height</td><td>${H.toFixed(2)} mm</td></tr>` :
 `;
 }
 
-function reset(){
-document.getElementById("Lt").value="";
-document.getElementById("Wt").value="";
-document.getElementById("Lb").value="";
-document.getElementById("Wb").value="";
-document.getElementById("H").value="";
-document.getElementById("thetaV").value="";
-document.getElementById("output").innerHTML="";
+function toggleMode(){
+
+    let mode = document.getElementById("mode").value;
+
+    if(mode === "1"){
+        // Calculate Valley Angle from Height
+        document.getElementById("heightGroup").style.display = "block";
+        document.getElementById("valleyGroup").style.display = "none";
+
+        document.getElementById("thetaV").value = "";
+    }
+    else{
+        // Calculate Height from Valley Angle
+        document.getElementById("heightGroup").style.display = "none";
+        document.getElementById("valleyGroup").style.display = "block";
+
+        document.getElementById("H").value = "";
+    }
+document.getElementById("output").innerHTML = "";
+calc();
 }
-// Set the correct fields on initial page load
+
+    
+// Live calculation
+
+document.getElementById("Lt").addEventListener("input", calc);
+document.getElementById("Wt").addEventListener("input", calc);
+document.getElementById("Lb").addEventListener("input", calc);
+document.getElementById("Wb").addEventListener("input", calc);
+document.getElementById("H").addEventListener("input", calc);
+document.getElementById("thetaV").addEventListener("input", calc);
+
+// Initialize page
 toggleMode();
+    
 </script>
 
 </body>
