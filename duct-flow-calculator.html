@@ -294,20 +294,45 @@ Velocity Unit:
 
     // ---------------- SIZE ----------------
     else {
-        html = `
-Flow Rate (m³/s):
+if(type==="rect"){
+
+html = `
+Flow Rate (m³/hr):
 <input type="number" id="q">
 
 Velocity (m/s):
 <input type="number" id="v">
 
-Diameter Unit:
-<select id="lenUnit">
-  <option value="m">m</option>
-  <option value="mm">mm</option>
-  <option value="ft">ft</option>
+Width (mm):
+<input type="number" id="w">
+
+Flow Unit
+<select id="flowUnit">
+<option value="m3hr">m³/hr</option>
+<option value="m3s">m³/s</option>
+<option value="cfm">CFM</option>
 </select>
 `;
+
+}
+else{
+
+html = `
+Flow Rate (m³/hr):
+<input type="number" id="q">
+
+Velocity (m/s):
+<input type="number" id="v">
+
+Flow Unit
+<select id="flowUnit">
+<option value="m3hr">m³/hr</option>
+<option value="m3s">m³/s</option>
+<option value="cfm">CFM</option>
+</select>
+`;
+
+}
     }
 
     document.getElementById("inputs").innerHTML = html;
@@ -461,12 +486,56 @@ function calculate(){
 
         let unit = document.getElementById("lenUnit")?.value || "m";
 
-        if(type === "rect"){
+if(type === "rect"){
 
-            result = area;
-            document.getElementById("output").innerHTML =
-                "Required Area = " + result.toFixed(3) + " m²";
-        }
+    let width = parseFloat(document.getElementById("w").value);
+
+    if(isNaN(width) || width<=0){
+        document.getElementById("output").innerHTML="";
+        return;
+    }
+
+    // Width entered in mm
+    width = width / 1000;
+
+    let height = area / width;
+
+    document.getElementById("output").innerHTML = `
+    <div class="result-card">
+
+    <h3>Calculation Result</h3>
+
+    <table class="result-table">
+
+    <tr>
+        <th>Parameter</th>
+        <th>Value</th>
+    </tr>
+
+    <tr>
+        <td>Required Width</td>
+        <td>${(width*1000).toFixed(1)} mm</td>
+    </tr>
+
+    <tr>
+        <td>Required Height</td>
+        <td>${(height*1000).toFixed(1)} mm</td>
+    </tr>
+
+    <tr>
+        <td>Height</td>
+        <td>${height.toFixed(4)} m</td>
+    </tr>
+
+    <tr>
+        <td>Height</td>
+        <td>${(height*3.28084).toFixed(3)} ft</td>
+    </tr>
+
+    </table>
+
+    </div>`;
+}
         else{
 
             let d = Math.sqrt((4 * area) / Math.PI);
