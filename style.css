@@ -30,10 +30,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: nowrap;      /* prevents second row expansion */
-    gap: 5px;
-    padding: 3px 6px;
-    min-height: 34px;
+    flex-wrap: nowrap;
+    gap: 12px;
+    padding: 4px 8px;
+    min-height: 32px;
 }
 
 .topbar-line:first-child {
@@ -43,13 +43,18 @@ body {
 .topbar a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
-    padding: 2px 5px;
-    font-size: 13px;
+    letter-spacing: 0.3px;
+    padding: 3px 6px;
     line-height: 1.2;
     border-radius: 4px;
-    transition: 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.topbar-line:nth-child(2) a{
+    font-size:13px;
+    font-weight:500;
 }
 
 .topbar a:hover {
@@ -326,25 +331,33 @@ button:hover {
 
 /* ================= FOOTER ================= */
 
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: #1e3c72;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-size: 13px;
+.footer{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background:#1e3c72;
+    color:#ffffff;
+    text-align:center;
+    padding:8px 10px;
+    font-size:14px;
+    line-height:1.4;
 }
 
-.footer-links {
-    margin-top: 5px;
+.footer-links{
+    margin-top:4px;
 }
 
-.footer-links a {
-    color: white;
-    margin: 0 8px;
-    text-decoration: none;
+.footer-links a{
+    color:#ffffff;
+    text-decoration:none;
+    margin:0 8px;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:0.2px;
+}
+
+.footer-links a:hover{
+    opacity:0.85;
 }
 
 .footer-links a:hover {
@@ -355,17 +368,19 @@ button:hover {
 
 @media (max-width: 768px) {
 
-    .topbar-line{
-        flex-wrap: wrap;
-        gap: 4px;
-        padding: 2px;
-    }
+.topbar a{
+    font-size:13px;
+    padding:2px 4px;
+}
 
-    .topbar a {
-        font-size: 12px;
-        padding: 2px 4px;
-    }
+.topbar-line{
+    gap:5px;
+}
 
+.topbar-line:nth-child(2) a{
+    font-size:12px;
+}
+    
     .wrapper{
         margin-top: 105px;
     }
@@ -387,6 +402,15 @@ button:hover {
         width: 90%;
     }
 
+.footer{
+    font-size:12px;
+}
+
+.footer-links a{
+    font-size:12px;
+    margin:0 5px;
+}
+    
 }
 
 /* ================= CARD TEXT CENTERING ================= */
