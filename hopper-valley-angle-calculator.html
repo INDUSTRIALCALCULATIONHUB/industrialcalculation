@@ -57,13 +57,23 @@
         <option value="2">Calculate Height from Valley Angle</option>
     </select>
 
-    <input type="number" id="Lt" placeholder="Top Length (mm)">
-    <input type="number" id="Wt" placeholder="Top Width (mm)">
-    <input type="number" id="Lb" placeholder="Bottom Length (mm)">
-    <input type="number" id="Wb" placeholder="Bottom Width (mm)">
-    <input type="number" id="H" placeholder="Hopper Height (mm)">
+    <label>Top Length (mm)</label>
+    <input type="number" id="Lt" placeholder="Enter Top Length (mm)">
 
-    <input type="number" id="thetaV" placeholder="Valley Angle (deg)" style="display:none;">
+    <label>Top Width (mm)</label>
+    <input type="number" id="Wt" placeholder="Enter Top Width (mm)">
+
+    <label>Bottom Length (mm)</label>
+    <input type="number" id="Lb" placeholder="Enter Bottom Length (mm)">
+
+    <label>Bottom Width (mm)</label>
+    <input type="number" id="Wb" placeholder="Enter Bottom Width (mm)">
+
+    <label>Hopper Height (mm)</label>
+    <input type="number" id="H" placeholder="Enter Hopper Height (mm)">
+
+    <label>Valley Angle (deg)</label>
+    <input type="number" id="thetaV" placeholder="Enter Valley Angle (deg)" style="display:none;">
 
     <div style="display:flex;gap:10px;flex-wrap:wrap;">
         <button class="calc" onclick="calc()">Calculate</button>
