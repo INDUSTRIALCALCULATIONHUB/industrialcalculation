@@ -69,11 +69,15 @@
     <label>Bottom Width (mm)</label>
     <input type="number" id="Wb" placeholder="Enter Bottom Width (mm)">
 
+<div id="heightGroup">
     <label>Hopper Height (mm)</label>
     <input type="number" id="H" placeholder="Enter Hopper Height (mm)">
+</div>
 
+<div id="valleyGroup" style="display:none;">
     <label>Valley Angle (deg)</label>
-    <input type="number" id="thetaV" placeholder="Enter Valley Angle (deg)" style="display:none;">
+    <input type="number" id="thetaV" placeholder="Enter Valley Angle (deg)">
+</div>
 
     <div style="display:flex;gap:10px;flex-wrap:wrap;">
         <button class="calc" onclick="calc()">Calculate</button>
@@ -159,8 +163,24 @@ The geometry of a hopper directly affects flow efficiency, material blockage (ar
 <script>
 
 function toggleMode(){
-    document.getElementById("thetaV").style.display =
-    document.getElementById("mode").value == "2" ? "block" : "none";
+
+    let mode = document.getElementById("mode").value;
+
+    if(mode === "1"){
+        // Calculate Valley Angle from Height
+        document.getElementById("heightGroup").style.display = "block";
+        document.getElementById("valleyGroup").style.display = "none";
+
+        document.getElementById("thetaV").value = "";
+    }
+    else{
+        // Calculate Height from Valley Angle
+        document.getElementById("heightGroup").style.display = "none";
+        document.getElementById("valleyGroup").style.display = "block";
+
+        document.getElementById("H").value = "";
+    }
+
 }
 
 function calc(){
@@ -263,7 +283,8 @@ document.getElementById("H").value="";
 document.getElementById("thetaV").value="";
 document.getElementById("output").innerHTML="";
 }
-
+// Set the correct fields on initial page load
+toggleMode();
 </script>
 
 </body>
