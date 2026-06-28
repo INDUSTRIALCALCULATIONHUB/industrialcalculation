@@ -136,7 +136,7 @@ For most engineering calculations involving pipes, structural members, shafts, a
 
 <tr>
 <td>α</td>
-<td>Coefficient of Linear Thermal Expansion</td>
+<td>Coefficient of Thermal Expansion</td>
 <td>/°C</td>
 </tr>
 
@@ -149,7 +149,7 @@ For most engineering calculations involving pipes, structural members, shafts, a
 <tr>
 <td>ΔT</td>
 <td>Temperature Change</td>
-<td>°C or K</td>
+<td>°C</td>
 </tr>
 
 </table>
@@ -346,17 +346,17 @@ function calculateLive() {
 
             <tr>
                 <td>Coefficient (α)</td>
-                <td>${alpha.toExponential(2)} /°C</td>
+                <td>${(alpha * 1e6).toFixed(1)} ×10⁻⁶ /°C</td>
             </tr>
 
             <tr>
                 <td>Linear Expansion</td>
-                <td>${expansion.toFixed(6)} m</td>
+                <td>${expansion.toFixed(3)} m</td>
             </tr>
 
             <tr>
                 <td>Linear Expansion</td>
-                <td>${(expansion * 1000).toFixed(3)} mm</td>
+                <td>${(expansion * 1000).toFixed(2)} mm</td>
             </tr>
 
         </table>
