@@ -4,210 +4,161 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pump Motor Selection Basics | Industrial Calculation Hub</title>
+<title>Pump Power Basics | Hydraulic Power & Motor Selection | Industrial Calculation Hub</title>
 
-<meta name="description" content="Learn pump motor selection basics, hydraulic power formula, working principle, and industrial applications.">
-<meta name="keywords" content="pump power, pump motor selection, hydraulic power, fluid mechanics, engineering pumps">
+<meta name="description" content="Learn pump power basics, hydraulic power formula, pump motor selection, efficiency, and industrial applications in fluid systems.">
+
+<meta name="keywords" content="pump power, pump motor selection, hydraulic power, fluid mechanics, pump efficiency, engineering pumps">
+
 <meta name="author" content="Industrial Calculation Hub">
 
-<!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612" crossorigin="anonymous"></script>
-
-<!-- CMP -->
+<!-- CMP (MUST LOAD FIRST) -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+<!-- ADSENSE -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
+crossorigin="anonymous"></script>
 
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: #333;
-}
-
-/* FIXED HEADER */
-.topbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #1f1f1f;
-    color: white;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 10px;
-    z-index: 1000;
-}
-
-.topbar a {
-    color: white;
-    margin: 5px 12px;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-/* PAGE WRAPPER */
-.page {
-    padding-top: 70px;
-    padding-bottom: 70px;
-}
-
-/* MAIN CONTAINER (75% WIDTH STANDARD) */
-.container {
-    width: 75%;
-    max-width: 1100px;
-    margin: auto;
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    line-height: 1.7;
-}
-
-@media (max-width: 768px) {
-    .container {
-        width: 92%;
-    }
-}
-
-/* HEADER TEXT */
-.header {
-    text-align: center;
-    color: white;
-    margin-bottom: 20px;
-}
-
-.header h1 {
-    font-size: 28px;
-}
-
-/* SECTION */
-.section {
-    margin-top: 22px;
-}
-
-.section h2 {
-    color: #1e3c72;
-    margin-bottom: 8px;
-}
-
-/* FORMULA BOX */
-.formula {
-    background: #f4f6f8;
-    padding: 10px;
-    border-left: 4px solid #2a5298;
-    margin: 10px 0;
-    font-weight: bold;
-}
-
-/* FIXED FOOTER */
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #1f1f1f;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-size: 13px;
-}
-</style>
+<!-- GLOBAL CSS -->
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<!-- FIXED TOP BAR -->
+<!-- ================= TOP BAR (2 LINES) ================= -->
 <div class="topbar">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="privacy.html">Privacy</a>
-<a href="terms.html">Terms</a>
+
+    <div class="topbar-line">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
+    <div class="topbar-line">
+        <a href="index.html#tools">Engineering Tools</a>
+        <a href="index.html#converters">Unit Conversion</a>
+        <a href="index.html#blogs">Engineering Knowledge</a>
+    </div>
+
 </div>
 
-<div class="page">
+<!-- ================= WRAPPER ================= -->
+<div class="wrapper">
 
 <!-- HEADER -->
-<div class="header">
-<h1>⚙️ Pump Motor Selection Basics</h1>
-<p>Understanding hydraulic power and pump energy requirements</p>
+<div class="header center">
+    <h1>Pump Power Basics</h1>
+    <p>Hydraulic power fundamentals and pump motor selection principles</p>
 </div>
 
-<!-- CONTENT -->
-<div class="container">
+<!-- AD SLOT -->
+<div class="ad-slot"></div>
 
 <div class="section">
-<h2>🔧 What is Pump Power?</h2>
+
+<h2>What is Pump Power?</h2>
+
 <p>
-Pump power is the energy required to move fluid against gravity, friction, and system resistance.
-It is a fundamental concept in fluid mechanics and hydraulic engineering used for pump selection.
+Pump power is the energy required to move a fluid against system resistance such as elevation, friction losses, and pressure differences. It is a key concept in fluid mechanics and is essential for selecting the correct pump and motor combination in industrial systems.
 </p>
+
+<p>
+The required power increases when flow rate or system head increases. Proper pump selection ensures energy efficiency, stable operation, and long equipment life.
+</p>
+
 </div>
+
+<!-- AD SLOT -->
+<div class="ad-slot"></div>
 
 <div class="section">
-<h2>📐 Pump Power Formula</h2>
 
-<div class="formula">
-P = (ρ × g × Q × H) / η
-</div>
+<h2>Pump Power Formula</h2>
+
+<p>Hydraulic power required by a pump is given by:</p>
 
 <ul>
+<li><strong>P = (ρ × g × Q × H) / η</strong></li>
 <li>ρ = Fluid density (kg/m³)</li>
 <li>g = 9.81 m/s²</li>
 <li>Q = Flow rate (m³/s)</li>
 <li>H = Head (m)</li>
-<li>η = Efficiency</li>
+<li>η = Pump efficiency</li>
 </ul>
-</div>
 
-<div class="section">
-<h2>⚙️ Working Principle</h2>
 <p>
-A pump increases the energy of a fluid by converting mechanical energy into hydraulic energy.
-Higher flow rate or head requires higher motor power.
+This equation represents the actual shaft power required after accounting for system losses.
 </p>
+
 </div>
 
 <div class="section">
-<h2>🏭 Industrial Applications</h2>
+
+<h2>Working Principle</h2>
+
+<p>
+A pump converts mechanical energy from a motor into hydraulic energy in a fluid. This energy increase allows the fluid to flow through pipelines, lift to higher elevations, or overcome system resistance.
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>Engineering Applications</h2>
+
 <ul>
 <li>Water supply systems</li>
-<li>Oil & gas pipelines</li>
-<li>Cooling systems</li>
+<li>Oil and gas transportation</li>
+<li>Cooling water circulation</li>
+<li>Boiler feed systems</li>
 <li>Irrigation systems</li>
+<li>Industrial process plants</li>
+<li>Firefighting systems</li>
 </ul>
+
+</div>
+
+<!-- AD SLOT -->
+<div class="ad-slot"></div>
+
+<div class="section">
+
+<h2>Engineering Importance</h2>
+
+<p>
+Correct pump motor selection ensures optimal energy consumption, reduces operating cost, and prevents issues such as cavitation, vibration, and system inefficiency. Undersized pumps fail to meet demand, while oversized pumps waste energy and increase maintenance costs.
+</p>
+
 </div>
 
 <div class="section">
-<h2>📊 Engineering Importance</h2>
+
+<h2>Design Considerations</h2>
+
 <p>
-Correct pump motor selection ensures energy efficiency, reduces operating cost, and improves system reliability.
-Oversized or undersized pumps lead to performance issues.
+Pump selection depends on flow rate, total dynamic head, fluid properties, and system layout. Engineers must also consider efficiency curves, NPSH requirements, and operating conditions for reliable performance.
 </p>
-</div>
 
-<!-- STANDARD THEORY SECTION -->
-<div class="section">
-<h2>📘 Theory / Information / Notes</h2>
-<p>
-Pump selection depends on system head, flow rate, fluid density, and efficiency.
-Proper hydraulic design ensures stable operation and prevents cavitation and energy losses in pipelines.
-</p>
 </div>
 
 </div>
-</div>
 
-<!-- FIXED FOOTER -->
+<!-- ================= FOOTER (2 LINES) ================= -->
 <div class="footer">
-© 2026 Industrial Calculation Hub | Engineering Design Portal
+
+    <div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
+
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
 </div>
 
 </body>
