@@ -1,302 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Plate Weight Calculator | Industrial Calculation Hub</title>
 
-<meta name="description" content="Calculate plate weight for rectangular and circular shapes using engineering formulas.">
-<meta name="keywords" content="plate weight calculator, steel weight, sheet weight, engineering calculator">
+<meta name="description" content="Calculate plate weight for rectangular and circular plates using engineering formulas.">
+<meta name="keywords" content="plate weight calculator, steel plate weight, sheet weight calculator">
 <meta name="author" content="Industrial Calculation Hub">
+
+<!-- CMP -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
 <!-- AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
 crossorigin="anonymous"></script>
 
-<!-- CMP -->
-<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+<link rel="stylesheet" href="style.css">
 
-<style>
-
-/* ================= GLOBAL THEME ================= */
-body{
-    margin:0;
-    font-family:Segoe UI, Arial, sans-serif;
-    background:linear-gradient(to right,#1e3c72,#2a5298);
-    color:white;
-}
-
-/* ================= FIXED HEADER ================= */
-.header-bar{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    background:#444;
-    color:white;
-    padding:12px;
-    text-align:center;
-    z-index:1000;
-}
-
-.header-bar a{
-    color:white;
-    margin:10px;
-    text-decoration:none;
-    font-weight:500;
-}
-
-/* ================= FIXED FOOTER ================= */
-.footer-bar{
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:#444;
-    color:white;
-    text-align:center;
-    padding:10px;
-    z-index:1000;
-}
-
-/* ================= MAIN CONTAINER (80% STANDARD) ================= */
-.container{
-    width:80%;
-    max-width:900px;
-    margin:100px auto 80px auto;
-    background:white;
-    color:black;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.25);
-}
-
-/* ================= TITLE ================= */
-h2{
-    text-align:center;
-    margin-top:0;
-}
-
-/* ================= LABEL ================= */
-label{
-    font-weight:600;
-}
-
-/* ================= INPUTS ================= */
-input, select{
-    width:100%;
-    padding:10px;
-    margin:8px 0;
-    border:1px solid #ccc;
-    border-radius:6px;
-    box-sizing:border-box;
-}
-
-/* REMOVE NUMBER SPINNERS (GLOBAL STANDARD) */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button{
-    -webkit-appearance:none;
-    margin:0;
-}
-input[type=number]{
-    -moz-appearance:textfield;
-}
-
-/* ================= BUTTON ================= */
-button{
-    width:100%;
-    padding:12px;
-    background:#1e3c72;
-    color:white;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-    font-size:16px;
-}
-
-button:hover{
-    background:#16305a;
-}
-
-/* ================= RESULT ================= */
-.result{
-    margin-top:15px;
-    font-weight:bold;
-    font-size:16px;
-    line-height:1.6;
-    text-align:center;
-}
-
-/* ================= CMP BANNER ================= */
-#consent-banner{
-    position:fixed;
-    bottom:50px;
-    left:50%;
-    transform:translateX(-50%);
-    width:80%;
-    max-width:900px;
-    background:#222;
-    color:white;
-    padding:15px;
-    border-radius:10px;
-    display:none;
-    z-index:2000;
-    text-align:center;
-}
-
-#consent-banner button{
-    margin:5px;
-    padding:8px 12px;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-}
-
-.accept{background:#4CAF50;color:white;}
-.reject{background:#f44336;color:white;}
-.manage{background:#2196F3;color:white;}
-
-</style>
 </head>
 
 <body>
 
-<!-- FIXED HEADER -->
-<div class="header-bar">
-🧰 Plate Weight Calculator |
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
+<!-- ================= TOP BAR ================= -->
+
+<div class="topbar">
+
+    <div class="topbar-line">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
+    <div class="topbar-line">
+        <a href="index.html#tools">Engineering Tools</a>
+        <a href="index.html#converters">Unit Conversion</a>
+        <a href="index.html#blogs">Engineering Knowledge</a>
+    </div>
+
 </div>
 
-<!-- MAIN CONTAINER -->
-<div class="container">
+<!-- ================= WRAPPER ================= -->
 
-<h2>📐 Plate Weight Calculator</h2>
+<div class="wrapper">
+
+<!-- ================= HEADER ================= -->
+
+<div class="header">
+
+<h1>Plate Weight Calculator</h1>
+
+<p>
+Calculate weight of rectangular and circular plates using density and geometry.
+</p>
+
+</div>
+
+<!-- ================= CALCULATOR ================= -->
+
+<div class="section">
 
 <label>Plate Shape</label>
 <select id="shape" onchange="renderInputs()">
-<option value="rect">Rectangular</option>
-<option value="circular">Circular</option>
+    <option value="rect">Rectangular Plate</option>
+    <option value="circular">Circular Plate</option>
 </select>
 
+<!-- dynamic inputs -->
 <div id="inputs"></div>
 
 <label>Thickness (mm)</label>
-<input type="number" id="thk">
+<input type="number" id="thk" step="any" min="0">
 
 <label>Material Density (kg/m³)</label>
 <select id="density">
-<option value="7850">Steel</option>
-<option value="8000">Stainless Steel</option>
-<option value="2700">Aluminium</option>
-<option value="8900">Copper</option>
-<option value="8500">Brass</option>
+    <option value="7850">Steel</option>
+    <option value="8000">Stainless Steel</option>
+    <option value="2700">Aluminium</option>
+    <option value="8900">Copper</option>
+    <option value="8500">Brass</option>
 </select>
 
-<button onclick="calculate()">Calculate</button>
-
-<div class="result" id="result"></div>
+<div class="result-box">
+    <div id="output"></div>
+</div>
 
 </div>
 
-<!-- FIXED FOOTER -->
-<div class="footer-bar">
-© 2026 Industrial Calculation Hub
+<!-- ================= ENGINEERING KNOWLEDGE ================= -->
+
+<div class="section">
+
+<h3>Engineering Knowledge</h3>
+
+<p>
+Plate weight is calculated using the relation between volume and material density. The volume is obtained from surface area multiplied by thickness.
+</p>
+
+<p><b>Basic Formula:</b></p>
+
+<p class="formula">
+Weight = Area × Thickness × Density
+</p>
+
+<table class="result-table">
+
+<tr>
+<th>Symbol</th>
+<th>Description</th>
+<th>Unit</th>
+</tr>
+
+<tr>
+<td>Area</td>
+<td>Surface Area of Plate</td>
+<td>m²</td>
+</tr>
+
+<tr>
+<td>Thickness</td>
+<td>Plate Thickness</td>
+<td>m</td>
+</tr>
+
+<tr>
+<td>Density</td>
+<td>Material Density</td>
+<td>kg/m³</td>
+</tr>
+
+<tr>
+<td>Weight</td>
+<td>Total Plate Mass</td>
+<td>kg</td>
+</tr>
+
+</table>
+
+<h3>Formulas Used</h3>
+
+<ul>
+<li><b>Rectangular Plate Area:</b> A = L × W</li>
+<li><b>Circular Plate Area:</b> A = π × D² / 4</li>
+<li><b>Volume:</b> V = A × t</li>
+<li><b>Weight:</b> W = V × ρ</li>
+</ul>
+
 </div>
 
-<!-- CMP CONSENT BANNER -->
-<div id="consent-banner">
-<p>This website uses cookies for analytics and personalized ads.</p>
-<button class="accept" onclick="acceptConsent()">Accept</button>
-<button class="reject" onclick="rejectConsent()">Reject</button>
-<button class="manage" onclick="manageConsent()">Manage</button>
-</div>
+</div> <!-- wrapper close -->
+
+<!-- ================= SCRIPT ================= -->
 
 <script>
 
+// Render inputs based on shape
 function renderInputs(){
+
     let shape = document.getElementById("shape").value;
     let html = "";
 
     if(shape === "rect"){
         html = `
         <label>Length (m)</label>
-        <input type="number" id="L">
+        <input type="number" id="L" step="any" min="0">
 
         <label>Width (m)</label>
-        <input type="number" id="W">
+        <input type="number" id="W" step="any" min="0">
         `;
     }
     else{
         html = `
         <label>Diameter (m)</label>
-        <input type="number" id="D">
+        <input type="number" id="D" step="any" min="0">
         `;
     }
 
     document.getElementById("inputs").innerHTML = html;
 }
 
+// Main calculation
 function calculate(){
 
     let shape = document.getElementById("shape").value;
-    let thk = parseFloat(document.getElementById("thk").value) / 1000;
+    let thk_mm = parseFloat(document.getElementById("thk").value);
     let density = parseFloat(document.getElementById("density").value);
 
-    if(isNaN(thk)){
-        document.getElementById("result").innerHTML = "Please enter valid thickness";
+    let output = document.getElementById("output");
+
+    if(isNaN(thk_mm) || thk_mm <= 0){
+        output.innerHTML = "<div class='result-card'>Enter valid thickness</div>";
         return;
     }
 
+    let thk = thk_mm / 1000; // mm → m
     let area = 0;
 
+    // AREA CALCULATION
     if(shape === "rect"){
+
         let L = parseFloat(document.getElementById("L").value);
         let W = parseFloat(document.getElementById("W").value);
+
+        if(isNaN(L) || isNaN(W) || L <= 0 || W <= 0){
+            output.innerHTML = "<div class='result-card'>Enter valid length and width</div>";
+            return;
+        }
+
         area = L * W;
     }
     else{
+
         let D = parseFloat(document.getElementById("D").value);
+
+        if(isNaN(D) || D <= 0){
+            output.innerHTML = "<div class='result-card'>Enter valid diameter</div>";
+            return;
+        }
+
         area = Math.PI * D * D / 4;
     }
 
     let volume = area * thk;
     let weight = volume * density;
 
-    document.getElementById("result").innerHTML =
-        "Surface Area = " + area.toFixed(2) + " m²<br>" +
-        "Volume = " + volume.toFixed(4) + " m³<br>" +
-        "Weight = " + weight.toFixed(2) + " kg";
+    output.innerHTML = `
+
+<div class="result-card">
+
+<h3>Result</h3>
+
+<table class="result-table">
+
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+
+<tr>
+<td>Surface Area</td>
+<td>${area.toFixed(4)} m²</td>
+</tr>
+
+<tr>
+<td>Thickness</td>
+<td>${thk.toFixed(4)} m</td>
+</tr>
+
+<tr>
+<td>Volume</td>
+<td>${volume.toFixed(6)} m³</td>
+</tr>
+
+<tr>
+<td>Density</td>
+<td>${density} kg/m³</td>
+</tr>
+
+<tr>
+<td>Weight</td>
+<td>${weight.toFixed(3)} kg</td>
+</tr>
+
+</table>
+
+</div>
+
+`;
+
 }
 
-/* CMP */
-function showBanner(){
-    if(!localStorage.getItem("consent")){
-        document.getElementById("consent-banner").style.display="block";
-    }
-}
+// auto init
+document.addEventListener("DOMContentLoaded", function () {
 
-function acceptConsent(){
-    localStorage.setItem("consent","accepted");
-    document.getElementById("consent-banner").style.display="none";
-}
-
-function rejectConsent(){
-    localStorage.setItem("consent","rejected");
-    document.getElementById("consent-banner").style.display="none";
-}
-
-function manageConsent(){
-    alert("Redirect to privacy settings page.");
-}
-
-window.onload = function(){
     renderInputs();
-    showBanner();
-};
 
+    document.querySelectorAll("#shape,#thk,#density,#inputs")
+    .forEach(el => el.addEventListener("input", calculate));
+
+});
 </script>
 
 </body>
