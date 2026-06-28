@@ -82,21 +82,6 @@ step="any"
 min="0"
 placeholder="Enter flange thickness">
 
-<label for="holes">Number of Bolt Holes</label>
-<input
-type="number"
-id="holes"
-step="1"
-min="0"
-placeholder="Enter number of bolt holes">
-
-<label for="holeDia">Bolt Hole Diameter (mm)</label>
-<input
-type="number"
-id="holeDia"
-step="any"
-min="0"
-placeholder="Enter bolt hole diameter">
 
 <label for="density">Material</label>
 
@@ -172,18 +157,10 @@ multiplied by the flange thickness.
 <td>Gross flange area</td>
 </tr>
 
-<tr>
-<td>Ah = n × π/4 × d²</td>
-<td>Total bolt hole area</td>
-</tr>
+
 
 <tr>
-<td>Anet = A − Ah</td>
-<td>Net flange area</td>
-</tr>
-
-<tr>
-<td>V = Anet × t</td>
+<td>V = A × t</td>
 <td>Net flange volume</td>
 </tr>
 
@@ -354,8 +331,6 @@ function calculateLive() {
     const od_mm = parseFloat(document.getElementById("od").value);
     const id_mm = parseFloat(document.getElementById("id").value);
     const thk_mm = parseFloat(document.getElementById("thickness").value);
-    const holes = parseFloat(document.getElementById("holes").value) || 0;
-    const holeDia_mm = parseFloat(document.getElementById("holeDia").value) || 0;
     const density = parseFloat(document.getElementById("density").value);
 
     const output = document.getElementById("output");
@@ -382,25 +357,15 @@ function calculateLive() {
     const od = od_mm / 1000;
     const id = id_mm / 1000;
     const thk = thk_mm / 1000;
-    const holeDia = holeDia_mm / 1000;
+
 
     // Gross flange area
     const grossArea =
         (Math.PI / 4) * (Math.pow(od, 2) - Math.pow(id, 2));
 
-    // Total bolt hole area
-    const holeArea =
-        holes * (Math.PI / 4) * Math.pow(holeDia, 2);
-
-    const netArea = grossArea - holeArea;
-
-    if (netArea <= 0) {
-        output.innerHTML =
-            "<div class='result-card'>Bolt hole area is larger than flange area.</div>";
-        return;
-    }
-
-    const volume = netArea * thk;
+    const netArea = grossArea;
+    
+    const volume = grossArea * thk;
 
     const weightKg = volume * density;
     const weightLb = weightKg * 2.20462;
@@ -419,28 +384,17 @@ function calculateLive() {
 
                 <tr>
                     <td>Gross Area</td>
-                    <td>${grossArea.toFixed(6)} m²</td>
+                    <td>${grossArea.toFixed(3)} m²</td>
                 </tr>
 
                 <tr>
-                    <td>Bolt Hole Area</td>
-                    <td>${holeArea.toFixed(6)} m²</td>
+                    <td>Flange Area</td>
+                    <td>${grossArea.toFixed(4)} m²</td>
                 </tr>
 
-                <tr>
-                    <td>Net Area</td>
-                    <td>${netArea.toFixed(6)} m²</td>
-                </tr>
 
-                <tr>
-                    <td>Volume</td>
-                    <td>${volume.toFixed(6)} m³</td>
-                </tr>
 
-                <tr>
-                    <td>Material Density</td>
-                    <td>${density.toFixed(0)} kg/m³</td>
-                </tr>
+
 
                 <tr>
                     <td>Weight</td>
@@ -464,8 +418,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "od",
         "id",
         "thickness",
-        "holes",
-        "holeDia",
+
         "density"
     ];
 
