@@ -6,231 +6,175 @@
 
 <title>Pressure Vessel Design Basics | Industrial Calculation Hub</title>
 
-<meta name="description" content="Learn pressure vessel design basics, stress concepts, formulas, and industrial applications used in mechanical and process industries.">
+<meta name="description" content="Learn pressure vessel design basics, hoop stress, longitudinal stress, formulas, materials, safety factors and industrial applications used in mechanical and process industries.">
+
 <meta name="keywords" content="pressure vessel design, hoop stress, longitudinal stress, ASME pressure vessel, engineering design, fluid pressure systems">
+
 <meta name="author" content="Industrial Calculation Hub">
 
-<!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612" crossorigin="anonymous"></script>
-
-<!-- CMP -->
+<!-- CMP (MUST LOAD FIRST) -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+<!-- ADSENSE -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
+crossorigin="anonymous"></script>
 
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: #333;
-}
-
-/* FIXED TOP HEADER */
-.topbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #1f1f1f;
-    color: white;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 10px;
-    z-index: 1000;
-}
-
-.topbar a {
-    color: white;
-    margin: 5px 12px;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-/* PAGE WRAPPER */
-.page {
-    padding-top: 70px;
-    padding-bottom: 70px;
-}
-
-/* MAIN CONTAINER (75% WIDTH STANDARD) */
-.container {
-    width: 75%;
-    max-width: 1100px;
-    margin: auto;
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    line-height: 1.7;
-}
-
-/* MOBILE RESPONSIVE */
-@media (max-width: 768px) {
-    .container {
-        width: 92%;
-    }
-}
-
-/* HEADER SECTION */
-.header {
-    text-align: center;
-    color: white;
-    margin-bottom: 20px;
-}
-
-.header h1 {
-    font-size: 28px;
-}
-
-/* SECTION STYLE */
-.section {
-    margin-top: 22px;
-}
-
-.section h2 {
-    color: #1e3c72;
-    margin-bottom: 8px;
-}
-
-/* FIX LIST STYLE */
-ul {
-    padding-left: 20px;
-}
-
-/* FORMULA BOX */
-.formula {
-    background: #f4f6f8;
-    padding: 10px;
-    border-left: 4px solid #2a5298;
-    margin: 10px 0;
-    font-weight: bold;
-}
-
-/* FIXED FOOTER */
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #1f1f1f;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-size: 13px;
-}
-</style>
+<!-- GLOBAL CSS -->
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<!-- FIXED HEADER -->
+<!-- ================= TOP BAR (2 LINES) ================= -->
 <div class="topbar">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="privacy.html">Privacy</a>
-<a href="terms.html">Terms</a>
+
+    <div class="topbar-line">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
+    <div class="topbar-line">
+        <a href="index.html#tools">Engineering Tools</a>
+        <a href="index.html#converters">Unit Conversion</a>
+        <a href="index.html#blogs">Engineering Knowledge</a>
+    </div>
+
 </div>
 
-<div class="page">
+<!-- ================= WRAPPER ================= -->
+<div class="wrapper">
 
-<!-- TITLE -->
-<div class="header">
-<h1>⚙️ Pressure Vessel Design Basics</h1>
-<p>Engineering stress concepts used in industrial pressure systems</p>
+<!-- HEADER -->
+<div class="header center">
+    <h1>Pressure Vessel Design Basics</h1>
+    <p>Engineering stress concepts used in industrial pressure systems</p>
 </div>
 
-<!-- MAIN CONTENT -->
-<div class="container">
+<!-- AD SLOT -->
+<div class="ad-slot"></div>
+
+<!-- ================= CONTENT ================= -->
 
 <div class="section">
-<h2>⚙️ What is a Pressure Vessel?</h2>
+
+<h2>What is a Pressure Vessel?</h2>
+
 <p>
-A pressure vessel is a container designed to hold gases or liquids at a pressure substantially different from ambient pressure.
-They are widely used in chemical plants, refineries, and power industries.
+A pressure vessel is a container designed to hold gases or liquids at a pressure substantially different from ambient pressure. These systems are widely used in chemical plants, refineries, power plants and process industries.
 </p>
+
+<p>
+Because they operate under high internal or external pressure, pressure vessels must be carefully designed to prevent failure due to excessive stress, corrosion, fatigue or thermal loading.
+</p>
+
 </div>
 
+<!-- AD SLOT -->
+<div class="ad-slot"></div>
+
 <div class="section">
-<h2>📐 Key Design Stresses</h2>
+
+<h2>Key Design Stresses</h2>
+
 <ul>
-<li><b>Hoop Stress:</b> Circumferential stress in vessel wall</li>
-<li><b>Longitudinal Stress:</b> Stress along vessel length</li>
-<li><b>Radial Stress:</b> Usually small compared to other stresses</li>
+<li><strong>Hoop Stress:</strong> Circumferential stress acting around the vessel wall.</li>
+<li><strong>Longitudinal Stress:</strong> Stress acting along the length of the vessel.</li>
+<li><strong>Radial Stress:</strong> Usually small compared to hoop and longitudinal stresses.</li>
 </ul>
+
 </div>
 
 <div class="section">
-<h2>📊 Basic Formulas</h2>
 
-<div class="formula">Hoop Stress: σh = (P × r) / t</div>
-<div class="formula">Longitudinal Stress: σl = (P × r) / (2t)</div>
+<h2>Basic Formulas</h2>
 
+<ul>
+<li><strong>Hoop Stress:</strong> σh = (P × r) / t</li>
+<li><strong>Longitudinal Stress:</strong> σl = (P × r) / (2t)</li>
+</ul>
+
+<p><strong>Where:</strong></p>
 <ul>
 <li>P = Internal pressure</li>
 <li>r = Internal radius</li>
 <li>t = Wall thickness</li>
 </ul>
+
 </div>
 
 <div class="section">
-<h2>🏭 Materials Used</h2>
+
+<h2>Materials Used</h2>
+
 <ul>
 <li>Carbon steel</li>
 <li>Stainless steel</li>
 <li>Alloy steel</li>
 <li>Composite materials</li>
 </ul>
+
 </div>
 
 <div class="section">
-<h2>⚠️ Safety Considerations</h2>
+
+<h2>Safety Considerations</h2>
+
 <p>
-Design includes safety factors for pressure surges, corrosion allowance, and fatigue life to prevent catastrophic failure.
+Pressure vessel design includes safety factors to account for pressure surges, corrosion allowance, welding efficiency, and fatigue life. Proper design ensures safe operation under extreme industrial conditions.
 </p>
+
 </div>
 
+<!-- AD SLOT -->
+<div class="ad-slot"></div>
+
 <div class="section">
-<h2>📊 Applications</h2>
+
+<h2>Applications</h2>
+
 <ul>
 <li>Boilers and steam systems</li>
 <li>Oil & gas separators</li>
 <li>Chemical reactors</li>
 <li>Compressed air tanks</li>
+<li>Heat exchangers and storage vessels</li>
 </ul>
+
 </div>
 
 <div class="section">
-<h2>🔗 Related Tools</h2>
-<ul>
-<li><a href="pressure-conversion.html">Pressure Conversion Tool</a></li>
-<li><a href="heat-transfer.html">Heat Transfer Calculator</a></li>
-<li><a href="pipe-flow-calculator.html">Pipe Flow Calculator</a></li>
-</ul>
-</div>
 
-<!-- STANDARD THEORY SECTION -->
-<div class="section">
-<h2>📘 Theory / Information / Notes</h2>
+<h2>Engineering Notes</h2>
+
 <p>
-Pressure vessel design follows thin and thick cylinder theory depending on thickness ratio.
-Proper stress distribution ensures safe operation under high internal pressure conditions.
-Material selection and corrosion allowance are critical for long-term reliability.
+Pressure vessel design is based on thin and thick cylinder theory depending on wall thickness ratio. Proper stress distribution, material selection and corrosion protection are essential for long-term reliability and safe operation.
 </p>
+
+<p>
+Design standards such as ASME codes are commonly used in industrial applications to ensure structural integrity and compliance.
+</p>
+
 </div>
 
 </div>
-</div>
 
-<!-- FIXED FOOTER -->
+<!-- ================= FOOTER ================= -->
 <div class="footer">
-© 2026 Industrial Calculation Hub | Engineering Design Portal
+
+    <div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
+
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
 </div>
 
 </body>
