@@ -16,6 +16,7 @@ crossorigin="anonymous"></script>
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -67,7 +68,7 @@ crossorigin="anonymous"></script>
 <div id="output"></div>
 
 </div>
-</div>
+
 
 
 <div class="section">
@@ -127,7 +128,8 @@ It is usually expressed in m³/s, m³/hr, or CFM.
 </div>
 
 </div>    
-    
+
+</div>
     
 <!-- ================= FOOTER (2 LINES) ================= -->
 <div class="footer">
@@ -171,21 +173,25 @@ Velocity (m/s): <input type="number" id="v" placeholder="Enter velocity">
         }
     }
 
-    else if(mode === "velocity"){
+else if(mode === "velocity"){
 
-        if(type === "rect"){
-            html = `
+    if(type === "rect"){
+        html = `
 Width (mm): <input type="number" id="w" placeholder="Enter width in mm">
 Height (mm): <input type="number" id="h" placeholder="Enter height in mm">
-Flow Rate (m³/s): <input type="number" id="q" placeholder="Enter flow rate">
+
+Flow Rate (m³/hr): 
+<input type="number" id="q" placeholder="Enter flow rate in m³/hr">
 `;
-        } else {
-            html = `
+    } else {
+        html = `
 Diameter (mm): <input type="number" id="d" placeholder="Enter diameter in mm">
-Flow Rate (m³/s): <input type="number" id="q" placeholder="Enter flow rate">
+
+Flow Rate (m³/hr): 
+<input type="number" id="q" placeholder="Enter flow rate in m³/hr">
 `;
-        }
     }
+}
 
     else {
 
@@ -280,40 +286,43 @@ function calculate(){
     // VELOCITY
     else if(mode === "velocity"){
 
-        let Q, area;
+  let Q_m3hr, Q, area;
 
-        if(type === "rect"){
+if(type === "rect"){
 
-            let w_mm = parseFloat(document.getElementById("w").value);
-            let h_mm = parseFloat(document.getElementById("h").value);
-            Q = parseFloat(document.getElementById("q").value);
+    let w_mm = parseFloat(document.getElementById("w").value);
+    let h_mm = parseFloat(document.getElementById("h").value);
+    Q_m3hr = parseFloat(document.getElementById("q").value);
 
-            if(isNaN(w_mm)||isNaN(h_mm)||isNaN(Q)||w_mm<=0||h_mm<=0||Q<=0){
-                document.getElementById("output").innerHTML="";
-                return;
-            }
+    if(isNaN(w_mm)||isNaN(h_mm)||isNaN(Q_m3hr)||w_mm<=0||h_mm<=0||Q_m3hr<=0){
+        document.getElementById("output").innerHTML="";
+        return;
+    }
 
-            let w = w_mm/1000;
-            let h = h_mm/1000;
+    let w = w_mm/1000;
+    let h = h_mm/1000;
 
-            area = w*h;
+    area = w*h;
 
-        } else {
+} else {
 
-            let d_mm = parseFloat(document.getElementById("d").value);
-            Q = parseFloat(document.getElementById("q").value);
+    let d_mm = parseFloat(document.getElementById("d").value);
+    Q_m3hr = parseFloat(document.getElementById("q").value);
 
-            if(isNaN(d_mm)||isNaN(Q)||d_mm<=0||Q<=0){
-                document.getElementById("output").innerHTML="";
-                return;
-            }
+    if(isNaN(d_mm)||isNaN(Q_m3hr)||d_mm<=0||Q_m3hr<=0){
+        document.getElementById("output").innerHTML="";
+        return;
+    }
 
-            let d = d_mm/1000;
-            area = Math.PI*Math.pow(d/2,2);
-        }
+    let d = d_mm/1000;
+    area = Math.PI*Math.pow(d/2,2);
+}
 
-        let V_mps = Q/area;
-        let V_fts = V_mps*3.28084;
+// CONVERT m³/hr → m³/s
+Q = Q_m3hr / 3600;
+
+let V_mps = Q / area;
+let V_fts = V_mps * 3.28084;
 
 resultHTML = `
 <div class="result-card">
@@ -330,7 +339,8 @@ resultHTML = `
     // SIZE
     else{
 
-        let Q = parseFloat(document.getElementById("q").value);
+        let Q_m3hr = parseFloat(document.getElementById("q").value);
+        let Q = Q_m3hr / 3600; // convert to m³/s
         let V = parseFloat(document.getElementById("v").value);
 
         if(isNaN(Q)||isNaN(V)||Q<=0||V<=0){
