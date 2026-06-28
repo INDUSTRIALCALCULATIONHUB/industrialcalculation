@@ -54,9 +54,7 @@ crossorigin="anonymous"></script>
 
 <h1>Thermal Expansion</h1>
 
-<p>
-Calculate linear thermal expansion of engineering materials due to temperature change.
-</p>
+<p>Calculate linear thermal expansion of engineering materials due to temperature change</p>
 
 </div>
 
@@ -64,8 +62,8 @@ Calculate linear thermal expansion of engineering materials due to temperature c
 
 <div class="section">
 
-<label>Initial Length (m)</label>
-<input type="number" id="length" step="any" min="0">
+<label>Initial Length (mm)</label>
+<input type="number" id="length" placeholder="Enter length in mm">
 
 <label>Temperature Change (ΔT) [°C]</label>
 <input type="number" id="temp" step="any">
@@ -303,71 +301,68 @@ For most engineering calculations involving pipes, structural members, shafts, a
 
 function calculateLive() {
 
-    let L = parseFloat(document.getElementById("length").value);
+    let L_mm = parseFloat(document.getElementById("length").value);
     let dT = parseFloat(document.getElementById("temp").value);
     let alpha = parseFloat(document.getElementById("material").value);
 
     let output = document.getElementById("output");
 
-    if (isNaN(L) || isNaN(dT)) {
+    if (isNaN(L_mm) || isNaN(dT) || isNaN(alpha)) {
         output.innerHTML = "";
         return;
     }
 
-    if (L <= 0) {
-
+    if (L_mm <= 0) {
         output.innerHTML =
         "<div class='result-card'>Enter valid positive values</div>";
-
         return;
     }
+
+    let L = L_mm / 1000; // mm → m
 
     let expansion = L * alpha * dT;
 
     output.innerHTML = `
+    <div class="result-card">
 
-<div class="result-card">
+        <h3>Result</h3>
 
-<h3>Result</h3>
+        <table class="result-table">
 
-<table class="result-table">
+            <tr>
+                <th>Parameter</th>
+                <th>Value</th>
+            </tr>
 
-<tr>
-<th>Parameter</th>
-<th>Value</th>
-</tr>
+            <tr>
+                <td>Initial Length</td>
+                <td>${L_mm} mm (${L.toFixed(3)} m)</td>
+            </tr>
 
-<tr>
-<td>Initial Length</td>
-<td>${L.toFixed(3)} m</td>
-</tr>
+            <tr>
+                <td>Temperature Change</td>
+                <td>${dT.toFixed(1)} °C</td>
+            </tr>
 
-<tr>
-<td>Temperature Change</td>
-<td>${dT.toFixed(1)} °C</td>
-</tr>
+            <tr>
+                <td>Coefficient (α)</td>
+                <td>${alpha.toExponential(2)} /°C</td>
+            </tr>
 
-<tr>
-<td>Coefficient (α)</td>
-<td>${alpha.toExponential(2)} /°C</td>
-</tr>
+            <tr>
+                <td>Linear Expansion</td>
+                <td>${expansion.toFixed(6)} m</td>
+            </tr>
 
-<tr>
-<td>Linear Expansion</td>
-<td>${expansion.toFixed(6)} m</td>
-</tr>
+            <tr>
+                <td>Linear Expansion</td>
+                <td>${(expansion * 1000).toFixed(3)} mm</td>
+            </tr>
 
-<tr>
-<td>Linear Expansion</td>
-<td>${(expansion * 1000).toFixed(3)} mm</td>
-</tr>
+        </table>
 
-</table>
-
-</div>
-
-`;
-
+    </div>
+    `;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
