@@ -5,23 +5,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Heat Transfer Calculator | Industrial Calculation Hub</title>
+<title>Thermal Expansion Calculator | Industrial Calculation Hub</title>
 
-<meta name="description" content="Calculate heat transfer rate using Fourier's Law of Conduction. Suitable for thermal engineering and HVAC applications.">
+<meta name="description" content="Calculate linear thermal expansion of engineering materials using the coefficient of thermal expansion. Suitable for piping, structural steel, pressure vessels, and industrial engineering applications.">
 
-<meta name="keywords" content="heat transfer calculator, Fourier law calculator, thermal conductivity, conduction calculator, engineering calculator">
+<meta name="keywords" content="thermal expansion calculator, coefficient of thermal expansion, linear expansion calculator, steel expansion, engineering calculator">
 
 <meta name="author" content="Industrial Calculation Hub">
-
 
 <!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
-
 <!-- AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
 crossorigin="anonymous"></script>
-
 
 <link rel="stylesheet" href="style.css">
 
@@ -55,45 +52,74 @@ crossorigin="anonymous"></script>
 
 <div class="header">
 
-<h1>Heat Transfer</h1>
+<h1>Thermal Expansion</h1>
 
-<p>Calculate heat transfer using Fourier's Law of Conduction.</p>
+<p>
+Calculate linear thermal expansion of engineering materials due to temperature change.
+</p>
 
 </div>
-    
+
+<!-- ================= CALCULATOR ================= -->
+
 <div class="section">
-<!-- INPUTS -->
 
-<label>Thermal Conductivity (k) [W/m·K]</label>
-<input type="number" id="k" step="any" min="0">
+<label>Initial Length (m)</label>
+<input type="number" id="length" step="any" min="0">
 
-<label>Heat Transfer Area (A) [m²]</label>
-<input type="number" id="area" step="any" min="0">
+<label>Temperature Change (ΔT) [°C]</label>
+<input type="number" id="temp" step="any">
 
-<label>Temperature Difference (ΔT) [°C]</label>
-<input type="number" id="tempDiff" step="any">
+<label>Material</label>
 
-<label>Insulation Thickness (L) [mm]</label>
-<input type="number" id="thickness" step="any" min="0">
+<select id="material">
 
-<!-- RESULT -->
+<option value="12e-6">Mild Steel (General)</option>
+<option value="12e-6">IS 2062 Structural Steel</option>
+<option value="12e-6">Carbon Steel</option>
+<option value="17e-6">Stainless Steel 304</option>
+<option value="16e-6">Stainless Steel 316</option>
+<option value="16e-6">Stainless Steel 316L</option>
+<option value="23e-6">Aluminium</option>
+<option value="11e-6">Cast Iron</option>
+<option value="17e-6">Copper</option>
+<option value="19e-6">Brass</option>
+<option value="18e-6">Bronze</option>
+<option value="8.5e-6">Titanium</option>
+<option value="13e-6">Nickel</option>
+
+</select>
 
 <div class="result-box">
     <div id="output"></div>
 </div>
+
 </div>
+
+<!-- ================= ENGINEERING KNOWLEDGE ================= -->
+
 <div class="section">
 
 <h3>Engineering Knowledge</h3>
 
 <p>
-<b>Heat transfer by conduction</b> is the movement of thermal energy through a solid material due to a temperature difference. According to <b>Fourier's Law of Heat Conduction</b>, the heat transfer rate is directly proportional to the material's thermal conductivity, the heat transfer area, and the temperature difference, while being inversely proportional to the material thickness.
+
+<b>Thermal expansion</b> is the increase in the dimensions of a material when its temperature rises. As temperature increases, the atoms within the material vibrate more intensely, causing the average spacing between atoms to increase. This results in an increase in length, area, or volume depending on the application.
+
 </p>
 
-<p><b>Fourier's Law:</b></p>
+<p>
+
+For most engineering calculations involving pipes, structural members, shafts, and plates, <b>linear thermal expansion</b> is considered.
+
+</p>
+
+<p><b>Linear Expansion Formula:</b></p>
 
 <p class="formula">
-Q = (k × A × ΔT) / L
+
+ΔL = α × L × ΔT
+
 </p>
 
 <table class="result-table">
@@ -105,33 +131,103 @@ Q = (k × A × ΔT) / L
 </tr>
 
 <tr>
-<td>Q</td>
-<td>Heat Transfer Rate</td>
-<td>W</td>
+<td>ΔL</td>
+<td>Linear Expansion</td>
+<td>m</td>
 </tr>
 
 <tr>
-<td>k</td>
-<td>Thermal Conductivity</td>
-<td>W/m·K</td>
-</tr>
-
-<tr>
-<td>A</td>
-<td>Heat Transfer Area</td>
-<td>m²</td>
-</tr>
-
-<tr>
-<td>ΔT</td>
-<td>Temperature Difference</td>
-<td>°C or K</td>
+<td>α</td>
+<td>Coefficient of Linear Thermal Expansion</td>
+<td>/°C</td>
 </tr>
 
 <tr>
 <td>L</td>
-<td>Material Thickness</td>
+<td>Original Length</td>
 <td>m</td>
+</tr>
+
+<tr>
+<td>ΔT</td>
+<td>Temperature Change</td>
+<td>°C or K</td>
+</tr>
+
+</table>
+
+<h3>Typical Coefficient of Thermal Expansion</h3>
+
+<table class="result-table">
+
+<tr>
+<th>Material</th>
+<th>Coefficient (×10⁻⁶ /°C)</th>
+</tr>
+
+<tr>
+<td>Mild Steel</td>
+<td>12</td>
+</tr>
+
+<tr>
+<td>IS 2062 Structural Steel</td>
+<td>12</td>
+</tr>
+
+<tr>
+<td>Carbon Steel</td>
+<td>12</td>
+</tr>
+
+<tr>
+<td>Stainless Steel 304</td>
+<td>17</td>
+</tr>
+
+<tr>
+<td>Stainless Steel 316</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>Stainless Steel 316L</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>Aluminium</td>
+<td>23</td>
+</tr>
+
+<tr>
+<td>Cast Iron</td>
+<td>11</td>
+</tr>
+
+<tr>
+<td>Copper</td>
+<td>17</td>
+</tr>
+
+<tr>
+<td>Brass</td>
+<td>19</td>
+</tr>
+
+<tr>
+<td>Bronze</td>
+<td>18</td>
+</tr>
+
+<tr>
+<td>Titanium</td>
+<td>8.5</td>
+</tr>
+
+<tr>
+<td>Nickel</td>
+<td>13</td>
 </tr>
 
 </table>
@@ -139,91 +235,45 @@ Q = (k × A × ΔT) / L
 <h3>Effect of Each Parameter</h3>
 
 <ul>
-<li><b>Higher thermal conductivity (k):</b> Increases heat transfer.</li>
-<li><b>Larger surface area (A):</b> Allows more heat to flow.</li>
-<li><b>Higher temperature difference (ΔT):</b> Produces greater heat transfer.</li>
-<li><b>Greater insulation thickness (L):</b> Reduces heat transfer.</li>
+<li><b>Higher coefficient of thermal expansion (α):</b> Produces greater expansion for the same temperature change.</li>
+
+<li><b>Longer initial length (L):</b> Results in a larger total expansion.</li>
+
+<li><b>Higher temperature change (ΔT):</b> Causes proportionally greater expansion.</li>
+
+<li><b>Different materials:</b> Expand at different rates depending on their atomic structure.</li>
 </ul>
-
-<h3>Typical Thermal Conductivity Values</h3>
-
-<table class="result-table">
-
-<tr>
-<th>Material</th>
-<th>Thermal Conductivity (W/m·K)</th>
-</tr>
-
-<tr>
-<td>Copper</td>
-<td>385–400</td>
-</tr>
-
-<tr>
-<td>Aluminium</td>
-<td>205</td>
-</tr>
-
-<tr>
-<td>Carbon Steel</td>
-<td>45–60</td>
-</tr>
-
-<tr>
-<td>Stainless Steel</td>
-<td>14–17</td>
-</tr>
-
-<tr>
-<td>Concrete</td>
-<td>1.0–1.8</td>
-</tr>
-
-<tr>
-<td>Glass Wool</td>
-<td>0.032–0.040</td>
-</tr>
-
-<tr>
-<td>Mineral Wool</td>
-<td>0.035–0.045</td>
-</tr>
-
-<tr>
-<td>Calcium Silicate</td>
-<td>0.050–0.070</td>
-</tr>
-
-<tr>
-<td>Polyurethane Foam</td>
-<td>0.022–0.028</td>
-</tr>
-
-</table>
 
 <h3>Engineering Applications</h3>
 
 <ul>
-<li>Pipe insulation design</li>
-<li>Steam line heat loss calculations</li>
-<li>Boiler and furnace insulation</li>
-<li>Heat exchanger design</li>
-<li>HVAC duct insulation</li>
-<li>Building thermal analysis</li>
-<li>Industrial equipment insulation</li>
-<li>Cold storage and refrigeration systems</li>
+<li>Steam and hot water pipelines</li>
+<li>Pressure vessels</li>
+<li>Heat exchangers</li>
+<li>Boilers and furnaces</li>
+<li>Structural steel buildings</li>
+<li>Bridges and expansion joints</li>
+<li>HVAC duct systems</li>
+<li>Industrial machinery alignment</li>
+<li>Railway tracks</li>
+<li>Storage tanks</li>
 </ul>
 
 <h3>Engineering Notes</h3>
 
 <ul>
-<li>The formula applies to steady-state one-dimensional heat conduction.</li>
-<li>Thermal conductivity generally changes with temperature.</li>
-<li>The calculated heat transfer rate is directly proportional to the exposed surface area.</li>
-<li>Increasing insulation thickness is one of the most effective methods of reducing heat loss.</li>
-<li>For multilayer insulation systems, the thermal resistance of each layer should be considered separately.</li>
+<li>The equation applies to uniform linear thermal expansion.</li>
+
+<li>Expansion is directly proportional to the original length and temperature change.</li>
+
+<li>Long pipelines should include expansion loops or expansion joints to prevent excessive thermal stress.</li>
+
+<li>Restrained thermal expansion can generate significant thermal stresses that may exceed allowable design limits.</li>
+
+<li>The coefficient of thermal expansion varies slightly with temperature and material grade; always use project-specific values when available.</li>
+
+<li>For precise engineering design, refer to applicable standards or manufacturer data.</li>
 </ul>
-    
 
 </div>
 
@@ -253,58 +303,77 @@ Q = (k × A × ΔT) / L
 
 function calculateLive() {
 
-    let k = parseFloat(document.getElementById("k").value);
-    let A = parseFloat(document.getElementById("area").value);
-    let dT = parseFloat(document.getElementById("tempDiff").value);
-    let L_mm = parseFloat(document.getElementById("thickness").value);
-let L = L_mm / 1000;
+    let L = parseFloat(document.getElementById("length").value);
+    let dT = parseFloat(document.getElementById("temp").value);
+    let alpha = parseFloat(document.getElementById("material").value);
 
     let output = document.getElementById("output");
 
-    if (isNaN(k) || isNaN(A) || isNaN(dT) || isNaN(L)) {
+    if (isNaN(L) || isNaN(dT)) {
         output.innerHTML = "";
         return;
     }
 
-    if (k < 0 || A < 0 || L <= 0) {
+    if (L <= 0) {
+
         output.innerHTML =
         "<div class='result-card'>Enter valid positive values</div>";
+
         return;
     }
 
-    let Q = (k * A * dT) / L;
+    let expansion = L * alpha * dT;
 
-output.innerHTML = `
+    output.innerHTML = `
+
 <div class="result-card">
 
-    <h3>Result</h3>
+<h3>Result</h3>
 
-    <table class="result-table">
+<table class="result-table">
 
-        <tr>
-            <th>Parameter</th>
-            <th>Value</th>
-        </tr>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
 
-        <tr>
-            <td>Heat Transfer Rate (Q)</td>
-            <td>${Q.toFixed(2)} W</td>
-        </tr>
+<tr>
+<td>Initial Length</td>
+<td>${L.toFixed(3)} m</td>
+</tr>
 
-        <tr>
-            <td>Thickness Used</td>
-            <td>${L_mm} mm (${L.toFixed(4)} m)</td>
-        </tr>
+<tr>
+<td>Temperature Change</td>
+<td>${dT.toFixed(1)} °C</td>
+</tr>
 
-    </table>
+<tr>
+<td>Coefficient (α)</td>
+<td>${alpha.toExponential(2)} /°C</td>
+</tr>
+
+<tr>
+<td>Linear Expansion</td>
+<td>${expansion.toFixed(6)} m</td>
+</tr>
+
+<tr>
+<td>Linear Expansion</td>
+<td>${(expansion * 1000).toFixed(3)} mm</td>
+</tr>
+
+</table>
 
 </div>
+
 `;
+
 }
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    document.querySelectorAll("#k, #area, #tempDiff, #thickness")
+    document
+    .querySelectorAll("#length,#temp,#material")
     .forEach(el => el.addEventListener("input", calculateLive));
 
 });
@@ -313,3 +382,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+
