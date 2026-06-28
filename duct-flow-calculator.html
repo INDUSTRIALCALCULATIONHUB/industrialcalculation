@@ -8,16 +8,43 @@
 
 <meta name="description" content="Duct flow calculator for airflow, velocity, and duct sizing in HVAC systems.">
 
+<!-- ✅ ADSENSE -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
+crossorigin="anonymous"></script>
+
+<!-- ✅ CMP -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<!-- ================= TOP BAR (2 LINES) ================= -->
+<div class="topbar">
+
+    <div class="topbar-line">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
+    <div class="topbar-line">
+        <a href="index.html#tools">Engineering Tools</a>
+        <a href="index.html#converters">Unit Conversion</a>
+        <a href="index.html#blogs">Engineering Knowledge</a>
+    </div>
+
+</div>
+
+<!-- ================= MAIN WRAPPER ================= -->
 <div class="wrapper">
 
 <div class="header">
-    <h1>Duct Flow Calculator</h1>
-    <p>Airflow, velocity and duct sizing tool</p>
+    <h1>Duct Flow</h1>
+    <p>Airflow, velocity and duct sizing</p>
 </div>
 
 <div class="section">
@@ -40,7 +67,26 @@
 <div id="output"></div>
 
 </div>
+</div>
 
+<!-- ================= FOOTER (2 LINES) ================= -->
+<div class="footer">
+
+    <div>
+        © 2026 Industrial Calculation Hub | Engineering Tools Portal
+    </div>
+
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
+</div>
+
+<!-- ================= SCRIPT ================= -->
 <script>
 
 function renderInputs(){
@@ -49,7 +95,6 @@ function renderInputs(){
 
     let html = "";
 
-    // ---------------- FLOW ----------------
     if(mode === "flow"){
 
         if(type === "rect"){
@@ -57,19 +102,15 @@ function renderInputs(){
 Width (mm): <input type="number" id="w" placeholder="Enter width in mm">
 Height (mm): <input type="number" id="h" placeholder="Enter height in mm">
 Velocity (m/s): <input type="number" id="v" placeholder="Enter velocity">
-
 `;
-
         } else {
             html = `
 Diameter (mm): <input type="number" id="d" placeholder="Enter diameter in mm">
 Velocity (m/s): <input type="number" id="v" placeholder="Enter velocity">
 `;
         }
-
     }
 
-    // ---------------- VELOCITY ----------------
     else if(mode === "velocity"){
 
         if(type === "rect"){
@@ -78,7 +119,6 @@ Width (mm): <input type="number" id="w" placeholder="Enter width in mm">
 Height (mm): <input type="number" id="h" placeholder="Enter height in mm">
 Flow Rate (m³/s): <input type="number" id="q" placeholder="Enter flow rate">
 `;
-
         } else {
             html = `
 Diameter (mm): <input type="number" id="d" placeholder="Enter diameter in mm">
@@ -87,7 +127,6 @@ Flow Rate (m³/s): <input type="number" id="q" placeholder="Enter flow rate">
         }
     }
 
-    // ---------------- SIZE ----------------
     else {
 
         if(type === "rect"){
@@ -96,7 +135,6 @@ Flow Rate (m³/s): <input type="number" id="q" placeholder="Enter flow rate">
 Velocity (m/s): <input type="number" id="v" placeholder="Enter velocity">
 Width (mm): <input type="number" id="w" placeholder="Enter width in mm">
 `;
-
         } else {
             html = `
 Flow Rate (m³/s): <input type="number" id="q" placeholder="Enter flow rate">
@@ -127,9 +165,7 @@ function calculate(){
 
     let resultHTML = "";
 
-    // =====================================================
-    // FLOW RATE CALCULATION
-    // =====================================================
+    // FLOW
     if(mode === "flow"){
 
         let v, area;
@@ -140,33 +176,33 @@ function calculate(){
             let h_mm = parseFloat(document.getElementById("h").value);
             v = parseFloat(document.getElementById("v").value);
 
-            if(isNaN(w_mm) || isNaN(h_mm) || isNaN(v) || w_mm<=0 || h_mm<=0 || v<=0){
-                document.getElementById("output").innerHTML = "";
+            if(isNaN(w_mm)||isNaN(h_mm)||isNaN(v)||w_mm<=0||h_mm<=0||v<=0){
+                document.getElementById("output").innerHTML="";
                 return;
             }
 
-            let w = w_mm / 1000;
-            let h = h_mm / 1000;
+            let w = w_mm/1000;
+            let h = h_mm/1000;
 
-            area = w * h;
+            area = w*h;
 
         } else {
 
             let d_mm = parseFloat(document.getElementById("d").value);
             v = parseFloat(document.getElementById("v").value);
 
-            if(isNaN(d_mm) || isNaN(v) || d_mm<=0 || v<=0){
-                document.getElementById("output").innerHTML = "";
+            if(isNaN(d_mm)||isNaN(v)||d_mm<=0||v<=0){
+                document.getElementById("output").innerHTML="";
                 return;
             }
 
-            let d = d_mm / 1000;
-            area = Math.PI * Math.pow(d/2, 2);
+            let d = d_mm/1000;
+            area = Math.PI*Math.pow(d/2,2);
         }
 
-        let Q_m3s = area * v;
-        let Q_m3hr = Q_m3s * 3600;
-        let Q_cfm = Q_m3s * 2118.88;
+        let Q_m3s = area*v;
+        let Q_m3hr = Q_m3s*3600;
+        let Q_cfm = Q_m3s*2118.88;
 
         resultHTML = `
         <div class="result-card">
@@ -179,9 +215,7 @@ function calculate(){
         </div>`;
     }
 
-    // =====================================================
-    // VELOCITY CALCULATION
-    // =====================================================
+    // VELOCITY
     else if(mode === "velocity"){
 
         let Q, area;
@@ -192,32 +226,32 @@ function calculate(){
             let h_mm = parseFloat(document.getElementById("h").value);
             Q = parseFloat(document.getElementById("q").value);
 
-            if(isNaN(w_mm) || isNaN(h_mm) || isNaN(Q) || w_mm<=0 || h_mm<=0 || Q<=0){
-                document.getElementById("output").innerHTML = "";
+            if(isNaN(w_mm)||isNaN(h_mm)||isNaN(Q)||w_mm<=0||h_mm<=0||Q<=0){
+                document.getElementById("output").innerHTML="";
                 return;
             }
 
-            let w = w_mm / 1000;
-            let h = h_mm / 1000;
+            let w = w_mm/1000;
+            let h = h_mm/1000;
 
-            area = w * h;
+            area = w*h;
 
         } else {
 
             let d_mm = parseFloat(document.getElementById("d").value);
             Q = parseFloat(document.getElementById("q").value);
 
-            if(isNaN(d_mm) || isNaN(Q) || d_mm<=0 || Q<=0){
-                document.getElementById("output").innerHTML = "";
+            if(isNaN(d_mm)||isNaN(Q)||d_mm<=0||Q<=0){
+                document.getElementById("output").innerHTML="";
                 return;
             }
 
-            let d = d_mm / 1000;
-            area = Math.PI * Math.pow(d/2, 2);
+            let d = d_mm/1000;
+            area = Math.PI*Math.pow(d/2,2);
         }
 
-        let V_mps = Q / area;
-        let V_fts = V_mps * 3.28084;
+        let V_mps = Q/area;
+        let V_fts = V_mps*3.28084;
 
         resultHTML = `
         <div class="result-card">
@@ -229,35 +263,30 @@ function calculate(){
         </div>`;
     }
 
-    // =====================================================
-    // DUCT SIZE CALCULATION
-    // =====================================================
-    else if(mode === "size"){
+    // SIZE
+    else{
 
         let Q = parseFloat(document.getElementById("q").value);
         let V = parseFloat(document.getElementById("v").value);
 
-        if(isNaN(Q) || isNaN(V) || Q<=0 || V<=0){
-            document.getElementById("output").innerHTML = "";
+        if(isNaN(Q)||isNaN(V)||Q<=0||V<=0){
+            document.getElementById("output").innerHTML="";
             return;
         }
 
-        let area = Q / V;
+        let area = Q/V;
 
-        // =================================================
-        // RECTANGULAR DUCT
-        // =================================================
-        if(type === "rect"){
+        if(type==="rect"){
 
             let w_mm = parseFloat(document.getElementById("w").value);
 
-            if(isNaN(w_mm) || w_mm<=0){
-                document.getElementById("output").innerHTML = "";
+            if(isNaN(w_mm)||w_mm<=0){
+                document.getElementById("output").innerHTML="";
                 return;
             }
 
-            let w = w_mm / 1000;
-            let h = area / w;
+            let w = w_mm/1000;
+            let h = area/w;
 
             resultHTML = `
             <div class="result-card">
@@ -265,21 +294,18 @@ function calculate(){
             <tr><th>Parameter</th><th>Value</th></tr>
 
             <tr><td>Width</td><td>${w_mm.toFixed(1)} mm | ${(w).toFixed(4)} m | ${(w*3.28084).toFixed(3)} ft</td></tr>
-            <tr><td>Required Height</td><td>${(h*1000).toFixed(1)} mm | ${(h).toFixed(4)} m | ${(h*3.28084).toFixed(3)} ft</td></tr>
+            <tr><td>Height</td><td>${(h*1000).toFixed(1)} mm | ${(h).toFixed(4)} m | ${(h*3.28084).toFixed(3)} ft</td></tr>
 
             </table>
             </div>`;
         }
 
-        // =================================================
-        // CIRCULAR DUCT
-        // =================================================
         else{
 
-            let d = Math.sqrt((4 * area) / Math.PI);
+            let d = Math.sqrt((4*area)/Math.PI);
 
-            let d_mm = d * 1000;
-            let d_ft = d * 3.28084;
+            let d_mm = d*1000;
+            let d_ft = d*3.28084;
 
             resultHTML = `
             <div class="result-card">
