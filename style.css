@@ -152,7 +152,6 @@ li {
     gap: 12px;
 }
 
-/* ================= CARD (FIXED) ================= */
 
 /* ================= CARD ================= */
 
@@ -408,7 +407,7 @@ button:hover {
     }
 
     .section {
-        width: 95%;
+        width: 85%;
         padding: 18px;
     }
 
@@ -421,7 +420,7 @@ button:hover {
     }
 
     .search-box input {
-        width: 90%;
+        width: 85%;
     }
 
 .footer{
