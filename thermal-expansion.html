@@ -16,171 +16,28 @@
 <!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
-<style>
-/* =========================
-GLOBAL RESET
-========================= */
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: #333;
-    padding-top: 60px;
-    padding-bottom: 60px;
-}
-
-/* =========================
-FIXED HEADER
-========================= */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #1f2d3d;
-    text-align: center;
-    padding: 12px;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-}
-
-.navbar a {
-    color: white;
-    margin: 10px;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-/* =========================
-HEADER
-========================= */
-.header {
-    text-align: center;
-    padding: 35px 15px;
-    color: white;
-}
-
-/* =========================
-MAIN CONTAINER (80% WIDTH RULE)
-========================= */
-.container {
-    background: white;
-    width: 80%;
-    max-width: 850px;
-    margin: 20px auto;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-/* =========================
-INPUT + SELECT STYLING
-========================= */
-label {
-    font-weight: 600;
-}
-
-input, select {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0 15px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 15px;
-}
-
-/* REMOVE NUMBER SPINNER */
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type=number] {
-    -moz-appearance: textfield;
-}
-
-/* =========================
-BUTTON
-========================= */
-button {
-    width: 100%;
-    padding: 12px;
-    background: #2a5298;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #1e3c72;
-}
-
-/* =========================
-RESULT
-========================= */
-.result {
-    margin-top: 15px;
-    font-weight: 600;
-    background: #f4f6f9;
-    padding: 12px;
-    border-radius: 8px;
-}
-
-/* =========================
-FOOTER
-========================= */
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #1f2d3d;
-    text-align: center;
-    padding: 10px;
-    color: white;
-    font-size: 14px;
-}
-
-/* =========================
-RESPONSIVE
-========================= */
-@media screen and (max-width: 768px) {
-    .container {
-        width: 92%;
-    }
-
-    .navbar a {
-        font-size: 14px;
-        margin: 5px;
-    }
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<!-- TOP BAR -->
+<div class="topbar">
 
-<!-- NAVBAR -->
-<div class="navbar">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="privacy.html">Privacy</a>
-<a href="terms.html">Terms</a>
+    <div class="topbar-line">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
+    <div class="topbar-line">
+        <a href="index.html#tools">Engineering Tools</a>
+        <a href="index.html#converters">Unit Conversion</a>
+        <a href="index.html#blogs">Engineering Knowledge</a>
+    </div>
+
 </div>
 
-<!-- HEADER -->
-<div class="header">
-<h1>Thermal Expansion Calculator</h1>
-<p>Engineering material expansion under temperature change</p>
-</div>
 
 <!-- CALCULATOR -->
 <div class="container">
