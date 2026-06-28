@@ -62,11 +62,11 @@ crossorigin="anonymous"></script>
 
 <div class="section">
 
-<label>Initial Length (mm)</label>
-<input type="number" id="length" placeholder="Enter length in mm">
+<label>Initial Length (L₀) [mm]</label>
+<input type="number" id="length" placeholder="Enter initial length in mm" step="any" min="0">
 
 <label>Temperature Change (ΔT) [°C]</label>
-<input type="number" id="temp" step="any">
+<input type="number" id="temp" placeholder="Enter temperature rise or drop" step="any">
 
 <label>Material</label>
 
@@ -78,6 +78,10 @@ crossorigin="anonymous"></script>
 <option value="17e-6">Stainless Steel 304</option>
 <option value="16e-6">Stainless Steel 316</option>
 <option value="16e-6">Stainless Steel 316L</option>
+
+<!-- NEW ADDED -->
+<option value="10.5e-6">Stainless Steel 409</option>
+
 <option value="23e-6">Aluminium</option>
 <option value="11e-6">Cast Iron</option>
 <option value="17e-6">Copper</option>
@@ -101,23 +105,13 @@ crossorigin="anonymous"></script>
 <h3>Engineering Knowledge</h3>
 
 <p>
-
-<b>Thermal expansion</b> is the increase in the dimensions of a material when its temperature rises. As temperature increases, the atoms within the material vibrate more intensely, causing the average spacing between atoms to increase. This results in an increase in length, area, or volume depending on the application.
-
-</p>
-
-<p>
-
-For most engineering calculations involving pipes, structural members, shafts, and plates, <b>linear thermal expansion</b> is considered.
-
+<b>Thermal expansion</b> occurs when a material changes its dimensions due to temperature change.
 </p>
 
 <p><b>Linear Expansion Formula:</b></p>
 
 <p class="formula">
-
-ΔL = α × L × ΔT
-
+ΔL = α × L₀ × ΔT
 </p>
 
 <table class="result-table">
@@ -129,21 +123,9 @@ For most engineering calculations involving pipes, structural members, shafts, a
 </tr>
 
 <tr>
-<td>ΔL</td>
-<td>Linear Expansion</td>
-<td>m</td>
-</tr>
-
-<tr>
-<td>α</td>
-<td>Coefficient of Thermal Expansion</td>
-<td>/°C</td>
-</tr>
-
-<tr>
-<td>L</td>
-<td>Original Length</td>
-<td>m</td>
+<td>L₀</td>
+<td>Initial Length</td>
+<td>mm or m</td>
 </tr>
 
 <tr>
@@ -152,126 +134,19 @@ For most engineering calculations involving pipes, structural members, shafts, a
 <td>°C</td>
 </tr>
 
-</table>
-
-<h3>Typical Coefficient of Thermal Expansion</h3>
-
-<table class="result-table">
-
 <tr>
-<th>Material</th>
-<th>Coefficient (×10⁻⁶ /°C)</th>
+<td>α</td>
+<td>Coefficient of Expansion</td>
+<td>/°C</td>
 </tr>
 
 <tr>
-<td>Mild Steel</td>
-<td>12</td>
-</tr>
-
-<tr>
-<td>IS 2062 Structural Steel</td>
-<td>12</td>
-</tr>
-
-<tr>
-<td>Carbon Steel</td>
-<td>12</td>
-</tr>
-
-<tr>
-<td>Stainless Steel 304</td>
-<td>17</td>
-</tr>
-
-<tr>
-<td>Stainless Steel 316</td>
-<td>16</td>
-</tr>
-
-<tr>
-<td>Stainless Steel 316L</td>
-<td>16</td>
-</tr>
-
-<tr>
-<td>Aluminium</td>
-<td>23</td>
-</tr>
-
-<tr>
-<td>Cast Iron</td>
-<td>11</td>
-</tr>
-
-<tr>
-<td>Copper</td>
-<td>17</td>
-</tr>
-
-<tr>
-<td>Brass</td>
-<td>19</td>
-</tr>
-
-<tr>
-<td>Bronze</td>
-<td>18</td>
-</tr>
-
-<tr>
-<td>Titanium</td>
-<td>8.5</td>
-</tr>
-
-<tr>
-<td>Nickel</td>
-<td>13</td>
+<td>ΔL</td>
+<td>Change in Length</td>
+<td>m or mm</td>
 </tr>
 
 </table>
-
-<h3>Effect of Each Parameter</h3>
-
-<ul>
-<li><b>Higher coefficient of thermal expansion (α):</b> Produces greater expansion for the same temperature change.</li>
-
-<li><b>Longer initial length (L):</b> Results in a larger total expansion.</li>
-
-<li><b>Higher temperature change (ΔT):</b> Causes proportionally greater expansion.</li>
-
-<li><b>Different materials:</b> Expand at different rates depending on their atomic structure.</li>
-</ul>
-
-<h3>Engineering Applications</h3>
-
-<ul>
-<li>Steam and hot water pipelines</li>
-<li>Pressure vessels</li>
-<li>Heat exchangers</li>
-<li>Boilers and furnaces</li>
-<li>Structural steel buildings</li>
-<li>Bridges and expansion joints</li>
-<li>HVAC duct systems</li>
-<li>Industrial machinery alignment</li>
-<li>Railway tracks</li>
-<li>Storage tanks</li>
-</ul>
-
-<h3>Engineering Notes</h3>
-
-<ul>
-<li>The equation applies to uniform linear thermal expansion.</li>
-
-<li>Expansion is directly proportional to the original length and temperature change.</li>
-
-<li>Long pipelines should include expansion loops or expansion joints to prevent excessive thermal stress.</li>
-
-<li>Restrained thermal expansion can generate significant thermal stresses that may exceed allowable design limits.</li>
-
-<li>The coefficient of thermal expansion varies slightly with temperature and material grade; always use project-specific values when available.</li>
-
-<li>For precise engineering design, refer to applicable standards or manufacturer data.</li>
-</ul>
 
 </div>
 
@@ -280,19 +155,7 @@ For most engineering calculations involving pipes, structural members, shafts, a
 <!-- ================= FOOTER ================= -->
 
 <div class="footer">
-
-<div>
-© 2026 Industrial Calculation Hub | Engineering Tools Portal
-</div>
-
-<div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="terms.html">Terms</a>
-</div>
-
+© 2026 Industrial Calculation Hub
 </div>
 
 <!-- ================= SCRIPT ================= -->
@@ -313,8 +176,7 @@ function calculateLive() {
     }
 
     if (L_mm <= 0) {
-        output.innerHTML =
-        "<div class='result-card'>Enter valid positive values</div>";
+        output.innerHTML = "<div class='result-card'>Enter valid positive values</div>";
         return;
     }
 
@@ -335,12 +197,12 @@ function calculateLive() {
             </tr>
 
             <tr>
-                <td>Initial Length</td>
+                <td>Initial Length (L₀)</td>
                 <td>${L_mm} mm (${L.toFixed(3)} m)</td>
             </tr>
 
             <tr>
-                <td>Temperature Change</td>
+                <td>Temperature Change (ΔT)</td>
                 <td>${dT.toFixed(1)} °C</td>
             </tr>
 
@@ -350,13 +212,13 @@ function calculateLive() {
             </tr>
 
             <tr>
-                <td>Linear Expansion</td>
-                <td>${expansion.toFixed(3)} m</td>
+                <td>Change in Length (ΔL)</td>
+                <td>${expansion.toFixed(6)} m</td>
             </tr>
 
             <tr>
-                <td>Linear Expansion</td>
-                <td>${(expansion * 1000).toFixed(2)} mm</td>
+                <td>Change in Length</td>
+                <td>${(expansion * 1000).toFixed(3)} mm</td>
             </tr>
 
         </table>
@@ -366,11 +228,9 @@ function calculateLive() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-
     document
     .querySelectorAll("#length,#temp,#material")
     .forEach(el => el.addEventListener("input", calculateLive));
-
 });
 
 </script>
