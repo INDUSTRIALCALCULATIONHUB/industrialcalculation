@@ -43,7 +43,7 @@
 
   <div class="header">
     <h1>Heat Transfer</h1>
-    <p>Calculate heat transfer using Fourier's Law of Conduction.</p>
+    <p>Calculate heat transfer using Fourier's Law of Conduction</p>
   </div>
 
   <div class="section">
@@ -57,7 +57,7 @@
     <label>Temperature Difference (ΔT) [°C]</label>
     <input type="number" id="tempDiff" step="any">
 
-    <label>Insulation Thickness (L) [mm]</label>
+    <label>Conduction Length / Insulation Thickness (L) [mm]</label>
     <input type="number" id="thickness" step="any" min="0">
 
     <div class="result-box">
@@ -130,7 +130,7 @@ function calculateLive() {
                 </tr>
                 <tr>
                     <td>Thickness</td>
-                    <td>${L_mm} mm (${L.toFixed(4)} m)</td>
+                    <td>${L_mm} mm (${L.toFixed(3)} m)</td>
                 </tr>
             </table>
         </div>
