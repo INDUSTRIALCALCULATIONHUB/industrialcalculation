@@ -492,3 +492,57 @@ label {
     padding:10px;
 }
 
+
+
+
+/* SPLIT FOR DESKTOP */
+@media (min-width: 992px){
+
+    .section{
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        overflow: hidden;
+    }
+
+    #inputs{
+        flex: 1;
+        max-height: 60vh;
+        overflow-y: auto;
+        padding-right: 10px;
+    }
+
+    #output{
+        flex: 1;
+        max-height: 60vh;
+        overflow-y: auto;
+    }
+}
+
+.section:nth-of-type(2){
+    max-height: none;
+}
+
+body{
+    overflow-x: hidden;
+}
+@media (min-width: 992px){
+
+    .section{
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    #inputs{
+        flex: 1;
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+
+    #output{
+        flex: 1;
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+}
