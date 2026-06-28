@@ -6,223 +6,38 @@
 
 <title>Duct Flow Calculator | Industrial Calculation Hub</title>
 
-<meta name="description" content="Duct flow calculator for airflow, velocity, and duct sizing in HVAC and industrial ventilation systems.">
-
-<!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
-crossorigin="anonymous"></script>
-
-<!-- CMP -->
-<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+<meta name="description" content="Duct flow calculator for airflow, velocity, and duct sizing in HVAC systems.">
 
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- TOP BAR -->
-<div class="topbar">
-
-    <div class="topbar-line">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-    </div>
-
-    <div class="topbar-line">
-        <a href="index.html#tools">Engineering Tools</a>
-        <a href="index.html#converters">Unit Conversion</a>
-        <a href="index.html#blogs">Engineering Knowledge</a>
-    </div>
-
-</div>
-
 <div class="wrapper">
 
 <div class="header">
-    <h1>Duct Flow Rate</h1>
-    <p>Calculate airflow, velocity and duct size</p>
+    <h1>Duct Flow Calculator</h1>
+    <p>Airflow, velocity and duct sizing tool</p>
 </div>
 
 <div class="section">
 
 <label>Select Calculation Mode</label>
 <select id="mode">
-<option value="flow">Flow Rate (Q)</option>
-<option value="velocity">Velocity (V)</option>
-<option value="size">Duct Size</option>
+    <option value="flow">Flow Rate (Q)</option>
+    <option value="velocity">Velocity (V)</option>
+    <option value="size">Duct Size</option>
 </select>
 
 <label>Duct Type</label>
 <select id="ductType">
-<option value="rect">Rectangular</option>
-<option value="circular">Circular</option>
+    <option value="rect">Rectangular</option>
+    <option value="circular">Circular</option>
 </select>
 
 <div id="inputs"></div>
 
-<div id="output" class="result-box"></div>
-
-<hr style="margin:30px 0;">
-
-</div>
-    
-<div class="section">
-    
-<h2>Engineering Knowledge</h2>
-
-<h3>What is Duct Flow Rate?</h3>
-<p>
-Duct flow rate is the volume of air passing through a duct in a given time. It is commonly expressed in
-m³/s, m³/hr, or CFM (Cubic Feet per Minute). Correct airflow is essential for HVAC systems, industrial
-ventilation, dust collection systems, and process air applications.
-</p>
-
-<h3>Basic Duct Flow Equation</h3>
-
-<div class="result-card">
-<table class="result-table">
-<tr>
-<th>Formula</th>
-<th>Description</th>
-</tr>
-
-<tr>
-<td>Q = A × V</td>
-<td>Flow Rate = Cross-sectional Area × Air Velocity</td>
-</tr>
-
-<tr>
-<td>V = Q / A</td>
-<td>Velocity from Flow Rate</td>
-</tr>
-
-<tr>
-<td>A = Q / V</td>
-<td>Required Duct Area</td>
-</tr>
-
-</table>
-</div>
-
-<h3>Typical Air Velocity Recommendations</h3>
-
-<div class="result-card">
-<table class="result-table">
-
-<tr>
-<th>Application</th>
-<th>Recommended Velocity</th>
-</tr>
-
-<tr>
-<td>Comfort Air Conditioning</td>
-<td>2–5 m/s</td>
-</tr>
-
-<tr>
-<td>Commercial HVAC</td>
-<td>5–8 m/s</td>
-</tr>
-
-<tr>
-<td>Industrial Ventilation</td>
-<td>8–15 m/s</td>
-</tr>
-
-<tr>
-<td>Dust Collection</td>
-<td>15–25 m/s</td>
-</tr>
-
-<tr>
-<td>Pneumatic Conveying</td>
-<td>20–35 m/s</td>
-</tr>
-
-</table>
-</div>
-
-<h3>Engineering Notes</h3>
-
-<ul>
-<li>Lower air velocity reduces pressure loss and operating noise.</li>
-<li>Higher velocity decreases duct size but increases fan power consumption.</li>
-<li>Circular ducts generally have lower pressure losses than rectangular ducts.</li>
-<li>Maintain uniform airflow distribution throughout the duct network.</li>
-<li>Select duct dimensions based on both airflow requirement and acceptable pressure drop.</li>
-</ul>
-
-<h3>Unit Conversions</h3>
-
-<div class="result-card">
-<table class="result-table">
-
-<tr>
-<th>Parameter</th>
-<th>Conversion</th>
-</tr>
-
-<tr>
-<td>1 m³/s</td>
-<td>3600 m³/hr</td>
-</tr>
-
-<tr>
-<td>1 m³/s</td>
-<td>2118.88 CFM</td>
-</tr>
-
-<tr>
-<td>1 m/s</td>
-<td>3.281 ft/s</td>
-</tr>
-
-<tr>
-<td>1 ft</td>
-<td>304.8 mm</td>
-</tr>
-
-<tr>
-<td>1 m</td>
-<td>1000 mm</td>
-</tr>
-
-</table>
-</div>
-
-<h3>Applications</h3>
-
-<ul>
-<li>HVAC air distribution systems</li>
-<li>Industrial ventilation systems</li>
-<li>Clean rooms</li>
-<li>Dust extraction systems</li>
-<li>Paint booths</li>
-<li>Cooling and combustion air ducts</li>
-<li>Process ventilation</li>
-</ul>
-    
-</div>
-</div>
-
-    
-<!-- FOOTER -->
-<div class="footer">
-
-<div>
-© 2026 Industrial Calculation Hub | Engineering Tools Portal
-</div>
-
-<div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="terms.html">Terms</a>
-</div>
+<div id="output"></div>
 
 </div>
 
@@ -236,243 +51,188 @@ function renderInputs(){
 
     // ---------------- FLOW ----------------
     if(mode === "flow"){
+
         if(type === "rect"){
             html = `
-Width (m): <input type="number" id="w">
-Height (m): <input type="number" id="h">
-Velocity (m/s): <input type="number" id="v">
+Width (mm): <input type="number" id="w" placeholder="Enter width in mm">
+Height (mm): <input type="number" id="h" placeholder="Enter height in mm">
+Velocity (m/s): <input type="number" id="v" placeholder="Enter velocity">
 
-Flow Unit:
-<select id="flowUnit">
-  <option value="m3s">m³/s</option>
-  <option value="m3hr">m³/hr</option>
-  <option value="cfm">CFM</option>
-</select>
 `;
+
         } else {
             html = `
-Diameter (m): <input type="number" id="d">
-Velocity (m/s): <input type="number" id="v">
-
-Flow Unit:
-<select id="flowUnit">
-  <option value="m3s">m³/s</option>
-  <option value="m3hr">m³/hr</option>
-  <option value="cfm">CFM</option>
-</select>
+Diameter (mm): <input type="number" id="d" placeholder="Enter diameter in mm">
+Velocity (m/s): <input type="number" id="v" placeholder="Enter velocity">
 `;
         }
+
     }
 
     // ---------------- VELOCITY ----------------
     else if(mode === "velocity"){
+
         if(type === "rect"){
             html = `
-Width (m): <input type="number" id="w">
-Height (m): <input type="number" id="h">
-Flow Rate (m³/s): <input type="number" id="q">
-
-Velocity Unit:
-<select id="velUnit">
-  <option value="ms">m/s</option>
-  <option value="fts">ft/s</option>
-</select>
+Width (mm): <input type="number" id="w" placeholder="Enter width in mm">
+Height (mm): <input type="number" id="h" placeholder="Enter height in mm">
+Flow Rate (m³/s): <input type="number" id="q" placeholder="Enter flow rate">
 `;
+
         } else {
             html = `
-Diameter (m): <input type="number" id="d">
-Flow Rate (m³/s): <input type="number" id="q">
-
-Velocity Unit:
-<select id="velUnit">
-  <option value="ms">m/s</option>
-  <option value="fts">ft/s</option>
-</select>
+Diameter (mm): <input type="number" id="d" placeholder="Enter diameter in mm">
+Flow Rate (m³/s): <input type="number" id="q" placeholder="Enter flow rate">
 `;
         }
     }
 
     // ---------------- SIZE ----------------
     else {
-if(type==="rect"){
 
-html = `
-Flow Rate (m³/hr):
-<input type="number" id="q">
-
-Velocity (m/s):
-<input type="number" id="v">
-
-Width (mm):
-<input type="number" id="w">
-
-Flow Unit
-<select id="flowUnit">
-<option value="m3hr">m³/hr</option>
-<option value="m3s">m³/s</option>
-<option value="cfm">CFM</option>
-</select>
+        if(type === "rect"){
+            html = `
+Flow Rate (m³/s): <input type="number" id="q" placeholder="Enter flow rate">
+Velocity (m/s): <input type="number" id="v" placeholder="Enter velocity">
+Width (mm): <input type="number" id="w" placeholder="Enter width in mm">
 `;
 
-}
-else{
-
-html = `
-Flow Rate (m³/hr):
-<input type="number" id="q">
-
-Velocity (m/s):
-<input type="number" id="v">
-
-Flow Unit
-<select id="flowUnit">
-<option value="m3hr">m³/hr</option>
-<option value="m3s">m³/s</option>
-<option value="cfm">CFM</option>
-</select>
+        } else {
+            html = `
+Flow Rate (m³/s): <input type="number" id="q" placeholder="Enter flow rate">
+Velocity (m/s): <input type="number" id="v" placeholder="Enter velocity">
 `;
-
-}
+        }
     }
 
     document.getElementById("inputs").innerHTML = html;
     attachEvents();
 }
 
-document.getElementById("mode").addEventListener("change", () => {
-    renderInputs();
-    document.getElementById("output").innerHTML = "";
-});
-
-document.getElementById("ductType").addEventListener("change", () => {
-    renderInputs();
-    document.getElementById("output").innerHTML = "";
-});
-renderInputs();
-
 function attachEvents(){
-
-    const controls =
-        document.querySelectorAll("#inputs input");
-
-    controls.forEach(control => {
-        control.addEventListener("input", calculate);
+    document.querySelectorAll("#inputs input").forEach(el=>{
+        el.addEventListener("input", calculate);
     });
 }
-    
+
+document.getElementById("mode").addEventListener("change", renderInputs);
+document.getElementById("ductType").addEventListener("change", renderInputs);
+
+renderInputs();
+
 function calculate(){
 
     let mode = document.getElementById("mode").value;
     let type = document.getElementById("ductType").value;
 
-    let flowUnit = "m3s";   // fixed internal base
-    let velUnit = "ms";
-    let lenUnit = "m";
+    let resultHTML = "";
 
-    let result = 0;
-
-    // ---------------- FLOW RATE ----------------
+    // =====================================================
+    // FLOW RATE CALCULATION
+    // =====================================================
     if(mode === "flow"){
 
         let v, area;
 
         if(type === "rect"){
 
-            let w = parseFloat(document.getElementById("w").value);
-            let h = parseFloat(document.getElementById("h").value);
+            let w_mm = parseFloat(document.getElementById("w").value);
+            let h_mm = parseFloat(document.getElementById("h").value);
             v = parseFloat(document.getElementById("v").value);
 
-            if(isNaN(w) || isNaN(h) || isNaN(v) || w<=0 || h<=0 || v<=0){
+            if(isNaN(w_mm) || isNaN(h_mm) || isNaN(v) || w_mm<=0 || h_mm<=0 || v<=0){
                 document.getElementById("output").innerHTML = "";
                 return;
             }
+
+            let w = w_mm / 1000;
+            let h = h_mm / 1000;
 
             area = w * h;
 
         } else {
 
-            let d = parseFloat(document.getElementById("d").value);
+            let d_mm = parseFloat(document.getElementById("d").value);
             v = parseFloat(document.getElementById("v").value);
 
-            if(isNaN(d) || isNaN(v) || d<=0 || v<=0){
+            if(isNaN(d_mm) || isNaN(v) || d_mm<=0 || v<=0){
                 document.getElementById("output").innerHTML = "";
                 return;
             }
 
-            area = Math.PI * Math.pow(d/2,2);
+            let d = d_mm / 1000;
+            area = Math.PI * Math.pow(d/2, 2);
         }
 
-        let Q = area * v; // m³/s
+        let Q_m3s = area * v;
+        let Q_m3hr = Q_m3s * 3600;
+        let Q_cfm = Q_m3s * 2118.88;
 
-        // UNIT CONVERSION
-        let unit = document.getElementById("flowUnit")?.value || "m3s";
-
-        if(unit === "m3hr"){
-            result = Q * 3600;
-            unit = "m³/hr";
-        }
-        else if(unit === "cfm"){
-            result = Q * 2118.88;
-            unit = "CFM";
-        }
-        else{
-            result = Q;
-            unit = "m³/s";
-        }
-
-        document.getElementById("output").innerHTML =
-            "Flow Rate = " + result.toFixed(3) + " " + unit;
+        resultHTML = `
+        <div class="result-card">
+        <table class="result-table">
+        <tr><th>Flow Unit</th><th>Value</th></tr>
+        <tr><td>m³/s</td><td>${Q_m3s.toFixed(4)}</td></tr>
+        <tr><td>m³/hr</td><td>${Q_m3hr.toFixed(2)}</td></tr>
+        <tr><td>CFM</td><td>${Q_cfm.toFixed(2)}</td></tr>
+        </table>
+        </div>`;
     }
 
-    // ---------------- VELOCITY ----------------
-    if(mode === "velocity"){
+    // =====================================================
+    // VELOCITY CALCULATION
+    // =====================================================
+    else if(mode === "velocity"){
 
         let Q, area;
 
         if(type === "rect"){
 
-            let w = parseFloat(document.getElementById("w").value);
-            let h = parseFloat(document.getElementById("h").value);
+            let w_mm = parseFloat(document.getElementById("w").value);
+            let h_mm = parseFloat(document.getElementById("h").value);
             Q = parseFloat(document.getElementById("q").value);
 
-            if(isNaN(w) || isNaN(h) || isNaN(Q) || w<=0 || h<=0 || Q<=0){
+            if(isNaN(w_mm) || isNaN(h_mm) || isNaN(Q) || w_mm<=0 || h_mm<=0 || Q<=0){
                 document.getElementById("output").innerHTML = "";
                 return;
             }
+
+            let w = w_mm / 1000;
+            let h = h_mm / 1000;
 
             area = w * h;
 
         } else {
 
-            let d = parseFloat(document.getElementById("d").value);
+            let d_mm = parseFloat(document.getElementById("d").value);
             Q = parseFloat(document.getElementById("q").value);
 
-            if(isNaN(d) || isNaN(Q) || d<=0 || Q<=0){
+            if(isNaN(d_mm) || isNaN(Q) || d_mm<=0 || Q<=0){
                 document.getElementById("output").innerHTML = "";
                 return;
             }
 
-            area = Math.PI * Math.pow(d/2,2);
+            let d = d_mm / 1000;
+            area = Math.PI * Math.pow(d/2, 2);
         }
 
-        let V = Q / area;
+        let V_mps = Q / area;
+        let V_fts = V_mps * 3.28084;
 
-        let unit = document.getElementById("velUnit")?.value || "ms";
-
-        if(unit === "fts"){
-            result = V * 3.28084;
-            unit = "ft/s";
-        } else {
-            result = V;
-            unit = "m/s";
-        }
-
-        document.getElementById("output").innerHTML =
-            "Velocity = " + result.toFixed(3) + " " + unit;
+        resultHTML = `
+        <div class="result-card">
+        <table class="result-table">
+        <tr><th>Velocity Unit</th><th>Value</th></tr>
+        <tr><td>m/s</td><td>${V_mps.toFixed(3)}</td></tr>
+        <tr><td>ft/s</td><td>${V_fts.toFixed(3)}</td></tr>
+        </table>
+        </div>`;
     }
 
-    // ---------------- SIZE ----------------
-    if(mode === "size"){
+    // =====================================================
+    // DUCT SIZE CALCULATION
+    // =====================================================
+    else if(mode === "size"){
 
         let Q = parseFloat(document.getElementById("q").value);
         let V = parseFloat(document.getElementById("v").value);
@@ -482,81 +242,58 @@ function calculate(){
             return;
         }
 
-        let area = Q / V; // m²
+        let area = Q / V;
 
-        let unit = document.getElementById("lenUnit")?.value || "m";
+        // =================================================
+        // RECTANGULAR DUCT
+        // =================================================
+        if(type === "rect"){
 
-if(type === "rect"){
+            let w_mm = parseFloat(document.getElementById("w").value);
 
-    let width = parseFloat(document.getElementById("w").value);
+            if(isNaN(w_mm) || w_mm<=0){
+                document.getElementById("output").innerHTML = "";
+                return;
+            }
 
-    if(isNaN(width) || width<=0){
-        document.getElementById("output").innerHTML="";
-        return;
-    }
+            let w = w_mm / 1000;
+            let h = area / w;
 
-    // Width entered in mm
-    width = width / 1000;
+            resultHTML = `
+            <div class="result-card">
+            <table class="result-table">
+            <tr><th>Parameter</th><th>Value</th></tr>
 
-    let height = area / width;
+            <tr><td>Width</td><td>${w_mm.toFixed(1)} mm | ${(w).toFixed(4)} m | ${(w*3.28084).toFixed(3)} ft</td></tr>
+            <tr><td>Required Height</td><td>${(h*1000).toFixed(1)} mm | ${(h).toFixed(4)} m | ${(h*3.28084).toFixed(3)} ft</td></tr>
 
-    document.getElementById("output").innerHTML = `
-    <div class="result-card">
+            </table>
+            </div>`;
+        }
 
-    <h3>Calculation Result</h3>
-
-    <table class="result-table">
-
-    <tr>
-        <th>Parameter</th>
-        <th>Value</th>
-    </tr>
-
-    <tr>
-        <td>Required Width</td>
-        <td>${(width*1000).toFixed(1)} mm</td>
-    </tr>
-
-    <tr>
-        <td>Required Height</td>
-        <td>${(height*1000).toFixed(1)} mm</td>
-    </tr>
-
-    <tr>
-        <td>Height</td>
-        <td>${height.toFixed(4)} m</td>
-    </tr>
-
-    <tr>
-        <td>Height</td>
-        <td>${(height*3.28084).toFixed(3)} ft</td>
-    </tr>
-
-    </table>
-
-    </div>`;
-}
+        // =================================================
+        // CIRCULAR DUCT
+        // =================================================
         else{
 
             let d = Math.sqrt((4 * area) / Math.PI);
 
-            if(unit === "mm"){
-                result = d * 1000;
-                unit = "mm";
-            }
-            else if(unit === "ft"){
-                result = d * 3.28084;
-                unit = "ft";
-            }
-            else{
-                result = d;
-                unit = "m";
-            }
+            let d_mm = d * 1000;
+            let d_ft = d * 3.28084;
 
-            document.getElementById("output").innerHTML =
-                "Required Diameter = " + result.toFixed(3) + " " + unit;
+            resultHTML = `
+            <div class="result-card">
+            <table class="result-table">
+            <tr><th>Parameter</th><th>Value</th></tr>
+
+            <tr><td>Diameter</td><td>${d_mm.toFixed(1)} mm | ${d.toFixed(4)} m | ${d_ft.toFixed(3)} ft</td></tr>
+
+            </table>
+            </div>`;
         }
     }
+
+    document.getElementById("output").innerHTML = resultHTML;
 }
 </script>
 
