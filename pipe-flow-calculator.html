@@ -284,8 +284,8 @@ v = convertVelocityToMS(
 
         <table class="result-table">
         <tr><th>Parameter</th><th>Value</th></tr>
-<tr><td>Flow Rate</td><td>${q.toFixed(4)} m³/s</td></tr>
 <tr><td>Flow Rate</td><td>${(q*3600).toFixed(2)} m³/hr</td></tr>
+<tr><td>Flow Rate</td><td>${q.toFixed(4)} m³/s</td></tr>
 <tr><td>Flow Rate</td><td>${(q/0.00047194745).toFixed(1)} CFM</td></tr>
         </table>
         </div>`;
@@ -354,9 +354,9 @@ v = convertVelocityToMS(
 
         <table class="result-table">
         <tr><th>Parameter</th><th>Value</th></tr>
-<tr><td>Pipe Diameter</td><td>${(d*1000).toFixed(1)} mm</td></tr>
-<tr><td>Pipe Diameter</td><td>${d.toFixed(4)} m</td></tr>
-<tr><td>Pipe Diameter</td><td>${(d/0.3048).toFixed(4)} ft</td></tr>
+<tr><td>Pipe Diameter</td><td>${(d*1000).toFixed(2)} mm</td></tr>
+<tr><td>Pipe Diameter</td><td>${d.toFixed(3)} m</td></tr>
+<tr><td>Pipe Diameter</td><td>${(d/0.3048).toFixed(3)} ft</td></tr>
         </table>
         </div>`;
     }
