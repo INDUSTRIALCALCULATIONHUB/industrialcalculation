@@ -276,11 +276,32 @@ button:hover {
     padding: 15px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     border: 1px solid rgba(30, 60, 114, 0.15);
-
+    text-align: center;
+    margin-top: 20px;
     width: fit-content;
     max-width: 100%;
     overflow-x: auto;
 }
+
+.result-title{
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.result-table{
+    margin: 0 auto;   /* ⭐ THIS CENTERS THE TABLE */
+    border-collapse: collapse;
+    min-width: 280px;
+}
+
+.result-table th,
+.result-table td{
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    text-align: center;
+}
+
 
 /* TITLE */
 
