@@ -7,205 +7,174 @@
 <title>What is Reynolds Number? | Industrial Calculation Hub</title>
 
 <meta name="description" content="Learn what Reynolds number is in fluid mechanics. Understand laminar and turbulent flow with formulas and engineering applications.">
-<meta name="keywords" content="reynolds number explained, laminar flow, turbulent flow, fluid mechanics, pipe flow basics">
+<meta name="keywords" content="reynolds number, reynolds number formula, laminar flow, turbulent flow, fluid mechanics, pipe flow, reynolds equation">
 <meta name="author" content="Industrial Calculation Hub">
 
-<!-- AdSense -->
+<!-- CMP (MUST LOAD FIRST) -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+
+<!-- ADSENSE -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
 crossorigin="anonymous"></script>
 
-<!-- CMP -->
-<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
-
-<style>
-/* =========================
-GLOBAL RESET
-========================= */
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: #333;
-    padding-top: 60px;
-    padding-bottom: 60px;
-}
-
-/* =========================
-FIXED HEADER
-========================= */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    background: #1f2d3d;
-    padding: 12px;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-}
-
-.navbar a {
-    color: white;
-    margin: 10px;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-/* =========================
-HEADER SECTION
-========================= */
-.header {
-    text-align: center;
-    padding: 30px 15px;
-    color: white;
-}
-
-/* =========================
-MAIN CONTAINER (70–80% WIDTH RULE)
-========================= */
-.container {
-    background: white;
-    width: 80%;
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    line-height: 1.7;
-}
-
-/* =========================
-BUTTON STYLE
-========================= */
-.button {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 12px 18px;
-    background: #2a5298;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-}
-
-/* =========================
-FIXED FOOTER
-========================= */
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    background: #1f2d3d;
-    color: white;
-    padding: 10px;
-    font-size: 14px;
-}
-
-/* =========================
-INPUT STANDARDIZATION (GLOBAL)
-========================= */
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type=number] {
-    -moz-appearance: textfield;
-}
-
-/* =========================
-RESPONSIVE DESIGN
-========================= */
-@media screen and (max-width: 768px) {
-    .container {
-        width: 92%;
-        padding: 18px;
-    }
-
-    .navbar a {
-        display: inline-block;
-        margin: 5px;
-        font-size: 14px;
-    }
-}
-</style>
+<!-- GLOBAL CSS -->
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<!-- FIXED NAVBAR -->
-<div class="navbar">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="privacy.html">Privacy</a>
-<a href="terms.html">Terms</a>
+<!-- ================= TOP BAR ================= -->
+<div class="topbar">
+
+    <div class="topbar-line">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
+    <div class="topbar-line">
+        <a href="index.html#tools">Engineering Tools</a>
+        <a href="index.html#converters">Unit Conversion</a>
+        <a href="index.html#blogs">Engineering Knowledge</a>
+    </div>
+
 </div>
+
+<!-- ================= WRAPPER ================= -->
+<div class="wrapper">
 
 <!-- HEADER -->
-<div class="header">
-<h1>What is Reynolds Number?</h1>
-<p>Understanding Laminar and Turbulent Flow in Fluid Mechanics</p>
+<div class="header center">
+    <h1>Reynolds Number</h1>
+    <p>Understanding laminar, transitional and turbulent flow in fluid mechanics</p>
 </div>
 
-<!-- CONTENT -->
-<div class="container">
+<!-- AD SLOT -->
+<div class="ad-slot"></div>
 
-<h2>📌 Introduction</h2>
+<!-- ================= CONTENT ================= -->
+
+<div class="section">
+
+<h2>What is Reynolds Number?</h2>
+
 <p>
-The :contentReference[oaicite:0]{index=0} is a fundamental concept in fluid mechanics used to predict flow behavior inside pipes or around objects. It helps determine whether the flow is laminar or turbulent.
+The <strong>Reynolds Number</strong> is a fundamental dimensionless parameter in fluid mechanics used to predict flow behavior in pipes and around objects. It determines whether the flow is laminar, transitional, or turbulent based on the balance between inertial and viscous forces.
 </p>
 
-<h2>📊 Reynolds Number Formula</h2>
+<p>
+In engineering applications such as pipe design, pumps, HVAC systems, and chemical processes, Reynolds Number is essential for analyzing flow stability and energy losses.
+</p>
 
-<p><b>Re = ρ × V × D / μ</b></p>
+</div>
+
+<!-- AD SLOT -->
+<div class="ad-slot"></div>
+
+<div class="section">
+
+<h2>Reynolds Number Formula</h2>
+
+<p>
+Reynolds Number is defined as:
+</p>
 
 <ul>
+<li><strong>Re = ρ × V × D / μ</strong></li>
 <li>ρ = Fluid density (kg/m³)</li>
-<li>V = Velocity of fluid (m/s)</li>
-<li>D = Pipe diameter (m)</li>
+<li>V = Flow velocity (m/s)</li>
+<li>D = Characteristic length / pipe diameter (m)</li>
 <li>μ = Dynamic viscosity (Pa·s)</li>
 </ul>
 
-<h2>🌊 Flow Types</h2>
-
-<h3>1. Laminar Flow</h3>
-<p>Occurs when Re < 2000. Fluid moves in smooth layers with no mixing.</p>
-
-<h3>2. Transitional Flow</h3>
-<p>Occurs when Re is between 2000 and 4000. Flow is unstable.</p>
-
-<h3>3. Turbulent Flow</h3>
-<p>Occurs when Re > 4000. Fluid motion is chaotic and mixed.</p>
-
-<h2>🏭 Engineering Applications</h2>
-<ul>
-<li>Pipe flow design</li>
-<li>Oil and gas pipelines</li>
-<li>Chemical process industries</li>
-<li>Water distribution systems</li>
-</ul>
-
-<h2>🧮 Try Related Calculator</h2>
-<p>Use our pipe flow calculator to analyze real engineering systems.</p>
-
-<a class="button" href="pipe-flow-calculator.html">
-👉 Open Pipe Flow Calculator
-</a>
+<p>
+It can also be expressed as:
+<br>
+<strong>Re = (Inertial Forces) / (Viscous Forces)</strong>
+</p>
 
 </div>
 
-<!-- FIXED FOOTER -->
+<div class="section">
+
+<h2>Flow Regimes Based on Reynolds Number</h2>
+
+<ul>
+<li><strong>Laminar Flow (Re &lt; 2000):</strong> Smooth, orderly fluid motion in parallel layers.</li>
+
+<li><strong>Transitional Flow (2000 – 4000):</strong> Unstable flow with mixing and fluctuations.</li>
+
+<li><strong>Turbulent Flow (Re &gt; 4000):</strong> Chaotic, highly mixed flow with eddies and vortices.</li>
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>Engineering Applications</h2>
+
+<p>
+Reynolds Number is widely used in fluid flow analysis and system design to ensure efficient and safe operation.
+</p>
+
+<ul>
+<li>Pipe flow and duct design</li>
+<li>Oil and gas pipeline engineering</li>
+<li>HVAC airflow analysis</li>
+<li>Chemical reactor design</li>
+<li>Water distribution systems</li>
+<li>Pump and fan system optimization</li>
+<li>Heat exchanger flow studies</li>
+<li>Aerodynamics and aircraft design</li>
+</ul>
+
+</div>
+
+<!-- AD SLOT -->
+<div class="ad-slot"></div>
+
+<div class="section">
+
+<h2>Importance in Engineering Design</h2>
+
+<p>
+Accurate estimation of Reynolds Number helps engineers predict friction losses, pressure drops, and flow stability. It is especially important when scaling systems from laboratory models to real-world industrial applications.
+</p>
+
+<p>
+It also plays a key role in selecting appropriate pipe materials, pump capacity, and energy-efficient system configurations.
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>Quick Engineering Insight</h2>
+
+<p>
+Low Reynolds numbers indicate viscous-dominated flow (stable and predictable), while high Reynolds numbers indicate inertia-dominated flow (unstable and mixing). Proper understanding of this helps improve system efficiency and reliability.
+</p>
+
+</div>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
 <div class="footer">
-© 2026 Industrial Calculation Hub
+
+    <div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
+
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
 </div>
 
 </body>
