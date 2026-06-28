@@ -205,14 +205,16 @@ function calculate(){
         let Q_cfm = Q_m3s*2118.88;
 
         resultHTML = `
-        <div class="result-card">
-        <table class="result-table">
-        <tr><th>Flow Unit</th><th>Value</th></tr>
-        <tr><td>m³/s</td><td>${Q_m3s.toFixed(4)}</td></tr>
-        <tr><td>m³/hr</td><td>${Q_m3hr.toFixed(2)}</td></tr>
-        <tr><td>CFM</td><td>${Q_cfm.toFixed(2)}</td></tr>
-        </table>
-        </div>`;
+<div class="result-card">
+<h3 class="result-title">Flow Rate Result</h3>
+
+<table class="result-table">
+<tr><th>Unit</th><th>Value</th></tr>
+<tr><td>m³/hr</td><td>${Q_m3hr.toFixed(2)}</td></tr>
+<tr><td>m³/s</td><td>${Q_m3s.toFixed(3)}</td></tr>
+<tr><td>CFM</td><td>${Q_cfm.toFixed(2)}</td></tr>
+</table>
+</div>`;
     }
 
     // VELOCITY
@@ -253,14 +255,16 @@ function calculate(){
         let V_mps = Q/area;
         let V_fts = V_mps*3.28084;
 
-        resultHTML = `
-        <div class="result-card">
-        <table class="result-table">
-        <tr><th>Velocity Unit</th><th>Value</th></tr>
-        <tr><td>m/s</td><td>${V_mps.toFixed(3)}</td></tr>
-        <tr><td>ft/s</td><td>${V_fts.toFixed(3)}</td></tr>
-        </table>
-        </div>`;
+resultHTML = `
+<div class="result-card">
+<h3 class="result-title">Velocity Result</h3>
+
+<table class="result-table">
+<tr><th>Unit</th><th>Value</th></tr>
+<tr><td>m/s</td><td>${V_mps.toFixed(2)}</td></tr>
+<tr><td>ft/s</td><td>${V_fts.toFixed(2)}</td></tr>
+</table>
+</div>`;
     }
 
     // SIZE
@@ -288,16 +292,19 @@ function calculate(){
             let w = w_mm/1000;
             let h = area/w;
 
-            resultHTML = `
-            <div class="result-card">
-            <table class="result-table">
-            <tr><th>Parameter</th><th>Value</th></tr>
+resultHTML = `
+<div class="result-card">
+<h3 class="result-title">Duct Size Result</h3>
 
-            <tr><td>Width</td><td>${w_mm.toFixed(1)} mm | ${(w).toFixed(4)} m | ${(w*3.28084).toFixed(3)} ft</td></tr>
-            <tr><td>Height</td><td>${(h*1000).toFixed(1)} mm | ${(h).toFixed(4)} m | ${(h*3.28084).toFixed(3)} ft</td></tr>
+<table class="result-table">
+<tr><th>Parameter</th><th>Value</th></tr>
 
-            </table>
-            </div>`;
+<tr><td>Width</td><td>${w_mm.toFixed(1)} mm | ${w.toFixed(3)} m | ${(w*3.28084).toFixed(2)} ft</td></tr>
+
+<tr><td>Height</td><td>${(h*1000).toFixed(1)} mm | ${h.toFixed(3)} m | ${(h*3.28084).toFixed(2)} ft</td></tr>
+
+</table>
+</div>`;
         }
 
         else{
@@ -307,15 +314,17 @@ function calculate(){
             let d_mm = d*1000;
             let d_ft = d*3.28084;
 
-            resultHTML = `
-            <div class="result-card">
-            <table class="result-table">
-            <tr><th>Parameter</th><th>Value</th></tr>
+resultHTML = `
+<div class="result-card">
+<h3 class="result-title">Duct Size Result</h3>
 
-            <tr><td>Diameter</td><td>${d_mm.toFixed(1)} mm | ${d.toFixed(4)} m | ${d_ft.toFixed(3)} ft</td></tr>
+<table class="result-table">
+<tr><th>Parameter</th><th>Value</th></tr>
 
-            </table>
-            </div>`;
+<tr><td>Diameter</td><td>${d_mm.toFixed(1)} mm | ${d.toFixed(3)} m | ${d_ft.toFixed(2)} ft</td></tr>
+
+</table>
+</div>`;
         }
     }
 
