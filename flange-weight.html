@@ -6,238 +6,477 @@
 
 <title>Flange Weight Calculator | Industrial Calculation Hub</title>
 
-<meta name="description" content="Calculate flange weight using outer diameter, inner diameter, thickness, bolt holes, and material density. Engineering tool for mechanical design.">
-<meta name="keywords" content="flange weight calculator, flange design, engineering calculator, steel weight calculator">
+<meta name="description" content="Calculate flange weight using outer diameter, inner diameter, thickness, bolt holes and material density. Suitable for piping, pressure vessels and mechanical engineering applications.">
+
+<meta name="keywords" content="flange weight calculator, flange mass calculator, steel flange weight, stainless steel flange weight, flange engineering calculator">
+
 <meta name="author" content="Industrial Calculation Hub">
+
+<!-- CMP -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
 <!-- AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
 crossorigin="anonymous"></script>
 
-<!-- CMP -->
-<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+<link rel="stylesheet" href="style.css">
 
-<style>
-
-/* ================= GLOBAL THEME ================= */
-body{
-    margin:0;
-    font-family:Segoe UI, sans-serif;
-    background:#1e3c72;
-    color:#fff;
-}
-
-/* ================= FIXED HEADER ================= */
-header{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    background:#2a2a2a;
-    padding:12px;
-    text-align:center;
-    z-index:1000;
-}
-
-header a{
-    color:#fff;
-    margin:0 10px;
-    text-decoration:none;
-    font-weight:500;
-}
-
-/* ================= FIXED FOOTER ================= */
-footer{
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:#2a2a2a;
-    text-align:center;
-    padding:10px;
-    font-size:14px;
-}
-
-/* ================= MAIN WRAPPER (70–80%) ================= */
-.wrapper{
-    width:80%;
-    max-width:800px;
-    margin:90px auto 80px auto;
-}
-
-/* ================= CARD ================= */
-.card{
-    background:#fff;
-    color:#333;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-
-/* ================= INPUT STANDARD ================= */
-label{
-    font-weight:500;
-    display:block;
-    margin-top:10px;
-}
-
-input, select{
-    width:100%;
-    padding:10px;
-    margin:6px 0 12px 0;
-    border-radius:6px;
-    border:1px solid #ccc;
-    box-sizing:border-box;
-    font-size:14px;
-}
-
-/* REMOVE SPINNERS */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button{
-    -webkit-appearance:none;
-    margin:0;
-}
-
-input[type=number]{
-    -moz-appearance:textfield;
-}
-
-/* BUTTON */
-button{
-    width:100%;
-    padding:12px;
-    background:#1e3c72;
-    color:#fff;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-    font-size:15px;
-}
-
-button:hover{
-    background:#16325c;
-}
-
-/* RESULT */
-.result{
-    margin-top:15px;
-    font-weight:bold;
-    line-height:1.6;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-    .wrapper{
-        width:92%;
-    }
-}
-
-h2{
-    text-align:center;
-    color:#1e3c72;
-}
-
-</style>
 </head>
 
 <body>
 
-<!-- FIXED HEADER -->
-<header>
+<!-- ================= TOP BAR ================= -->
+
+<div class="topbar">
+
+    <div class="topbar-line">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
+    <div class="topbar-line">
+        <a href="index.html#tools">Engineering Tools</a>
+        <a href="index.html#converters">Unit Conversion</a>
+        <a href="index.html#blogs">Engineering Knowledge</a>
+    </div>
+
+</div>
+
+<!-- ================= WRAPPER ================= -->
+
+<div class="wrapper">
+
+<div class="header">
+    <h1>Flange Weight</h1>
+    <p>Calculate flange weight using dimensions and material density</p>
+</div>
+
+<!-- ================= CALCULATOR ================= -->
+
+<div class="section">
+
+<label for="od">Outer Diameter (mm)</label>
+<input
+type="number"
+id="od"
+step="any"
+min="0"
+placeholder="Enter outer diameter">
+
+<label for="id">Inner Diameter (mm)</label>
+<input
+type="number"
+id="id"
+step="any"
+min="0"
+placeholder="Enter inner diameter">
+
+<label for="thickness">Thickness (mm)</label>
+<input
+type="number"
+id="thickness"
+step="any"
+min="0"
+placeholder="Enter flange thickness">
+
+<label for="holes">Number of Bolt Holes</label>
+<input
+type="number"
+id="holes"
+step="1"
+min="0"
+placeholder="Enter number of bolt holes">
+
+<label for="holeDia">Bolt Hole Diameter (mm)</label>
+<input
+type="number"
+id="holeDia"
+step="any"
+min="0"
+placeholder="Enter bolt hole diameter">
+
+<label for="density">Material</label>
+
+<select id="density">
+
+<option value="7850">Carbon Steel (7850 kg/m³)</option>
+
+<option value="8000">
+Stainless Steel 304 (8000 kg/m³)
+</option>
+
+<option value="7990">
+Stainless Steel 316 (7990 kg/m³)
+</option>
+
+<option value="2700">
+Aluminium (2700 kg/m³)
+</option>
+
+<option value="8900">
+Copper (8900 kg/m³)
+</option>
+
+<option value="7140">
+Cast Iron (7140 kg/m³)
+</option>
+
+</select>
+
+<div id="output" class="result-box"></div>
+
+</div>
+
+    <!-- ================= ENGINEERING KNOWLEDGE ================= -->
+
+<div class="section">
+
+<h3>Engineering Knowledge</h3>
+
+<p>
+A flange is a mechanical component used to connect pipes, valves, pumps, pressure vessels,
+and other equipment. Accurate flange weight calculation is important for fabrication,
+material estimation, transportation, structural support design, and lifting operations.
+</p>
+
+<p>
+The calculator determines the flange weight by calculating the net volume of the flange
+(after subtracting bolt holes) and multiplying it by the selected material density.
+</p>
+
+<p class="formula">
+Weight = Net Volume × Material Density
+</p>
+
+<p>
+The net volume is obtained from the annular flange area minus the total bolt hole area,
+multiplied by the flange thickness.
+</p>
+
+<div class="result-card">
+
+<h3>Calculation Formula</h3>
+
+<table class="result-table">
+
+<tr>
+<th>Formula</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>A = π/4 × (OD² − ID²)</td>
+<td>Gross flange area</td>
+</tr>
+
+<tr>
+<td>Ah = n × π/4 × d²</td>
+<td>Total bolt hole area</td>
+</tr>
+
+<tr>
+<td>Anet = A − Ah</td>
+<td>Net flange area</td>
+</tr>
+
+<tr>
+<td>V = Anet × t</td>
+<td>Net flange volume</td>
+</tr>
+
+<tr>
+<td>W = V × ρ</td>
+<td>Flange weight</td>
+</tr>
+
+</table>
+
+</div>
+
+<h3>Variables Used</h3>
+
+<div class="result-card">
+
+<table class="result-table">
+
+<tr>
+<th>Symbol</th>
+<th>Description</th>
+<th>Unit</th>
+</tr>
+
+<tr>
+<td>OD</td>
+<td>Outer Diameter</td>
+<td>mm</td>
+</tr>
+
+<tr>
+<td>ID</td>
+<td>Inner Diameter</td>
+<td>mm</td>
+</tr>
+
+<tr>
+<td>t</td>
+<td>Flange Thickness</td>
+<td>mm</td>
+</tr>
+
+<tr>
+<td>n</td>
+<td>Number of Bolt Holes</td>
+<td>—</td>
+</tr>
+
+<tr>
+<td>d</td>
+<td>Bolt Hole Diameter</td>
+<td>mm</td>
+</tr>
+
+<tr>
+<td>ρ</td>
+<td>Material Density</td>
+<td>kg/m³</td>
+</tr>
+
+<tr>
+<td>V</td>
+<td>Volume</td>
+<td>m³</td>
+</tr>
+
+<tr>
+<td>W</td>
+<td>Weight</td>
+<td>kg</td>
+</tr>
+
+</table>
+
+</div>
+
+<h3>Typical Material Densities</h3>
+
+<div class="result-card">
+
+<table class="result-table">
+
+<tr>
+<th>Material</th>
+<th>Density (kg/m³)</th>
+</tr>
+
+<tr>
+<td>Carbon Steel</td>
+<td>7850</td>
+</tr>
+
+<tr>
+<td>Stainless Steel 304</td>
+<td>8000</td>
+</tr>
+
+<tr>
+<td>Stainless Steel 316</td>
+<td>7990</td>
+</tr>
+
+<tr>
+<td>Cast Iron</td>
+<td>7140</td>
+</tr>
+
+<tr>
+<td>Aluminium</td>
+<td>2700</td>
+</tr>
+
+<tr>
+<td>Copper</td>
+<td>8900</td>
+</tr>
+
+</table>
+
+</div>
+
+<h3>Engineering Notes</h3>
+
+<ul>
+
+<li>All dimensions are entered in millimetres and automatically converted to metres for calculation.</li>
+
+<li>The weight calculation subtracts the material removed by bolt holes.</li>
+
+<li>This calculator assumes a flat flange with uniform thickness.</li>
+
+<li>Raised face, hub, weld neck and other flange features are not included.</li>
+
+<li>For forged flanges, actual manufacturer weight may differ slightly due to machining allowances and tolerances.</li>
+
+<li>Always verify final flange weights using fabrication drawings or applicable standards such as ASME B16.5, ASME B16.47 or EN 1092 when required.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<div class="footer">
+
+<div>
+© 2026 Industrial Calculation Hub | Engineering Tools Portal
+</div>
+
+<div class="footer-links">
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
 <a href="privacy.html">Privacy</a>
 <a href="terms.html">Terms</a>
-</header>
-
-<div class="wrapper">
-
-<div class="card">
-
-<h2>Flange Weight Calculator</h2>
-
-<label>Outer Diameter (m)</label>
-<input type="number" id="OD">
-
-<label>Inner Diameter (m)</label>
-<input type="number" id="ID">
-
-<label>Thickness (mm)</label>
-<input type="number" id="thk">
-
-<label>No. of Bolt Holes</label>
-<input type="number" id="holes">
-
-<label>Bolt Hole Diameter (m)</label>
-<input type="number" id="hdia">
-
-<label>Material Density</label>
-<select id="density">
-    <option value="7850">Steel</option>
-    <option value="8000">Stainless Steel</option>
-    <option value="2700">Aluminium</option>
-</select>
-
-<button onclick="calculate()">Calculate</button>
-
-<div class="result" id="result"></div>
-
 </div>
 
 </div>
 
-<!-- FIXED FOOTER -->
-<footer>
-© 2026 Industrial Calculation Hub | 
-<a href="privacy.html" style="color:white;">Privacy</a> |
-<a href="terms.html" style="color:white;">Terms</a>
-</footer>
+<!-- ================= SCRIPT ================= -->
 
 <script>
 
-function calculate(){
+function calculateLive() {
 
-    let OD = parseFloat(document.getElementById("OD").value);
-    let ID = parseFloat(document.getElementById("ID").value);
-    let thk = parseFloat(document.getElementById("thk").value) / 1000;
-    let holes = parseFloat(document.getElementById("holes").value) || 0;
-    let hdia = parseFloat(document.getElementById("hdia").value) || 0;
-    let density = parseFloat(document.getElementById("density").value);
+    const od_mm = parseFloat(document.getElementById("od").value);
+    const id_mm = parseFloat(document.getElementById("id").value);
+    const thk_mm = parseFloat(document.getElementById("thickness").value);
+    const holes = parseFloat(document.getElementById("holes").value) || 0;
+    const holeDia_mm = parseFloat(document.getElementById("holeDia").value) || 0;
+    const density = parseFloat(document.getElementById("density").value);
 
-    if(isNaN(OD) || isNaN(ID) || isNaN(thk) || isNaN(density)){
-        document.getElementById("result").innerHTML = "Please enter all required values correctly.";
+    const output = document.getElementById("output");
+
+    // Clear output until all required values are entered
+    if ([od_mm, id_mm, thk_mm].some(v => isNaN(v))) {
+        output.innerHTML = "";
         return;
     }
 
-    if(OD <= ID){
-        document.getElementById("result").innerHTML = "Outer diameter must be greater than inner diameter.";
+    if (od_mm <= 0 || id_mm <= 0 || thk_mm <= 0) {
+        output.innerHTML =
+            "<div class='result-card'>Please enter valid positive values.</div>";
         return;
     }
 
-    // Area
-    let area = (Math.PI/4) * (OD*OD - ID*ID);
-
-    // Bolt holes area
-    let holeArea = holes * (Math.PI/4) * (hdia*hdia);
-
-    let netArea = area - holeArea;
-
-    if(netArea <= 0){
-        document.getElementById("result").innerHTML = "Invalid geometry: hole area too large.";
+    if (od_mm <= id_mm) {
+        output.innerHTML =
+            "<div class='result-card'>Outer diameter must be greater than inner diameter.</div>";
         return;
     }
 
-    let volume = netArea * thk;
-    let weight = volume * density;
+    // Convert mm to metres
+    const od = od_mm / 1000;
+    const id = id_mm / 1000;
+    const thk = thk_mm / 1000;
+    const holeDia = holeDia_mm / 1000;
 
-    document.getElementById("result").innerHTML =
-        "Net Area = " + netArea.toFixed(4) + " m²<br>" +
-        "Weight = " + weight.toFixed(2) + " kg";
+    // Gross flange area
+    const grossArea =
+        (Math.PI / 4) * (Math.pow(od, 2) - Math.pow(id, 2));
 
+    // Total bolt hole area
+    const holeArea =
+        holes * (Math.PI / 4) * Math.pow(holeDia, 2);
+
+    const netArea = grossArea - holeArea;
+
+    if (netArea <= 0) {
+        output.innerHTML =
+            "<div class='result-card'>Bolt hole area is larger than flange area.</div>";
+        return;
+    }
+
+    const volume = netArea * thk;
+
+    const weightKg = volume * density;
+    const weightLb = weightKg * 2.20462;
+
+    output.innerHTML = `
+        <div class="result-card">
+
+            <h3>Calculation Result</h3>
+
+            <table class="result-table">
+
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                </tr>
+
+                <tr>
+                    <td>Gross Area</td>
+                    <td>${grossArea.toFixed(6)} m²</td>
+                </tr>
+
+                <tr>
+                    <td>Bolt Hole Area</td>
+                    <td>${holeArea.toFixed(6)} m²</td>
+                </tr>
+
+                <tr>
+                    <td>Net Area</td>
+                    <td>${netArea.toFixed(6)} m²</td>
+                </tr>
+
+                <tr>
+                    <td>Volume</td>
+                    <td>${volume.toFixed(6)} m³</td>
+                </tr>
+
+                <tr>
+                    <td>Material Density</td>
+                    <td>${density.toFixed(0)} kg/m³</td>
+                </tr>
+
+                <tr>
+                    <td>Weight</td>
+                    <td>${weightKg.toFixed(2)} kg</td>
+                </tr>
+
+                <tr>
+                    <td>Weight</td>
+                    <td>${weightLb.toFixed(2)} lb</td>
+                </tr>
+
+            </table>
+
+        </div>
+    `;
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+
+    const inputs = [
+        "od",
+        "id",
+        "thickness",
+        "holes",
+        "holeDia",
+        "density"
+    ];
+
+    inputs.forEach(id => {
+        document.getElementById(id).addEventListener("input", calculateLive);
+        document.getElementById(id).addEventListener("change", calculateLive);
+    });
+
+});
 </script>
 
 </body>
 </html>
+ 
