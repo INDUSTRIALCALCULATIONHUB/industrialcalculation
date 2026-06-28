@@ -47,29 +47,88 @@ crossorigin="anonymous"></script>
 <!-- HEADER -->
 <div class="header center">
     <h1>Air Density</h1>
-    <p>Air density fundamentals, formula, influencing parameters and engineering applications.</p>
+    <p>Air density fundamentals, formula, influencing parameters and engineering applications</p>
 </div>
 
 <!-- AD SLOT -->
 <div class="ad-slot"></div>
 
 <!-- ================= CONTENT ================= -->
+
 <div class="section">
 
-<h2>Fundamentals</h2>
+<h2>What is Air Density?</h2>
+
+<p>
+Air density is the mass of air contained within a unit volume and is one of the most important properties used in fluid mechanics, HVAC engineering, fan selection, combustion systems and industrial ventilation. Air density directly influences airflow, pressure losses, fan power, heat transfer and combustion efficiency.
+</p>
+
+<p>
+Because air is a compressible fluid, its density changes with temperature, pressure, altitude and humidity. Engineering calculations should therefore use the actual operating density whenever conditions differ significantly from standard atmospheric conditions.
+</p>
+
+</div>
+
+<!-- AD SLOT -->
+<div class="ad-slot"></div>
+
+<div class="section">
+
+<h2>Air Density Formula</h2>
+
+<p>
+Air density is calculated using the Ideal Gas Law.
+</p>
 
 <ul>
-<li>ρ = Mass / Volume</li>
-<li>Unit: kg/m³</li>
-<li>Standard density: 1.225 kg/m³ (15°C, 1 atm)</li>
+<li><strong>ρ = P / (R × T)</strong></li>
+<li>ρ = Air density (kg/m³)</li>
+<li>P = Absolute pressure (Pa)</li>
+<li>R = Specific gas constant for dry air = 287 J/kg·K</li>
+<li>T = Absolute temperature (K)</li>
 </ul>
 
-<h3>Equation</h3>
+<p>
+At standard atmospheric conditions (15°C and 101.325 kPa), the density of dry air is approximately <strong>1.225 kg/m³</strong>.
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>Factors Affecting Air Density</h2>
+
 <ul>
-<li>ρ = P / (R × T)</li>
-<li>P = Pressure (Pa)</li>
-<li>R = 287 J/kg·K</li>
-<li>T = Temperature (K)</li>
+<li><strong>Temperature:</strong> Increasing temperature causes air to expand, reducing density.</li>
+
+<li><strong>Pressure:</strong> Increasing pressure compresses air and increases density.</li>
+
+<li><strong>Altitude:</strong> Atmospheric pressure decreases with elevation, resulting in lower air density.</li>
+
+<li><strong>Humidity:</strong> Moist air is less dense than dry air because water vapour has a lower molecular weight than nitrogen and oxygen.</li>
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>Importance in Engineering</h2>
+
+<p>
+Accurate air density is essential in many industrial calculations because aerodynamic forces and equipment performance are directly dependent on the mass of air being handled rather than only its volume.
+</p>
+
+<ul>
+<li>Fan and blower sizing</li>
+<li>HVAC duct system design</li>
+<li>Boiler combustion air calculations</li>
+<li>Cooling tower performance evaluation</li>
+<li>Compressed air systems</li>
+<li>Dust collection and bag filter design</li>
+<li>ESP and scrubber airflow calculations</li>
+<li>Gas turbine intake systems</li>
+<li>Industrial ventilation systems</li>
+<li>Stack and chimney draft calculations</li>
 </ul>
 
 </div>
@@ -79,45 +138,72 @@ crossorigin="anonymous"></script>
 
 <div class="section">
 
-<h2>Influencing Parameters</h2>
-
-<ul>
-<li>Temperature ↑ → Density ↓</li>
-<li>Pressure ↑ → Density ↑</li>
-<li>Altitude ↑ → Density ↓</li>
-<li>Humidity ↑ → Density ↓</li>
-</ul>
-
-</div>
-
-<div class="section">
-
-<h2>Engineering Applications</h2>
-
-<ul>
-<li>Fan design (ID Fan, FD Fan, PA Fan, Axial & Centrifugal)</li>
-<li>Duct airflow and pressure calculations</li>
-<li>HVAC system design and load estimation</li>
-<li>Cooling tower air handling performance</li>
-<li>Combustion air and boiler efficiency calculations</li>
-<li>Air pollution control systems (ESP, Bag Filter, Scrubber)</li>
-</ul>
-
-</div>
-
-<div class="section">
-
-<h2>Engineering Note</h2>
-
-<ul>
-<li>Flow ≈ constant with density variation</li>
-<li>Static pressure ∝ air density</li>
-<li>Power consumption ∝ air density</li>
-</ul>
+<h2>Effect of Density on Fan Performance</h2>
 
 <p>
-Fan and blower performance curves are based on standard air conditions. 
-Density correction is essential for accurate equipment selection and system design.
+Fan performance curves published by manufacturers are generally based on standard air density. When operating under different atmospheric conditions, correction factors should be applied.
+</p>
+
+<ul>
+<li>Volumetric airflow remains approximately constant for a fixed fan speed.</li>
+
+<li>Static pressure varies directly with air density.</li>
+
+<li>Brake horsepower varies directly with air density.</li>
+
+<li>Motor selection should consider maximum expected air density to prevent overloading.</li>
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>Typical Air Density Values</h2>
+
+<table class="data-table">
+<tr>
+<th>Condition</th>
+<th>Approx. Density (kg/m³)</th>
+</tr>
+
+<tr>
+<td>0°C</td>
+<td>1.293</td>
+</tr>
+
+<tr>
+<td>15°C (Standard)</td>
+<td>1.225</td>
+</tr>
+
+<tr>
+<td>20°C</td>
+<td>1.204</td>
+</tr>
+
+<tr>
+<td>30°C</td>
+<td>1.165</td>
+</tr>
+
+<tr>
+<td>40°C</td>
+<td>1.127</td>
+</tr>
+</table>
+
+<p>
+These values assume dry air at standard atmospheric pressure. Actual density varies with both pressure and humidity.
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>Engineering Practice</h2>
+
+<p>
+For preliminary engineering calculations, the standard air density of <strong>1.225 kg/m³</strong> is generally acceptable. However, detailed equipment selection and performance analysis should always use density calculated from the actual operating pressure, temperature and humidity. Applying the correct air density improves the accuracy of fan sizing, pressure loss calculations, motor selection, energy consumption estimates and process performance predictions.
 </p>
 
 </div>
