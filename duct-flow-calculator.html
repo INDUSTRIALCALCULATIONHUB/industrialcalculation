@@ -180,34 +180,32 @@ else if(mode === "velocity"){
 Width (mm): <input type="number" id="w" placeholder="Enter width in mm">
 Height (mm): <input type="number" id="h" placeholder="Enter height in mm">
 
-Flow Rate (m³/hr): 
-<input type="number" id="q" placeholder="Enter flow rate in m³/hr">
+Flow Rate (m³/hr): <input type="number" id="q" placeholder="Enter flow rate in m³/hr">
 `;
     } else {
         html = `
 Diameter (mm): <input type="number" id="d" placeholder="Enter diameter in mm">
 
-Flow Rate (m³/hr): 
-<input type="number" id="q" placeholder="Enter flow rate in m³/hr">
+Flow Rate (m³/hr): <input type="number" id="q" placeholder="Enter flow rate in m³/hr">
 `;
     }
 }
 
-    else {
+else {
 
-        if(type === "rect"){
-            html = `
-Flow Rate (m³/s): <input type="number" id="q" placeholder="Enter flow rate">
+    if(type === "rect"){
+        html = `
+Flow Rate (m³/hr): <input type="number" id="q" placeholder="Enter flow rate in m³/hr">
 Velocity (m/s): <input type="number" id="v" placeholder="Enter velocity">
 Width (mm): <input type="number" id="w" placeholder="Enter width in mm">
 `;
-        } else {
-            html = `
-Flow Rate (m³/s): <input type="number" id="q" placeholder="Enter flow rate">
+    } else {
+        html = `
+Flow Rate (m³/hr): <input type="number" id="q" placeholder="Enter flow rate in m³/hr">
 Velocity (m/s): <input type="number" id="v" placeholder="Enter velocity">
 `;
-        }
     }
+}
 
     document.getElementById("inputs").innerHTML = html;
     attachEvents();
@@ -276,9 +274,9 @@ function calculate(){
 
 <table class="result-table">
 <tr><th>Unit</th><th>Value</th></tr>
-<tr><td>m³/hr</td><td>${Q_m3hr.toFixed(2)}</td></tr>
-<tr><td>m³/s</td><td>${Q_m3s.toFixed(2)}</td></tr>
-<tr><td>CFM</td><td>${Q_cfm.toFixed(2)}</td></tr>
+<tr><td>m³/hr</td><td>${Q_m3hr.toFixed(1)}</td></tr>
+<tr><td>m³/s</td><td>${Q_m3s.toFixed(4)}</td></tr>
+<tr><td>CFM</td><td>${Q_cfm.toFixed(1)}</td></tr>
 </table>
 </div>`;
     }
@@ -369,9 +367,8 @@ resultHTML = `
 <table class="result-table">
 <tr><th>Parameter</th><th>Value</th></tr>
 
-<tr><td>Width</td><td>${w_mm.toFixed(1)} mm | ${w.toFixed(3)} m | ${(w*3.28084).toFixed(2)} ft</td></tr>
-
-<tr><td>Height</td><td>${(h*1000).toFixed(1)} mm | ${h.toFixed(3)} m | ${(h*3.28084).toFixed(2)} ft</td></tr>
+<tr><td>Required Height</td>
+<td>${(h*1000).toFixed(1)} mm | ${h.toFixed(3)} m | ${(h*3.28084).toFixed(2)} ft</td></tr>
 
 </table>
 </div>`;
