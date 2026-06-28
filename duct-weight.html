@@ -1,226 +1,491 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Duct Weight Calculator | Industrial Calculation Hub</title>
 
-<meta name="description" content="Calculate duct weight based on geometry, thickness, and material density for HVAC and industrial applications.">
+<meta name="description" content="Calculate rectangular and circular duct weight, sheet metal surface area, and weight per metre for steel, stainless steel, and aluminium ducts used in HVAC and industrial ventilation systems.">
+
+<meta name="keywords" content="duct weight calculator, rectangular duct weight, circular duct weight, HVAC duct calculator, sheet metal weight calculator, GI duct weight, stainless steel duct weight">
+
+<meta name="author" content="Industrial Calculation Hub">
+
+<!-- CMP -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
 <!-- AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
 crossorigin="anonymous"></script>
 
-<!-- CMP -->
-<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+<link rel="stylesheet" href="style.css">
 
-<style>
-
-body{
-    margin:0;
-    font-family:Segoe UI, Arial, sans-serif;
-    background:linear-gradient(to right,#1e3c72,#2a5298);
-    color:#333;
-}
-
-/* HEADER */
-.header{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    background:#1e3c72;
-    color:white;
-    text-align:center;
-    padding:12px;
-    z-index:1000;
-}
-
-/* FOOTER */
-.footer{
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:#1e3c72;
-    color:white;
-    text-align:center;
-    padding:10px;
-    z-index:1000;
-}
-
-/* NAV */
-.navbar a{
-    color:white;
-    margin:10px;
-    text-decoration:none;
-    font-size:14px;
-}
-
-/* MAIN CONTAINER (GLOBAL 70–80% RULE) */
-.container{
-    width:80%;
-    max-width:750px;
-    margin:100px auto 80px auto;
-    background:white;
-    color:black;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
-}
-
-/* MOBILE */
-@media(max-width:768px){
-    .container{
-        width:78%;
-    }
-}
-
-/* INPUTS */
-input, select{
-    width:100%;
-    padding:12px;
-    margin:8px 0;
-    border-radius:8px;
-    border:1px solid #ccc;
-    box-sizing:border-box;
-}
-
-/* REMOVE SPINNERS */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button{
-    -webkit-appearance:none;
-    margin:0;
-}
-input[type=number]{
-    -moz-appearance:textfield;
-}
-
-/* BUTTON */
-button{
-    width:100%;
-    padding:12px;
-    background:#1e3c72;
-    color:white;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    margin-top:10px;
-}
-
-/* RESULT */
-.result{
-    margin-top:15px;
-    font-weight:bold;
-    line-height:1.6;
-}
-</style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-    <div class="navbar">
+<!-- ================= TOP BAR ================= -->
+
+<div class="topbar">
+
+    <div class="topbar-line">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
     </div>
+
+    <div class="topbar-line">
+        <a href="index.html#tools">Engineering Tools</a>
+        <a href="index.html#converters">Unit Conversion</a>
+        <a href="index.html#blogs">Engineering Knowledge</a>
+    </div>
+
 </div>
 
-<div class="container">
+<!-- ================= WRAPPER ================= -->
 
-<h2>🏗 Duct Weight Calculator</h2>
+<div class="wrapper">
+
+<!-- ================= HEADER ================= -->
+
+<div class="header">
+
+<h1>Duct Weight</h1>
+
+<p>
+Calculate duct sheet surface area, weight per metre, and total duct weight for rectangular and circular ducts used in HVAC and industrial ventilation systems.
+</p>
+
+</div>
+
+<!-- ================= CALCULATOR ================= -->
+
+<div class="section">
 
 <label>Duct Type</label>
-<select id="type" onchange="renderInputs()">
-<option value="rect">Rectangular</option>
-<option value="circular">Circular</option>
+
+<select id="ductType">
+
+<option value="rect">Rectangular Duct</option>
+<option value="round">Circular Duct</option>
+
 </select>
 
-<div id="inputs"></div>
+<div id="ductInputs">
 
-<label>Thickness (mm)</label>
-<input type="number" id="thk">
+<label>Width (m)</label>
+<input type="number" id="width" step="any" min="0">
 
-<label>Length (m)</label>
-<input type="number" id="len">
+<label>Height (m)</label>
+<input type="number" id="height" step="any" min="0">
+
+</div>
+
+<label>Duct Length (m)</label>
+<input type="number" id="length" step="any" min="0">
+
+<label>Sheet Thickness (mm)</label>
+<input type="number" id="thickness" step="any" min="0">
 
 <label>Material</label>
+
 <select id="density">
-<option value="7850">Steel</option>
-<option value="8000">Stainless Steel</option>
-<option value="2700">Aluminium</option>
+
+<option value="7850">Mild Steel (7850 kg/m³)</option>
+<option value="7850">Galvanized Steel (7850 kg/m³)</option>
+<option value="8000">Stainless Steel 304 (8000 kg/m³)</option>
+<option value="8000">Stainless Steel 316 (8000 kg/m³)</option>
+<option value="2700">Aluminium (2700 kg/m³)</option>
+
 </select>
 
-<button onclick="calculate()">Calculate</button>
+<div class="result-box">
 
-<div class="result" id="result"></div>
+<div id="output"></div>
 
 </div>
 
-<!-- FOOTER -->
+</div>
+
+</div>
+
+<!-- ================= ENGINEERING KNOWLEDGE ================= -->
+
+<div class="section">
+
+<h3>Engineering Knowledge</h3>
+
+<p>
+
+<b>Duct weight</b> is determined from the sheet metal surface area, material thickness, and material density. The calculated weight is important for HVAC design, duct supports, structural loading, transportation, fabrication, and installation planning.
+
+</p>
+
+<p>
+
+For straight ducts, the sheet metal surface area is calculated from the duct perimeter and length. The sheet volume is then obtained by multiplying the surface area by the sheet thickness. Finally, the duct weight is calculated by multiplying the sheet volume by the material density.
+
+</p>
+
+<p><b>Formula:</b></p>
+
+<p class="formula">
+
+Surface Area = Perimeter × Length
+
+</p>
+
+<p class="formula">
+
+Volume = Surface Area × Thickness
+
+</p>
+
+<p class="formula">
+
+Weight = Volume × Material Density
+
+</p>
+
+<h3>Rectangular Duct</h3>
+
+<table class="result-table">
+
+<tr>
+<th>Parameter</th>
+<th>Formula</th>
+</tr>
+
+<tr>
+<td>Perimeter</td>
+<td>2 × (Width + Height)</td>
+</tr>
+
+<tr>
+<td>Surface Area</td>
+<td>2 × (W + H) × L</td>
+</tr>
+
+</table>
+
+<h3>Circular Duct</h3>
+
+<table class="result-table">
+
+<tr>
+<th>Parameter</th>
+<th>Formula</th>
+</tr>
+
+<tr>
+<td>Circumference</td>
+<td>π × Diameter</td>
+</tr>
+
+<tr>
+<td>Surface Area</td>
+<td>π × D × L</td>
+</tr>
+
+</table>
+
+<h3>Typical Material Density</h3>
+
+<table class="result-table">
+
+<tr>
+<th>Material</th>
+<th>Density (kg/m³)</th>
+</tr>
+
+<tr>
+<td>Mild Steel</td>
+<td>7850</td>
+</tr>
+
+<tr>
+<td>Galvanized Steel</td>
+<td>7850</td>
+</tr>
+
+<tr>
+<td>Stainless Steel 304</td>
+<td>8000</td>
+</tr>
+
+<tr>
+<td>Stainless Steel 316</td>
+<td>8000</td>
+</tr>
+
+<tr>
+<td>Aluminium</td>
+<td>2700</td>
+</tr>
+
+</table>
+
+<h3>Effect of Each Parameter</h3>
+
+<ul>
+
+<li><b>Larger duct dimensions:</b> Increase the sheet metal surface area and total weight.</li>
+
+<li><b>Greater duct length:</b> Increases both surface area and total material requirement.</li>
+
+<li><b>Higher sheet thickness:</b> Produces proportionally heavier ducts.</li>
+
+<li><b>Material density:</b> Stainless steel ducts are heavier than aluminium ducts of identical dimensions.</li>
+
+</ul>
+
+<h3>Engineering Applications</h3>
+
+<ul>
+
+<li>HVAC air distribution systems</li>
+
+<li>Industrial ventilation systems</li>
+
+<li>Dust collection ductwork</li>
+
+<li>Fume extraction systems</li>
+
+<li>Commercial air-conditioning projects</li>
+
+<li>Material estimation during fabrication</li>
+
+<li>Duct support and hanger design</li>
+
+<li>Transportation and lifting calculations</li>
+
+<li>Project cost estimation</li>
+
+<li>Industrial sheet metal fabrication</li>
+
+</ul>
+
+<h3>Engineering Notes</h3>
+
+<ul>
+
+<li>This calculator estimates the weight of straight duct sections only.</li>
+
+<li>Flanges, stiffeners, reinforcement angles, access doors, dampers, insulation, and accessories are not included.</li>
+
+<li>Thickness should be entered in millimetres while all duct dimensions are entered in metres.</li>
+
+<li>For insulated ducts, calculate insulation weight separately and add it to the sheet weight.</li>
+
+<li>Use project specifications or applicable standards for final fabrication and structural design.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+
 <div class="footer">
-© 2026 Industrial Calculation Hub
+
+<div>
+© 2026 Industrial Calculation Hub | Engineering Tools Portal
 </div>
+
+<div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+</div>
+
+</div>
+
+<!-- ================= SCRIPT ================= -->
 
 <script>
 
 function renderInputs(){
-    let type = document.getElementById("type").value;
-    let html = "";
 
-    if(type === "rect"){
-        html = `
-        Width (m): <input type="number" id="w">
-        Height (m): <input type="number" id="h">
-        `;
-    } else {
-        html = `
-        Diameter (m): <input type="number" id="d">
-        `;
+    let type = document.getElementById("ductType").value;
+
+    if(type==="rect"){
+
+        document.getElementById("ductInputs").innerHTML=`
+
+<label>Width (m)</label>
+<input type="number" id="width" step="any" min="0">
+
+<label>Height (m)</label>
+<input type="number" id="height" step="any" min="0">
+
+`;
+
     }
 
-    document.getElementById("inputs").innerHTML = html;
+    else{
+
+        document.getElementById("ductInputs").innerHTML=`
+
+<label>Diameter (m)</label>
+<input type="number" id="diameter" step="any" min="0">
+
+`;
+
+    }
+
+    attachEvents();
+    calculateLive();
+
 }
+
+function attachEvents(){
+
+document.querySelectorAll("input,select").forEach(el=>{
+el.removeEventListener("input",calculateLive);
+el.addEventListener("input",calculateLive);
+});
+
+}
+
+function calculateLive(){
+
+let type=document.getElementById("ductType").value;
+
+let L=parseFloat(document.getElementById("length").value);
+let tmm=parseFloat(document.getElementById("thickness").value);
+let density=parseFloat(document.getElementById("density").value);
+
+let output=document.getElementById("output");
+
+if(isNaN(L)||isNaN(tmm)){
+
+output.innerHTML="";
+return;
+
+}
+
+if(L<=0||tmm<=0){
+
+output.innerHTML="<div class='result-card'>Enter valid positive values.</div>";
+return;
+
+}
+
+let area;
+
+if(type==="rect"){
+
+let W=parseFloat(document.getElementById("width").value);
+let H=parseFloat(document.getElementById("height").value);
+
+if(isNaN(W)||isNaN(H)){
+
+output.innerHTML="";
+return;
+
+}
+
+if(W<=0||H<=0){
+
+output.innerHTML="<div class='result-card'>Enter valid positive values.</div>";
+return;
+
+}
+
+area=2*(W+H)*L;
+
+}
+
+else{
+
+let D=parseFloat(document.getElementById("diameter").value);
+
+if(isNaN(D)){
+
+output.innerHTML="";
+return;
+
+}
+
+if(D<=0){
+
+output.innerHTML="<div class='result-card'>Enter valid positive values.</div>";
+return;
+
+}
+
+area=Math.PI*D*L;
+
+}
+
+let thickness=tmm/1000;
+
+let volume=area*thickness;
+
+let weight=volume*density;
+
+let weightPerMeter=weight/L;
+
+output.innerHTML=`
+
+<div class="result-card">
+
+<h3>Calculation Result</h3>
+
+<table class="result-table">
+
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+
+<tr>
+<td>Surface Area</td>
+<td>${area.toFixed(3)} m²</td>
+</tr>
+
+<tr>
+<td>Thickness Used</td>
+<td>${tmm.toFixed(2)} mm (${thickness.toFixed(4)} m)</td>
+</tr>
+
+<tr>
+<td>Material Density</td>
+<td>${density.toFixed(0)} kg/m³</td>
+</tr>
+
+<tr>
+<td>Weight per Meter</td>
+<td>${weightPerMeter.toFixed(2)} kg/m</td>
+</tr>
+
+<tr>
+<td>Total Weight</td>
+<td>${weight.toFixed(2)} kg</td>
+</tr>
+
+</table>
+
+</div>
+
+`;
+
+}
+
+document.addEventListener("DOMContentLoaded",function(){
+
+document.getElementById("ductType").addEventListener("change",renderInputs);
 
 renderInputs();
 
-function calculate(){
-
-    let type = document.getElementById("type").value;
-    let thk = parseFloat(document.getElementById("thk").value) / 1000;
-    let len = parseFloat(document.getElementById("len").value);
-    let density = parseFloat(document.getElementById("density").value);
-
-    if(isNaN(thk) || isNaN(len)){
-        document.getElementById("result").innerHTML = "Enter all required values";
-        return;
-    }
-
-    let area;
-
-    if(type === "rect"){
-        let w = parseFloat(document.getElementById("w").value);
-        let h = parseFloat(document.getElementById("h").value);
-        area = 2 * (w + h) * len;
-    }
-    else{
-        let d = parseFloat(document.getElementById("d").value);
-        area = Math.PI * d * len;
-    }
-
-    let volume = area * thk;
-    let weight = volume * density;
-
-    document.getElementById("result").innerHTML =
-        "Surface Area = " + area.toFixed(2) + " m²<br>" +
-        "Weight per meter = " + (weight/len).toFixed(2) + " kg/m<br>" +
-        "Total Weight = " + weight.toFixed(2) + " kg";
-}
+});
 
 </script>
 
