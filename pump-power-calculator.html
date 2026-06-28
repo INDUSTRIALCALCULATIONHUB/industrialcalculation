@@ -89,10 +89,11 @@ and future operating margins.
 
 <ul>
 <li>Hydraulic Power (kW) = (ρ × g × Q × H) ÷ 1000</li>
-<li>For water: Hydraulic Power (kW) = 9.81 × Q × H</li>
+<li>For water: Hydraulic Power (kW) = 9.81 × Q × H (Q in m³/s)</li>
+<li>For flow in m³/hr: Hydraulic Power (kW) = 0.002725 × Q × H</li>
 <li>ρ = Fluid density (kg/m³)</li>
 <li>g = 9.81 m/s²</li>
-<li>Q = Flow rate (m³/s)</li>
+<li>Q = Flow rate</li>
 <li>H = Total Dynamic Head (m)</li>
 </ul>
 
@@ -137,20 +138,37 @@ and future operating margins.
 <script>
 
 const motors = [
-0.37,0.55,0.75,1.1,1.5,2.2,3,4,5.5,7.5,
-11,15,18.5,22,30,37,45,55,75,90,
-110,132,160,200,250,315,355
+0.37,0.55,0.75,
+1.1,1.5,2.2,
+3,4,5.5,
+7.5,11,15,
+18.5,22,30,
+37,45,55,
+75,90,110,
+132,160,200,
+250,315,355,
+400,450,500,
+560,630,710,
+800,900,1000,
+1120,1250,1400,
+1600,1800,2000,
+2240,2500,2800,
+3150,3550,4000,
+4500,5000,5600,
+6300,7100,8000
 ];
 
 function selectMotor(power) {
 
     for (let i = 0; i < motors.length; i++) {
+
         if (power <= motors[i]) {
             return motors[i];
         }
+
     }
 
-    return "Above 355";
+    return null;
 }
     
 function calculate() {
@@ -173,12 +191,16 @@ function calculate() {
     Q = Q / 3600; // m³/hr to m³/s
 
 if (
-    pumpEff < 20 || pumpEff > 100 ||
-    motorEff < 50 || motorEff > 100 ||
+    Q <= 0 ||
+    H <= 0 ||
+    pumpEff <= 0 || pumpEff > 100 ||
+    motorEff <= 0 || motorEff > 100 ||
     sf < 0
 ) {
+
     document.getElementById("output").innerHTML =
-    "<div class='result-card'><h3>Invalid Input</h3>Please enter valid efficiencies (0-100%) and safety factor ≥ 0.</div>";
+    "<div class='result-card'><h3>Invalid Input</h3>Please enter positive values. Efficiencies must be between 0 and 100%.</div>";
+
     return;
 }
 
@@ -198,7 +220,11 @@ sf = 1 + (sf / 100);
     // Apply Safety Factor
     let designPower = motorPower * sf;
 
-    let recommendedMotor = selectMotor(designPower);
+let recommendedMotor = selectMotor(designPower);
+
+let motorText = recommendedMotor
+    ? `${recommendedMotor} kW (Nearest Standard IEC Motor)`
+    : `Custom Motor Required (> ${motors[motors.length - 1]} kW)`;
 
 document.getElementById("output").innerHTML = `
 <div class="result-card">
@@ -232,7 +258,7 @@ document.getElementById("output").innerHTML = `
 
 <tr>
 <td>Recommended Motor</td>
-<td><strong>${recommendedMotor} kW (Nearest Standard IEC Motor)</strong></td>
+<td><strong>${motorText}</strong></td>
 </tr>
 
 </table>
