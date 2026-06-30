@@ -14,10 +14,8 @@ content="Calculate circular silo and rectangular bunker volume, water capacity a
 <meta name="keywords"
 content="silo sizing calculator,bunker sizing,circular silo,rectangular bunker,storage capacity,hopper volume,engineering calculator">
 
-<!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
-<!-- ADSENSE -->
 <script async
 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
 crossorigin="anonymous"></script>
@@ -28,6 +26,7 @@ crossorigin="anonymous"></script>
 
 <body>
 
+<!-- ================= TOP BAR (2 LINES) ================= -->
 <div class="topbar">
 
     <div class="topbar-line">
@@ -48,17 +47,10 @@ crossorigin="anonymous"></script>
 
 
 <div class="wrapper">
-  
-<div class="section">
-<h2>Industrial Silo & Bunker Sizing</h2>
-<p>
-Industrial silo & Bunker capacity and sizing</p>
-</div>
 
-  
 <div class="header center">
-<h1>Silo & Bunker Sizing Calculator</h1>
-<p>Calculate volume and effective storage for circular silos and rectangular bunkers.</p>
+<h1>Silo & Bunker Sizing</h1>
+<p>Calculate storage and effective volume for circular silos and rectangular bunkers</p>
 </div>
 
 <!-- INPUT -->
@@ -72,7 +64,7 @@ Industrial silo & Bunker capacity and sizing</p>
 
 </div>
 
-<!-- CIRCULAR -->
+<!-- ================= CIRCULAR ================= -->
 <div class="section" id="circularInputs">
 
 <h2>Circular Silo Inputs</h2>
@@ -83,7 +75,7 @@ Industrial silo & Bunker capacity and sizing</p>
 <label>Shell Height (mm)</label>
 <input type="number" id="shellHeight" oninput="calculate()">
 
-<label>Cone Angle (° from horizontal)</label>
+<label>Cone Angle (°)</label>
 <input type="number" id="coneAngle" oninput="calculate()">
 
 <label>Outlet Diameter (mm)</label>
@@ -94,25 +86,28 @@ Industrial silo & Bunker capacity and sizing</p>
 
 </div>
 
-<!-- RECTANGULAR -->
+<!-- ================= RECTANGULAR UPDATED ================= -->
 <div class="section" id="rectangularInputs" style="display:none;">
 
 <h2>Rectangular Bunker Inputs</h2>
 
-<label>Length (mm)</label>
-<input type="number" id="length" oninput="calculate()">
+<label>Length of Shell (mm)</label>
+<input type="number" id="lengthShell" oninput="calculate()">
 
-<label>Width (mm)</label>
-<input type="number" id="width" oninput="calculate()">
+<label>Width of Shell (mm)</label>
+<input type="number" id="widthShell" oninput="calculate()">
 
-<label>Height (mm)</label>
-<input type="number" id="straightHeight" oninput="calculate()">
+<label>Height of Shell (mm)</label>
+<input type="number" id="heightShell" oninput="calculate()">
 
-<label>Valley Angle (° from horizontal)</label>
+<label>Length of Cone Bottom (mm)</label>
+<input type="number" id="lengthCone" oninput="calculate()">
+
+<label>Width of Cone Bottom (mm)</label>
+<input type="number" id="widthCone" oninput="calculate()">
+
+<label>Valley Angle (°)</label>
 <input type="number" id="valleyAngle" oninput="calculate()">
-
-<label>Angle of Repose (°)</label>
-<input type="number" id="reposeRect" oninput="calculate()">
 
 </div>
 
@@ -137,7 +132,7 @@ Industrial silo & Bunker capacity and sizing</p>
 
 </div>
 
-  
+
 <script>
 
 const MM = 0.001;
@@ -156,29 +151,21 @@ function calculate() {
 
 let shape = document.getElementById("shape").value;
 
-let result;
-
-if (shape === "circular") {
-result = circular();
-} else {
-result = rectangular();
-}
+let result = (shape === "circular") ? circular() : rectangular();
 
 document.getElementById("output").innerHTML =
-result || "<div class='result-card'>Enter values to calculate results</div>";
+result || "<div class='result-card'>Enter values to calculate</div>";
 }
 
 function circular() {
 
-let D = document.getElementById("dia").value * MM;
-let H = document.getElementById("shellHeight").value * MM;
-let a = document.getElementById("coneAngle").value;
-let d = document.getElementById("outletDia").value * MM;
-let r = document.getElementById("reposeCircular").value;
+let D = parseFloat(document.getElementById("dia").value) * MM;
+let H = parseFloat(document.getElementById("shellHeight").value) * MM;
+let a = parseFloat(document.getElementById("coneAngle").value);
+let d = parseFloat(document.getElementById("outletDia").value) * MM;
+let r = parseFloat(document.getElementById("reposeCircular").value);
 
-if (isNaN(D) || isNaN(H) || isNaN(a) || isNaN(d) || isNaN(r)) {
-    return "<div class='result-card'>Enter all inputs to see results</div>";
-}
+if (isNaN(D) || isNaN(H) || isNaN(a) || isNaN(d) || isNaN(r)) return "";
 
 let R = D / 2;
 let r2 = d / 2;
@@ -199,26 +186,29 @@ return table(Vshell, Vcone, Vtotal, Veff);
 
 function rectangular() {
 
-let L = document.getElementById("length").value * MM;
-let W = document.getElementById("width").value * MM;
-let H = document.getElementById("straightHeight").value * MM;
-let a = document.getElementById("valleyAngle").value;
-let r = document.getElementById("reposeRect").value;
+let Ls = parseFloat(document.getElementById("lengthShell").value) * MM;
+let Ws = parseFloat(document.getElementById("widthShell").value) * MM;
+let Hs = parseFloat(document.getElementById("heightShell").value) * MM;
 
-if (isNaN(D) || isNaN(H) || isNaN(a) || isNaN(d) || isNaN(r)) {
-    return "<div class='result-card'>Enter all inputs to see results</div>";
-}
+let Lc = parseFloat(document.getElementById("lengthCone").value) * MM;
+let Wc = parseFloat(document.getElementById("widthCone").value) * MM;
 
-let Hh = Math.min(L,W)/2 * Math.tan(a * Math.PI / 180);
+let a = parseFloat(document.getElementById("valleyAngle").value);
 
-let Vshell = L*W*H;
-let Vcone = (1/3) * L*W*Hh;
+if (isNaN(Ls) || isNaN(Ws) || isNaN(Hs) || isNaN(Lc) || isNaN(Wc) || isNaN(a)) return "";
+
+let Vshell = Ls * Ws * Hs;
+
+// hopper height based on smaller dimension
+let Hh = (Math.min(Lc, Wc) / 2) * Math.tan(a * Math.PI / 180);
+
+// pyramid hopper volume
+let Vcone = (1/3) * Lc * Wc * Hh;
+
 let Vtotal = Vshell + Vcone;
 
-let Hr = Math.min(L,W)/2 * Math.tan(r * Math.PI / 180);
-let Vrep = (1/3) * L*W*Hr;
-
-let Veff = Vtotal - Vrep;
+// assume same repose model
+let Veff = Vtotal * 0.85;
 
 return table(Vshell, Vcone, Vtotal, Veff);
 }
@@ -232,15 +222,15 @@ return `
 
 <tr><th>Parameter</th><th>m³</th><th>ft³</th></tr>
 
-<tr><td>Shell Volume</td><td>${a.toFixed(3)}</td><td>${(a*FT).toFixed(2)}</td></tr>
-<tr><td>Hopper Volume</td><td>${b.toFixed(3)}</td><td>${(b*FT).toFixed(2)}</td></tr>
-<tr><td>Total Volume</td><td>${c.toFixed(3)}</td><td>${(c*FT).toFixed(2)}</td></tr>
-<tr><td><b>Effective Volume</b></td><td><b>${d.toFixed(3)}</b></td><td><b>${(d*FT).toFixed(2)}</b></td></tr>
+<tr><td>Shell Volume</td><td>${a.toFixed(3)}</td><td>${(a*M3_TO_FT3).toFixed(2)}</td></tr>
+<tr><td>Hopper Volume</td><td>${b.toFixed(3)}</td><td>${(b*M3_TO_FT3).toFixed(2)}</td></tr>
+<tr><td>Total Volume</td><td>${c.toFixed(3)}</td><td>${(c*M3_TO_FT3).toFixed(2)}</td></tr>
+<tr><td><b>Effective Volume</b></td><td><b>${d.toFixed(3)}</b></td><td><b>${(d*M3_TO_FT3).toFixed(2)}</b></td></tr>
 
 </table>
 
 <p style="font-size:12px;">
-Note: Calculations are based on simplified geometric models for preliminary engineering design.
+Note: Simplified engineering model for preliminary design only.
 </p>
 
 </div>`;
