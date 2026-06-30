@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fabrication BOM Creator | Industrial Calculation Hub</title>
+
+<meta name="description" content="Create fabrication Bill of Materials (BOM) for engineering drawings and export to Excel. Add plates, pipes, structural items and generate downloadable BOM sheets.">
+
+<meta name="keywords" content="BOM creator, fabrication BOM, bill of materials, engineering BOM, steel fabrication, structural BOM, excel BOM download">
+
+<link rel="stylesheet" href="style.css">
+
+<!-- ADSENSE (optional keep same as other pages) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
+crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+<!-- ================= TOP BAR ================= -->
+<div class="topbar">
+
+    <div class="topbar-line">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
+    <div class="topbar-line">
+        <a href="index.html#tools">Engineering Tools</a>
+        <a href="index.html#converters">Unit Conversion</a>
+        <a href="index.html#blogs">Engineering Knowledge</a>
+    </div>
+
+</div>
+
+<!-- ================= WRAPPER ================= -->
+<div class="wrapper">
+
+<div class="header center">
+    <h1>Fabrication BOM Creator</h1>
+    <p>Prepare Bill of Materials for fabrication drawings and export to Excel</p>
+</div>
+
+<div class="ad-slot"></div>
+
+<!-- ================= BOM TOOL ================= -->
+<div class="section">
+
+<h2>BOM Input Panel</h2>
+
+<div class="bom-container">
+
+    <div class="bom-form">
+
+        <input type="text" id="item" placeholder="Item (Plate / Pipe / Angle)">
+        <input type="text" id="material" placeholder="Material (MS / SS304)">
+        <input type="number" id="qty" placeholder="Qty">
+        <input type="text" id="size" placeholder="Size / Thickness">
+        <input type="text" id="remark" placeholder="Remark">
+
+    </div>
+
+    <div class="bom-buttons">
+        <button class="add-btn" onclick="addItem()">Add Item</button>
+        <button class="export-btn" onclick="exportCSV()">Export Excel</button>
+        <button class="clear-btn" onclick="clearAll()">Clear</button>
+    </div>
+
+    <table id="bomTable"></table>
+
+</div>
+
+</div>
+
+<div class="ad-slot"></div>
+
+<!-- ================= ENGINEERING NOTES ================= -->
+<div class="section">
+
+<h2>Engineering Notes</h2>
+
+<p>
+This fabrication BOM creator helps engineers prepare material lists directly from fabrication drawings. It is useful for cutting plans, welding schedules, and workshop execution.
+</p>
+
+<ul>
+<li>Steel structure fabrication BOM preparation</li>
+<li>Piping and ducting material lists</li>
+<li>Workshop cutting and fabrication planning</li>
+<li>Excel export for procurement and estimation</li>
+</ul>
+
+</div>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+<div class="footer">
+
+    <div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
+
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
+</div>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+
+let bomData = [];
+
+function addItem(){
+
+    let item = document.getElementById("item").value;
+    let material = document.getElementById("material").value;
+    let qty = document.getElementById("qty").value;
+    let size = document.getElementById("size").value;
+    let remark = document.getElementById("remark").value;
+
+    if(!item || !qty){
+        alert("Item and Quantity are required");
+        return;
+    }
+
+    bomData.push({item, material, qty, size, remark});
+
+    renderTable();
+    clearInputs();
+}
+
+function renderTable(){
+
+    let html = `
+    <tr>
+        <th>Item</th>
+        <th>Material</th>
+        <th>Qty</th>
+        <th>Size</th>
+        <th>Remark</th>
+    </tr>`;
+
+    bomData.forEach(row=>{
+        html += `
+        <tr>
+            <td>${row.item}</td>
+            <td>${row.material}</td>
+            <td>${row.qty}</td>
+            <td>${row.size}</td>
+            <td>${row.remark}</td>
+        </tr>`;
+    });
+
+    document.getElementById("bomTable").innerHTML = html;
+}
+
+function clearInputs(){
+    document.getElementById("item").value = "";
+    document.getElementById("material").value = "";
+    document.getElementById("qty").value = "";
+    document.getElementById("size").value = "";
+    document.getElementById("remark").value = "";
+}
+
+function exportCSV(){
+
+    if(bomData.length === 0){
+        alert("No data to export");
+        return;
+    }
+
+    let csv = "Item,Material,Qty,Size,Remark\n";
+
+    bomData.forEach(row=>{
+        csv += `${row.item},${row.material},${row.qty},${row.size},${row.remark}\n`;
+    });
+
+    let blob = new Blob([csv], {type:"text/csv"});
+    let url = URL.createObjectURL(blob);
+
+    let a = document.createElement("a");
+    a.href = url;
+    a.download = "fabrication_bom.csv";
+    a.click();
+}
+
+function clearAll(){
+    bomData = [];
+    renderTable();
+}
+
+</script>
+
+</body>
+</html>
