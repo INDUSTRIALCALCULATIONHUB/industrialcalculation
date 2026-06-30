@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fabrication BOM Creator</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<style>
+body {
+    font-family: Arial;
+    background: #0d0d0d;
+    color: #00ffcc;
+    padding: 20px;
+}
+
+h2 { color: #00ffcc; }
+
+input, select {
+    padding: 6px;
+    margin: 5px;
+}
+
+button {
+    padding: 8px 12px;
+    margin: 5px;
+    cursor: pointer;
+    background: #00ffcc;
+    border: none;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #00ffcc;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background: #003333;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Industrial Fabrication BOM Creator</h2>
+
+<!-- INPUT FORM -->
+<select id="type">
+    <option>PLATE</option>
+    <option>ANGLE</option>
+    <option>CHANNEL</option>
+    <option>PIPE</option>
+    <option>FLAT</option>
+</select>
+
+<input id="material" placeholder="Material (IS 2062 E250 BR)">
+<input id="size" placeholder="Section / Size (e.g. ISA 75x75x6)">
+<input type="number" id="qty" placeholder="Qty">
+<input type="number" id="weight" placeholder="Weight (kg)">
+<input id="remarks" placeholder="Remarks">
+
+<button onclick="addRow()">Add Item</button>
+<button onclick="downloadExcel()">Download Excel</button>
+
+<!-- BOM TABLE -->
+<table id="bomTable">
+<thead>
+<tr>
+<th>No</th>
+<th>Type</th>
+<th>Material</th>
+<th>Size / Section</th>
+<th>Qty</th>
+<th>Weight (kg)</th>
+<th>Remarks</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+
+<script>
+let count = 1;
+
+function addRow() {
+    let type = document.getElementById("type").value;
+    let material = document.getElementById("material").value;
+    let size = document.getElementById("size").value;
+    let qty = document.getElementById("qty").value;
+    let weight = document.getElementById("weight").value;
+    let remarks = document.getElementById("remarks").value;
+
+    let table = document.querySelector("#bomTable tbody");
+    let row = table.insertRow();
+
+    row.innerHTML = `
+        <td>${count++}</td>
+        <td>${type}</td>
+        <td>${material}</td>
+        <td>${size}</td>
+        <td>${qty}</td>
+        <td>${weight}</td>
+        <td>${remarks}</td>
+        <td><button onclick="this.parentElement.parentElement.remove()">Delete</button></td>
+    `;
+}
+
+function downloadExcel() {
+    let table = document.getElementById("bomTable");
+    let wb = XLSX.utils.book_new();
+    let ws = XLSX.utils.table_to_sheet(table);
+
+    ws['!cols'] = [
+        { wch: 5 },
+        { wch: 12 },
+        { wch: 25 },
+        { wch: 30 },
+        { wch: 8 },
+        { wch: 12 },
+        { wch: 25 },
+        { wch: 10 }
+    ];
+
+    XLSX.utils.book_append_sheet(wb, ws, "BOM");
+    XLSX.writeFile(wb, "Fabrication_BOM.xlsx");
+}
+</script>
+
+</body>
+</html>
