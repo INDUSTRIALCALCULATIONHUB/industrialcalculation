@@ -114,14 +114,12 @@ crossorigin="anonymous"></script>
 
 </div>
 
-<!-- OUTPUT -->
 
+<!-- OUTPUT -->
+<div class="section">
     <h2>Calculation Results</h2>
-    <div id="output">
-        <div class="result-card">
-            Enter values to calculate
-        </div>
-    </div>
+    <div id="output"></div>
+</div>
 
 
 
@@ -301,8 +299,7 @@ let shape = document.getElementById("shape").value;
 
 let result = (shape === "circular") ? circular() : rectangular();
 
-document.getElementById("output").innerHTML =
-result || "<div class='result-card'>Enter values to calculate</div>";
+document.getElementById("output").innerHTML = result;
 }
 
 function circular() {
