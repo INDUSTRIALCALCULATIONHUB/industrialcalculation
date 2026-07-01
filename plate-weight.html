@@ -5,9 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plate Weight Calculator | Industrial Calculation Hub</title>
+<title>Plate or Sheet Weight Calculator | Industrial Calculation Hub</title>
 
-<meta name="description" content="Calculate plate weight for rectangular and circular plates using engineering formulas.">
+<meta name="description" content="Calculate plate or sheet weight using dimensions in millimetres and material density. Supports rectangular and circular plates with live material search.">
 <meta name="keywords" content="plate weight calculator, steel plate weight, sheet weight calculator">
 <meta name="author" content="Industrial Calculation Hub">
 
@@ -52,9 +52,9 @@ crossorigin="anonymous"></script>
 
 <div class="header">
 
-<h1>Plate Weight</h1>
+<h1>Plate or Sheet Weight</h1>
 
-<p>Calculate weight of rectangular and circular plates using density and geometry</p>
+<p>Calculate weight of plates or sheets</p>
 
 </div>
 
@@ -74,14 +74,17 @@ crossorigin="anonymous"></script>
 <label>Thickness (mm)</label>
 <input type="number" id="thk" step="any" min="0">
 
-<label>Material Density (kg/m³)</label>
-<select id="density">
-    <option value="7850">Steel</option>
-    <option value="8000">Stainless Steel</option>
-    <option value="2700">Aluminium</option>
-    <option value="8900">Copper</option>
-    <option value="8500">Brass</option>
-</select>
+<label>Material of Plate or Sheet</label>
+
+<input
+type="text"
+id="materialSearch"
+list="materialList"
+placeholder="Search material...">
+
+<datalist id="materialList"></datalist>
+
+<input type="hidden" id="density">
 
 <div class="result-box">
     <div id="output"></div>
@@ -182,16 +185,16 @@ function renderInputs(){
 
     if(shape === "rect"){
         html = `
-        <label>Length (m)</label>
-        <input type="number" id="L" step="any" min="0">
+<label>Length (mm)</label>
+<input type="number" id="L" step="any" min="0">
 
-        <label>Width (m)</label>
-        <input type="number" id="W" step="any" min="0">
+<label>Width (mm)</label>
+<input type="number" id="W" step="any" min="0">
         `;
     }
     else{
         html = `
-        <label>Diameter (m)</label>
+        <label>Diameter (mm)</label>
         <input type="number" id="D" step="any" min="0">
         `;
     }
@@ -199,12 +202,23 @@ function renderInputs(){
     document.getElementById("inputs").innerHTML = html;
 }
 
+
+if(material==""){
+
+output.innerHTML="<div class='result-card'>Select a material from the list.</div>";
+
+return;
+
+}
+
+    
 // Main calculation
 function calculate(){
 
     let shape = document.getElementById("shape").value;
     let thk_mm = parseFloat(document.getElementById("thk").value);
     let density = parseFloat(document.getElementById("density").value);
+    let material=document.getElementById("materialSearch").value;
 
     let output = document.getElementById("output");
 
@@ -227,7 +241,11 @@ function calculate(){
             return;
         }
 
-        area = L * W;
+        L = L/1000;
+
+        W = W/1000;
+
+        area = L*W;
     }
     else{
 
@@ -237,6 +255,8 @@ function calculate(){
             output.innerHTML = "<div class='result-card'>Enter valid diameter</div>";
             return;
         }
+
+        D = D/1000;
 
         area = Math.PI * D * D / 4;
     }
@@ -273,6 +293,11 @@ function calculate(){
 </tr>
 
 <tr>
+<td>Material</td>
+<td>${material}</td>
+</tr>
+
+<tr>
 <td>Density</td>
 <td>${density} kg/m³</td>
 </tr>
@@ -290,9 +315,54 @@ function calculate(){
 
 }
 
+
+const materials = [
+
+{ name:"Carbon Steel", density:7850 },
+{ name:"Mild Steel", density:7850 },
+{ name:"Structural Steel", density:7850 },
+{ name:"Stainless Steel 304", density:7930 },
+{ name:"Stainless Steel 316", density:8000 },
+{ name:"Aluminium", density:2700 },
+{ name:"Copper", density:8960 },
+{ name:"Brass", density:8500 },
+{ name:"Bronze", density:8800 },
+{ name:"Cast Iron", density:7200 },
+{ name:"Titanium", density:4500 },
+{ name:"Nickel", density:8900 },
+{ name:"Lead", density:11340 },
+{ name:"Zinc", density:7140 }
+
+];
+
+    
 // auto init
 document.addEventListener("DOMContentLoaded", function () {
+const list = document.getElementById("materialList");
 
+materials.forEach(m=>{
+
+let option=document.createElement("option");
+
+option.value=m.name;
+
+list.appendChild(option);
+
+});
+
+document.getElementById("materialSearch").addEventListener("input",function(){
+
+let mat=materials.find(x=>x.name===this.value);
+
+if(mat){
+
+document.getElementById("density").value=mat.density;
+
+calculate();
+
+}
+
+});
     renderInputs();
 
     document.querySelectorAll("#shape,#thk,#density,#inputs")
