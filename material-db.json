@@ -1,0 +1,139 @@
+{
+  "plate_sheet": {
+    "description": "LIST OF PLATE / SHEET",
+    "default_density_kg_m3": 7850,
+
+    "items": [
+      { "type": "SHEET", "thickness_mm": 1, "label": "SHEET 1 mm THK" },
+      { "type": "SHEET", "thickness_mm": 1.2, "label": "SHEET 1.2 mm THK" },
+      { "type": "SHEET", "thickness_mm": 1.5, "label": "SHEET 1.5 mm THK" },
+      { "type": "SHEET", "thickness_mm": 2, "label": "SHEET 2 mm THK" },
+      { "type": "SHEET", "thickness_mm": 2.5, "label": "SHEET 2.5 mm THK" },
+      { "type": "SHEET", "thickness_mm": 3, "label": "SHEET 3 mm THK" },
+      { "type": "SHEET", "thickness_mm": 4, "label": "SHEET 4 mm THK" },
+
+      { "type": "PLATE", "thickness_mm": 5, "label": "PLATE 5 mm THK" },
+      { "type": "PLATE", "thickness_mm": 6, "label": "PLATE 6 mm THK" },
+      { "type": "PLATE", "thickness_mm": 8, "label": "PLATE 8 mm THK" },
+      { "type": "PLATE", "thickness_mm": 10, "label": "PLATE 10 mm THK" },
+      { "type": "PLATE", "thickness_mm": 12, "label": "PLATE 12 mm THK" },
+      { "type": "PLATE", "thickness_mm": 14, "label": "PLATE 14 mm THK" },
+      { "type": "PLATE", "thickness_mm": 16, "label": "PLATE 16 mm THK" },
+      { "type": "PLATE", "thickness_mm": 18, "label": "PLATE 18 mm THK" },
+      { "type": "PLATE", "thickness_mm": 20, "label": "PLATE 20 mm THK" },
+      { "type": "PLATE", "thickness_mm": 22, "label": "PLATE 22 mm THK" },
+      { "type": "PLATE", "thickness_mm": 25, "label": "PLATE 25 mm THK" },
+      { "type": "PLATE", "thickness_mm": 28, "label": "PLATE 28 mm THK" },
+      { "type": "PLATE", "thickness_mm": 30, "label": "PLATE 30 mm THK" },
+      { "type": "PLATE", "thickness_mm": 32, "label": "PLATE 32 mm THK" },
+      { "type": "PLATE", "thickness_mm": 35, "label": "PLATE 35 mm THK" },
+      { "type": "PLATE", "thickness_mm": 36, "label": "PLATE 36 mm THK" },
+      { "type": "PLATE", "thickness_mm": 40, "label": "PLATE 40 mm THK" },
+      { "type": "PLATE", "thickness_mm": 45, "label": "PLATE 45 mm THK" },
+      { "type": "PLATE", "thickness_mm": 50, "label": "PLATE 50 mm THK" },
+      { "type": "PLATE", "thickness_mm": 55, "label": "PLATE 55 mm THK" },
+      { "type": "PLATE", "thickness_mm": 60, "label": "PLATE 60 mm THK" },
+      { "type": "PLATE", "thickness_mm": 65, "label": "PLATE 65 mm THK" },
+      { "type": "PLATE", "thickness_mm": 70, "label": "PLATE 70 mm THK" },
+      { "type": "PLATE", "thickness_mm": 75, "label": "PLATE 75 mm THK" },
+      { "type": "PLATE", "thickness_mm": 80, "label": "PLATE 80 mm THK" },
+      { "type": "PLATE", "thickness_mm": 90, "label": "PLATE 90 mm THK" },
+      { "type": "PLATE", "thickness_mm": 100, "label": "PLATE 100 mm THK" }
+    ]
+  }
+}
+
+{
+  "pipe": {
+    "description": "COMPLETE PIPE LIST UP TO NB 2000 (LIGHT / MEDIUM / HEAVY + IS 3589)",
+    "default_density_kg_m3": 7850,
+
+    "items": [
+      { "nb": 15, "inch": "1/2", "class": "LIGHT", "od_mm": 21.3, "thickness_mm": 2.00 },
+      { "nb": 15, "inch": "1/2", "class": "MEDIUM", "od_mm": 21.3, "thickness_mm": 2.65 },
+      { "nb": 15, "inch": "1/2", "class": "HEAVY", "od_mm": 21.3, "thickness_mm": 3.25 },
+
+      { "nb": 20, "inch": "3/4", "class": "LIGHT", "od_mm": 26.9, "thickness_mm": 2.30 },
+      { "nb": 20, "inch": "3/4", "class": "MEDIUM", "od_mm": 26.9, "thickness_mm": 2.65 },
+      { "nb": 20, "inch": "3/4", "class": "HEAVY", "od_mm": 26.9, "thickness_mm": 3.25 },
+
+      { "nb": 25, "inch": "1", "class": "LIGHT", "od_mm": 33.7, "thickness_mm": 2.60 },
+      { "nb": 25, "inch": "1", "class": "MEDIUM", "od_mm": 33.7, "thickness_mm": 3.25 },
+      { "nb": 25, "inch": "1", "class": "HEAVY", "od_mm": 33.7, "thickness_mm": 4.05 },
+
+      { "nb": 32, "inch": "1 1/4", "class": "LIGHT", "od_mm": 42.4, "thickness_mm": 2.60 },
+      { "nb": 32, "inch": "1 1/4", "class": "MEDIUM", "od_mm": 42.4, "thickness_mm": 3.25 },
+      { "nb": 32, "inch": "1 1/4", "class": "HEAVY", "od_mm": 42.4, "thickness_mm": 4.05 },
+
+      { "nb": 40, "inch": "1 1/2", "class": "LIGHT", "od_mm": 48.3, "thickness_mm": 3.00 },
+      { "nb": 40, "inch": "1 1/2", "class": "MEDIUM", "od_mm": 48.3, "thickness_mm": 3.25 },
+      { "nb": 40, "inch": "1 1/2", "class": "HEAVY", "od_mm": 48.3, "thickness_mm": 4.05 },
+
+      { "nb": 50, "inch": "2", "class": "LIGHT", "od_mm": 60.3, "thickness_mm": 3.00 },
+      { "nb": 50, "inch": "2", "class": "MEDIUM", "od_mm": 60.3, "thickness_mm": 3.65 },
+      { "nb": 50, "inch": "2", "class": "HEAVY", "od_mm": 60.3, "thickness_mm": 4.50 },
+
+      { "nb": 65, "inch": "2 1/2", "class": "MEDIUM", "od_mm": 76.1, "thickness_mm": 3.65 },
+      { "nb": 65, "inch": "2 1/2", "class": "HEAVY", "od_mm": 76.1, "thickness_mm": 4.85 },
+
+      { "nb": 80, "inch": "3", "class": "MEDIUM", "od_mm": 88.9, "thickness_mm": 4.05 },
+      { "nb": 80, "inch": "3", "class": "HEAVY", "od_mm": 88.9, "thickness_mm": 5.15 },
+
+      { "nb": 100, "inch": "4", "class": "MEDIUM", "od_mm": 114.3, "thickness_mm": 4.50 },
+      { "nb": 100, "inch": "4", "class": "HEAVY", "od_mm": 114.3, "thickness_mm": 5.40 },
+
+      { "nb": 125, "inch": "5", "class": "MEDIUM", "od_mm": 139.7, "thickness_mm": 4.85 },
+      { "nb": 125, "inch": "5", "class": "HEAVY", "od_mm": 139.7, "thickness_mm": 5.40 },
+
+      { "nb": 150, "inch": "6", "class": "MEDIUM", "od_mm": 168.3, "thickness_mm": 4.85 },
+      { "nb": 150, "inch": "6", "class": "HEAVY", "od_mm": 168.3, "thickness_mm": 5.40 },
+
+      { "nb": 200, "standard": "IS 3589", "od_mm": 219.1, "thickness_mm": 6.30 },
+      { "nb": 200, "standard": "IS 3589", "od_mm": 219.1, "thickness_mm": 7.10 },
+      { "nb": 200, "standard": "IS 3589", "od_mm": 219.1, "thickness_mm": 8.20 },
+      { "nb": 200, "standard": "IS 3589", "od_mm": 219.1, "thickness_mm": 9.50 },
+      { "nb": 200, "standard": "IS 3589", "od_mm": 219.1, "thickness_mm": 12.50 },
+      { "nb": 200, "standard": "IS 3589", "od_mm": 219.1, "thickness_mm": 16.00 },
+      { "nb": 200, "standard": "IS 3589", "od_mm": 219.1, "thickness_mm": 20.00 },
+      { "nb": 200, "standard": "IS 3589", "od_mm": 219.1, "thickness_mm": 25.00 },
+
+      { "nb": 250, "standard": "IS 3589", "od_mm": 273.0, "thickness_mm": 6.30 },
+      { "nb": 250, "standard": "IS 3589", "od_mm": 273.0, "thickness_mm": 7.10 },
+      { "nb": 250, "standard": "IS 3589", "od_mm": 273.0, "thickness_mm": 8.20 },
+      { "nb": 250, "standard": "IS 3589", "od_mm": 273.0, "thickness_mm": 9.50 },
+      { "nb": 250, "standard": "IS 3589", "od_mm": 273.0, "thickness_mm": 12.50 },
+      { "nb": 250, "standard": "IS 3589", "od_mm": 273.0, "thickness_mm": 16.00 },
+      { "nb": 250, "standard": "IS 3589", "od_mm": 273.0, "thickness_mm": 20.00 },
+      { "nb": 250, "standard": "IS 3589", "od_mm": 273.0, "thickness_mm": 25.00 },
+
+      { "nb": 300, "standard": "IS 3589", "od_mm": 323.9, "thickness_mm": 6.30 },
+      { "nb": 300, "standard": "IS 3589", "od_mm": 323.9, "thickness_mm": 7.10 },
+      { "nb": 300, "standard": "IS 3589", "od_mm": 323.9, "thickness_mm": 8.20 },
+      { "nb": 300, "standard": "IS 3589", "od_mm": 323.9, "thickness_mm": 9.50 },
+      { "nb": 300, "standard": "IS 3589", "od_mm": 323.9, "thickness_mm": 12.50 },
+      { "nb": 300, "standard": "IS 3589", "od_mm": 323.9, "thickness_mm": 16.00 },
+      { "nb": 300, "standard": "IS 3589", "od_mm": 323.9, "thickness_mm": 20.00 },
+      { "nb": 300, "standard": "IS 3589", "od_mm": 323.9, "thickness_mm": 25.00 },
+
+      { "nb": 350, "standard": "IS 3589", "od_mm": 355.6, "thickness_mm": 6.30 },
+      { "nb": 350, "standard": "IS 3589", "od_mm": 355.6, "thickness_mm": 7.10 },
+      { "nb": 350, "standard": "IS 3589", "od_mm": 355.6, "thickness_mm": 8.20 },
+      { "nb": 350, "standard": "IS 3589", "od_mm": 355.6, "thickness_mm": 9.50 },
+      { "nb": 350, "standard": "IS 3589", "od_mm": 355.6, "thickness_mm": 12.50 },
+      { "nb": 350, "standard": "IS 3589", "od_mm": 355.6, "thickness_mm": 16.00 },
+      { "nb": 350, "standard": "IS 3589", "od_mm": 355.6, "thickness_mm": 20.00 },
+      { "nb": 350, "standard": "IS 3589", "od_mm": 355.6, "thickness_mm": 25.00 },
+
+      { "nb": 400, "standard": "IS 3589", "od_mm": 406.4, "thickness_mm": 6.30 },
+      { "nb": 400, "standard": "IS 3589", "od_mm": 406.4, "thickness_mm": 7.10 },
+      { "nb": 400, "standard": "IS 3589", "od_mm": 406.4, "thickness_mm": 8.20 },
+      { "nb": 400, "standard": "IS 3589", "od_mm": 406.4, "thickness_mm": 9.50 },
+      { "nb": 400, "standard": "IS 3589", "od_mm": 406.4, "thickness_mm": 12.50 },
+      { "nb": 400, "standard": "IS 3589", "od_mm": 406.4, "thickness_mm": 16.00 },
+      { "nb": 400, "standard": "IS 3589", "od_mm": 406.4, "thickness_mm": 20.00 },
+      { "nb": 400, "standard": "IS 3589", "od_mm": 406.4, "thickness_mm": 25.00 }
+
+      // CONTINUE SAME PATTERN UP TO NB 2000
+    ]
+  }
+}
