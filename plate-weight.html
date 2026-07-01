@@ -76,16 +76,26 @@ crossorigin="anonymous"></script>
 
 <label>Material of Plate or Sheet</label>
 
-<input
-type="text"
-id="materialSearch"
-list="materialList"
-placeholder="Search material...">
-
-<datalist id="materialList"></datalist>
-
 <input type="hidden" id="density">
+    
+<select id="material" onchange="setDensity(); calculate();">
 
+    <option value="7850">Carbon Steel</option>
+    <option value="7850">Mild Steel</option>
+    <option value="7850">Structural Steel</option>
+    <option value="7930">Stainless Steel 304</option>
+    <option value="8000">Stainless Steel 316</option>
+    <option value="2700">Aluminium</option>
+    <option value="8960">Copper</option>
+    <option value="8500">Brass</option>
+    <option value="8800">Bronze</option>
+    <option value="7200">Cast Iron</option>
+    <option value="4500">Titanium</option>
+    <option value="8900">Nickel</option>
+    <option value="7140">Zinc</option>
+    <option value="11340">Lead</option>
+
+</select>
 <div class="result-box">
     <div id="output"></div>
 </div>
@@ -177,6 +187,18 @@ Weight = Area × Thickness × Density
 
 <script>
 
+
+    
+function setDensity() {
+    let materialSelect = document.getElementById("material");
+    let density = parseFloat(materialSelect.value);
+
+    document.getElementById("density").value = density;
+
+    calculate();
+}
+
+    
 // Render inputs based on shape
 function renderInputs(){
 
@@ -203,13 +225,7 @@ function renderInputs(){
 }
 
 
-if(material==""){
 
-output.innerHTML="<div class='result-card'>Select a material from the list.</div>";
-
-return;
-
-}
 
     
 // Main calculation
@@ -218,7 +234,9 @@ function calculate(){
     let shape = document.getElementById("shape").value;
     let thk_mm = parseFloat(document.getElementById("thk").value);
     let density = parseFloat(document.getElementById("density").value);
-    let material=document.getElementById("materialSearch").value;
+    let material = document.getElementById("material").options[
+    document.getElementById("material").selectedIndex
+].text;
 
     let output = document.getElementById("output");
 
@@ -338,6 +356,9 @@ const materials = [
     
 // auto init
 document.addEventListener("DOMContentLoaded", function () {
+    renderInputs();
+    setDensity();
+});
 const list = document.getElementById("materialList");
 
 materials.forEach(m=>{
@@ -357,7 +378,7 @@ let mat=materials.find(x=>x.name===this.value);
 if(mat){
 
 document.getElementById("density").value=mat.density;
-
+setDensity();
 calculate();
 
 }
@@ -365,7 +386,13 @@ calculate();
 });
     renderInputs();
 
-    document.querySelectorAll("#shape,#thk,#density,#inputs")
+document.addEventListener("input", function(e){
+    if(e.target.matches("#shape, #thk, #material, #L, #W, #D")){
+        calculate();
+    }
+});
+    
+    document.querySelectorAll("#shape,#thk,#material")
     .forEach(el => el.addEventListener("input", calculate));
 
 });
