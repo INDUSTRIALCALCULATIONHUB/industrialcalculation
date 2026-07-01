@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Flange Weight Calculator | Industrial Calculation Hub</title>
+<title>Fabrication BOM Creator | Industrial Calculation Hub</title>
 
-<meta name="description" content="Calculate flange weight using outer diameter, inner diameter, thickness, bolt holes and material density. Suitable for piping, pressure vessels and mechanical engineering applications.">
+<meta name="description" content="Create fabrication BOM and export to Excel">
+<meta name="keywords" content="BOM creator, fabrication BOM">
 
-<meta name="keywords" content="flange weight calculator, flange mass calculator, steel flange weight, stainless steel flange weight, flange engineering calculator">
-
-<meta name="author" content="Industrial Calculation Hub">
-
-<!-- CMP -->
+<!-- CMP (optional but recommended if AdSense is active) -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
-<!-- AdSense -->
+<!-- AdSense (optional if monetized) -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
 crossorigin="anonymous"></script>
 
@@ -25,397 +23,209 @@ crossorigin="anonymous"></script>
 
 <body>
 
-<!-- ================= TOP BAR ================= -->
-
+<!-- TOP BAR (required for your CSS design) -->
 <div class="topbar">
-
     <div class="topbar-line">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
     </div>
-
-    <div class="topbar-line">
-        <a href="index.html#tools">Engineering Tools</a>
-        <a href="index.html#converters">Unit Conversion</a>
-        <a href="index.html#blogs">Engineering Knowledge</a>
-    </div>
-
 </div>
-
-<!-- ================= WRAPPER ================= -->
 
 <div class="wrapper">
 
 <div class="header">
-    <h1>Flange Weight</h1>
-    <p>Calculate flange weight using dimensions and material density</p>
+    <h1>Fabrication BOM Creator</h1>
 </div>
 
-<!-- ================= CALCULATOR ================= -->
-
+<!-- ================= INPUT ================= -->
 <div class="section">
 
-<label for="od">Outer Diameter (mm)</label>
-<input
-type="number"
-id="od"
-step="any"
-min="0"
-placeholder="Enter outer diameter">
+<div class="bom-form">
 
-<label for="id">Inner Diameter (mm)</label>
-<input
-type="number"
-id="id"
-step="any"
-min="0"
-placeholder="Enter inner diameter">
+<input type="number" id="qty" placeholder="Qty">
 
-<label for="thickness">Thickness (mm)</label>
-<input
-type="number"
-id="thickness"
-step="any"
-min="0"
-placeholder="Enter flange thickness">
+<input type="text" id="description" list="descriptionList" placeholder="Description">
 
+<input type="text" id="material" list="materialList" placeholder="Material">
 
-<label for="density">Material</label>
+<input type="number" id="thk" placeholder="THK (mm)">
 
-<select id="density">
+<input type="number" id="length" placeholder="Length (mm)">
 
-<option value="7850">Carbon Steel (7850 kg/m³)</option>
+<input type="number" id="width" placeholder="Width (mm)">
 
-<option value="8000">
-Stainless Steel 304 (8000 kg/m³)
-</option>
-
-<option value="7990">
-Stainless Steel 316 (7990 kg/m³)
-</option>
-
-<option value="2700">
-Aluminium (2700 kg/m³)
-</option>
-
-<option value="8900">
-Copper (8900 kg/m³)
-</option>
-
-<option value="7140">
-Cast Iron (7140 kg/m³)
-</option>
-
-</select>
-
-<div id="output" class="result-box"></div>
+<input type="number" id="weight" placeholder="Unit Weight (kg)">
 
 </div>
 
-    <!-- ================= ENGINEERING KNOWLEDGE ================= -->
+<div class="bom-buttons">
+<button onclick="addItem()">Add Item</button>
+<button onclick="exportCSV()">Export CSV</button>
+<button onclick="clearAll()">Clear</button>
+</div>
 
+</div>
+
+<!-- ================= TABLE ================= -->
 <div class="section">
+<table id="bomTable" class="result-table"></table>
 
-<h3>Engineering Knowledge</h3>
-
-<p>
-A flange is a mechanical component used to connect pipes, valves, pumps, pressure vessels,
-and other equipment. Accurate flange weight calculation is important for fabrication,
-material estimation, transportation, structural support design, and lifting operations.
-</p>
-
-<p>
-The calculator determines the flange weight by calculating the net volume of the flange
-(after subtracting bolt holes) and multiplying it by the selected material density.
-</p>
-
-<p class="formula">
-Weight = Net Volume × Material Density
-</p>
-
-<p>
-The net volume is obtained from the annular flange area minus the total bolt hole area,
-multiplied by the flange thickness.
-</p>
-
-<div class="result-card">
-
-<h3>Calculation Formula</h3>
-
-<table class="result-table">
-
-<tr>
-<th>Formula</th>
-<th>Description</th>
-</tr>
-
-<tr>
-<td>A = π/4 × (OD² − ID²)</td>
-<td>Gross flange area</td>
-</tr>
-
-
-
-<tr>
-<td>V = A × t</td>
-<td>Net flange volume</td>
-</tr>
-
-<tr>
-<td>W = V × ρ</td>
-<td>Flange weight</td>
-</tr>
-
-</table>
-
-</div>
-
-<h3>Variables Used</h3>
-
-<div class="result-card">
-
-<table class="result-table">
-
-<tr>
-<th>Symbol</th>
-<th>Description</th>
-<th>Unit</th>
-</tr>
-
-<tr>
-<td>OD</td>
-<td>Outer Diameter</td>
-<td>mm</td>
-</tr>
-
-<tr>
-<td>ID</td>
-<td>Inner Diameter</td>
-<td>mm</td>
-</tr>
-
-<tr>
-<td>t</td>
-<td>Flange Thickness</td>
-<td>mm</td>
-</tr>
-
-
-
-<tr>
-<td>ρ</td>
-<td>Material Density</td>
-<td>kg/m³</td>
-</tr>
-
-<tr>
-<td>V</td>
-<td>Volume</td>
-<td>m³</td>
-</tr>
-
-<tr>
-<td>W</td>
-<td>Weight</td>
-<td>kg</td>
-</tr>
-
-</table>
-
-</div>
-
-<h3>Typical Material Densities</h3>
-
-<div class="result-card">
-
-<table class="result-table">
-
-<tr>
-<th>Material</th>
-<th>Density (kg/m³)</th>
-</tr>
-
-<tr>
-<td>Carbon Steel</td>
-<td>7850</td>
-</tr>
-
-<tr>
-<td>Stainless Steel 304</td>
-<td>8000</td>
-</tr>
-
-<tr>
-<td>Stainless Steel 316</td>
-<td>7990</td>
-</tr>
-
-<tr>
-<td>Cast Iron</td>
-<td>7140</td>
-</tr>
-
-<tr>
-<td>Aluminium</td>
-<td>2700</td>
-</tr>
-
-<tr>
-<td>Copper</td>
-<td>8900</td>
-</tr>
-
-</table>
-
-</div>
-
-<h3>Engineering Notes</h3>
-
-<ul>
-
-<li>This calculator assumes a flat flange with uniform thickness.</li>
-
-<li>Raised face, hub, weld neck and other flange features are not included.</li>
-
-<li>For forged flanges, actual manufacturer weight may differ slightly due to machining allowances and tolerances.</li>
-
-<li>Always verify final flange weights using fabrication drawings or applicable standards such as ASME B16.5, ASME B16.47 or EN 1092 when required.</li>
-
-</ul>
-
+<h3>Total Weight: <span id="totalWeight">0</span> kg</h3>
 </div>
 
 </div>
 
-<!-- ================= FOOTER ================= -->
+<!-- ================= DATALISTS ================= -->
 
-<div class="footer">
+<datalist id="descriptionList">
+<option value="Cone Plate">
+<option value="Pipe">
+<option value="Angle">
+<option value="Channel">
+<option value="Beam">
+<option value="Rod">
+<option value="Flange">
+</datalist>
 
-<div>
-© 2026 Industrial Calculation Hub | Engineering Tools Portal
-</div>
-
-<div class="footer-links">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="privacy.html">Privacy</a>
-<a href="terms.html">Terms</a>
-</div>
-
-</div>
+<datalist id="materialList"></datalist>
 
 <!-- ================= SCRIPT ================= -->
-
 <script>
 
-function calculateLive() {
+let bomData = [];
+let MATERIAL_DB = {};
 
-    const od_mm = parseFloat(document.getElementById("od").value);
-    const id_mm = parseFloat(document.getElementById("id").value);
-    const thk_mm = parseFloat(document.getElementById("thickness").value);
-    const density = parseFloat(document.getElementById("density").value);
+/* ADD ITEM */
+function addItem() {
 
-    const output = document.getElementById("output");
+    const qty = document.getElementById("qty").value;
+    const description = document.getElementById("description").value;
+    const material = document.getElementById("material").value;
+    const thk = document.getElementById("thk").value;
+    const length = document.getElementById("length").value;
+    const width = document.getElementById("width").value;
+    const weight = document.getElementById("weight").value;
 
-    // Clear output until all required values are entered
-    if ([od_mm, id_mm, thk_mm].some(v => isNaN(v))) {
-        output.innerHTML = "";
+    if (!qty || !description) {
+        alert("Qty and Description required");
         return;
     }
 
-    if (od_mm <= 0 || id_mm <= 0 || thk_mm <= 0) {
-        output.innerHTML =
-            "<div class='result-card'>Please enter valid positive values.</div>";
-        return;
-    }
-
-    if (od_mm <= id_mm) {
-        output.innerHTML =
-            "<div class='result-card'>Outer diameter must be greater than inner diameter.</div>";
-        return;
-    }
-
-    // Convert mm to metres
-    const od = od_mm / 1000;
-    const id = id_mm / 1000;
-    const thk = thk_mm / 1000;
-
-
-    // Gross flange area
-    const grossArea =
-        (Math.PI / 4) * (Math.pow(od, 2) - Math.pow(id, 2));
-
-    const netArea = grossArea;
-    
-    const volume = grossArea * thk;
-
-    const weightKg = volume * density;
-    const weightLb = weightKg * 2.20462;
-
-    output.innerHTML = `
-        <div class="result-card">
-
-            <h3>Calculation Result</h3>
-
-            <table class="result-table">
-
-                <tr>
-                    <th>Parameter</th>
-                    <th>Value</th>
-                </tr>
-
-                <tr>
-                    <td>Gross Area</td>
-                    <td>${grossArea.toFixed(3)} m²</td>
-                </tr>
-
-                <tr>
-                    <td>Flange Area</td>
-                    <td>${grossArea.toFixed(4)} m²</td>
-                </tr>
-
-
-
-
-
-                <tr>
-                    <td>Weight</td>
-                    <td>${weightKg.toFixed(2)} kg</td>
-                </tr>
-
-                <tr>
-                    <td>Weight</td>
-                    <td>${weightLb.toFixed(2)} lb</td>
-                </tr>
-
-            </table>
-
-        </div>
-    `;
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const inputs = [
-        "od",
-        "id",
-        "thickness",
-
-        "density"
-    ];
-
-    inputs.forEach(id => {
-        document.getElementById(id).addEventListener("input", calculateLive);
-        document.getElementById(id).addEventListener("change", calculateLive);
+    bomData.push({
+        qty,
+        description,
+        material,
+        thk,
+        length,
+        width,
+        weight
     });
 
-});
+    renderTable();
+    clearInputs();
+}
+
+/* RENDER TABLE */
+function renderTable() {
+
+    let html = `
+    <tr>
+        <th>SR</th>
+        <th>QTY</th>
+        <th>DESCRIPTION</th>
+        <th>MATERIAL</th>
+        <th>THK</th>
+        <th>LENGTH</th>
+        <th>WIDTH</th>
+        <th>UNIT WT</th>
+    </tr>`;
+
+    let total = 0;
+
+    bomData.forEach((row, i) => {
+
+        total += Number(row.weight) || 0;
+
+        html += `
+        <tr>
+            <td>${i + 1}</td>
+            <td>${row.qty}</td>
+            <td>${row.description}</td>
+            <td>${row.material}</td>
+            <td>${row.thk}</td>
+            <td>${row.length}</td>
+            <td>${row.width}</td>
+            <td>${row.weight}</td>
+        </tr>`;
+    });
+
+    document.getElementById("bomTable").innerHTML = html;
+    document.getElementById("totalWeight").innerText = total.toFixed(2);
+}
+
+/* CLEAR INPUTS */
+function clearInputs() {
+    document.getElementById("qty").value = "";
+    document.getElementById("description").value = "";
+    document.getElementById("material").value = "";
+    document.getElementById("thk").value = "";
+    document.getElementById("length").value = "";
+    document.getElementById("width").value = "";
+    document.getElementById("weight").value = "";
+}
+
+/* EXPORT CSV */
+function exportCSV() {
+
+    if (bomData.length === 0) {
+        alert("No data");
+        return;
+    }
+
+    let csv = "Qty,Description,Material,THK,Length,Width,Weight\n";
+
+    bomData.forEach(r => {
+        csv += `${r.qty},${r.description},${r.material},${r.thk},${r.length},${r.width},${r.weight}\n`;
+    });
+
+    const blob = new Blob([csv], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "bom.csv";
+    a.click();
+}
+
+/* CLEAR ALL */
+function clearAll() {
+    bomData = [];
+    renderTable();
+}
+
+/* LOAD JSON */
+fetch("./material-db.json")
+.then(res => res.json())
+.then(data => {
+
+    MATERIAL_DB = data;
+
+    const materialList = document.getElementById("materialList");
+    materialList.innerHTML = "";
+
+    // Pipe materials
+    MATERIAL_DB.pipe_material_recommended.items.forEach(i => {
+        const opt = document.createElement("option");
+        opt.value = i.grade;
+        materialList.appendChild(opt);
+    });
+
+    console.log("Material DB loaded");
+})
+.catch(err => console.error(err));
+
 </script>
 
 </body>
 </html>
- 
