@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BOM Creator | Industrial Tool</title>
+
+<style>
+body { font-family: Arial; margin: 20px; }
+table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+th, td { border: 1px solid #ccc; padding: 6px; text-align: center; }
+th { background: #f2f2f2; }
+
+input, select {
+  width: 100%;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 8px 12px;
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>BILL OF MATERIAL</h2>
+
+<!-- ITEM HEADER -->
+<div>
+  <label>ITEM NAME:</label>
+  <input id="itemName" value="ITEM - A">
+</div>
+
+<br>
+
+<button onclick="addRow()">+ Add Row</button>
+
+<table id="bomTable">
+<thead>
+<tr>
+<th>ITEM No.</th>
+<th>DESCRIPTION</th>
+<th>MATERIAL</th>
+<th>LENGTH (mm)</th>
+<th>WIDTH (mm)</th>
+<th>AREA (m²)</th>
+<th>UNIT WT (kg)</th>
+<th>QTY</th>
+<th>TOTAL WT (kg)</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+
+<h3>Total Weight: <span id="grandTotal">0</span> kg</h3>
+
+<script>
+
+/* =========================
+   GLOBAL DATABASE (INLINE)
+========================= */
+
+const db = {
+  materials: {
+    "IS 2062 E250 BR": 7.85e-06,
+    "IS 2062 E350 BR": 7.85e-06,
+    "ASTM A36": 7.85e-06,
+    "SS 304": 7.93e-06,
+    "SS 316": 8.00e-06
+  }
+};
+
+/* =========================
+   ADD ROW
+========================= */
+
+let count = 0;
+
+function addRow() {
+  count++;
+
+  const row = document.createElement("tr");
+
+  row.innerHTML = `
+    <td>${count}</td>
+
+    <td>
+      <input placeholder="DESCRIPTION">
+    </td>
+
+    <td>
+      <select onchange="calcRow(this)">
+        ${Object.keys(db.materials).map(m =>
+          `<option value="${m}">${m}</option>`
+        ).join("")}
+      </select>
+    </td>
+
+    <td><input type="number" oninput="calcRow(this)"></td>
+    <td><input type="number" oninput="calcRow(this)"></td>
+    <td><input type="number" oninput="calcRow(this)"></td>
+
+    <td class="uwt">0</td>
+
+    <td><input type="number" value="1" oninput="calcRow(this)"></td>
+
+    <td class="twt">0</td>
+  `;
+
+  document.querySelector("#bomTable tbody").appendChild(row);
+}
+
+/* =========================
+   CALCULATION ENGINE
+========================= */
+
+function calcRow(el) {
+
+  const row = el.closest("tr");
+
+  const material = row.querySelector("select").value;
+  const density = db.materials[material];
+
+  const length = parseFloat(row.cells[3].querySelector("input").value) || 0;
+  const width  = parseFloat(row.cells[4].querySelector("input").value) || 0;
+  const area   = parseFloat(row.cells[5].querySelector("input").value) || 0;
+  const qty    = parseFloat(row.cells[7].querySelector("input").value) || 1;
+
+  let unitWeight = 0;
+
+  /* PLATE / SHEET (AREA BASED) */
+  if (area > 0) {
+    unitWeight = area * density;
+  }
+
+  /* RECTANGLE PLATE */
+  else if (length > 0 && width > 0) {
+    unitWeight = (length * width / 1000000) * density;
+  }
+
+  row.querySelector(".uwt").innerText = unitWeight.toFixed(3);
+
+  const total = unitWeight * qty;
+  row.querySelector(".twt").innerText = total.toFixed(3);
+
+  updateTotal();
+}
+
+/* =========================
+   GRAND TOTAL
+========================= */
+
+function updateTotal() {
+  let sum = 0;
+
+  document.querySelectorAll(".twt").forEach(td => {
+    sum += parseFloat(td.innerText) || 0;
+  });
+
+  document.getElementById("grandTotal").innerText = sum.toFixed(3);
+}
+
+/* INIT */
+addRow();
+
+</script>
+
+</body>
+</html>
