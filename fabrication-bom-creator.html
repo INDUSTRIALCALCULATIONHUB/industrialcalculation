@@ -7,76 +7,23 @@
 
 <title>Fabrication BOM Creator | Industrial Calculation Hub</title>
 
-<meta name="description" content="Create fabrication Bill of Materials (BOM) for engineering drawings and export to Excel. Add plates, pipes, structural items and generate downloadable BOM sheets.">
-
-<meta name="keywords" content="BOM creator, fabrication BOM, bill of materials, engineering BOM, steel fabrication, structural BOM, excel BOM download">
-
-<!-- CMP (MUST LOAD FIRST) -->
-<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
-
-<!-- ADSENSE -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
-crossorigin="anonymous"></script>
-
-<!-- GLOBAL CSS -->
 <link rel="stylesheet" href="style.css">
-
-
 </head>
 
 <body>
 
-<!-- ================= TOP BAR ================= -->
-<div class="topbar">
-
-    <div class="topbar-line">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-    </div>
-
-    <div class="topbar-line">
-        <a href="index.html#tools">Engineering Tools</a>
-        <a href="index.html#converters">Unit Conversion</a>
-        <a href="index.html#blogs">Engineering Knowledge</a>
-    </div>
-
-</div>
-
-<!-- ================= WRAPPER ================= -->
 <div class="wrapper">
 
-<div class="header center">
-    <h1>Fabrication BOM Creator</h1>
-    <p>Prepare Bill of Materials for fabrication drawings and export to Excel</p>
-</div>
+<h1>Fabrication BOM Creator</h1>
 
-<div class="ad-slot"></div>
-
-<!-- ================= BOM TOOL ================= -->
-<div class="section">
-
-<h2>BOM Input Panel</h2>
-
-<div class="bom-container">
-
+<!-- ================= INPUT ================= -->
 <div class="bom-form">
 
 <input type="number" id="qty" placeholder="Qty">
 
-<input
-type="text"
-id="description"
-list="descriptionList"
-placeholder="Description">
+<input type="text" id="description" list="descriptionList" placeholder="Description">
 
-<input
-type="text"
-id="material"
-list="materialList"
-value="IS:2062 E250BR">
+<input type="text" id="material" list="materialList" placeholder="Material">
 
 <input type="number" id="thk" placeholder="THK (mm)">
 
@@ -84,212 +31,138 @@ value="IS:2062 E250BR">
 
 <input type="number" id="width" placeholder="Width (mm)">
 
-<input type="number" step="0.01" id="weight" placeholder="Unit Weight (kg)">
+<input type="number" id="weight" placeholder="Unit Weight (kg)">
 
 </div>
 
-    <div class="bom-buttons">
-        <button class="add-btn" onclick="addItem()">Add Item</button>
-        <button class="export-btn" onclick="exportCSV()">Export Excel</button>
-        <button class="clear-btn" onclick="clearAll()">Clear</button>
-    </div>
+<div class="bom-buttons">
+<button onclick="addItem()">Add Item</button>
+<button onclick="exportCSV()">Export CSV</button>
+<button onclick="clearAll()">Clear</button>
+</div>
 
-    <table id="bomTable"></table>
+<!-- ================= TABLE ================= -->
+<table id="bomTable"></table>
+
+<h3>Total Weight: <span id="totalWeight">0</span> kg</h3>
 
 </div>
 
-</div>
-
-<div class="ad-slot"></div>
-
-<!-- ================= ENGINEERING NOTES ================= -->
-<div class="section">
-
-<h2>Engineering Notes</h2>
-
-<p>
-This fabrication BOM creator helps engineers prepare material lists directly from fabrication drawings. It is useful for cutting plans, welding schedules, and workshop execution.
-</p>
-
-<ul>
-<li>Steel structure fabrication BOM preparation</li>
-<li>Piping and ducting material lists</li>
-<li>Workshop cutting and fabrication planning</li>
-<li>Excel export for procurement and estimation</li>
-</ul>
-
-</div>
-
-</div>
-
-<!-- ================= FOOTER ================= -->
-<div class="footer">
-
-    <div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
-
-    <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-    </div>
-
-</div>
-
+<!-- ================= DATALISTS ================= -->
 
 <datalist id="descriptionList">
-
 <option value="Cone Plate">
-<option value="Top Neck Plate">
-<option value="Top End Plate">
-<option value="Bottom Neck Plate">
-<option value="Bottom Flange">
-<option value="Cover Back Plate">
-<option value="Cover Side Plate">
-<option value="Door Plate">
+<option value="Pipe">
+<option value="Angle">
+<option value="Channel">
+<option value="Beam">
+<option value="Rod">
 <option value="Flange">
-<option value="Blind Flange">
-<option value="Pipe 20 NB">
-<option value="Pipe 25 NB">
-<option value="Pipe 32 NB">
-<option value="Pipe 40 NB">
-<option value="Pipe 50 NB">
-<option value="Pipe 65 NB">
-<option value="Pipe 80 NB">
-<option value="Pipe 100 NB">
-<option value="Pipe 125 NB">
-<option value="Pipe 150 NB">
-<option value="Pipe 200 NB">
-<option value="Rod Ø10 mm">
-<option value="Rod Ø12 mm">
-<option value="Rod Ø16 mm">
-<option value="ISA 40 x 40 x 5">
-<option value="ISA 50 x 50 x 5">
-<option value="ISA 65 x 65 x 6">
-<option value="Pipe Support Plate">
-<option value="Resting Plate">
-<option value="Heavy Duty Butt Hinge">
-
 </datalist>
 
-<datalist id="materialList">
+<datalist id="materialList"></datalist>
 
-<option value="IS:2062 E250BR">
-<option value="IS:2062 E350BR">
-<option value="SS304">
-<option value="SS316">
-<option value="SA516 Gr70">
-<option value="ASTM A36">
-
-</datalist>
-
-
-    
 <!-- ================= SCRIPT ================= -->
 <script>
 
 let bomData = [];
+let MATERIAL_DB = {};
 
-function addItem(){
+/* ================= ADD ITEM ================= */
+function addItem() {
 
-let qty=document.getElementById("qty").value;
-let description=document.getElementById("description").value;
-let material=document.getElementById("material").value;
-let thk=document.getElementById("thk").value;
-let length=document.getElementById("length").value;
-let width=document.getElementById("width").value;
-let weight=document.getElementById("weight").value;
+    let qty = document.getElementById("qty").value;
+    let description = document.getElementById("description").value;
+    let material = document.getElementById("material").value;
+    let thk = document.getElementById("thk").value;
+    let length = document.getElementById("length").value;
+    let width = document.getElementById("width").value;
+    let weight = document.getElementById("weight").value;
 
-    
-    if(!item || !qty){
-        alert("Item and Quantity are required");
+    if (!description || !qty) {
+        alert("Description and Quantity required");
         return;
     }
 
-    bomData.push({item, material, qty, size, remark});
+    bomData.push({
+        qty,
+        description,
+        material,
+        thk,
+        length,
+        width,
+        weight
+    });
 
     renderTable();
     clearInputs();
 }
 
-function renderTable(){
-let itemNo = "A" + (index + 1);
-<table id="bomTable">
+/* ================= RENDER TABLE ================= */
+function renderTable() {
 
-<tr>
+    let html = `
+    <tr>
+        <th>SR</th>
+        <th>QTY</th>
+        <th>DESCRIPTION</th>
+        <th>MATERIAL</th>
+        <th>THK</th>
+        <th>LENGTH</th>
+        <th>WIDTH</th>
+        <th>UNIT WT</th>
+    </tr>`;
 
-<th>ITEM No.</th>
+    let total = 0;
 
-<th>QTY</th>
+    bomData.forEach((row, i) => {
 
-<th>DESCRIPTION</th>
+        total += Number(row.weight) || 0;
 
-<th>MATERIAL</th>
-
-<th>THK</th>
-
-<th>LENGTH (mm)</th>
-
-<th>WIDTH (mm)</th>
-
-<th>UNIT WT (kg)</th>
-
-</tr>
-
-</table>
-
-    
-<h3>Total Weight :
-<span id="totalWeight">0.00</span> kg
-</h3>
-
-
-let total=0;
-
-bomData.forEach(r=>{
-total+=Number(r.weight)||0;
-});
-
-document.getElementById("totalWeight").innerHTML=total.toFixed(2);
-
-    
-    bomData.forEach(row=>{
         html += `
         <tr>
-            <td>${row.item}</td>
-            <td>${row.material}</td>
+            <td>${i + 1}</td>
             <td>${row.qty}</td>
-            <td>${row.size}</td>
-            <td>${row.remark}</td>
+            <td>${row.description}</td>
+            <td>${row.material}</td>
+            <td>${row.thk}</td>
+            <td>${row.length}</td>
+            <td>${row.width}</td>
+            <td>${row.weight}</td>
         </tr>`;
     });
 
     document.getElementById("bomTable").innerHTML = html;
+    document.getElementById("totalWeight").innerText = total.toFixed(2);
 }
 
-function clearInputs(){
-    document.getElementById("item").value = "";
-    document.getElementById("material").value = "";
+/* ================= CLEAR INPUTS ================= */
+function clearInputs() {
+
     document.getElementById("qty").value = "";
-    document.getElementById("size").value = "";
-    document.getElementById("remark").value = "";
+    document.getElementById("description").value = "";
+    document.getElementById("material").value = "";
+    document.getElementById("thk").value = "";
+    document.getElementById("length").value = "";
+    document.getElementById("width").value = "";
+    document.getElementById("weight").value = "";
 }
 
-function exportCSV(){
+/* ================= EXPORT CSV ================= */
+function exportCSV() {
 
-    if(bomData.length === 0){
+    if (bomData.length === 0) {
         alert("No data to export");
         return;
     }
 
-    let csv = "Item,Material,Qty,Size,Remark\n";
+    let csv = "Qty,Description,Material,THK,Length,Width,Weight\n";
 
-    bomData.forEach(row=>{
-        csv += `${row.item},${row.material},${row.qty},${row.size},${row.remark}\n`;
+    bomData.forEach(row => {
+        csv += `${row.qty},${row.description},${row.material},${row.thk},${row.length},${row.width},${row.weight}\n`;
     });
 
-    let blob = new Blob([csv], {type:"text/csv"});
+    let blob = new Blob([csv], { type: "text/csv" });
     let url = URL.createObjectURL(blob);
 
     let a = document.createElement("a");
@@ -298,12 +171,49 @@ function exportCSV(){
     a.click();
 }
 
-function clearAll(){
+/* ================= CLEAR ALL ================= */
+function clearAll() {
     bomData = [];
     renderTable();
 }
 
+/* ================= LOAD MATERIAL DB ================= */
+<script>
+let MATERIAL_DB = {};
+
+fetch("./material-db.json")
+  .then(res => res.json())
+  .then(data => {
+
+    MATERIAL_DB = data;
+
+    console.log("✅ Material DB loaded");
+
+    let materialList = document.getElementById("materialList");
+    materialList.innerHTML = "";
+
+    function addMaterials(section) {
+      if (!section || !section.items) return;
+
+      section.items.forEach(item => {
+        let opt = document.createElement("option");
+        opt.value = item.grade;
+        materialList.appendChild(opt);
+      });
+    }
+
+    // ALL MATERIAL GROUPS
+    addMaterials(MATERIAL_DB.plate_sheet_material_recommended);
+    addMaterials(MATERIAL_DB.pipe_material_recommended);
+    addMaterials(MATERIAL_DB.angle_material_recommended);
+    addMaterials(MATERIAL_DB.channel_material_recommended);
+    addMaterials(MATERIAL_DB.beam_material_recommended);
+    addMaterials(MATERIAL_DB.round_bar_material_recommended);
+
+  })
+  .catch(err => console.error("❌ JSON load error:", err));
 </script>
+
 
 </body>
 </html>
