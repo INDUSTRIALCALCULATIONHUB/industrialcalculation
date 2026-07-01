@@ -137,3 +137,403 @@
     ]
   }
 }
+
+"angle": {
+  "description": "LIST OF ANGLE",
+  "default_density_kg_m3": 7850,
+
+  "items": [
+    { "size_mm": "20x20x3", "label": "ANGLE 20 × 20 × 3 mm" },
+    { "size_mm": "25x25x3", "label": "ANGLE 25 × 25 × 3 mm" },
+    { "size_mm": "25x25x5", "label": "ANGLE 25 × 25 × 5 mm" },
+    { "size_mm": "30x30x3", "label": "ANGLE 30 × 30 × 3 mm" },
+    { "size_mm": "30x30x5", "label": "ANGLE 30 × 30 × 5 mm" },
+    { "size_mm": "35x35x5", "label": "ANGLE 35 × 35 × 5 mm" },
+    { "size_mm": "40x40x5", "label": "ANGLE 40 × 40 × 5 mm" },
+    { "size_mm": "40x40x6", "label": "ANGLE 40 × 40 × 6 mm" },
+    { "size_mm": "45x45x5", "label": "ANGLE 45 × 45 × 5 mm" },
+    { "size_mm": "45x45x6", "label": "ANGLE 45 × 45 × 6 mm" },
+    { "size_mm": "50x50x5", "label": "ANGLE 50 × 50 × 5 mm" },
+    { "size_mm": "50x50x6", "label": "ANGLE 50 × 50 × 6 mm" },
+    { "size_mm": "60x60x6", "label": "ANGLE 60 × 60 × 6 mm" },
+    { "size_mm": "65x65x6", "label": "ANGLE 65 × 65 × 6 mm" },
+    { "size_mm": "65x65x8", "label": "ANGLE 65 × 65 × 8 mm" },
+    { "size_mm": "70x70x6", "label": "ANGLE 70 × 70 × 6 mm" },
+    { "size_mm": "75x75x6", "label": "ANGLE 75 × 75 × 6 mm" },
+    { "size_mm": "75x75x8", "label": "ANGLE 75 × 75 × 8 mm" },
+    { "size_mm": "75x75x10", "label": "ANGLE 75 × 75 × 10 mm" },
+    { "size_mm": "80x80x8", "label": "ANGLE 80 × 80 × 8 mm" },
+    { "size_mm": "90x90x8", "label": "ANGLE 90 × 90 × 8 mm" },
+    { "size_mm": "90x90x10", "label": "ANGLE 90 × 90 × 10 mm" },
+    { "size_mm": "100x100x8", "label": "ANGLE 100 × 100 × 8 mm" },
+    { "size_mm": "100x100x10", "label": "ANGLE 100 × 100 × 10 mm" },
+    { "size_mm": "100x100x12", "label": "ANGLE 100 × 100 × 12 mm" },
+    { "size_mm": "110x110x10", "label": "ANGLE 110 × 110 × 10 mm" },
+    { "size_mm": "130x130x10", "label": "ANGLE 130 × 130 × 10 mm" },
+    { "size_mm": "150x150x12", "label": "ANGLE 150 × 150 × 12 mm" },
+    { "size_mm": "200x200x15", "label": "ANGLE 200 × 200 × 15 mm" },
+    { "size_mm": "200x200x18", "label": "ANGLE 200 × 200 × 18 mm" }
+  ]
+}
+
+"channel": {
+  "description": "LIST OF CHANNEL (ISMC as per IS 808)",
+  "default_density_kg_m3": 7850,
+
+  "items": [
+    { "size_mm": "75x40x4.8", "label": "ISMC 75 × 40 × 4.8 mm" },
+    { "size_mm": "100x50x5.0", "label": "ISMC 100 × 50 × 5.0 mm" },
+    { "size_mm": "125x65x5.3", "label": "ISMC 125 × 65 × 5.3 mm" },
+    { "size_mm": "150x75x5.7", "label": "ISMC 150 × 75 × 5.7 mm" },
+    { "size_mm": "175x75x6.0", "label": "ISMC 175 × 75 × 6.0 mm" },
+    { "size_mm": "200x75x6.2", "label": "ISMC 200 × 75 × 6.2 mm" },
+    { "size_mm": "225x80x6.5", "label": "ISMC 225 × 80 × 6.5 mm" },
+    { "size_mm": "250x80x7.2", "label": "ISMC 250 × 80 × 7.2 mm" },
+    { "size_mm": "300x90x7.8", "label": "ISMC 300 × 90 × 7.8 mm" },
+    { "size_mm": "350x100x8.1", "label": "ISMC 350 × 100 × 8.1 mm" },
+    { "size_mm": "400x100x8.8", "label": "ISMC 400 × 100 × 8.8 mm" }
+  ]
+}
+
+"beam": {
+  "description": "LIST OF BEAM (ISMB as per IS 808)",
+  "default_density_kg_m3": 7850,
+
+  "items": [
+    { "size_mm": "100x75", "label": "ISMB 100 × 75 mm" },
+    { "size_mm": "125x75", "label": "ISMB 125 × 75 mm" },
+    { "size_mm": "150x80", "label": "ISMB 150 × 80 mm" },
+    { "size_mm": "175x90", "label": "ISMB 175 × 90 mm" },
+    { "size_mm": "200x100", "label": "ISMB 200 × 100 mm" },
+    { "size_mm": "225x110", "label": "ISMB 225 × 110 mm" },
+    { "size_mm": "250x125", "label": "ISMB 250 × 125 mm" },
+    { "size_mm": "300x140", "label": "ISMB 300 × 140 mm" },
+    { "size_mm": "350x140", "label": "ISMB 350 × 140 mm" },
+    { "size_mm": "400x140", "label": "ISMB 400 × 140 mm" },
+    { "size_mm": "450x150", "label": "ISMB 450 × 150 mm" },
+    { "size_mm": "500x180", "label": "ISMB 500 × 180 mm" },
+    { "size_mm": "550x190", "label": "ISMB 550 × 190 mm" },
+    { "size_mm": "600x210", "label": "ISMB 600 × 210 mm" }
+  ]
+}
+
+"round_bar": {
+  "description": "LIST OF ROUND BAR (IS 2062 / Structural Steel)",
+  "default_density_kg_m3": 7850,
+
+  "items": [
+    { "diameter_mm": 6, "label": "ROUND BAR 6 mm" },
+    { "diameter_mm": 8, "label": "ROUND BAR 8 mm" },
+    { "diameter_mm": 10, "label": "ROUND BAR 10 mm" },
+    { "diameter_mm": 12, "label": "ROUND BAR 12 mm" },
+    { "diameter_mm": 14, "label": "ROUND BAR 14 mm" },
+    { "diameter_mm": 16, "label": "ROUND BAR 16 mm" },
+    { "diameter_mm": 18, "label": "ROUND BAR 18 mm" },
+    { "diameter_mm": 20, "label": "ROUND BAR 20 mm" },
+    { "diameter_mm": 22, "label": "ROUND BAR 22 mm" },
+    { "diameter_mm": 25, "label": "ROUND BAR 25 mm" },
+    { "diameter_mm": 28, "label": "ROUND BAR 28 mm" },
+    { "diameter_mm": 30, "label": "ROUND BAR 30 mm" },
+    { "diameter_mm": 32, "label": "ROUND BAR 32 mm" },
+    { "diameter_mm": 36, "label": "ROUND BAR 36 mm" },
+    { "diameter_mm": 40, "label": "ROUND BAR 40 mm" },
+    { "diameter_mm": 45, "label": "ROUND BAR 45 mm" },
+    { "diameter_mm": 50, "label": "ROUND BAR 50 mm" },
+    { "diameter_mm": 56, "label": "ROUND BAR 56 mm" },
+    { "diameter_mm": 60, "label": "ROUND BAR 60 mm" },
+    { "diameter_mm": 65, "label": "ROUND BAR 65 mm" },
+    { "diameter_mm": 70, "label": "ROUND BAR 70 mm" },
+    { "diameter_mm": 75, "label": "ROUND BAR 75 mm" },
+    { "diameter_mm": 80, "label": "ROUND BAR 80 mm" },
+    { "diameter_mm": 90, "label": "ROUND BAR 90 mm" },
+    { "diameter_mm": 100, "label": "ROUND BAR 100 mm" },
+    { "diameter_mm": 110, "label": "ROUND BAR 110 mm" },
+    { "diameter_mm": 120, "label": "ROUND BAR 120 mm" }
+  ]
+}
+
+"plate_sheet_material_recommended": {
+  "description": "Material recommended for Plate / Sheet",
+  "items": [
+    { "grade": "IS 2062 E250 BR" },
+    { "grade": "IS 2062 E250 BO" },
+    { "grade": "IS 2062 E250 C" },
+    { "grade": "IS 2062 E350 BR" },
+    { "grade": "IS 2062 E350 BO" },
+    { "grade": "IS 2062 E350 C" },
+
+    { "grade": "ASTM A36" },
+    { "grade": "ASTM A283 Gr C" },
+    { "grade": "ASTM A516 Gr 60" },
+    { "grade": "ASTM A516 Gr 70" },
+
+    { "grade": "SA 285 Gr C" },
+    { "grade": "SA 299" },
+    { "grade": "SA 515 Gr 60" },
+    { "grade": "SA 515 Gr 65" },
+    { "grade": "SA 515 Gr 70" },
+
+    { "grade": "SA 516 Gr 60" },
+    { "grade": "SA 516 Gr 70" },
+
+    { "grade": "SA 204 Gr A" },
+    { "grade": "SA 204 Gr B" },
+    { "grade": "SA 204 Gr C" },
+
+    { "grade": "SA 387 Gr 11 Cl 2" },
+    { "grade": "SA 387 Gr 22 Cl 2" },
+
+    { "grade": "SA 106 Gr B" },
+    { "grade": "SA 106 Gr C" },
+
+    { "grade": "SA 192" },
+    { "grade": "SA 210 Gr A1" },
+    { "grade": "SA 210 Gr C" },
+
+    { "grade": "SA 213 T11" },
+    { "grade": "SA 213 T22" },
+    { "grade": "SA 213 T91" },
+
+    { "grade": "SA 335 P1" },
+    { "grade": "SA 335 P5" },
+    { "grade": "SA 335 P9" },
+    { "grade": "SA 335 P11" },
+    { "grade": "SA 335 P22" },
+    { "grade": "SA 335 P91" },
+
+    { "grade": "ASTM A572 Gr 50" },
+    { "grade": "ASTM A588" },
+    { "grade": "ASTM A514" },
+    { "grade": "ASTM A537 Cl 1" },
+    { "grade": "ASTM A537 Cl 2" },
+
+    { "grade": "Corten A" },
+    { "grade": "Corten B" },
+
+    { "grade": "S235JR" },
+    { "grade": "S275JR" },
+    { "grade": "S355JR" },
+    { "grade": "S355J2" },
+    { "grade": "S460" },
+
+    { "grade": "EN8" },
+    { "grade": "EN8D" },
+    { "grade": "EN9" },
+    { "grade": "EN19" },
+    { "grade": "EN24" },
+    { "grade": "EN31" },
+    { "grade": "EN36" },
+    { "grade": "EN41B" },
+    { "grade": "EN47" },
+    { "grade": "EN353" },
+    { "grade": "EN354" },
+    { "grade": "EN355" },
+
+    { "grade": "SS 304" },
+    { "grade": "SS 304L" },
+    { "grade": "SS 309" },
+    { "grade": "SS 309S" },
+    { "grade": "SS 310" },
+    { "grade": "SS 310S" },
+    { "grade": "SS 316" },
+    { "grade": "SS 316L" },
+    { "grade": "SS 317" },
+    { "grade": "SS 317L" },
+    { "grade": "SS 321" },
+    { "grade": "SS 347" },
+    { "grade": "SS 409" },
+    { "grade": "SS 410" },
+    { "grade": "SS 410S" },
+    { "grade": "SS 416" },
+    { "grade": "SS 420" },
+    { "grade": "SS 430" },
+    { "grade": "SS 431" },
+    { "grade": "SS 440C" },
+
+    { "grade": "Duplex SS 2205" },
+    { "grade": "Duplex SS 2304" },
+    { "grade": "Super Duplex SS 2507" },
+
+    { "grade": "Hardox 400" },
+    { "grade": "Hardox 450" },
+    { "grade": "Hardox 500" },
+
+    { "grade": "Rockstar 400" },
+    { "grade": "Rockstar 500" },
+
+    { "grade": "JFE EH360" },
+    { "grade": "JFE EH400" },
+
+    { "grade": "Alloy 20" },
+
+    { "grade": "Inconel 600" },
+    { "grade": "Inconel 625" },
+    { "grade": "Inconel 718" },
+
+    { "grade": "Monel 400" },
+    { "grade": "Hastelloy C276" },
+
+    { "grade": "Aluminium 5052" },
+    { "grade": "Aluminium 5083" },
+    { "grade": "Aluminium 6061" },
+    { "grade": "Aluminium 6082" },
+
+    { "grade": "Copper" },
+    { "grade": "Brass" },
+    { "grade": "Bronze" },
+    { "grade": "Phosphor Bronze" },
+    { "grade": "Gun Metal" },
+
+    { "grade": "Cast Iron" },
+    { "grade": "Grey Cast Iron" },
+    { "grade": "Ductile Iron" },
+    { "grade": "SG Iron" },
+
+    { "grade": "Titanium Grade 2" },
+    { "grade": "Titanium Grade 5" }
+  ]
+}
+
+"pipe_material_recommended": {
+  "description": "Material recommended for Pipe",
+  "items": [
+    { "grade": "IS 1239" },
+    { "grade": "IS 3589" },
+
+    { "grade": "ASTM A53 Gr A" },
+    { "grade": "ASTM A53 Gr B" },
+
+    { "grade": "ASTM A106 Gr B" },
+    { "grade": "ASTM A106 Gr C" },
+
+    { "grade": "SA 106 Gr B" },
+    { "grade": "SA 106 Gr C" },
+
+    { "grade": "SS 304" },
+    { "grade": "SS 304L" },
+    { "grade": "SS 316" },
+    { "grade": "SS 316L" }
+  ]
+}
+
+"angle_material_recommended": {
+  "description": "Material recommended for Angle",
+  "items": [
+    { "grade": "IS 2062 E250 BR" },
+    { "grade": "IS 2062 E250 BO" },
+    { "grade": "IS 2062 E250 C" },
+
+    { "grade": "IS 2062 E350 BR" },
+    { "grade": "IS 2062 E350 BO" },
+    { "grade": "IS 2062 E350 C" },
+
+    { "grade": "ASTM A36" },
+    { "grade": "ASTM A572 Gr 50" },
+
+    { "grade": "S235JR" },
+    { "grade": "S275JR" },
+    { "grade": "S355JR" },
+
+    { "grade": "EN8" },
+    { "grade": "EN19" },
+
+    { "grade": "SS 304" },
+    { "grade": "SS 316" }
+  ]
+}
+
+"channel_material_recommended": {
+  "description": "Material recommended for Channel (ISMC)",
+  "items": [
+    { "grade": "IS 2062 E250 BR" },
+    { "grade": "IS 2062 E250 BO" },
+    { "grade": "IS 2062 E250 C" },
+
+    { "grade": "IS 2062 E350 BR" },
+    { "grade": "IS 2062 E350 BO" },
+    { "grade": "IS 2062 E350 C" },
+
+    { "grade": "ASTM A36" },
+    { "grade": "ASTM A572 Gr 50" },
+
+    { "grade": "S235JR" },
+    { "grade": "S275JR" },
+    { "grade": "S355JR" },
+
+    { "grade": "EN8" },
+    { "grade": "EN19" },
+
+    { "grade": "SS 304" },
+    { "grade": "SS 316" }
+  ]
+}
+
+"beam_material_recommended": {
+  "description": "Material recommended for Beam (ISMB)",
+  "items": [
+    { "grade": "IS 2062 E250 BR" },
+    { "grade": "IS 2062 E250 BO" },
+    { "grade": "IS 2062 E250 C" },
+
+    { "grade": "IS 2062 E350 BR" },
+    { "grade": "IS 2062 E350 BO" },
+    { "grade": "IS 2062 E350 C" },
+
+    { "grade": "ASTM A36" },
+    { "grade": "ASTM A572 Gr 50" },
+
+    { "grade": "S235JR" },
+    { "grade": "S275JR" },
+    { "grade": "S355JR" },
+
+    { "grade": "EN8" },
+    { "grade": "EN19" },
+
+    { "grade": "SS 304" },
+    { "grade": "SS 316" }
+  ]
+}
+
+"round_bar_material_recommended": {
+  "description": "Material recommended for Round Bar",
+  "items": [
+    { "grade": "MS IS 2062 E250" },
+    { "grade": "MS IS 2062 E350" },
+
+    { "grade": "EN8 (C45)" },
+    { "grade": "EN8D" },
+
+    { "grade": "EN9" },
+    { "grade": "EN19" },
+    { "grade": "EN24" },
+
+    { "grade": "EN1A" },
+    { "grade": "EN1A LEADED" },
+    { "grade": "EN1B" },
+
+    { "grade": "EN31" },
+    { "grade": "EN36" },
+
+    { "grade": "EN45" },
+    { "grade": "EN47" },
+
+    { "grade": "20MnCr5" },
+    { "grade": "16MnCr5" },
+    { "grade": "42CrMo4" },
+    { "grade": "40Cr1" },
+    { "grade": "41Cr4" },
+
+    { "grade": "D2 TOOL STEEL" },
+    { "grade": "H13 TOOL STEEL" },
+    { "grade": "O1 TOOL STEEL" },
+
+    { "grade": "SS 202" },
+    { "grade": "SS 303" },
+    { "grade": "SS 304" },
+    { "grade": "SS 304L" },
+    { "grade": "SS 316" },
+    { "grade": "SS 316L" },
+    { "grade": "SS 410" },
+    { "grade": "SS 420" }
+  ]
+}
