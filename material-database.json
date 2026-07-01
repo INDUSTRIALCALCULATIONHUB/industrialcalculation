@@ -1,0 +1,46 @@
+{
+  "plate_sheet": [
+    {
+      "name": "SHEET 2.5 mm THK",
+      "type": "sheet",
+      "thickness": 2.5,
+      "material_options": ["IS 2062 E250 BR", "ASTM A36"]
+    }
+  ],
+
+  "pipe": [
+    {
+      "name": "PIPE NB 20 (3/4") MEDIUM CLASS",
+      "od": 26.9,
+      "thk": 2.65,
+      "standard": "IS 1239"
+    }
+  ],
+
+  "angle": [
+    {
+      "name": "ANGLE 40 × 40 × 5 mm",
+      "a": 40,
+      "b": 40,
+      "thk": 5,
+      "material": "IS 2062 E250 BR"
+    }
+  ],
+
+  "channel": [],
+  "beam": [],
+  "round_bar": [],
+
+  "materials": [
+    {
+      "name": "IS 2062 E250 BR",
+      "density_kg_m3": 7850,
+      "density_kg_mm3": 7.85e-06
+    },
+    {
+      "name": "SS 304",
+      "density_kg_m3": 7930,
+      "density_kg_mm3": 7.93e-06
+    }
+  ]
+}
