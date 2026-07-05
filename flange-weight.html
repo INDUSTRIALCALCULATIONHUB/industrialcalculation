@@ -56,13 +56,9 @@ crossorigin="anonymous"></script>
 
 <div class="header">
 
-<h1>Flange Weight Calculator</h1>
+<h1>Flange Weight</h1>
 
-<p>
-
-Calculate the weight of circular and rectangular flanges using inside dimensions, flange width, flange thickness, material density and quantity. Results include weight in kilogram, tonne, Newton, kiloNewton and pound.
-
-</p>
+<p>Calculate the weight of circular and rectangular flange</p>
 
 </div>
 
@@ -510,16 +506,6 @@ output.innerHTML=`
 </tr>
 
 <tr>
-<td>Cross Section Area</td>
-<td>${area.toFixed(2)} mm²</td>
-</tr>
-
-<tr>
-<td>Material Density</td>
-<td>${density.toFixed(0)} kg/m³</td>
-</tr>
-
-<tr>
 <td>Quantity</td>
 <td>${qty.toFixed(0)}</td>
 </tr>
@@ -529,25 +515,6 @@ output.innerHTML=`
 <td>${totalWeight.toFixed(3)} kg</td>
 </tr>
 
-<tr>
-<td>Weight</td>
-<td>${tonne.toFixed(6)} ton</td>
-</tr>
-
-<tr>
-<td>Force</td>
-<td>${newton.toFixed(2)} N</td>
-</tr>
-
-<tr>
-<td>Force</td>
-<td>${kiloNewton.toFixed(3)} kN</td>
-</tr>
-
-<tr>
-<td>Weight</td>
-<td>${pound.toFixed(2)} lb</td>
-</tr>
 
 </table>
 
