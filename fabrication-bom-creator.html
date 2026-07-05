@@ -7,31 +7,58 @@
 
 <title>Fabrication BOM Creator | Industrial Calculation Hub</title>
 
+<meta name="description" content="Create fabrication BOM and export to Excel">
+<meta name="keywords" content="BOM creator, fabrication BOM">
+
+<!-- CMP -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
+crossorigin="anonymous"></script>
+
 <link rel="stylesheet" href="style.css">
+    
 </head>
 
 <body>
 
+<!-- ================= TOP BAR (2 LINES) ================= -->
+<div class="topbar">
+
+    <div class="topbar-line">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
+    <div class="topbar-line">
+        <a href="index.html#tools">Engineering Tools</a>
+        <a href="index.html#converters">Unit Conversion</a>
+        <a href="index.html#blogs">Engineering Knowledge</a>
+    </div>
+
+</div>
+
+
 <div class="wrapper">
 
-<h1>Fabrication BOM Creator</h1>
+<div class="header">
+    <h1>Fabrication BOM Creator</h1>
+</div>
+
+
+    
 
 <!-- ================= INPUT ================= -->
+<div class="section">
+
 <div class="bom-form">
 
-<input type="number" id="qty" placeholder="Qty">
-
-<input type="text" id="description" list="descriptionList" placeholder="Description">
-
-<input type="text" id="material" list="materialList" placeholder="Material">
-
-<input type="number" id="thk" placeholder="THK (mm)">
-
-<input type="number" id="length" placeholder="Length (mm)">
-
-<input type="number" id="width" placeholder="Width (mm)">
-
-<input type="number" id="weight" placeholder="Unit Weight (kg)">
+...
+(all input fields)
 
 </div>
 
@@ -41,10 +68,18 @@
 <button onclick="clearAll()">Clear</button>
 </div>
 
-<!-- ================= TABLE ================= -->
-<table id="bomTable"></table>
+</div>
 
-<h3>Total Weight: <span id="totalWeight">0</span> kg</h3>
+<!-- ================= TABLE ================= -->
+<div class="section">
+
+<table id="bomTable" class="result-table"></table>
+
+<h3>Total Weight:
+<span id="totalWeight">0</span> kg
+</h3>
+
+</div>
 
 </div>
 
@@ -62,6 +97,24 @@
 
 <datalist id="materialList"></datalist>
 
+
+
+<!-- ================= FOOTER (2 LINES) ================= -->
+<div class="footer">
+
+    <div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
+
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </div>
+
+</div>
+
+    
 <!-- ================= SCRIPT ================= -->
 <script>
 
@@ -178,31 +231,32 @@ function clearAll() {
 }
 
 /* ================= LOAD MATERIAL DB ================= */
-<script>
-let MATERIAL_DB = {};
+
+/* LOAD MATERIAL DB */
 
 fetch("./material-db.json")
-  .then(res => res.json())
-  .then(data => {
+.then(res => res.json())
+.then(data => {
 
     MATERIAL_DB = data;
-
-    console.log("✅ Material DB loaded");
 
     let materialList = document.getElementById("materialList");
     materialList.innerHTML = "";
 
-    function addMaterials(section) {
-      if (!section || !section.items) return;
+    function addMaterials(section){
 
-      section.items.forEach(item => {
-        let opt = document.createElement("option");
-        opt.value = item.grade;
-        materialList.appendChild(opt);
-      });
+        if(!section || !section.items) return;
+
+        section.items.forEach(item=>{
+
+            let opt=document.createElement("option");
+            opt.value=item.grade;
+            materialList.appendChild(opt);
+
+        });
+
     }
 
-    // ALL MATERIAL GROUPS
     addMaterials(MATERIAL_DB.plate_sheet_material_recommended);
     addMaterials(MATERIAL_DB.pipe_material_recommended);
     addMaterials(MATERIAL_DB.angle_material_recommended);
@@ -210,8 +264,12 @@ fetch("./material-db.json")
     addMaterials(MATERIAL_DB.beam_material_recommended);
     addMaterials(MATERIAL_DB.round_bar_material_recommended);
 
-  })
-  .catch(err => console.error("❌ JSON load error:", err));
+    console.log("Material DB loaded");
+
+})
+.catch(err=>console.error(err));
+
+
 </script>
 
 
