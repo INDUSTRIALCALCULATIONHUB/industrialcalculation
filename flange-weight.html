@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fabrication BOM Creator | Industrial Calculation Hub</title>
+<title>Flange Weight Calculator | Industrial Calculation Hub</title>
 
-<meta name="description" content="Create fabrication BOM and export to Excel">
-<meta name="keywords" content="BOM creator, fabrication BOM">
+<meta name="description"
+content="Calculate circular and rectangular flange weight using inside dimensions, flange width, thickness, material density and quantity.">
 
-<!-- CMP (optional but recommended if AdSense is active) -->
+<meta name="keywords"
+content="flange weight calculator, circular flange weight, rectangular flange weight, MS flange weight, stainless steel flange, aluminium flange calculator">
+
+<meta name="author" content="Industrial Calculation Hub">
+
+<!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
-<!-- AdSense (optional if monetized) -->
+<!-- AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
 crossorigin="anonymous"></script>
 
@@ -23,209 +28,544 @@ crossorigin="anonymous"></script>
 
 <body>
 
-<!-- TOP BAR (required for your CSS design) -->
+<!-- ================= TOP BAR ================= -->
+
 <div class="topbar">
-    <div class="topbar-line">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-    </div>
+
+<div class="topbar-line">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
 </div>
+
+<div class="topbar-line">
+<a href="index.html#tools">Engineering Tools</a>
+<a href="index.html#converters">Unit Conversion</a>
+<a href="index.html#blogs">Engineering Knowledge</a>
+</div>
+
+</div>
+
+<!-- ================= WRAPPER ================= -->
 
 <div class="wrapper">
 
+<!-- ================= HEADER ================= -->
+
 <div class="header">
-    <h1>Fabrication BOM Creator</h1>
+
+<h1>Flange Weight Calculator</h1>
+
+<p>
+
+Calculate the weight of circular and rectangular flanges using inside dimensions, flange width, flange thickness, material density and quantity. Results include weight in kilogram, tonne, Newton, kiloNewton and pound.
+
+</p>
+
 </div>
 
-<!-- ================= INPUT ================= -->
+<!-- ================= CALCULATOR ================= -->
+
 <div class="section">
 
-<div class="bom-form">
+<label>Flange Type</label>
 
-<input type="number" id="qty" placeholder="Qty">
+<select id="flangeType">
 
-<input type="text" id="description" list="descriptionList" placeholder="Description">
+<option value="rect">Rectangular Flange</option>
+<option value="round">Circular Flange</option>
 
-<input type="text" id="material" list="materialList" placeholder="Material">
+</select>
 
-<input type="number" id="thk" placeholder="THK (mm)">
+<div id="flangeInputs">
 
-<input type="number" id="length" placeholder="Length (mm)">
+<label>Inside Length (mm)</label>
+<input type="number" id="insideLength" step="any" min="0">
 
-<input type="number" id="width" placeholder="Width (mm)">
-
-<input type="number" id="weight" placeholder="Unit Weight (kg)">
-
-</div>
-
-<div class="bom-buttons">
-<button onclick="addItem()">Add Item</button>
-<button onclick="exportCSV()">Export CSV</button>
-<button onclick="clearAll()">Clear</button>
-</div>
+<label>Inside Width (mm)</label>
+<input type="number" id="insideWidth" step="any" min="0">
 
 </div>
 
-<!-- ================= TABLE ================= -->
+<label>Flange Width (mm)</label>
+<input type="number" id="flangeWidth" step="any" min="0">
+
+<label>Flange Thickness (mm)</label>
+<input type="number" id="thickness" step="any" min="0">
+
+<label>Material</label>
+
+<select id="density">
+
+<option value="7850">Mild Steel (7850 kg/m³)</option>
+<option value="7850">Galvanized Steel (7850 kg/m³)</option>
+<option value="8000">Stainless Steel 304 (8000 kg/m³)</option>
+<option value="8000">Stainless Steel 316 (8000 kg/m³)</option>
+<option value="2700">Aluminium (2700 kg/m³)</option>
+
+</select>
+
+<label>Quantity</label>
+<input type="number" id="qty" value="1" min="1" step="1">
+
+<div class="result-box">
+
+<div id="output"></div>
+
+</div>
+
+</div>
+
+<!-- ================= ENGINEERING KNOWLEDGE ================= -->
+
 <div class="section">
-<table id="bomTable" class="result-table"></table>
 
-<h3>Total Weight: <span id="totalWeight">0</span> kg</h3>
+<h3>Engineering Knowledge</h3>
+
+<p>
+
+A flange is a ring or rectangular frame used to join ducts, pipes, equipment and fabricated structures. The weight of a flange depends upon its developed centre line length, flange cross-sectional area, material density and quantity.
+
+</p>
+
+<p>
+
+The calculator first determines the centre line length of the flange. It then calculates the cross-sectional area from flange width and thickness. The volume is obtained by multiplying the area with the centre line length. Finally, the flange weight is obtained by multiplying the volume by the material density.
+
+</p>
+
+<h3>Formula</h3>
+
+<p class="formula">
+
+Volume = Cross Section Area × Centre Line Length
+
+</p>
+
+<p class="formula">
+
+Weight = Volume × Density
+
+</p>
+
+<h3>Rectangular Flange</h3>
+
+<div class="result-card">
+
+<table class="result-table">
+
+<tr>
+
+<th>Parameter</th>
+<th>Formula</th>
+
+</tr>
+
+<tr>
+
+<td>Outside Length</td>
+<td>Inside Length + 2 × Flange Width</td>
+
+</tr>
+
+<tr>
+
+<td>Outside Width</td>
+<td>Inside Width + 2 × Flange Width</td>
+
+</tr>
+
+<tr>
+
+<td>Centre Line Length</td>
+<td>2 × [(Inside Length + Flange Width) + (Inside Width + Flange Width)]</td>
+
+</tr>
+
+</table>
+
+</div>
+<h3>Circular Flange</h3>
+
+<div class="result-card">
+
+<table class="result-table">
+
+<tr>
+
+<th>Parameter</th>
+<th>Formula</th>
+
+</tr>
+
+<tr>
+
+<td>Centre Line Diameter</td>
+<td>Inside Diameter + Flange Width</td>
+
+</tr>
+
+<tr>
+
+<td>Centre Line Length</td>
+<td>π × (Inside Diameter + Flange Width)</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<h3>Typical Material Density</h3>
+
+<div class="result-card">
+
+<table class="result-table">
+
+<tr>
+
+<th>Material</th>
+<th>Density (kg/m³)</th>
+
+</tr>
+
+<tr>
+
+<td>Mild Steel</td>
+<td>7850</td>
+
+</tr>
+
+<tr>
+
+<td>Galvanized Steel</td>
+<td>7850</td>
+
+</tr>
+
+<tr>
+
+<td>Stainless Steel 304</td>
+<td>8000</td>
+
+</tr>
+
+<tr>
+
+<td>Stainless Steel 316</td>
+<td>8000</td>
+
+</tr>
+
+<tr>
+
+<td>Aluminium</td>
+<td>2700</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<h3>Effect of Each Parameter</h3>
+
+<ul>
+
+<li><b>Larger inside dimensions:</b> Increase the flange centre line length and total weight.</li>
+
+<li><b>Greater flange width:</b> Increases both centre line length and cross-sectional area.</li>
+
+<li><b>Greater flange thickness:</b> Produces a heavier flange.</li>
+
+<li><b>Higher material density:</b> Produces a heavier flange for identical dimensions.</li>
+
+<li><b>Higher quantity:</b> Increases the total weight proportionally.</li>
+
+</ul>
+
+<h3>Engineering Applications</h3>
+
+<ul>
+
+<li>HVAC duct flanges</li>
+
+<li>Industrial ventilation</li>
+
+<li>Dust collection systems</li>
+
+<li>Bag filter ducting</li>
+
+<li>Equipment fabrication</li>
+
+<li>Structural fabrication</li>
+
+<li>BOM preparation</li>
+
+<li>Procurement estimation</li>
+
+<li>Transportation planning</li>
+
+<li>Lifting calculations</li>
+
+</ul>
+
+<h3>Engineering Notes</h3>
+
+<ul>
+
+<li>Weight is calculated using the flange centre line.</li>
+
+<li>Corner welds, holes, bolts, nuts and gaskets are not included.</li>
+
+<li>All dimensions are entered in millimetres.</li>
+
+<li>Material density is selected from the dropdown list.</li>
+
+<li>The calculator is intended for fabrication estimation and engineering calculations.</li>
+
+</ul>
+
 </div>
 
 </div>
 
-<!-- ================= DATALISTS ================= -->
+<!-- ================= FOOTER ================= -->
 
-<datalist id="descriptionList">
-<option value="Cone Plate">
-<option value="Pipe">
-<option value="Angle">
-<option value="Channel">
-<option value="Beam">
-<option value="Rod">
-<option value="Flange">
-</datalist>
+<div class="footer">
 
-<datalist id="materialList"></datalist>
+<div>
+
+© 2026 Industrial Calculation Hub | Engineering Tools Portal
+
+</div>
+
+<div class="footer-links">
+
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+
+</div>
+
+</div>
 
 <!-- ================= SCRIPT ================= -->
+
 <script>
 
-let bomData = [];
-let MATERIAL_DB = {};
+function renderInputs(){
 
-/* ADD ITEM */
-function addItem() {
+let type=document.getElementById("flangeType").value;
 
-    const qty = document.getElementById("qty").value;
-    const description = document.getElementById("description").value;
-    const material = document.getElementById("material").value;
-    const thk = document.getElementById("thk").value;
-    const length = document.getElementById("length").value;
-    const width = document.getElementById("width").value;
-    const weight = document.getElementById("weight").value;
+if(type==="rect"){
 
-    if (!qty || !description) {
-        alert("Qty and Description required");
-        return;
-    }
+document.getElementById("flangeInputs").innerHTML=`
 
-    bomData.push({
-        qty,
-        description,
-        material,
-        thk,
-        length,
-        width,
-        weight
-    });
+<label>Inside Length (mm)</label>
+<input type="number" id="insideLength" step="any" min="0">
 
-    renderTable();
-    clearInputs();
+<label>Inside Width (mm)</label>
+<input type="number" id="insideWidth" step="any" min="0">
+
+`;
+
 }
 
-/* RENDER TABLE */
-function renderTable() {
+else{
 
-    let html = `
-    <tr>
-        <th>SR</th>
-        <th>QTY</th>
-        <th>DESCRIPTION</th>
-        <th>MATERIAL</th>
-        <th>THK</th>
-        <th>LENGTH</th>
-        <th>WIDTH</th>
-        <th>UNIT WT</th>
-    </tr>`;
+document.getElementById("flangeInputs").innerHTML=`
 
-    let total = 0;
+<label>Inside Diameter (mm)</label>
+<input type="number" id="insideDiameter" step="any" min="0">
 
-    bomData.forEach((row, i) => {
+`;
 
-        total += Number(row.weight) || 0;
-
-        html += `
-        <tr>
-            <td>${i + 1}</td>
-            <td>${row.qty}</td>
-            <td>${row.description}</td>
-            <td>${row.material}</td>
-            <td>${row.thk}</td>
-            <td>${row.length}</td>
-            <td>${row.width}</td>
-            <td>${row.weight}</td>
-        </tr>`;
-    });
-
-    document.getElementById("bomTable").innerHTML = html;
-    document.getElementById("totalWeight").innerText = total.toFixed(2);
 }
 
-/* CLEAR INPUTS */
-function clearInputs() {
-    document.getElementById("qty").value = "";
-    document.getElementById("description").value = "";
-    document.getElementById("material").value = "";
-    document.getElementById("thk").value = "";
-    document.getElementById("length").value = "";
-    document.getElementById("width").value = "";
-    document.getElementById("weight").value = "";
+attachEvents();
+
+calculateLive();
+
 }
 
-/* EXPORT CSV */
-function exportCSV() {
+function attachEvents(){
 
-    if (bomData.length === 0) {
-        alert("No data");
-        return;
-    }
+document.querySelectorAll("input,select").forEach(el=>{
 
-    let csv = "Qty,Description,Material,THK,Length,Width,Weight\n";
+el.removeEventListener("input",calculateLive);
 
-    bomData.forEach(r => {
-        csv += `${r.qty},${r.description},${r.material},${r.thk},${r.length},${r.width},${r.weight}\n`;
-    });
+el.addEventListener("input",calculateLive);
 
-    const blob = new Blob([csv], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
+});
 
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "bom.csv";
-    a.click();
+}
+function calculateLive(){
+
+let type=document.getElementById("flangeType").value;
+
+let fw=parseFloat(document.getElementById("flangeWidth").value);
+let t=parseFloat(document.getElementById("thickness").value);
+let density=parseFloat(document.getElementById("density").value);
+let qty=parseFloat(document.getElementById("qty").value);
+
+let output=document.getElementById("output");
+
+if(isNaN(fw)||isNaN(t)||isNaN(qty)){
+
+output.innerHTML="";
+return;
+
 }
 
-/* CLEAR ALL */
-function clearAll() {
-    bomData = [];
-    renderTable();
+if(fw<=0||t<=0||qty<=0){
+
+output.innerHTML="<div class='result-card'>Enter valid positive values.</div>";
+return;
+
 }
 
-/* LOAD JSON */
-fetch("./material-db.json")
-.then(res => res.json())
-.then(data => {
+let centreLength;
 
-    MATERIAL_DB = data;
+if(type==="rect"){
 
-    const materialList = document.getElementById("materialList");
-    materialList.innerHTML = "";
+let L=parseFloat(document.getElementById("insideLength").value);
+let W=parseFloat(document.getElementById("insideWidth").value);
 
-    // Pipe materials
-    MATERIAL_DB.pipe_material_recommended.items.forEach(i => {
-        const opt = document.createElement("option");
-        opt.value = i.grade;
-        materialList.appendChild(opt);
-    });
+if(isNaN(L)||isNaN(W)){
 
-    console.log("Material DB loaded");
-})
-.catch(err => console.error(err));
+output.innerHTML="";
+return;
+
+}
+
+if(L<=0||W<=0){
+
+output.innerHTML="<div class='result-card'>Enter valid positive values.</div>";
+return;
+
+}
+
+centreLength=2*((L+fw)+(W+fw));
+
+}
+
+else{
+
+let D=parseFloat(document.getElementById("insideDiameter").value);
+
+if(isNaN(D)){
+
+output.innerHTML="";
+return;
+
+}
+
+if(D<=0){
+
+output.innerHTML="<div class='result-card'>Enter valid positive values.</div>";
+return;
+
+}
+
+centreLength=Math.PI*(D+fw);
+
+}
+
+let area=fw*t;
+
+let volume=(area*centreLength)/1000000000;
+
+let singleWeight=volume*density;
+
+let totalWeight=singleWeight*qty;
+
+let tonne=totalWeight/1000;
+
+let newton=totalWeight*9.80665;
+
+let kiloNewton=newton/1000;
+
+let pound=totalWeight*2.20462;
+output.innerHTML=`
+
+<div class="result-card">
+
+<h3>Calculation Result</h3>
+
+<table class="result-table">
+
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+
+<tr>
+<td>Centre Line Length</td>
+<td>${(centreLength/1000).toFixed(3)} m</td>
+</tr>
+
+<tr>
+<td>Cross Section Area</td>
+<td>${area.toFixed(2)} mm²</td>
+</tr>
+
+<tr>
+<td>Material Density</td>
+<td>${density.toFixed(0)} kg/m³</td>
+</tr>
+
+<tr>
+<td>Quantity</td>
+<td>${qty.toFixed(0)}</td>
+</tr>
+
+<tr>
+<td>Flange Weight</td>
+<td>${totalWeight.toFixed(3)} kg</td>
+</tr>
+
+<tr>
+<td>Weight</td>
+<td>${tonne.toFixed(6)} ton</td>
+</tr>
+
+<tr>
+<td>Force</td>
+<td>${newton.toFixed(2)} N</td>
+</tr>
+
+<tr>
+<td>Force</td>
+<td>${kiloNewton.toFixed(3)} kN</td>
+</tr>
+
+<tr>
+<td>Weight</td>
+<td>${pound.toFixed(2)} lb</td>
+</tr>
+
+</table>
+
+</div>
+
+`;
+
+}
+document.addEventListener("DOMContentLoaded",function(){
+
+document.getElementById("flangeType").addEventListener("change",renderInputs);
+
+renderInputs();
+
+});
 
 </script>
 
 </body>
+
 </html>
