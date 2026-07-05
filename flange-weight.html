@@ -91,6 +91,10 @@ crossorigin="anonymous"></script>
 <label>Flange Thickness (mm)</label>
 <input type="number" id="thickness" step="any" min="0">
 
+
+<label>Quantity</label>
+<input type="number" id="qty" value="1" min="1" step="1">
+  
 <label>Material</label>
 
 <select id="density">
@@ -103,8 +107,6 @@ crossorigin="anonymous"></script>
 
 </select>
 
-<label>Quantity</label>
-<input type="number" id="qty" value="1" min="1" step="1">
 
 <div class="result-box">
 
@@ -512,7 +514,7 @@ output.innerHTML=`
 
 <tr>
 <td>Flange Weight</td>
-<td>${totalWeight.toFixed(3)} kg</td>
+<td>${totalWeight.toFixed(2)} kg</td>
 </tr>
 
 
