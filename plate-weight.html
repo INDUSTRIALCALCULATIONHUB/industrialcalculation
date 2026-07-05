@@ -63,9 +63,10 @@ crossorigin="anonymous"></script>
 <div class="section">
 
 <label>Plate Shape</label>
-<select id="shape" onchange="renderInputs()">
+<select id="shape" onchange="renderInputs(); calculate();">
     <option value="rect">Rectangular Plate</option>
     <option value="circular">Circular Plate</option>
+    <option value="irregular">Irregular Shape</option>
 </select>
 
 <!-- dynamic inputs -->
@@ -202,26 +203,42 @@ function setDensity() {
 // Render inputs based on shape
 function renderInputs(){
 
-    let shape = document.getElementById("shape").value;
-    let html = "";
+    let shape=document.getElementById("shape").value;
+    let html="";
 
-    if(shape === "rect"){
-        html = `
+    if(shape==="rect"){
+
+        html=`
 <label>Length (mm)</label>
-<input type="number" id="L" step="any" min="0">
+<input type="number" id="L" min="0" step="any">
 
 <label>Width (mm)</label>
-<input type="number" id="W" step="any" min="0">
-        `;
+<input type="number" id="W" min="0" step="any">
+`;
+
     }
+
+    else if(shape==="circular"){
+
+        html=`
+<label>Diameter (mm)</label>
+<input type="number" id="D" min="0" step="any">
+`;
+
+    }
+
     else{
-        html = `
-        <label>Diameter (mm)</label>
-        <input type="number" id="D" step="any" min="0">
-        `;
+
+        html=`
+<label>Area (mm²)</label>
+<input type="number" id="A" min="0" step="any">
+`;
+
     }
 
     document.getElementById("inputs").innerHTML = html;
+calculate();
+
 }
 
 
@@ -246,45 +263,73 @@ function calculate(){
     }
 
     let thk = thk_mm / 1000; // mm → m
-    let area = 0;
+let area=0;
 
-    // AREA CALCULATION
-    if(shape === "rect"){
+if(shape==="rect"){
 
-        let L = parseFloat(document.getElementById("L").value);
-        let W = parseFloat(document.getElementById("W").value);
+    let L=parseFloat(document.getElementById("L").value);
+    let W=parseFloat(document.getElementById("W").value);
 
-        if(isNaN(L) || isNaN(W) || L <= 0 || W <= 0){
-            output.innerHTML = "<div class='result-card'>Enter valid length and width</div>";
-            return;
-        }
+    if(isNaN(L)||isNaN(W)||L<=0||W<=0){
 
-        L = L/1000;
+        output.innerHTML="<div class='result-card'>Enter valid Length and Width.</div>";
+        return;
 
-        W = W/1000;
-
-        area = L*W;
-    }
-    else{
-
-        let D = parseFloat(document.getElementById("D").value);
-
-        if(isNaN(D) || D <= 0){
-            output.innerHTML = "<div class='result-card'>Enter valid diameter</div>";
-            return;
-        }
-
-        D = D/1000;
-
-        area = Math.PI * D * D / 4;
     }
 
-    let volume = area * thk;
-    let weight = volume * density;
+    area=(L/1000)*(W/1000);
+
+}
+
+else if(shape==="circular"){
+
+    let D=parseFloat(document.getElementById("D").value);
+
+    if(isNaN(D)||D<=0){
+
+        output.innerHTML="<div class='result-card'>Enter valid Diameter.</div>";
+        return;
+
+    }
+
+    D=D/1000;
+
+    area=Math.PI*D*D/4;
+
+}
+
+else{
+
+    let A=parseFloat(document.getElementById("A").value);
+
+    if(isNaN(A)||A<=0){
+
+        output.innerHTML="<div class='result-card'>Enter valid Area.</div>";
+        return;
+
+    }
+
+    area=A/1000000;
+
+}
+
+let volume=area*thk;
+
+let weight=volume*density;
+
+let ton=weight/1000;
+
+let newton=weight*9.80665;
+
+let kN=newton/1000;
+
+let pound=weight*2.20462;
 
     output.innerHTML = `
 
 <div class="result-card">
+
+<h3>Result</h3>
 
 <h3>Result</h3>
 
@@ -297,12 +342,12 @@ function calculate(){
 
 <tr>
 <td>Surface Area</td>
-<td>${area.toFixed(4)} m²</td>
+<td>${area.toFixed(6)} m²</td>
 </tr>
 
 <tr>
 <td>Thickness</td>
-<td>${thk.toFixed(4)} m</td>
+<td>${thk_mm.toFixed(2)} mm</td>
 </tr>
 
 <tr>
@@ -325,6 +370,26 @@ function calculate(){
 <td>${weight.toFixed(3)} kg</td>
 </tr>
 
+<tr>
+<td>Weight</td>
+<td>${ton.toFixed(6)} ton</td>
+</tr>
+
+<tr>
+<td>Force</td>
+<td>${newton.toFixed(2)} N</td>
+</tr>
+
+<tr>
+<td>Force</td>
+<td>${kN.toFixed(3)} kN</td>
+</tr>
+
+<tr>
+<td>Weight</td>
+<td>${pound.toFixed(2)} lb</td>
+</tr>
+
 </table>
 
 </div>
@@ -334,42 +399,27 @@ function calculate(){
 }
 
 
-const materials = [
-
-{ name:"Carbon Steel", density:7850 },
-{ name:"Mild Steel", density:7850 },
-{ name:"Structural Steel", density:7850 },
-{ name:"Stainless Steel 304", density:7930 },
-{ name:"Stainless Steel 316", density:8000 },
-{ name:"Aluminium", density:2700 },
-{ name:"Copper", density:8960 },
-{ name:"Brass", density:8500 },
-{ name:"Bronze", density:8800 },
-{ name:"Cast Iron", density:7200 },
-{ name:"Titanium", density:4500 },
-{ name:"Nickel", density:8900 },
-{ name:"Lead", density:11340 },
-{ name:"Zinc", density:7140 }
-
-];
 
     
 // auto init
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded",function(){
+
     renderInputs();
+
     setDensity();
+
+    document.addEventListener("input",function(e){
+
+        if(e.target.matches("#shape,#material,#thk,#L,#W,#D,#A")){
+
+            calculate();
+
+        }
+
+    });
+
 });
-const list = document.getElementById("materialList");
 
-materials.forEach(m=>{
-
-let option=document.createElement("option");
-
-option.value=m.name;
-
-list.appendChild(option);
-
-});
 
 document.getElementById("materialSearch").addEventListener("input",function(){
 
@@ -383,19 +433,8 @@ calculate();
 
 }
 
-});
-    renderInputs();
 
-document.addEventListener("input", function(e){
-    if(e.target.matches("#shape, #thk, #material, #L, #W, #D")){
-        calculate();
-    }
-});
-    
-    document.querySelectorAll("#shape,#thk,#material")
-    .forEach(el => el.addEventListener("input", calculate));
 
-});
 </script>
 
 </body>
