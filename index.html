@@ -95,19 +95,21 @@ crossorigin="anonymous"></script>
 
 <!-- SEARCH -->
 <div class="search-box">
-    <input id="searchInput" placeholder="Search tools...">
+
+    <label for="searchInput" class="sr-only">
+        Search Engineering Tools
+    </label>
+
+    <input
+        id="searchInput"
+        type="search"
+        placeholder="Search tools..."
+        aria-label="Search Engineering Tools">
+
 </div>
 
 
-<label for="searchInput" class="sr-only">
-Search Engineering Tools
-</label>
 
-<input
-id="searchInput"
-type="search"
-placeholder="Search engineering tools..."
->
 
     
 <section class="intro">
@@ -336,14 +338,18 @@ Free Engineering Calculators | Unit Converters | Engineering Knowledge Base</div
 <script>
 
 document.getElementById("searchInput").addEventListener("keyup", function () {
+
     let val = this.value.toLowerCase();
 
     document.querySelectorAll(".card").forEach(card => {
+
         card.style.display =
             card.textContent.toLowerCase().includes(val)
                 ? "flex"
                 : "none";
+
     });
+
 });
 
     
