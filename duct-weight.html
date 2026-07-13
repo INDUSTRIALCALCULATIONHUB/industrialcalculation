@@ -138,7 +138,7 @@ Last Updated: July 13, 2026
 
 <label>Plate / Sheet Material</label>
 
-<select id="density">
+<select id="material">
 
 <optgroup label="Carbon Steels">
 
@@ -470,6 +470,8 @@ For final fabrication, always follow the applicable project specifications and g
     
 
 <h3>Frequently Asked Questions</h3>
+    
+<div class="result-card">
 
 <table class="result-table">
 
@@ -510,6 +512,7 @@ For final fabrication, always follow the applicable project specifications and g
 
 </table>
 
+</div>
 
 <h3>Related Engineering Calculators</h3>
 
@@ -617,7 +620,7 @@ let output=document.getElementById("output");
 let L = parseFloat(document.getElementById("length").value) / 1000;
 let tmm=parseFloat(document.getElementById("thickness").value);
 
-let density = parseFloat(document.getElementById("density").value);
+let density = parseFloat(document.getElementById("material").value);
 
 
 if(isNaN(density)){
@@ -625,7 +628,7 @@ if(isNaN(density)){
     return;
 }
     
-let output=document.getElementById("output");
+
 
 if(isNaN(L)||isNaN(tmm)){
 
@@ -721,7 +724,7 @@ output.innerHTML=`
 
 <tr>
 <td>Plate / Sheet Material</td>
-<td>${document.getElementById("density").selectedOptions[0].text}</td>
+<td>${document.getElementById("material").selectedOptions[0].text}</td>
 </tr>
 
 <tr>
