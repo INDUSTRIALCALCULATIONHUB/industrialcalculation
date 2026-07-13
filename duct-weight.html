@@ -593,24 +593,38 @@ function renderInputs(){
 
 }
 
+
 function attachEvents(){
 
-document.querySelectorAll("input,select").forEach(el=>{
+document.querySelectorAll("input").forEach(el=>{
 el.removeEventListener("input",calculateLive);
 el.addEventListener("input",calculateLive);
 });
 
+document.querySelectorAll("select").forEach(el=>{
+el.removeEventListener("change",calculateLive);
+el.addEventListener("change",calculateLive);
+});
+    
 }
 
 function calculateLive(){
 
 let type=document.getElementById("ductType").value;
 
+let output=document.getElementById("output");
+
 let L = parseFloat(document.getElementById("length").value) / 1000;
 let tmm=parseFloat(document.getElementById("thickness").value);
 
-let density = parseFloat(document.getElementById("material").value);
+let density = parseFloat(document.getElementById("density").value);
 
+
+if(isNaN(density)){
+    output.innerHTML="<div class='result-card'>Please select material.</div>";
+    return;
+}
+    
 let output=document.getElementById("output");
 
 if(isNaN(L)||isNaN(tmm)){
@@ -707,7 +721,7 @@ output.innerHTML=`
 
 <tr>
 <td>Plate / Sheet Material</td>
-<td>${document.getElementById("material").selectedOptions[0].text}</td>
+<td>${document.getElementById("density").selectedOptions[0].text}</td>
 </tr>
 
 <tr>
