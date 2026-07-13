@@ -279,16 +279,21 @@ For straight ducts, the sheet metal surface area is calculated from the duct per
 
 <tr>
 <th>Material</th>
-<th>Density (kg/m³)</th>
+<th>Typical Density (kg/m³)</th>
 </tr>
 
 <tr>
-<td>Mild Steel</td>
+<td>Mild Steel (General)</td>
 <td>7850</td>
 </tr>
 
 <tr>
-<td>Galvanized Steel</td>
+<td>IS 2062 Structural Steel</td>
+<td>7850</td>
+</tr>
+
+<tr>
+<td>Carbon Steel</td>
 <td>7850</td>
 </tr>
 
@@ -303,14 +308,56 @@ For straight ducts, the sheet metal surface area is calculated from the duct per
 </tr>
 
 <tr>
+<td>Stainless Steel 316L</td>
+<td>8000</td>
+</tr>
+
+<tr>
+<td>Stainless Steel 409</td>
+<td>7750</td>
+</tr>
+
+<tr>
 <td>Aluminium</td>
 <td>2700</td>
+</tr>
+
+<tr>
+<td>Cast Iron</td>
+<td>7200</td>
+</tr>
+
+<tr>
+<td>Copper</td>
+<td>8940</td>
+</tr>
+
+<tr>
+<td>Brass</td>
+<td>8500</td>
+</tr>
+
+<tr>
+<td>Bronze</td>
+<td>8800</td>
+</tr>
+
+<tr>
+<td>Titanium</td>
+<td>4500</td>
+</tr>
+
+<tr>
+<td>Nickel</td>
+<td>8900</td>
 </tr>
 
 </table>
 </div>
 
-
+<p>
+The density values listed above are typical engineering values used for preliminary design, fabrication estimation, and material quantity calculations. Actual density may vary slightly depending on material grade, alloy composition, manufacturing process, and applicable standards.
+</p>
 <h3>Effect of Each Parameter</h3>
 
 <ul>
@@ -351,7 +398,49 @@ For straight ducts, the sheet metal surface area is calculated from the duct per
 <h3>Applicable Standards</h3>
 
 <p>
-Duct fabrication is commonly carried out according to SMACNA, DW/144, IS 655, or project-specific specifications. This calculator estimates sheet weight only and should not replace detailed fabrication drawings or structural design calculations.
+Industrial ductwork is commonly designed and fabricated in accordance with internationally recognized standards. These standards specify requirements for duct construction, material selection, reinforcement, joint details, leakage classes, and installation practices. This calculator estimates only the sheet metal weight of straight duct sections and is intended for preliminary engineering and material estimation.
+</p>
+
+<div class="result-card">
+
+<table class="result-table">
+
+<tr>
+<th>Standard</th>
+<th>Application</th>
+</tr>
+
+<tr>
+<td>SMACNA HVAC Duct Construction Standards</td>
+<td>HVAC duct construction, reinforcement, joints, and supports</td>
+</tr>
+
+<tr>
+<td>DW/144 Specification for Sheet Metal Ductwork</td>
+<td>Low, medium, and high-pressure duct fabrication</td>
+</tr>
+
+<tr>
+<td>IS 655</td>
+<td>Metal air ducts used in ventilation and air-conditioning systems</td>
+</tr>
+
+<tr>
+<td>ASHRAE Handbook</td>
+<td>HVAC system design and engineering guidance</td>
+</tr>
+
+<tr>
+<td>Project Specifications</td>
+<td>Client-specific material grades, thickness, reinforcement, and fabrication requirements</td>
+</tr>
+
+</table>
+
+</div>
+
+<p>
+For final fabrication, always follow the applicable project specifications and governing standards. Additional components such as flanges, reinforcement angles, stiffeners, access doors, dampers, insulation, and support members should be included separately when estimating the total installed weight of a duct system.
 </p>
 
     
@@ -382,19 +471,44 @@ Duct fabrication is commonly carried out according to SMACNA, DW/144, IS 655, or
 
 <h3>Frequently Asked Questions</h3>
 
-<div class="result-card">
-<h4>Does this calculator include duct flanges?</h4>
-<p>No. It calculates only the straight duct sheet weight.</p>
-<h4>Are dimensions entered in millimetres?</h4>
-<p>Yes. All dimensions are entered in millimetres and converted internally.</p>
-<h4>Can I calculate stainless steel duct weight?</h4>
-<p>Yes. Select the required material from the list.</p>
-<h4>Does this include insulation?</h4>
-<p>No. Insulation weight must be calculated separately.</p>
-<h4>Can this calculator be used for HVAC ducts?</h4>
-<p>Yes. It is suitable for HVAC and industrial ventilation ductwork.</p>
+<table class="result-table">
 
-</div>
+<tr>
+<th>Question</th>
+<th>Answer</th>
+</tr>
+
+<tr>
+<td>Does this calculator include duct flanges?</td>
+<td>No. Only the straight duct sheet weight is calculated.</td>
+</tr>
+
+<tr>
+<td>Are dimensions entered in millimetres?</td>
+<td>Yes. All dimensions are entered in mm and converted internally.</td>
+</tr>
+
+<tr>
+<td>Can stainless steel ducts be calculated?</td>
+<td>Yes. Select the required stainless steel grade from the material list.</td>
+</tr>
+
+<tr>
+<td>Does the calculation include insulation?</td>
+<td>No. Insulation and cladding should be calculated separately.</td>
+</tr>
+
+<tr>
+<td>Can this be used for HVAC ducts?</td>
+<td>Yes. It is suitable for HVAC and industrial ventilation ductwork.</td>
+</tr>
+
+<tr>
+<td>Can it be used for fabrication estimation?</td>
+<td>Yes. It provides a good estimate for material quantity and weight.</td>
+</tr>
+
+</table>
 
 
 <h3>Related Engineering Calculators</h3>
