@@ -77,19 +77,19 @@ Calculate duct sheet surface area, weight per metre, and total duct weight for r
 
 <div id="ductInputs">
 
-<label>Width (m)</label>
-<input type="number" id="width" step="any" min="0">
+<label>Duct Width (mm)</label>
+<input type="number" id="width" step="any" min="0" placeholder=" ">
 
-<label>Height (m)</label>
-<input type="number" id="height" step="any" min="0">
+<label>Duct Height (mm)</label>
+<input type="number" id="height" step="any" min="0" placeholder=" ">
 
 </div>
 
-<label>Duct Length (m)</label>
-<input type="number" id="length" step="any" min="0">
+<label>Duct Length (mm)</label>
+<input type="number" id="length" step="any" min="0" placeholder=" ">
 
-<label>Sheet Thickness (mm)</label>
-<input type="number" id="thickness" step="any" min="0">
+<label>Plate / Sheet Thickness (mm)</label>
+<input type="number" id="thickness" step="any" min="0" placeholder=" ">
 
 <label>Material</label>
 
@@ -338,8 +338,8 @@ function renderInputs(){
 
         document.getElementById("ductInputs").innerHTML=`
 
-<label>Diameter (m)</label>
-<input type="number" id="diameter" step="any" min="0">
+<label>Duct Diameter (mm)</label>
+<input type="number" id="diameter" step="any" min="0" placeholder=" ">
 
 `;
 
@@ -363,7 +363,7 @@ function calculateLive(){
 
 let type=document.getElementById("ductType").value;
 
-let L=parseFloat(document.getElementById("length").value);
+let L = parseFloat(document.getElementById("length").value) / 1000;
 let tmm=parseFloat(document.getElementById("thickness").value);
 let density=parseFloat(document.getElementById("density").value);
 
@@ -387,8 +387,8 @@ let area;
 
 if(type==="rect"){
 
-let W=parseFloat(document.getElementById("width").value);
-let H=parseFloat(document.getElementById("height").value);
+let W=parseFloat(document.getElementById("width").value) / 1000;
+let H=parseFloat(document.getElementById("height").value) / 1000;
 
 if(isNaN(W)||isNaN(H)){
 
@@ -410,7 +410,7 @@ area=2*(W+H)*L;
 
 else{
 
-let D=parseFloat(document.getElementById("diameter").value);
+let D=parseFloat(document.getElementById("diameter").value) / 1000;
 
 if(isNaN(D)){
 
@@ -457,13 +457,8 @@ output.innerHTML=`
 </tr>
 
 <tr>
-<td>Thickness Used</td>
-<td>${tmm.toFixed(2)} mm (${thickness.toFixed(4)} m)</td>
-</tr>
-
-<tr>
-<td>Material Density</td>
-<td>${density.toFixed(0)} kg/m³</td>
+<td>Plate / Sheet Thickness</td>
+<td>${tmm.toFixed(2)} mm</td>
 </tr>
 
 <tr>
