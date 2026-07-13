@@ -100,6 +100,11 @@ crossorigin="anonymous"></script>
 Calculate the sheet metal surface area, weight per metre, and total weight of rectangular and circular ducts using dimensions in millimetres. Suitable for HVAC, industrial ventilation, dust collection, and process ductwork.
 </p>
 
+
+<p class="updated">
+Last Updated: July 13, 2026
+</p>
+
 </div>
 
 <!-- ================= CALCULATOR ================= -->
@@ -175,36 +180,20 @@ Calculate the sheet metal surface area, weight per metre, and total weight of re
 <h3>Engineering Knowledge</h3>
 
 <p>
-
 <b>Duct weight</b> is determined from the sheet metal surface area, material thickness, and material density. The calculated weight is important for HVAC design, duct supports, structural loading, transportation, fabrication, and installation planning.
-
 </p>
 
 <p>
-
 For straight ducts, the sheet metal surface area is calculated from the duct perimeter and length. The sheet volume is then obtained by multiplying the surface area by the sheet thickness. Finally, the duct weight is calculated by multiplying the sheet volume by the material density.
-
 </p>
 
 <p><b>Formula:</b></p>
 
-<p class="formula">
+<p class="formula"> Surface Area = Perimeter × Length</p>
 
-Surface Area = Perimeter × Length
+<p class="formula"> Volume = Surface Area × Thickness</p>
 
-</p>
-
-<p class="formula">
-
-Volume = Surface Area × Thickness
-
-</p>
-
-<p class="formula">
-
-Weight = Volume × Material Density
-
-</p>
+<p class="formula">Weight = Volume × Material Density</p>
 
 <h3>Rectangular Duct</h3>
     
@@ -252,6 +241,24 @@ Weight = Volume × Material Density
 </table>
 </div>
 
+
+<h3>Worked Example</h3>
+
+<p>Calculate the weight of a rectangular galvanized steel duct having:</p>
+
+<ul>
+<li>Width = 1500 mm</li>
+<li>Height = 1200 mm</li>
+<li>Length = 2500 mm</li>
+<li>Thickness = 3 mm</li>
+<li>Density = 7850 kg/m³</li>
+</ul>
+
+<p>Perimeter = 2 × (1.5 + 1.2) = 5.4 m</p>
+<p>Surface Area = 5.4 × 2.5 = 13.5 m²</p>
+<p>Volume = 13.5 × 0.003 = 0.0405 m³</p>
+<p>Weight = 0.0405 × 7850 = 317.93 kg</p>    
+
 <h3>Typical Material Density</h3>
 
 <div class="result-card">
@@ -290,61 +297,114 @@ Weight = Volume × Material Density
 </table>
 </div>
 
+
 <h3>Effect of Each Parameter</h3>
 
 <ul>
 
 <li><b>Larger duct dimensions:</b> Increase the sheet metal surface area and total weight.</li>
-
 <li><b>Greater duct length:</b> Increases both surface area and total material requirement.</li>
-
 <li><b>Higher sheet thickness:</b> Produces proportionally heavier ducts.</li>
-
 <li><b>Material density:</b> Stainless steel ducts are heavier than aluminium ducts of identical dimensions.</li>
-
 </ul>
+
+
+<h3>Design Considerations</h3>
+
+<ul>
+<li>Select sheet thickness according to duct pressure class.</li>
+<li>Large ducts generally require stiffeners and reinforcement angles.</li>
+<li>Support spacing should consider the total dead load of the duct system.</li>
+<li>Additional weight due to insulation and cladding should be included during structural design.</li>
+<li>Use corrosion-resistant materials where required by the operating environment.</li>
+</ul>
+    
 
 <h3>Engineering Applications</h3>
 
 <ul>
-
 <li>HVAC air distribution systems</li>
-
 <li>Industrial ventilation systems</li>
-
 <li>Dust collection ductwork</li>
-
 <li>Fume extraction systems</li>
-
 <li>Commercial air-conditioning projects</li>
-
 <li>Material estimation during fabrication</li>
-
 <li>Duct support and hanger design</li>
-
 <li>Transportation and lifting calculations</li>
-
 <li>Project cost estimation</li>
-
 <li>Industrial sheet metal fabrication</li>
-
 </ul>
 
+<h3>Applicable Standards</h3>
+
+<p>
+Duct fabrication is commonly carried out according to SMACNA, DW/144, IS 655, or project-specific specifications. This calculator estimates sheet weight only and should not replace detailed fabrication drawings or structural design calculations.
+</p>
+
+    
 <h3>Engineering Notes</h3>
 
 <ul>
-
 <li>This calculator estimates the weight of straight duct sections only.</li>
-
 <li>Flanges, stiffeners, reinforcement angles, access doors, dampers, insulation, and accessories are not included.</li>
-
 <li>Enter all duct dimensions, including width, height, diameter, length, and plate or sheet thickness, in millimetres (mm). The calculator automatically converts these values internally for accurate calculations.</li>
-
 <li>For insulated ducts, calculate insulation weight separately and add it to the sheet weight.</li>
-
 <li>Use project specifications or applicable standards for final fabrication and structural design.</li>
+<li>Actual fabricated duct weight may increase due to flanges, reinforcement angles, stiffeners, and access doors.</li>
+<li>Large industrial ducts generally require reinforcement according to project specifications.</li>
+<li>Material density may vary slightly depending on alloy composition and manufacturing process.</li>
+<li>This calculator is intended for preliminary engineering, fabrication estimation, and material quantity calculations.</li>
+</ul>
+
+
+<h3>References</h3>
+
+<ul>
+<li>SMACNA HVAC Duct Construction Standards</li>
+<li>DW/144 Specification for Sheet Metal Ductwork</li>
+<li>IS 655 Metal Air Ducts</li>
+<li>ASHRAE Fundamentals Handbook</li>
+</ul>
+    
+
+<h3>Frequently Asked Questions</h3>
+
+<div class="result-card">
+<h4>Does this calculator include duct flanges?</h4>
+<p>No. It calculates only the straight duct sheet weight.</p>
+<h4>Are dimensions entered in millimetres?</h4>
+<p>Yes. All dimensions are entered in millimetres and converted internally.</p>
+<h4>Can I calculate stainless steel duct weight?</h4>
+<p>Yes. Select the required material from the list.</p>
+<h4>Does this include insulation?</h4>
+<p>No. Insulation weight must be calculated separately.</p>
+<h4>Can this calculator be used for HVAC ducts?</h4>
+<p>Yes. It is suitable for HVAC and industrial ventilation ductwork.</p>
+
+</div>
+
+
+<h3>Related Engineering Calculators</h3>
+
+<ul>
+<li><a href="duct-flow-calculator.html">Duct Flow Calculator</a></li>
+<li><a href="air-density-calculator.html">Air Density Calculator</a></li>
+<li><a href="pipe-flow-calculator.html">Pipe Flow Calculator</a></li>
+<li><a href="plate-weight-calculator.html">Plate Weight Calculator</a></li>
+<li><a href="pump-power-calculator.html">Pump Power Calculator</a></li>
 
 </ul>
+
+
+<h3>Related Engineering Articles</h3>
+
+<ul>
+<li><a href="pressure-drop-in-duct-systems.html">Pressure Drop in Duct Systems</a></li>
+<li><a href="industrial-fan-selection.html">Industrial Fan Selection Guide</a></li>
+<li><a href="air-density-explained.html">Air Density Explained</a></li>
+<li><a href="pipe-flow-basics.html">Pipe Flow Basics</a></li>
+</ul>
+    
 
 </div>
 
