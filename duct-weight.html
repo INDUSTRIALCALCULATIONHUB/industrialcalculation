@@ -97,7 +97,7 @@ crossorigin="anonymous"></script>
 <h1>Duct Weight</h1>
 
 <p>
-Calculate duct sheet surface area, weight per metre, and total duct weight for rectangular and circular ducts used in HVAC and industrial ventilation systems.
+Calculate the sheet metal surface area, weight per metre, and total weight of rectangular and circular ducts using dimensions in millimetres. Suitable for HVAC, industrial ventilation, dust collection, and process ductwork.
 </p>
 
 </div>
@@ -118,28 +118,44 @@ Calculate duct sheet surface area, weight per metre, and total duct weight for r
 <div id="ductInputs">
 
 <label>Duct Width (mm)</label>
-<input type="number" id="width" step="any" min="0" placeholder=" ">
+<input type="number" id="width" step="any" min="0" placeholder="1500">
 
 <label>Duct Height (mm)</label>
-<input type="number" id="height" step="any" min="0" placeholder=" ">
+<input type="number" id="height" step="any" min="0" placeholder="1200">
 
 </div>
 
 <label>Duct Length (mm)</label>
-<input type="number" id="length" step="any" min="0" placeholder=" ">
+<input type="number" id="length" step="any" min="0" placeholder="2500">
 
 <label>Plate / Sheet Thickness (mm)</label>
-<input type="number" id="thickness" step="any" min="0" placeholder=" ">
+<input type="number" id="thickness" step="any" min="0" placeholder="3.00">
 
-<label>Material</label>
+<label>Plate / Sheet Material</label>
 
-<select id="density">
 
-<option value="7850">Mild Steel (7850 kg/m³)</option>
-<option value="7850">Galvanized Steel (7850 kg/m³)</option>
-<option value="8000">Stainless Steel 304 (8000 kg/m³)</option>
-<option value="8000">Stainless Steel 316 (8000 kg/m³)</option>
-<option value="2700">Aluminium (2700 kg/m³)</option>
+
+<select id="material">
+
+    <option value="7850">Galvanized Steel (GI) - 7850 kg/m³</option>
+    <option value="7850">Carbon Steel - 7850 kg/m³</option>
+    <option value="7850">Mild Steel - 7850 kg/m³</option>
+    <option value="7850">Structural Steel - 7850 kg/m³</option>
+
+    <option value="7930">Stainless Steel 304 - 7930 kg/m³</option>
+    <option value="8000">Stainless Steel 316 - 8000 kg/m³</option>
+
+    <option value="2700">Aluminium - 2700 kg/m³</option>
+
+    <option value="8960">Copper - 8960 kg/m³</option>
+    <option value="8500">Brass - 8500 kg/m³</option>
+    <option value="8800">Bronze - 8800 kg/m³</option>
+
+    <option value="7200">Cast Iron - 7200 kg/m³</option>
+    <option value="4500">Titanium - 4500 kg/m³</option>
+    <option value="8900">Nickel - 8900 kg/m³</option>
+    <option value="7140">Zinc - 7140 kg/m³</option>
+    <option value="11340">Lead - 11340 kg/m³</option>
 
 </select>
 
@@ -322,7 +338,7 @@ Weight = Volume × Material Density
 
 <li>Flanges, stiffeners, reinforcement angles, access doors, dampers, insulation, and accessories are not included.</li>
 
-<li>Thickness should be entered in millimetres while all duct dimensions are entered in metres.</li>
+<li>Enter all duct dimensions, including width, height, diameter, length, and plate or sheet thickness, in millimetres (mm). The calculator automatically converts these values internally for accurate calculations.</li>
 
 <li>For insulated ducts, calculate insulation weight separately and add it to the sheet weight.</li>
 
@@ -365,10 +381,10 @@ function renderInputs(){
         document.getElementById("ductInputs").innerHTML=`
 
 <label>Duct Width (mm)</label>
-<input type="number" id="width" step="any" min="0" placeholder=" ">
+<input type="number" id="width" step="any" min="0" placeholder="1500">
 
 <label>Duct Height (mm)</label>
-<input type="number" id="height" step="any" min="0" placeholder=" ">
+<input type="number" id="height" step="any" min="0" placeholder="1200">
 
 `;
 
@@ -379,7 +395,7 @@ function renderInputs(){
         document.getElementById("ductInputs").innerHTML=`
 
 <label>Duct Diameter (mm)</label>
-<input type="number" id="diameter" step="any" min="0" placeholder=" ">
+<input type="number" id="diameter" step="any" min="0" placeholder="1000">
 
 `;
 
@@ -405,7 +421,8 @@ let type=document.getElementById("ductType").value;
 
 let L = parseFloat(document.getElementById("length").value) / 1000;
 let tmm=parseFloat(document.getElementById("thickness").value);
-let density=parseFloat(document.getElementById("density").value);
+
+let density = parseFloat(document.getElementById("material").value);
 
 let output=document.getElementById("output");
 
@@ -499,6 +516,16 @@ output.innerHTML=`
 <tr>
 <td>Plate / Sheet Thickness</td>
 <td>${tmm.toFixed(2)} mm</td>
+</tr>
+
+<tr>
+<td>Plate / Sheet Material</td>
+<td>${document.getElementById("material").selectedOptions[0].text}</td>
+</tr>
+
+<tr>
+<td>Material Density</td>
+<td>${density.toFixed(0)} kg/m³</td>
 </tr>
 
 <tr>
