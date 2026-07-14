@@ -177,17 +177,6 @@ Last Updated: July 14, 2026
 
 </select>
 
-<p class="note">
-Enter all dimensions in millimetres (mm). Material density is automatically selected based on the chosen material.
-</p>
-  
-<div class="result-box">
-
-<h3>Calculation Result</h3>
-
-<div id="output"></div>
-
-</div>
 
 </div>
 
@@ -701,12 +690,17 @@ output.innerHTML=`
 </tr>
 
 <tr>
+<td>Single Flange Weight</td>
+<td>${singleWeight.toFixed(2)} kg</td>
+</tr>
+
+<tr>
 <td>Quantity</td>
 <td>${qty.toFixed(0)}</td>
 </tr>
 
 <tr>
-<td>Flange Weight</td>
+<td>Total Flange Weight</td>
 <td>${totalWeight.toFixed(2)} kg</td>
 </tr>
 
