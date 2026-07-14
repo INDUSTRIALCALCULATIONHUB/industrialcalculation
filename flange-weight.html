@@ -7,13 +7,48 @@
 
 <title>Flange Weight Calculator | Industrial Calculation Hub</title>
 
-<meta name="description"
-content="Calculate circular and rectangular flange weight using inside dimensions, flange width, thickness, material density and quantity.">
+<meta name="description" content="Free online flange weight calculator for circular and rectangular flanges. Calculate flange weight using inside dimensions, flange width, thickness, material density and quantity for steel, stainless steel, aluminium and other materials.">
 
-<meta name="keywords"
-content="flange weight calculator, circular flange weight, rectangular flange weight, MS flange weight, stainless steel flange, aluminium flange calculator">
+<meta name="keywords" content="flange weight calculator, rectangular flange weight, circular flange weight, duct flange calculator, MS flange weight, steel flange weight, stainless steel flange weight, aluminium flange weight, fabrication calculator, engineering calculator">
 
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Industrial Calculation Hub">
+
+<link rel="canonical" href="https://industrialcalculation.com/flange-weight-calculator.html">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="theme-color" content="#0b63c7">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Flange Weight Calculator">
+<meta property="og:description" content="Calculate circular and rectangular flange weight using flange dimensions, thickness, material density and quantity.">
+<meta property="og:url" content="https://industrialcalculation.com/flange-weight-calculator.html">
+<meta property="og:image" content="https://industrialcalculation.com/images/flange-weight-calculator.png">
+<meta property="og:site_name" content="Industrial Calculation Hub">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Flange Weight Calculator">
+<meta name="twitter:description" content="Calculate circular and rectangular flange weight online using engineering formulas.">
+<meta name="twitter:image" content="https://industrialcalculation.com/images/flange-weight-calculator.png">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Flange Weight Calculator",
+  "url":"https://industrialcalculation.com/flange-weight-calculator.html",
+  "applicationCategory":"EngineeringApplication",
+  "operatingSystem":"Any",
+  "browserRequirements":"Requires JavaScript",
+  "description":"Free engineering calculator to calculate circular and rectangular flange weight using dimensions, thickness, material density and quantity.",
+  "creator":{
+    "@type":"Organization",
+    "name":"Industrial Calculation Hub"
+  }
+}
+</script>
+
+
 
 <!-- CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
@@ -56,10 +91,16 @@ crossorigin="anonymous"></script>
 
 <div class="header">
 
-<h1>Flange Weight</h1>
+<h1>Flange Weight Calculator</h1>
 
-<p>Calculate the weight of circular and rectangular flange</p>
+<p>
+Calculate the weight of circular and rectangular flanges using inside dimensions, flange width, thickness, material density and quantity. This calculator is useful for HVAC ducting, industrial piping, fabrication, material estimation, procurement and bill of material (BOM) preparation.
+</p>
 
+<p class="update-date">
+Last Updated: July 14, 2026
+</p>
+  
 </div>
 
 <!-- ================= CALCULATOR ================= -->
@@ -78,18 +119,19 @@ crossorigin="anonymous"></script>
 <div id="flangeInputs">
 
 <label>Inside Length (mm)</label>
-<input type="number" id="insideLength" step="any" min="0">
+<input type="number" id="insideLength" step="any" min="0" placeholder="1000">
 
+  
 <label>Inside Width (mm)</label>
-<input type="number" id="insideWidth" step="any" min="0">
+<input type="number" id="insideWidth" step="any" min="0" placeholder="800">
 
 </div>
 
-<label>Flange Width (mm)</label>
-<input type="number" id="flangeWidth" step="any" min="0">
+<label>Flange Width (Face Width) (mm)</label>
+<input type="number" id="flangeWidth" step="any" min="0" placeholder="50">
 
 <label>Flange Thickness (mm)</label>
-<input type="number" id="thickness" step="any" min="0">
+<input type="number" id="thickness" step="any" min="0" placeholder="10">
 
 
 <label>Quantity</label>
@@ -99,33 +141,49 @@ crossorigin="anonymous"></script>
 
 <select id="density">
 
-<option value="7850">Mild Steel (General)</option>
+<optgroup label="Carbon Steel">
+
+<option value="7850">Mild Steel</option>
 <option value="7850">IS 2062 Structural Steel</option>
 <option value="7850">Carbon Steel</option>
 
-<option value="8000">Stainless Steel 304</option>
-<option value="8000">Stainless Steel 316</option>
-<option value="8000">Stainless Steel 316L</option>
-<option value="7750">Stainless Steel 409</option>
+</optgroup>
+
+<optgroup label="Stainless Steel">
+
+<option value="8000">SS 304</option>
+<option value="8000">SS 316</option>
+<option value="8000">SS 316L</option>
+<option value="7750">SS 409</option>
+
+</optgroup>
+
+<optgroup label="Non-Ferrous Metals">
 
 <option value="2700">Aluminium</option>
+<option value="8940">Copper</option>
+<option value="8500">Brass</option>
+<option value="8800">Bronze</option>
+<option value="4500">Titanium</option>
+<option value="8900">Nickel</option>
+
+</optgroup>
+
+<optgroup label="Cast Material">
 
 <option value="7200">Cast Iron</option>
 
-<option value="8940">Copper</option>
-
-<option value="8500">Brass</option>
-
-<option value="8800">Bronze</option>
-
-<option value="4500">Titanium</option>
-
-<option value="8900">Nickel</option>
+</optgroup>
 
 </select>
 
-
+<p class="note">
+Enter all dimensions in millimetres (mm). Material density is automatically selected based on the chosen material.
+</p>
+  
 <div class="result-box">
+
+<h3>Calculation Result</h3>
 
 <div id="output"></div>
 
@@ -137,96 +195,80 @@ crossorigin="anonymous"></script>
 
 <div class="section">
 
-<h3>Engineering Knowledge</h3>
+<h2>Engineering Knowledge</h2>
 
 <p>
-
-A flange is a ring or rectangular frame used to join ducts, pipes, equipment and fabricated structures. The weight of a flange depends upon its developed centre line length, flange cross-sectional area, material density and quantity.
-
+A flange is a circular ring or rectangular frame used to connect ducts, pipes, equipment and fabricated structures. Flanges provide a rigid bolted or welded connection while maintaining dimensional accuracy during installation. The weight of a flange depends on its centre line length, cross-sectional area, material density and quantity.
 </p>
 
 <p>
-
-The calculator first determines the centre line length of the flange. It then calculates the cross-sectional area from flange width and thickness. The volume is obtained by multiplying the area with the centre line length. Finally, the flange weight is obtained by multiplying the volume by the material density.
-
+This calculator determines the flange centre line length from the entered dimensions. It then calculates the cross-sectional area using the flange width and thickness. The flange volume is obtained by multiplying the cross-sectional area by the centre line length, and the weight is calculated by multiplying the volume by the selected material density.
 </p>
 
 <h3>Formula</h3>
 
 <p class="formula">
-
-Volume = Cross Section Area × Centre Line Length
-
+Cross-sectional Area = Flange Width × Flange Thickness
 </p>
 
 <p class="formula">
-
-Weight = Volume × Density
-
+Volume = Cross-sectional Area × Centre Line Length
 </p>
 
-<h3>Rectangular Flange</h3>
+<p class="formula">
+Weight = Volume × Material Density
+</p>
+
+<h3>Rectangular Flange Calculation</h3>
 
 <div class="result-card">
 
 <table class="result-table">
 
 <tr>
-
 <th>Parameter</th>
 <th>Formula</th>
-
 </tr>
 
 <tr>
-
 <td>Outside Length</td>
 <td>Inside Length + 2 × Flange Width</td>
-
 </tr>
 
 <tr>
-
 <td>Outside Width</td>
 <td>Inside Width + 2 × Flange Width</td>
-
 </tr>
 
 <tr>
-
 <td>Centre Line Length</td>
 <td>2 × [(Inside Length + Flange Width) + (Inside Width + Flange Width)]</td>
-
 </tr>
 
 </table>
 
 </div>
-<h3>Circular Flange</h3>
+
+
+<h3>Circular Flange Calculation</h3>
 
 <div class="result-card">
 
 <table class="result-table">
 
 <tr>
-
 <th>Parameter</th>
 <th>Formula</th>
-
 </tr>
 
 <tr>
-
 <td>Centre Line Diameter</td>
 <td>Inside Diameter + Flange Width</td>
-
 </tr>
 
 <tr>
-
 <td>Centre Line Length</td>
 <td>π × (Inside Diameter + Flange Width)</td>
-
 </tr>
 
 </table>
@@ -240,45 +282,33 @@ Weight = Volume × Density
 <table class="result-table">
 
 <tr>
-
 <th>Material</th>
 <th>Density (kg/m³)</th>
-
 </tr>
 
 <tr>
-
 <td>Mild Steel</td>
 <td>7850</td>
-
 </tr>
 
 <tr>
-
 <td>Galvanized Steel</td>
 <td>7850</td>
-
 </tr>
 
 <tr>
-
 <td>Stainless Steel 304</td>
 <td>8000</td>
-
 </tr>
 
 <tr>
-
 <td>Stainless Steel 316</td>
 <td>8000</td>
-
 </tr>
 
 <tr>
-
 <td>Aluminium</td>
 <td>2700</td>
-
 </tr>
 
 </table>
@@ -288,61 +318,164 @@ Weight = Volume × Density
 <h3>Effect of Each Parameter</h3>
 
 <ul>
-
 <li><b>Larger inside dimensions:</b> Increase the flange centre line length and total weight.</li>
-
 <li><b>Greater flange width:</b> Increases both centre line length and cross-sectional area.</li>
-
 <li><b>Greater flange thickness:</b> Produces a heavier flange.</li>
-
 <li><b>Higher material density:</b> Produces a heavier flange for identical dimensions.</li>
-
 <li><b>Higher quantity:</b> Increases the total weight proportionally.</li>
-
+<li><b>Longer centre line length:</b> Requires more material and increases the flange weight.</li>
 </ul>
 
 <h3>Engineering Applications</h3>
 
 <ul>
-
-<li>HVAC duct flanges</li>
-
-<li>Industrial ventilation</li>
-
+<li>HVAC duct systems</li>
+<li>Industrial ventilation systems</li>
 <li>Dust collection systems</li>
-
-<li>Bag filter ducting</li>
-
+<li>Bag filter and ESP ductwork</li>
+<li>Boiler and flue gas ducting</li>
+<li>Industrial piping systems</li>
+<li>Cement plants</li>
+<li>Steel plants</li>
+<li>Power plants</li>
+<li>Chemical process plants</li>
 <li>Equipment fabrication</li>
-
 <li>Structural fabrication</li>
-
-<li>BOM preparation</li>
-
+<li>Bill of Material (BOM) preparation</li>
 <li>Procurement estimation</li>
-
 <li>Transportation planning</li>
-
-<li>Lifting calculations</li>
-
+<li>Lifting and handling calculations</li>
 </ul>
 
 <h3>Engineering Notes</h3>
 
 <ul>
-
-<li>Weight is calculated using the flange centre line.</li>
-
-<li>Corner welds, holes, bolts, nuts and gaskets are not included.</li>
-
-<li>All dimensions are entered in millimetres.</li>
-
-<li>Material density is selected from the dropdown list.</li>
-
-<li>The calculator is intended for fabrication estimation and engineering calculations.</li>
-
+<li>Weight is calculated using the flange centre line method.</li>
+<li>Corner welds, bolt holes, slots, nuts, bolts and gaskets are not included.</li>
+<li>All dimensions are entered in millimetres (mm).</li>
+<li>Material density values are typical engineering reference values.</li>
+<li>Results represent theoretical flange weight and do not include manufacturing tolerances.</li>
+<li>This calculator is intended for fabrication estimation, preliminary design and BOM preparation.</li>
 </ul>
 
+
+<h3>Common Engineering Standards</h3>
+
+<div class="result-card">
+
+<table class="result-table">
+
+<tr>
+<th>Standard</th>
+<th>Application</th>
+</tr>
+
+<tr>
+<td>SMACNA</td>
+<td>HVAC duct construction</td>
+</tr>
+
+<tr>
+<td>DW/144</td>
+<td>Sheet metal ductwork</td>
+</tr>
+
+<tr>
+<td>IS 2062</td>
+<td>Structural steel</td>
+</tr>
+
+<tr>
+<td>ASTM A36</td>
+<td>Carbon steel</td>
+</tr>
+
+<tr>
+<td>ASME B16.5</td>
+<td>Pipe flanges</td>
+</tr>
+
+</table>
+
+</div>
+
+
+<h3>Limitations</h3>
+
+<ul>
+<li>Suitable for uniform rectangular cross-section flanges.</li>
+<li>Bolt holes and cut-outs are not deducted from the weight.</li>
+<li>Does not include weld metal or reinforcement plates.</li>
+<li>Results are intended for estimation and engineering calculations.</li>
+</ul>
+  
+
+<h3>Frequently Asked Questions</h3>
+
+<div class="result-card">
+
+<table class="result-table">
+
+<tr>
+<th>Question</th>
+<th>Answer</th>
+</tr>
+
+<tr>
+<td>How is flange weight calculated?</td>
+<td>The calculator determines the centre line length, calculates the cross-sectional area from the flange width and thickness, determines the volume, and multiplies it by the selected material density to obtain the flange weight.</td>
+</tr>
+
+<tr>
+<td>Can this calculator calculate both circular and rectangular flanges?</td>
+<td>Yes. The calculator supports both circular and rectangular flanges. Simply select the required flange type and enter the corresponding dimensions.</td>
+</tr>
+
+<tr>
+<td>Are all dimensions entered in millimetres?</td>
+<td>Yes. All dimensions, including inside length, inside width, inside diameter, flange width and flange thickness, must be entered in millimetres (mm).</td>
+</tr>
+
+<tr>
+<td>Which materials are supported?</td>
+<td>The calculator supports Mild Steel, Carbon Steel, IS 2062 Structural Steel, Stainless Steel 304, Stainless Steel 316, Stainless Steel 316L, Stainless Steel 409, Aluminium, Cast Iron, Copper, Brass, Bronze, Titanium and Nickel.</td>
+</tr>
+
+<tr>
+<td>Are bolt holes and welds included in the weight?</td>
+<td>No. The calculated weight is based only on the flange geometry. Bolt holes, slots, welds, bolts, nuts and gaskets are not included.</td>
+</tr>
+
+<tr>
+<td>Can I calculate stainless steel flange weight?</td>
+<td>Yes. Select the required stainless steel grade from the material list, and the calculator uses the corresponding density for the calculation.</td>
+</tr>
+
+<tr>
+<td>Is the calculated weight theoretical or actual?</td>
+<td>The result is the theoretical flange weight based on the entered dimensions and material density. Manufacturing tolerances and fabrication allowances are not included.</td>
+</tr>
+
+<tr>
+<td>Can this calculator be used for HVAC duct flanges?</td>
+<td>Yes. It is suitable for HVAC duct flanges, industrial ventilation systems, bag filter ductwork, piping systems and general fabrication applications.</td>
+</tr>
+
+<tr>
+<td>Does the calculator calculate the total weight for multiple flanges?</td>
+<td>Yes. Enter the required quantity, and the calculator automatically calculates the total weight for all flanges.</td>
+</tr>
+
+<tr>
+<td>What is the centre line method?</td>
+<td>The centre line method calculates the flange length along the centre of its cross-section, providing an accurate estimate of material volume and flange weight.</td>
+</tr>
+
+</table>
+
+</div>
+
+  
 </div>
 
 </div>
@@ -353,7 +486,7 @@ Weight = Volume × Density
 
 <div>
 
-© 2026 Industrial Calculation Hub | Engineering Tools Portal
+© 2026 Industrial Calculation Hub. All Rights Reserved. Free Engineering Calculators | Unit Converters | Engineering Knowledge Base
 
 </div>
 
@@ -382,10 +515,10 @@ if(type==="rect"){
 document.getElementById("flangeInputs").innerHTML=`
 
 <label>Inside Length (mm)</label>
-<input type="number" id="insideLength" step="any" min="0">
+<input type="number" id="insideLength" step="any" min="0" placeholder="1000">
 
 <label>Inside Width (mm)</label>
-<input type="number" id="insideWidth" step="any" min="0">
+<input type="number" id="insideWidth" step="any" min="0" placeholder="800">
 
 `;
 
@@ -395,8 +528,8 @@ else{
 
 document.getElementById("flangeInputs").innerHTML=`
 
-<label>Inside Diameter (mm)</label>
-<input type="number" id="insideDiameter" step="any" min="0">
+<label for="insideDiameter">Inside Diameter (ID) (mm)</label>
+<input type="number" id="insideDiameter" step="any" min="0" placeholder="1000">
 
 `;
 
