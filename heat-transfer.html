@@ -91,7 +91,7 @@
 <h1>Heat Transfer Calculator</h1>
 
 <p>
-Calculate steady-state heat transfer using Fourier's Law of Conduction.
+Calculate steady-state heat conduction through a plate or pipe with insulation using Fourier's Law of Conduction.
 </p>
 
 <p class="last-updated">
@@ -102,10 +102,9 @@ Last Updated: July 15, 2026
 
 <div class="section">
 
-<label for="material">Material</label>
+<label for="materialPlate">Plate / Pipe Material</label>
 
-<select id="material"
-onchange="document.getElementById('k').value=this.value; calculateLive();">
+<select id="materialPlate">
 
 <optgroup label="Carbon Steel">
 
@@ -135,20 +134,9 @@ onchange="document.getElementById('k').value=this.value; calculateLive();">
 
 </optgroup>
 
-<optgroup label="Cast Material">
+<optgroup label="Cast Materials">
 
 <option value="55">Cast Iron</option>
-
-</optgroup>
-
-<optgroup label="Insulation Materials">
-
-<option value="0.040">Glass Wool</option>
-<option value="0.035">Rock Wool</option>
-<option value="0.028">Polyurethane Foam (PUF)</option>
-<option value="0.034">Expanded Polystyrene (EPS)</option>
-<option value="0.026">Extruded Polystyrene (XPS)</option>
-<option value="0.160">Calcium Silicate</option>
 
 </optgroup>
 
@@ -159,17 +147,86 @@ Select a material to automatically fill its typical thermal conductivity.
 You can also manually enter a custom value if required.
 </small>
 
-<label for="k">
-Thermal Conductivity, k (W/m·K)
+<label for="kPlate">
+Plate / Pipe Thermal Conductivity, k₁ (W/m·K)
 </label>
 
 <input
 type="number"
-id="k"
+id="kPlate"
 step="any"
 min="0"
-placeholder="e.g. 45">
+placeholder="Automatically filled from material selection">
 
+
+<label for="plateThickness">
+Plate / Pipe Thickness, L₁ (mm)
+</label>
+
+<input
+type="number"
+id="plateThickness"
+step="any"
+min="0"
+placeholder="e.g. 10">
+
+
+<small>
+Enter the wall thickness of the pipe, plate or vessel.
+</small>
+
+
+<label for="materialInsulation">Insulation Material</label>
+
+<select id="materialInsulation">
+
+<option value="0.040" selected>Glass Wool</option>
+<option value="0.035">Rock Wool</option>
+<option value="0.028">Polyurethane Foam (PUF)</option>
+<option value="0.034">Expanded Polystyrene (EPS)</option>
+<option value="0.026">Extruded Polystyrene (XPS)</option>
+<option value="0.160">Calcium Silicate</option>
+<option value="0.045">Ceramic Fibre Blanket</option>
+<option value="0.050">Mineral Wool</option>
+<option value="0.022">Aerogel Blanket</option>
+
+</select>
+
+
+<small>
+Select the insulation material to automatically populate a typical thermal conductivity value. You may manually edit the value if required.
+</small>
+  
+
+<label for="kInsulation">
+Insulation Thermal Conductivity, k₂ (W/m·K)
+</label>
+
+<input
+type="number"
+id="kInsulation"
+step="any"
+min="0"
+placeholder="Automatically filled from material selection">
+
+
+<label for="insulationThickness">
+Insulation Thickness, L₂ (mm)
+</label>
+
+<input
+type="number"
+id="insulationThickness"
+step="any"
+min="0"
+placeholder="e.g. 50">
+
+
+<small>
+Enter the installed insulation thickness.
+</small>
+
+  
 <label for="area">
 Heat Transfer Area, A (m²)
 </label>
@@ -181,8 +238,14 @@ step="any"
 min="0"
 placeholder="e.g. 10">
 
+
+<small>
+Enter the surface area through which heat is conducted. For pipes, use the external surface area of the insulated section being analysed.
+</small>
+
+  
 <label for="tempDiff">
-Temperature Difference, ΔT (°C)
+Temperature Difference (Hot Surface − Cold Surface), ΔT (°C)
 </label>
 
 <input
@@ -191,16 +254,10 @@ id="tempDiff"
 step="any"
 placeholder="e.g. 100">
 
-<label for="thickness">
-Conduction Length / Insulation Thickness, L (mm)
-</label>
-
-<input
-type="number"
-id="thickness"
-step="any"
-min="0"
-placeholder="e.g. 50">
+<small>
+Example: Hot pipe surface = 180°C and outside insulation surface = 40°C, therefore the temperature difference (ΔT) is 140°C.
+</small>
+  
 
 <div id="output" class="result-box" aria-live="polite"></div>
 
@@ -215,42 +272,85 @@ placeholder="e.g. 50">
 <h2>Engineering Knowledge</h2>
 
 <p>
-Heat transfer is the movement of thermal energy from a region of higher temperature to a region of lower temperature. In engineering, heat transfer calculations are essential for designing efficient equipment, reducing energy losses, selecting insulation, and improving the thermal performance of industrial systems.
+Heat transfer is the movement of thermal energy from a region of higher temperature to a region of lower temperature. In engineering applications, heat transfer calculations are essential for designing efficient equipment, reducing energy losses, selecting suitable insulation materials, and improving the thermal performance of industrial systems.
 </p>
+
 <p>
-This Heat Transfer Calculator uses <strong>Fourier's Law of Conduction</strong> to calculate the steady-state heat transfer rate through a solid material. It is suitable for estimating heat loss or heat gain through walls, plates, ducts, pipes, insulation, tanks, pressure vessels, furnaces, and other engineering components.
+This Heat Transfer Calculator uses <strong>Fourier's Law of Heat Conduction</strong> and the concept of <strong>thermal resistance</strong> to calculate steady-state heat transfer through single or multilayer solid systems. It can be used to estimate conductive heat transfer through walls, plates, pipes, insulation systems, ducts, tanks, pressure vessels, furnaces, and other mechanical and thermal engineering components.
 </p>
+
 <p>
-The calculator assumes one-dimensional steady-state heat conduction with constant material properties and no internal heat generation. These assumptions make it suitable for preliminary engineering calculations, equipment design, and educational purposes.
+The calculator evaluates heat flow through individual material layers by considering their thermal conductivity and thickness. For composite systems such as insulated pipes, walls, or vessels, the total thermal resistance is calculated by adding the resistance of each layer. The calculation assumes one-dimensional steady-state heat conduction, constant material properties, negligible thermal contact resistance, and no internal heat generation. These assumptions make it suitable for preliminary engineering calculations, equipment design studies, and educational applications.
 </p>
 
 <h3>Modes of Heat Transfer</h3>
+
 <p>
-Heat is transferred by three basic mechanisms:
+Heat transfer occurs through three fundamental mechanisms: conduction, convection, and radiation. In practical engineering systems, these mechanisms often occur simultaneously; however, this calculator evaluates only conductive heat transfer through solid materials.
 </p>
+
 <ul>
-<li><strong>Conduction:</strong> Transfer of heat through a solid material due to molecular interaction. This calculator evaluates conduction only.</li>
-<li><strong>Convection:</strong> Transfer of heat between a solid surface and a moving fluid such as air, water, steam, or process gases.</li>
-<li><strong>Radiation:</strong> Transfer of heat through electromagnetic waves without requiring a physical medium.</li>
+
+<li>
+<strong>Conduction:</strong> Transfer of heat through a solid material due to molecular interaction and energy transfer between adjacent molecules. This calculator evaluates steady-state conduction through single or multilayer systems such as metal walls, plates, pipes, and insulation layers.
+</li>
+
+<li>
+<strong>Convection:</strong> Transfer of heat between a solid surface and a moving fluid such as air, water, steam, or process gases. Convective resistance depends on fluid properties, velocity, and surface conditions and is not included in this calculation.
+</li>
+
+<li>
+<strong>Radiation:</strong> Transfer of heat through electromagnetic waves between surfaces without requiring a physical medium. Radiative heat transfer depends on surface temperature, emissivity, and view factors and is not considered in this calculator.
+</li>
+
 </ul>
 
 <h3>Fourier's Law of Heat Conduction</h3>
+
 <p>
-The rate of heat transfer through a solid material is calculated using Fourier's Law of Conduction:
+The rate of heat transfer through a solid material is governed by <strong>Fourier's Law of Heat Conduction</strong>. For a single homogeneous layer, the conductive heat transfer rate is calculated as:
 </p>
+
 <p class="formula">
 Q = (k × A × ΔT) / L
 </p>
+
 <p>
-The equation shows that heat transfer is directly proportional to the thermal conductivity of the material, the heat transfer area, and the temperature difference. It is inversely proportional to the material thickness.
+For composite systems containing multiple layers, such as metal walls with insulation, the thermal resistance approach is used. The total heat transfer rate is calculated as:
 </p>
+
+<p class="formula">
+Q = ΔT / R<sub>total</sub>
+</p>
+
+<p class="formula">
+R<sub>total</sub> = R₁ + R₂
+</p>
+
+<p class="formula">
+Where:
+<br>
+R₁ = L₁/(k₁ × A)
+<br>
+R₂ = L₂/(k₂ × A)
+</p>
+
 <p>
-In this calculator, thickness is entered in <strong>millimetres (mm)</strong> and automatically converted to <strong>metres (m)</strong> before the calculation is performed.
+Here, R₁ and R₂ represent the thermal resistance of individual material layers. A higher thermal resistance reduces heat flow, while materials with lower thermal conductivity provide better insulation performance.
+</p>
+
+<p>
+For multilayer systems such as insulated pipes, walls, tanks, and vessels, the total thermal resistance is calculated by adding the resistance of each individual layer.
+</p>
+
+<p>
+In this calculator, thickness values are entered in <strong>millimetres (mm)</strong> and automatically converted to <strong>metres (m)</strong> before the calculation is performed.
 </p>
 
 <h3>Meaning of Variables</h3>
 
 <div class="result-card">
+
 <table class="result-table">
 
 <tr>
@@ -264,44 +364,59 @@ In this calculator, thickness is entered in <strong>millimetres (mm)</strong> an
 <td><strong>Q</strong></td>
 <td>Heat Transfer Rate</td>
 <td>W</td>
-<td>Total heat flowing through the material.</td>
+<td>Total heat energy transferred through the composite system per unit time.</td>
 </tr>
 
 <tr>
-<td><strong>k</strong></td>
-<td>Thermal Conductivity</td>
+<td><strong>k₁, k₂</strong></td>
+<td>Thermal Conductivity of Individual Layers</td>
 <td>W/m·K</td>
-<td>Higher thermal conductivity results in greater heat transfer.</td>
+<td>Material property indicating the ability of each layer to conduct heat. Lower thermal conductivity materials provide better insulation performance.</td>
 </tr>
 
 <tr>
 <td><strong>A</strong></td>
 <td>Heat Transfer Area</td>
 <td>m²</td>
-<td>Larger surface area increases heat transfer.</td>
+<td>Surface area available for heat conduction. A larger area increases the heat transfer rate.</td>
 </tr>
 
 <tr>
 <td><strong>ΔT</strong></td>
-<td>Temperature Difference</td>
+<td>Temperature Difference Between Hot and Cold Surfaces</td>
 <td>°C or K</td>
-<td>A greater temperature difference increases heat flow.</td>
+<td>The driving force for heat transfer. A higher temperature difference increases heat flow.</td>
 </tr>
 
 <tr>
-<td><strong>L</strong></td>
-<td>Material Thickness</td>
+<td><strong>L₁, L₂</strong></td>
+<td>Thickness of Individual Material Layers</td>
 <td>m</td>
-<td>Greater thickness increases thermal resistance and reduces heat transfer.</td>
+<td>Thickness of each layer contributing to thermal resistance. Greater thickness increases resistance and reduces heat transfer.</td>
+</tr>
+
+<tr>
+<td><strong>R₁, R₂</strong></td>
+<td>Thermal Resistance of Individual Layers</td>
+<td>K/W</td>
+<td>Resistance offered by each material layer against heat flow. Higher thermal resistance reduces heat transfer.</td>
+</tr>
+
+<tr>
+<td><strong>R<sub>total</sub></strong></td>
+<td>Total Thermal Resistance</td>
+<td>K/W</td>
+<td>Sum of all individual layer resistances. It determines the overall heat flow through the composite system.</td>
 </tr>
 
 </table>
+
 </div>
 
 <h3>Typical Thermal Conductivity of Engineering Materials</h3>
 
 <p>
-The following thermal conductivity values are approximate and commonly used for preliminary engineering calculations.
+The following thermal conductivity values are approximate typical values used for preliminary engineering calculations. Actual values may vary depending on temperature, density, moisture content, material grade, and operating conditions.
 </p>
 
 <div class="result-card">
@@ -313,129 +428,265 @@ The following thermal conductivity values are approximate and commonly used for 
 <th>Thermal Conductivity (W/m·K)</th>
 </tr>
 
+<tr><td colspan="2"><strong>Metals</strong></td></tr>
+
 <tr><td>Copper</td><td>385</td></tr>
 <tr><td>Aluminium</td><td>205</td></tr>
-<tr><td>Carbon Steel</td><td>45</td></tr>
+<tr><td>Brass</td><td>109</td></tr>
+<tr><td>Nickel</td><td>91</td></tr>
+<tr><td>Bronze</td><td>60</td></tr>
 <tr><td>Cast Iron</td><td>55</td></tr>
+<tr><td>Carbon Steel</td><td>45</td></tr>
+<tr><td>Titanium</td><td>22</td></tr>
 <tr><td>Stainless Steel</td><td>16</td></tr>
+
+
+<tr>
+<td colspan="2"><strong>Construction and Other Materials</strong></td>
+</tr>
+
 <tr><td>Concrete</td><td>1.40</td></tr>
-<tr><td>Brick</td><td>0.70</td></tr>
 <tr><td>Glass</td><td>1.00</td></tr>
+<tr><td>Brick</td><td>0.70</td></tr>
 <tr><td>Water</td><td>0.60</td></tr>
 <tr><td>Wood</td><td>0.12</td></tr>
-<tr><td>Glass Wool</td><td>0.040</td></tr>
+
+
+<tr>
+<td colspan="2"><strong>Insulation Materials</strong></td>
+</tr>
+
+<tr><td>Aerogel Blanket</td><td>0.022</td></tr>
+<tr><td>Extruded Polystyrene (XPS)</td><td>0.026</td></tr>
+<tr><td>Polyurethane Foam (PUF)</td><td>0.028</td></tr>
+<tr><td>Expanded Polystyrene (EPS)</td><td>0.034</td></tr>
 <tr><td>Rock Wool</td><td>0.035</td></tr>
-<tr><td>Polyurethane Foam</td><td>0.028</td></tr>
+<tr><td>Glass Wool</td><td>0.040</td></tr>
+<tr><td>Ceramic Fibre Blanket</td><td>0.045</td></tr>
+<tr><td>Mineral Wool</td><td>0.050</td></tr>
+<tr><td>Calcium Silicate</td><td>0.160</td></tr>
 
 </table>
 
 </div>
 
+
 <h3>Engineering Applications</h3>
 
 <p>
-Heat transfer calculations are widely used in thermal design and energy efficiency studies across many industries.
+Heat transfer calculations are widely used in thermal design, insulation selection, energy conservation studies, and equipment performance evaluation across various industrial sectors. Engineers use these calculations to estimate heat loss, improve energy efficiency, maintain process temperatures, and optimise thermal insulation systems.
 </p>
 
 <ul>
 
-<li>Boilers and steam piping systems</li>
+<li>
+<strong>Boilers and Steam Systems:</strong> Estimation of heat loss from boiler surfaces, steam pipelines, headers, valves, and pressure parts to improve energy efficiency.
+</li>
 
-<li>HVAC ducts and ventilation systems</li>
+<li>
+<strong>Industrial Piping and Insulation Systems:</strong> Calculation of conductive heat transfer through pipe walls, insulation layers, cladding, and protective coverings.
+</li>
 
-<li>Heat exchangers and condensers</li>
+<li>
+<strong>HVAC and Ventilation Systems:</strong> Evaluation of heat gain or heat loss through insulated ducts, air handling systems, and building ventilation components.
+</li>
 
-<li>Pressure vessels and storage tanks</li>
+<li>
+<strong>Pressure Vessels and Storage Tanks:</strong> Thermal insulation design for tanks, vessels, reactors, and process equipment operating at high or low temperatures.
+</li>
 
-<li>Industrial furnaces and ovens</li>
+<li>
+<strong>Heat Exchangers and Process Equipment:</strong> Preliminary thermal analysis of equipment where heat transfer through solid walls affects performance.
+</li>
 
-<li>Chemical process equipment</li>
+<li>
+<strong>Power Plants and Energy Systems:</strong> Assessment of thermal losses from boilers, turbines, steam systems, and auxiliary equipment.
+</li>
 
-<li>Power plants and energy systems</li>
+<li>
+<strong>Air Pollution Control Systems:</strong> Thermal evaluation of ducts, bag filters, ESP systems, FGD equipment, and gas handling systems where temperature control is important.
+</li>
 
-<li>Cryogenic storage and LNG facilities</li>
+<li>
+<strong>Cement, Steel, and Chemical Industries:</strong> Insulation and heat loss calculations for furnaces, reactors, kilns, pipelines, and high-temperature equipment.
+</li>
 
-<li>Food processing equipment</li>
+<li>
+<strong>Cryogenic and LNG Facilities:</strong> Estimation of heat ingress through insulated systems operating at very low temperatures.
+</li>
 
-<li>Building insulation and energy conservation</li>
+<li>
+<strong>Building and Energy Conservation:</strong> Analysis of insulation performance for walls, roofs, and other building components to reduce energy consumption.
+</li>
 
 </ul>
 
 <h3>Engineering Interpretation of Results</h3>
 
 <p>
-A higher calculated heat transfer rate indicates that more thermal energy is flowing through the material. This may increase energy consumption, reduce process efficiency, or create higher external surface temperatures where insulation is inadequate.
+The calculated heat transfer rate represents the amount of thermal energy passing through the combined material layers under steady-state conditions. A higher heat transfer rate indicates lower thermal resistance and greater heat flow through the system.
 </p>
 
 <p>
-A lower heat transfer rate generally indicates better insulation performance and improved energy efficiency. Engineers often optimise insulation thickness to achieve the desired balance between installation cost and long-term energy savings.
+In insulated systems, a lower heat transfer rate generally indicates better insulation performance, reduced energy losses, and improved process efficiency. Engineers use thermal resistance calculations to select suitable insulation materials and optimise insulation thickness based on operating temperature, energy savings, and installation cost.
 </p>
+
+<p>
+For industrial applications, the calculated value helps in estimating heat loss from pipelines, tanks, vessels, ducts, furnaces, and process equipment. However, actual heat loss may also include convection, radiation, thermal bridges, moisture effects, and temperature-dependent material properties.
+</p>
+
 
 <h3>Example Calculation</h3>
 
 <p>
-Consider a carbon steel plate with the following properties:
+Consider an insulated carbon steel wall with the following properties:
 </p>
 
 <ul>
 
-<li>Thermal Conductivity (k) = 45 W/m·K</li>
+<li>Steel thermal conductivity (k₁) = 45 W/m·K</li>
 
-<li>Heat Transfer Area (A) = 2 m²</li>
+<li>Steel thickness (L₁) = 10 mm</li>
 
-<li>Temperature Difference (ΔT) = 100°C</li>
+<li>Mineral wool insulation conductivity (k₂) = 0.04 W/m·K</li>
 
-<li>Thickness (L) = 20 mm</li>
+<li>Insulation thickness (L₂) = 50 mm</li>
+
+<li>Heat transfer area (A) = 10 m²</li>
+
+<li>Temperature difference (ΔT) = 100°C</li>
 
 </ul>
 
+
 <p>
-Convert thickness:
+Convert thickness values:
 </p>
 
 <p>
-20 mm = 0.02 m
+Steel thickness = 10 mm = 0.01 m
+</p>
+
+<p>
+Insulation thickness = 50 mm = 0.05 m
+</p>
+
+
+<p>
+Calculate thermal resistance of each layer:
 </p>
 
 <p class="formula">
-Q = (45 × 2 × 100) ÷ 0.02 = 450,000 W
+R₁ = L₁/(k₁ × A)
 </p>
 
-<p>
-Therefore, the calculated heat transfer rate is <strong>450 kW</strong>.
+<p class="formula">
+R₁ = 0.01/(45 × 10) = 0.000022 K/W
 </p>
+
+
+<p class="formula">
+R₂ = L₂/(k₂ × A)
+</p>
+
+<p class="formula">
+R₂ = 0.05/(0.04 × 10) = 0.125 K/W
+</p>
+
+
+<p>
+Total thermal resistance:
+</p>
+
+<p class="formula">
+R<sub>total</sub> = R₁ + R₂ = 0.125022 K/W
+</p>
+
+
+<p>
+Heat transfer rate:
+</p>
+
+<p class="formula">
+Q = ΔT / R<sub>total</sub>
+</p>
+
+<p class="formula">
+Q = 100 / 0.125022 ≈ 800 W
+</p>
+
+
+<p>
+Therefore, the calculated heat transfer rate through the insulated wall is approximately <strong>0.8 kW</strong>.
+</p>
+
 
 <h3>Design Considerations</h3>
 
 <ul>
 
-<li>Select insulation materials with low thermal conductivity to minimise heat loss.</li>
+<li>
+Select insulation materials with low thermal conductivity to increase thermal resistance and minimise heat loss or heat gain.
+</li>
 
-<li>Increasing insulation thickness significantly reduces conductive heat transfer.</li>
+<li>
+Increasing insulation thickness increases the total thermal resistance of the system and generally reduces conductive heat transfer. However, the optimum thickness should consider installation cost, energy savings, and operating conditions.
+</li>
 
-<li>Minimise thermal bridges around supports, flanges, and structural connections.</li>
+<li>
+Minimise thermal bridges around supports, flanges, valves, joints, and structural connections because these areas can significantly increase heat leakage.
+</li>
 
-<li>Select insulation materials suitable for the operating temperature range.</li>
+<li>
+Select insulation materials suitable for the operating temperature range, mechanical environment, moisture conditions, and chemical exposure of the application.
+</li>
 
-<li>Consider moisture resistance and corrosion protection for outdoor installations.</li>
+<li>
+For outdoor installations, consider moisture resistance, weather protection, vapour barriers, cladding, and corrosion protection of the underlying equipment.
+</li>
 
-<li>For detailed thermal design, also evaluate convection and radiation losses.</li>
+<li>
+For complete thermal design, evaluate convection and radiation heat transfer from external surfaces in addition to conduction through solid layers.
+</li>
+
+<li>
+For cylindrical equipment such as large pipes and vessels, consider cylindrical thermal resistance calculations where the curvature effect becomes significant.
+</li>
 
 </ul>
+
 
 <h3>Important Notes</h3>
 
 <ul>
 
-<li>This calculator assumes steady-state one-dimensional heat conduction.</li>
+<li>
+This calculator assumes steady-state one-dimensional heat conduction through single or multilayer solid materials.
+</li>
 
-<li>Thermal conductivity is assumed to remain constant.</li>
+<li>
+Thermal conductivity values are assumed constant during the calculation. In actual applications, conductivity may vary with temperature, density, and moisture content.
+</li>
 
-<li>Internal heat generation within the material is not considered.</li>
+<li>
+Internal heat generation within the material layers is not considered.
+</li>
 
-<li>Thermal contact resistance between surfaces is neglected.</li>
+<li>
+Thermal contact resistance between material interfaces is neglected.
+</li>
 
-<li>The calculator provides preliminary engineering calculations and should not replace detailed thermal design.</li>
+<li>
+The calculation does not include external convection or radiation heat transfer losses.
+</li>
+
+<li>
+For thick cylindrical pipes, complex geometries, transient conditions, or detailed equipment design, additional thermal analysis may be required.
+</li>
+
+<li>
+The calculator provides preliminary engineering estimates and should not replace detailed thermal design calculations or manufacturer-specific data.
+</li>
 
 </ul>
 
@@ -444,46 +695,72 @@ Therefore, the calculated heat transfer rate is <strong>450 kW</strong>.
 <h4>What is Fourier's Law of Heat Conduction?</h4>
 
 <p>
-Fourier's Law states that the heat transfer rate through a solid material is directly proportional to its thermal conductivity, heat transfer area, and temperature difference, and inversely proportional to the material thickness.
+Fourier's Law of Heat Conduction describes the relationship between heat transfer rate, thermal conductivity, heat transfer area, temperature difference, and material thickness. It states that heat flow increases with higher thermal conductivity, larger area, and greater temperature difference, while increasing material thickness reduces heat transfer by increasing thermal resistance.
 </p>
+
+
+<h4>How does this Heat Transfer Calculator work?</h4>
+
+<p>
+This calculator uses the thermal resistance method based on Fourier's Law to calculate steady-state heat transfer through single or multilayer solid systems. For insulated systems, the resistance of each material layer is added to determine the total thermal resistance and heat transfer rate.
+</p>
+
 
 <h4>Why is thickness entered in millimetres?</h4>
 
 <p>
-Most engineering drawings and insulation specifications use millimetres. The calculator automatically converts the entered value into metres before performing the calculation.
+Most engineering drawings, piping specifications, and insulation standards use millimetres for thickness dimensions. The calculator automatically converts the entered thickness values into metres before performing the thermal resistance calculation.
 </p>
+
 
 <h4>Can this calculator be used for insulation calculations?</h4>
 
 <p>
-Yes. It can estimate conductive heat transfer through insulation, walls, ducts, tanks, pipelines, pressure vessels, and similar solid components operating under steady-state conditions.
+Yes. It can be used for preliminary insulation calculations for pipelines, ducts, tanks, pressure vessels, walls, and other insulated equipment. It helps estimate conductive heat transfer through insulation layers and compare the effect of different insulation materials and thicknesses.
 </p>
 
-<h4>Does the calculator include convection or radiation?</h4>
+
+<h4>Does the calculator include convection or radiation heat transfer?</h4>
 
 <p>
-No. This calculator evaluates only heat conduction using Fourier's Law. Convective and radiative heat transfer must be analysed separately where applicable.
+No. This calculator evaluates only conduction through solid materials using Fourier's Law and thermal resistance principles. External convection and radiation heat transfer from surfaces must be analysed separately for complete thermal design.
 </p>
 
-<h4>Can this calculator be used for HVAC and process engineering?</h4>
+
+<h4>Can this calculator be used for pipes and cylindrical equipment?</h4>
 
 <p>
-Yes. It is suitable for HVAC systems, industrial process plants, power stations, chemical plants, oil and gas facilities, and general mechanical and thermal engineering applications.
+Yes, it can provide preliminary estimates for pipe walls and insulated systems. However, for thick cylindrical pipes, large diameter vessels, or high accuracy requirements, cylindrical thermal resistance calculations should be used because the heat conduction path varies with radius.
 </p>
+
+
+<h4>Can this calculator be used for HVAC and industrial process applications?</h4>
+
+<p>
+Yes. It is suitable for HVAC ducts, steam pipelines, industrial furnaces, boilers, power plants, chemical processing equipment, storage tanks, and other thermal engineering applications where conductive heat transfer through solid layers is important.
+</p>
+
 
 <h4>How accurate are the results?</h4>
 
 <p>
-The results are accurate for steady-state conduction calculations when correct material properties and dimensions are entered. For detailed equipment design, additional factors such as convection, radiation, variable material properties, and transient operating conditions should also be considered.
+The results are suitable for preliminary engineering calculations when correct material properties, thickness values, and operating conditions are entered. Actual equipment performance may vary due to temperature-dependent thermal conductivity, moisture content, thermal bridges, contact resistance, convection, radiation, and other operating factors.
 </p>
 
+<h4>Why does adding insulation reduce heat transfer?</h4>
+
+<p>
+Insulation materials have low thermal conductivity, which increases the total thermal resistance of the system. A higher thermal resistance reduces the amount of heat transferred for the same temperature difference, resulting in lower heat loss or heat gain.
+</p>
 </div>
 
 </div>
 
 
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
+
+  
 <div class="footer">
 
 <div>© 2026 Industrial Calculation Hub. All Rights Reserved. Free Engineering Calculators | Unit Converters | Engineering Knowledge Base</div>
@@ -503,22 +780,34 @@ The results are accurate for steady-state conduction calculations when correct m
 <script>
 function calculateLive() {
 
-    const material = document.getElementById("material");
-    const materialName = material.options[material.selectedIndex].text;
+const plateMaterial = document.getElementById("materialPlate");
+const plateMaterialName = plateMaterial.options[plateMaterial.selectedIndex].text;
 
-    const k = parseFloat(document.getElementById("k").value);
+const insulationMaterial = document.getElementById("materialInsulation");
+const insulationMaterialName = insulationMaterial.options[insulationMaterial.selectedIndex].text;
+
+const kPlate = parseFloat(document.getElementById("kPlate").value);
+const kInsulation = parseFloat(document.getElementById("kInsulation").value);
     const A = parseFloat(document.getElementById("area").value);
     const dT = parseFloat(document.getElementById("tempDiff").value);
-    const L_mm = parseFloat(document.getElementById("thickness").value);
+const plateThickness_mm = parseFloat(document.getElementById("plateThickness").value);
+const insulationThickness_mm = parseFloat(document.getElementById("insulationThickness").value);
 
     const output = document.getElementById("output");
 
-    if ([k, A, dT, L_mm].some(v => isNaN(v))) {
+    if ([kPlate, kInsulation, A, dT, plateThickness_mm, insulationThickness_mm].some(v => isNaN(v))) {
         output.innerHTML = "";
         return;
     }
 
-    if (k <= 0 || A <= 0 || dT <= 0 || L_mm <= 0) {
+    if (
+    kPlate <= 0 ||
+    kInsulation <= 0 ||
+    A <= 0 ||
+    dT <= 0 ||
+    plateThickness_mm <= 0 ||
+    insulationThickness_mm <= 0
+) {
         output.innerHTML = `
             <div class="result-card">
                 Please enter positive values for thermal conductivity, heat transfer area,
@@ -528,9 +817,20 @@ function calculateLive() {
         return;
     }
 
-    const L = L_mm / 1000;
+const plateThickness = plateThickness_mm / 1000;
+const insulationThickness = insulationThickness_mm / 1000;
 
-    const Q = (k * A * dT) / L;
+const plateResistance =
+    plateThickness / (kPlate * A);
+
+const insulationResistance =
+    insulationThickness / (kInsulation * A);
+
+const totalResistance =
+    plateResistance + insulationResistance;
+
+const Q =
+    dT / totalResistance;
     const QkW = Q / 1000;
     const QMW = Q / 1000000;
 
@@ -541,52 +841,101 @@ function calculateLive() {
 
             <table class="result-table">
 
-                <tr>
-                    <th>Parameter</th>
-                    <th>Value</th>
-                </tr>
+<tr>
+    <th>Parameter</th>
+    <th>Value</th>
+</tr>
 
-                <tr>
-                    <td>Material</td>
-                    <td>${materialName}</td>
-                </tr>
+<tr>
+    <td>Plate Material</td>
+    <td>${plateMaterialName}</td>
+</tr>
 
-                <tr>
-                    <td>Thermal Conductivity</td>
-                    <td>${k.toLocaleString()} W/m·K</td>
-                </tr>
+<tr>
+    <td>Plate Thermal Conductivity</td>
+    <td>${kPlate.toFixed(4)} W/m·K</td>
+</tr>
 
-                <tr>
-                    <td>Heat Transfer Area</td>
-                    <td>${A.toLocaleString()} m²</td>
-                </tr>
+<tr>
+    <td>Plate Thickness</td>
+    <td>${plateThickness_mm.toLocaleString()} mm (${plateThickness.toFixed(4)} m)</td>
+</tr>
 
-                <tr>
-                    <td>Temperature Difference</td>
-                    <td>${dT.toLocaleString()} °C</td>
-                </tr>
 
-                <tr>
-                    <td>Material Thickness</td>
-                    <td>${L_mm.toLocaleString()} mm (${L.toFixed(3)} m)</td>
-                </tr>
+<tr>
+    <td>Insulation Material</td>
+    <td>${insulationMaterialName}</td>
+</tr>
 
-                <tr>
-                    <td>Heat Transfer Rate</td>
-                    <td>${Q.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})} W</td>
-                </tr>
+<tr>
+    <td>Insulation Thermal Conductivity</td>
+    <td>${kInsulation.toFixed(4)} W/m·K</td>
+</tr>
 
-                <tr>
-                    <td>Heat Transfer Rate</td>
-                    <td>${QkW.toLocaleString(undefined,{minimumFractionDigits:3,maximumFractionDigits:3})} kW</td>
-                </tr>
+<tr>
+    <td>Insulation Thickness</td>
+    <td>${insulationThickness_mm.toLocaleString()} mm (${insulationThickness.toFixed(4)} m)</td>
+</tr>
 
-                <tr>
-                    <td>Heat Transfer Rate</td>
-                    <td>${QMW.toLocaleString(undefined,{minimumFractionDigits:6,maximumFractionDigits:6})} MW</td>
-                </tr>
 
-            </table>
+<tr>
+    <td>Heat Transfer Area (A)</td>
+    <td>${A.toLocaleString()} m²</td>
+</tr>
+
+<tr>
+    <td>Temperature Difference (ΔT)</td>
+    <td>${dT.toLocaleString()} °C</td>
+</tr>
+
+
+<tr>
+    <td>Plate Thermal Resistance</td>
+    <td>${plateResistance.toFixed(6)} K/W</td>
+</tr>
+
+<tr>
+    <td>Insulation Thermal Resistance</td>
+    <td>${insulationResistance.toFixed(6)} K/W</td>
+</tr>
+
+<tr>
+    <td>Total Thermal Resistance</td>
+    <td>${totalResistance.toFixed(6)} K/W</td>
+</tr>
+
+
+<tr>
+    <td>Heat Transfer Rate (W)</td>
+    <td>
+        ${Q.toLocaleString(undefined,{
+            minimumFractionDigits:2,
+            maximumFractionDigits:2
+        })} W
+    </td>
+</tr>
+
+<tr>
+    <td>Heat Transfer Rate (kW)</td>
+    <td>
+        ${QkW.toLocaleString(undefined,{
+            minimumFractionDigits:3,
+            maximumFractionDigits:3
+        })} kW
+    </td>
+</tr>
+
+<tr>
+    <td>Heat Transfer Rate (MW)</td>
+    <td>
+        ${QMW.toLocaleString(undefined,{
+            minimumFractionDigits:6,
+            maximumFractionDigits:6
+        })} MW
+    </td>
+</tr>
+
+</table>
 
 
 
@@ -596,14 +945,51 @@ function calculateLive() {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    document.getElementById("k").value =
-        document.getElementById("material").value;
+    const plateMaterial = document.getElementById("materialPlate");
+    const insulationMaterial = document.getElementById("materialInsulation");
 
-    document.querySelectorAll("#k, #area, #tempDiff, #thickness")
-        .forEach(el => el.addEventListener("input", calculateLive));
+    const kPlate = document.getElementById("kPlate");
+    const kInsulation = document.getElementById("kInsulation");
 
-    document.getElementById("material")
-        .addEventListener("change", calculateLive);
+
+    // Set initial conductivity values from selected materials
+    kPlate.value = plateMaterial.value;
+    kInsulation.value = insulationMaterial.value;
+
+
+    // Update plate conductivity when material changes
+    plateMaterial.addEventListener("change", () => {
+
+        kPlate.value = plateMaterial.value;
+
+        calculateLive();
+
+    });
+
+
+    // Update insulation conductivity when material changes
+    insulationMaterial.addEventListener("change", () => {
+
+        kInsulation.value = insulationMaterial.value;
+
+        calculateLive();
+
+    });
+
+
+    // Live calculation for manual inputs
+    document.querySelectorAll(
+        "#kPlate,#kInsulation,#area,#tempDiff,#plateThickness,#insulationThickness"
+    )
+    .forEach(el => {
+
+        el.addEventListener("input", calculateLive);
+
+    });
+
+
+    // Initial calculation on page load
+    calculateLive();
 
 });
 </script>
