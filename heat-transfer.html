@@ -116,52 +116,277 @@ Last Updated: July 15, 2026
 </div>
 
 
-
+<!-- ================= ENGINEERING KNOWLEDGE ================= -->
 <div class="section">
-  <h3>Engineering Knowledge</h3>
 
-  <p>
-    <b>Heat conduction</b> is the transfer of thermal energy through a solid material
-    due to a temperature difference.
-  </p>
+<h2>Engineering Knowledge</h2>
 
-  <p>
-    According to <b>Fourier’s Law of Heat Conduction</b>, heat transfer rate is:
-  </p>
+<p>
+Heat transfer is the movement of thermal energy from a region of higher temperature to a region of lower temperature. In engineering, heat transfer calculations are essential for designing efficient equipment, reducing energy losses, selecting insulation, and improving the thermal performance of industrial systems.
+</p>
+<p>
+This Heat Transfer Calculator uses <strong>Fourier's Law of Conduction</strong> to calculate the steady-state heat transfer rate through a solid material. It is suitable for estimating heat loss or heat gain through walls, plates, ducts, pipes, insulation, tanks, pressure vessels, furnaces, and other engineering components.
+</p>
+<p>
+The calculator assumes one-dimensional steady-state heat conduction with constant material properties and no internal heat generation. These assumptions make it suitable for preliminary engineering calculations, equipment design, and educational purposes.
+</p>
 
-  <p class="formula">
-    Q = (k × A × ΔT) / L
-  </p>
+<h3>Modes of Heat Transfer</h3>
+<p>
+Heat is transferred by three basic mechanisms:
+</p>
+<ul>
+<li><strong>Conduction:</strong> Transfer of heat through a solid material due to molecular interaction. This calculator evaluates conduction only.</li>
+<li><strong>Convection:</strong> Transfer of heat between a solid surface and a moving fluid such as air, water, steam, or process gases.</li>
+<li><strong>Radiation:</strong> Transfer of heat through electromagnetic waves without requiring a physical medium.</li>
+</ul>
 
-  <p>
-    Where <b>L is the conduction length (thickness in meters)</b>.  
-    In this calculator, thickness is entered in <b>mm and converted to meters internally</b>.
-  </p>
-  
-  <div class="result-card">
-  <table class="result-table">
-    <tr>
-      <th>Symbol</th>
-      <th>Description</th>
-      <th>Unit</th>
-    </tr>
+<h3>Fourier's Law of Heat Conduction</h3>
+<p>
+The rate of heat transfer through a solid material is calculated using Fourier's Law of Conduction:
+</p>
+<p class="formula">
+Q = (k × A × ΔT) / L
+</p>
+<p>
+The equation shows that heat transfer is directly proportional to the thermal conductivity of the material, the heat transfer area, and the temperature difference. It is inversely proportional to the material thickness.
+</p>
+<p>
+In this calculator, thickness is entered in <strong>millimetres (mm)</strong> and automatically converted to <strong>metres (m)</strong> before the calculation is performed.
+</p>
 
-    <tr><td>Q</td><td>Heat Transfer Rate</td><td>W</td></tr>
-    <tr><td>k</td><td>Thermal Conductivity</td><td>W/m·K</td></tr>
-    <tr><td>A</td><td>Heat Transfer Area</td><td>m²</td></tr>
-    <tr><td>ΔT</td><td>Temperature Difference</td><td>°C or K</td></tr>
-    <tr><td>L</td><td>Conduction Length (Thickness)</td><td>m</td></tr>
-  </table>
-  </div>
-  
-  <h3>Engineering Insight</h3>
-  <ul>
-    <li>Higher thermal conductivity increases heat transfer.</li>
-    <li>Greater area increases heat flow.</li>
-    <li>Higher temperature difference increases heat transfer rate.</li>
-    <li>Greater thickness reduces heat transfer significantly.</li>
-  </ul>
+<h3>Meaning of Variables</h3>
+
+<div class="result-card">
+<table class="result-table">
+
+<tr>
+<th>Symbol</th>
+<th>Description</th>
+<th>Unit</th>
+<th>Engineering Importance</th>
+</tr>
+
+<tr>
+<td><strong>Q</strong></td>
+<td>Heat Transfer Rate</td>
+<td>W</td>
+<td>Total heat flowing through the material.</td>
+</tr>
+
+<tr>
+<td><strong>k</strong></td>
+<td>Thermal Conductivity</td>
+<td>W/m·K</td>
+<td>Higher thermal conductivity results in greater heat transfer.</td>
+</tr>
+
+<tr>
+<td><strong>A</strong></td>
+<td>Heat Transfer Area</td>
+<td>m²</td>
+<td>Larger surface area increases heat transfer.</td>
+</tr>
+
+<tr>
+<td><strong>ΔT</strong></td>
+<td>Temperature Difference</td>
+<td>°C or K</td>
+<td>A greater temperature difference increases heat flow.</td>
+</tr>
+
+<tr>
+<td><strong>L</strong></td>
+<td>Material Thickness</td>
+<td>m</td>
+<td>Greater thickness increases thermal resistance and reduces heat transfer.</td>
+</tr>
+
+</table>
 </div>
+
+<h3>Typical Thermal Conductivity of Engineering Materials</h3>
+
+<p>
+The following thermal conductivity values are approximate and commonly used for preliminary engineering calculations.
+</p>
+
+<div class="result-card">
+
+<table class="result-table">
+
+<tr>
+<th>Material</th>
+<th>Thermal Conductivity (W/m·K)</th>
+</tr>
+
+<tr><td>Copper</td><td>385</td></tr>
+<tr><td>Aluminium</td><td>205</td></tr>
+<tr><td>Carbon Steel</td><td>45</td></tr>
+<tr><td>Cast Iron</td><td>55</td></tr>
+<tr><td>Stainless Steel</td><td>16</td></tr>
+<tr><td>Concrete</td><td>1.40</td></tr>
+<tr><td>Brick</td><td>0.70</td></tr>
+<tr><td>Glass</td><td>1.00</td></tr>
+<tr><td>Water</td><td>0.60</td></tr>
+<tr><td>Wood</td><td>0.12</td></tr>
+<tr><td>Glass Wool</td><td>0.040</td></tr>
+<tr><td>Rock Wool</td><td>0.035</td></tr>
+<tr><td>Polyurethane Foam</td><td>0.028</td></tr>
+
+</table>
+
+</div>
+
+<h3>Engineering Applications</h3>
+
+<p>
+Heat transfer calculations are widely used in thermal design and energy efficiency studies across many industries.
+</p>
+
+<ul>
+
+<li>Boilers and steam piping systems</li>
+
+<li>HVAC ducts and ventilation systems</li>
+
+<li>Heat exchangers and condensers</li>
+
+<li>Pressure vessels and storage tanks</li>
+
+<li>Industrial furnaces and ovens</li>
+
+<li>Chemical process equipment</li>
+
+<li>Power plants and energy systems</li>
+
+<li>Cryogenic storage and LNG facilities</li>
+
+<li>Food processing equipment</li>
+
+<li>Building insulation and energy conservation</li>
+
+</ul>
+
+<h3>Engineering Interpretation of Results</h3>
+
+<p>
+A higher calculated heat transfer rate indicates that more thermal energy is flowing through the material. This may increase energy consumption, reduce process efficiency, or create higher external surface temperatures where insulation is inadequate.
+</p>
+
+<p>
+A lower heat transfer rate generally indicates better insulation performance and improved energy efficiency. Engineers often optimise insulation thickness to achieve the desired balance between installation cost and long-term energy savings.
+</p>
+
+<h3>Example Calculation</h3>
+
+<p>
+Consider a carbon steel plate with the following properties:
+</p>
+
+<ul>
+
+<li>Thermal Conductivity (k) = 45 W/m·K</li>
+
+<li>Heat Transfer Area (A) = 2 m²</li>
+
+<li>Temperature Difference (ΔT) = 100°C</li>
+
+<li>Thickness (L) = 20 mm</li>
+
+</ul>
+
+<p>
+Convert thickness:
+</p>
+
+<p>
+20 mm = 0.02 m
+</p>
+
+<p class="formula">
+Q = (45 × 2 × 100) ÷ 0.02 = 450,000 W
+</p>
+
+<p>
+Therefore, the calculated heat transfer rate is <strong>450 kW</strong>.
+</p>
+
+<h3>Design Considerations</h3>
+
+<ul>
+
+<li>Select insulation materials with low thermal conductivity to minimise heat loss.</li>
+
+<li>Increasing insulation thickness significantly reduces conductive heat transfer.</li>
+
+<li>Minimise thermal bridges around supports, flanges, and structural connections.</li>
+
+<li>Select insulation materials suitable for the operating temperature range.</li>
+
+<li>Consider moisture resistance and corrosion protection for outdoor installations.</li>
+
+<li>For detailed thermal design, also evaluate convection and radiation losses.</li>
+
+</ul>
+
+<h3>Important Notes</h3>
+
+<ul>
+
+<li>This calculator assumes steady-state one-dimensional heat conduction.</li>
+
+<li>Thermal conductivity is assumed to remain constant.</li>
+
+<li>Internal heat generation within the material is not considered.</li>
+
+<li>Thermal contact resistance between surfaces is neglected.</li>
+
+<li>The calculator provides preliminary engineering calculations and should not replace detailed thermal design.</li>
+
+</ul>
+
+<h3>Frequently Asked Questions</h3>
+
+<h4>What is Fourier's Law of Heat Conduction?</h4>
+
+<p>
+Fourier's Law states that the heat transfer rate through a solid material is directly proportional to its thermal conductivity, heat transfer area, and temperature difference, and inversely proportional to the material thickness.
+</p>
+
+<h4>Why is thickness entered in millimetres?</h4>
+
+<p>
+Most engineering drawings and insulation specifications use millimetres. The calculator automatically converts the entered value into metres before performing the calculation.
+</p>
+
+<h4>Can this calculator be used for insulation calculations?</h4>
+
+<p>
+Yes. It can estimate conductive heat transfer through insulation, walls, ducts, tanks, pipelines, pressure vessels, and similar solid components operating under steady-state conditions.
+</p>
+
+<h4>Does the calculator include convection or radiation?</h4>
+
+<p>
+No. This calculator evaluates only heat conduction using Fourier's Law. Convective and radiative heat transfer must be analysed separately where applicable.
+</p>
+
+<h4>Can this calculator be used for HVAC and process engineering?</h4>
+
+<p>
+Yes. It is suitable for HVAC systems, industrial process plants, power stations, chemical plants, oil and gas facilities, and general mechanical and thermal engineering applications.
+</p>
+
+<h4>How accurate are the results?</h4>
+
+<p>
+The results are accurate for steady-state conduction calculations when correct material properties and dimensions are entered. For detailed equipment design, additional factors such as convection, radiation, variable material properties, and transient operating conditions should also be considered.
+</p>
+
+</div>
+```
+
 
 </div>
 
