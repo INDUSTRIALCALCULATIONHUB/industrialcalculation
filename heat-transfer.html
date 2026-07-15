@@ -105,7 +105,7 @@ Last Updated: July 15, 2026
 
 <label for="material">Material</label>
 
-<select id="material" onchange="document.getElementById('k').value=this.value;">
+<select id="material"onchange="document.getElementById('k').value=this.value;calculateLive();">
 
 <optgroup label="Carbon Steel">
 
@@ -206,7 +206,7 @@ placeholder="e.g. 50">
 
 </div>
 
-</div>
+
   
 
 <!-- ================= ENGINEERING KNOWLEDGE ================= -->
@@ -479,9 +479,9 @@ The results are accurate for steady-state conduction calculations when correct m
 
 </div>
 
-
-
 </div>
+
+
 
 <!-- FOOTER -->
 <div class="footer">
@@ -572,25 +572,23 @@ function calculateLive() {
                 </tr>
 
                 <tr>
-                    <td><strong>Heat Transfer Rate</strong></td>
-                    <td><strong>${Q.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})} W</strong></td>
+                    <td>Heat Transfer Rate</td>
+                    <td>${Q.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})} W</td>
                 </tr>
 
                 <tr>
-                    <td></td>
+                    <td>Heat Transfer Rate</td>
                     <td>${QkW.toLocaleString(undefined,{minimumFractionDigits:3,maximumFractionDigits:3})} kW</td>
                 </tr>
 
                 <tr>
-                    <td></td>
+                    <td>Heat Transfer Rate</td>
                     <td>${QMW.toLocaleString(undefined,{minimumFractionDigits:6,maximumFractionDigits:6})} MW</td>
                 </tr>
 
             </table>
 
-            <p class="formula">
-                Q = (k × A × ΔT) / L
-            </p>
+
 
         </div>
     `;
