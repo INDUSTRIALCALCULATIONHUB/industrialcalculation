@@ -87,34 +87,127 @@
 <!-- ================= WRAPPER ================= -->
 <div class="wrapper">
 
-  <div class="header">
-    <h1>Heat Transfer</h1>
-    <p>Calculate heat transfer using Fourier's Law of Conduction</p>
+<div class="header">
+
+<h1>Heat Transfer Calculator</h1>
+
+<p>
+Calculate steady-state heat transfer using Fourier's Law of Conduction.
+</p>
 
 <p class="last-updated">
 Last Updated: July 15, 2026
 </p>
-    
-  </div>
-
-<div class="section">
-
-<label for="k">Thermal Conductivity, k (W/m·K)</label>
-<input type="number" id="k" step="any" min="0" placeholder="Enter thermal conductivity">
-
-<label for="area">Heat Transfer Area, A (m²)</label>
-<input type="number" id="area" step="any" min="0" placeholder="Enter heat transfer area">
-
-<label for="tempDiff">Temperature Difference, ΔT (°C)</label>
-<input type="number" id="tempDiff" step="any" placeholder="Enter temperature difference">
-
-<label for="thickness">Conduction Length / Insulation Thickness, L (mm)</label>
-<input type="number" id="thickness" step="any" min="0" placeholder="Enter thickness in mm">
-
-<div id="output" class="result-box"></div>
 
 </div>
 
+<div class="section">
+
+<label for="material">Material</label>
+
+<select id="material" onchange="document.getElementById('k').value=this.value;">
+
+<optgroup label="Carbon Steel">
+
+<option value="45" selected>Mild Steel</option>
+<option value="45">IS 2062 Structural Steel</option>
+<option value="45">Carbon Steel</option>
+
+</optgroup>
+
+<optgroup label="Stainless Steel">
+
+<option value="16">SS 304</option>
+<option value="16">SS 316</option>
+<option value="16">SS 316L</option>
+<option value="24">SS 409</option>
+
+</optgroup>
+
+<optgroup label="Non-Ferrous Metals">
+
+<option value="205">Aluminium</option>
+<option value="385">Copper</option>
+<option value="109">Brass</option>
+<option value="60">Bronze</option>
+<option value="22">Titanium</option>
+<option value="91">Nickel</option>
+
+</optgroup>
+
+<optgroup label="Cast Material">
+
+<option value="55">Cast Iron</option>
+
+</optgroup>
+
+<optgroup label="Insulation Materials">
+
+<option value="0.040">Glass Wool</option>
+<option value="0.035">Rock Wool</option>
+<option value="0.028">Polyurethane Foam (PUF)</option>
+<option value="0.034">Expanded Polystyrene (EPS)</option>
+<option value="0.026">Extruded Polystyrene (XPS)</option>
+<option value="0.160">Calcium Silicate</option>
+
+</optgroup>
+
+</select>
+
+<small>
+Select a material to automatically fill its typical thermal conductivity.
+You can also manually enter a custom value if required.
+</small>
+
+<label for="k">
+Thermal Conductivity, k (W/m·K)
+</label>
+
+<input
+type="number"
+id="k"
+step="any"
+min="0"
+placeholder="e.g. 45">
+
+<label for="area">
+Heat Transfer Area, A (m²)
+</label>
+
+<input
+type="number"
+id="area"
+step="any"
+min="0"
+placeholder="e.g. 10">
+
+<label for="tempDiff">
+Temperature Difference, ΔT (°C)
+</label>
+
+<input
+type="number"
+id="tempDiff"
+step="any"
+placeholder="e.g. 100">
+
+<label for="thickness">
+Conduction Length / Insulation Thickness, L (mm)
+</label>
+
+<input
+type="number"
+id="thickness"
+step="any"
+min="0"
+placeholder="e.g. 50">
+
+<div id="output" class="result-box" aria-live="polite"></div>
+
+</div>
+
+</div>
+  
 
 <!-- ================= ENGINEERING KNOWLEDGE ================= -->
 <div class="section">
@@ -385,7 +478,7 @@ The results are accurate for steady-state conduction calculations when correct m
 </p>
 
 </div>
-```
+
 
 
 </div>
@@ -410,6 +503,9 @@ The results are accurate for steady-state conduction calculations when correct m
 <script>
 function calculateLive() {
 
+    const material = document.getElementById("material");
+    const materialName = material.options[material.selectedIndex].text;
+
     const k = parseFloat(document.getElementById("k").value);
     const A = parseFloat(document.getElementById("area").value);
     const dT = parseFloat(document.getElementById("tempDiff").value);
@@ -422,38 +518,92 @@ function calculateLive() {
         return;
     }
 
-    if (k <= 0 || A <= 0 || L_mm <= 0) {
-        output.innerHTML = "<div class='result-card'>Enter valid positive values</div>";
+    if (k <= 0 || A <= 0 || dT <= 0 || L_mm <= 0) {
+        output.innerHTML = `
+            <div class="result-card">
+                Please enter positive values for thermal conductivity, heat transfer area,
+                temperature difference and material thickness.
+            </div>
+        `;
         return;
     }
 
     const L = L_mm / 1000;
+
     const Q = (k * A * dT) / L;
+    const QkW = Q / 1000;
+    const QMW = Q / 1000000;
 
     output.innerHTML = `
         <div class="result-card">
-            <h3>Result</h3>
+
+            <h3>Calculation Result</h3>
+
             <table class="result-table">
+
                 <tr>
                     <th>Parameter</th>
                     <th>Value</th>
                 </tr>
+
                 <tr>
-                    <td>Heat Transfer Rate (Q)</td>
-                    <td>${Q.toFixed(2)} W</td>
+                    <td>Material</td>
+                    <td>${materialName}</td>
                 </tr>
+
                 <tr>
-                    <td>Thickness</td>
-                    <td>${L_mm} mm (${L.toFixed(3)} m)</td>
+                    <td>Thermal Conductivity</td>
+                    <td>${k.toLocaleString()} W/m·K</td>
                 </tr>
+
+                <tr>
+                    <td>Heat Transfer Area</td>
+                    <td>${A.toLocaleString()} m²</td>
+                </tr>
+
+                <tr>
+                    <td>Temperature Difference</td>
+                    <td>${dT.toLocaleString()} °C</td>
+                </tr>
+
+                <tr>
+                    <td>Material Thickness</td>
+                    <td>${L_mm.toLocaleString()} mm (${L.toFixed(3)} m)</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Heat Transfer Rate</strong></td>
+                    <td><strong>${Q.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})} W</strong></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>${QkW.toLocaleString(undefined,{minimumFractionDigits:3,maximumFractionDigits:3})} kW</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>${QMW.toLocaleString(undefined,{minimumFractionDigits:6,maximumFractionDigits:6})} MW</td>
+                </tr>
+
             </table>
+
+            <p class="formula">
+                Q = (k × A × ΔT) / L
+            </p>
+
         </div>
     `;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
     document.querySelectorAll("#k, #area, #tempDiff, #thickness")
         .forEach(el => el.addEventListener("input", calculateLive));
+
+    document.getElementById("material")
+        .addEventListener("change", calculateLive);
+
 });
 </script>
 
