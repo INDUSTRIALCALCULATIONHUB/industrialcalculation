@@ -104,7 +104,8 @@ Last Updated: July 15, 2026
 
 <label for="material">Material</label>
 
-<select id="material"onchange="document.getElementById('k').value=this.value;calculateLive();">
+<select id="material"
+onchange="document.getElementById('k').value=this.value; calculateLive();">
 
 <optgroup label="Carbon Steel">
 
@@ -594,6 +595,9 @@ function calculateLive() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    document.getElementById("k").value =
+        document.getElementById("material").value;
 
     document.querySelectorAll("#k, #area, #tempDiff, #thickness")
         .forEach(el => el.addEventListener("input", calculateLive));
