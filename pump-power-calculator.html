@@ -1,22 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pump Motor Selection Calculator | Industrial Calculation Hub</title>
+<title>Pump Motor Selection Calculator | Calculate Hydraulic Power, Shaft Power & Motor Size</title>
 
-<meta name="description" content="Free pump motor selection calculator. Calculate hydraulic power, shaft power, motor input power and recommended motor size using flow rate, total dynamic head, pump efficiency and safety factor.">
-<meta name="keywords" content="pump power calculator, pump motor selection, hydraulic power, fluid mechanics calculator">
+<meta name="description" content="Free online Pump Motor Selection Calculator to calculate hydraulic power, shaft power, motor input power and recommended motor size using flow rate, total dynamic head, pump efficiency, motor efficiency and safety factor.">
+
+<meta name="keywords" content="pump motor selection calculator, pump power calculator, hydraulic power calculator, shaft power calculator, motor sizing calculator, centrifugal pump calculator, fluid mechanics calculator">
+
 <meta name="author" content="Industrial Calculation Hub">
 
+<meta name="robots" content="index, follow, max-image-preview:large">
 
-<!-- CMP -->
+<link rel="canonical" href="https://industrialcalculation.com/pump-motor-selection-calculator.html">
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<meta name="theme-color" content="#0b5ed7">
+
+<meta name="last-modified" content="2026-07-22">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pump Motor Selection Calculator | Industrial Calculation Hub">
+<meta property="og:description" content="Calculate hydraulic power, shaft power, motor input power and recommended motor size for industrial pump applications using standard engineering equations.">
+<meta property="og:url" content="https://industrialcalculation.com/pump-motor-selection-calculator.html">
+<meta property="og:image" content="https://industrialcalculation.com/images/pump-motor-selection-calculator.webp">
+<meta property="og:site_name" content="Industrial Calculation Hub">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pump Motor Selection Calculator">
+<meta name="twitter:description" content="Free engineering calculator for pump motor sizing, hydraulic power, shaft power and motor input power calculations.">
+<meta name="twitter:image" content="https://industrialcalculation.com/images/pump-motor-selection-calculator.webp">
+
+<!-- Google CMP -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
-    
-<!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612" crossorigin="anonymous"></script>
 
+<!-- Google AdSense -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
+crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="style.css">
 
@@ -46,8 +73,12 @@
 <div class="wrapper">
 
 <div class="header">
-    <h1>Pump Motor Selection</h1>
-    <p>Calculate hydraulic power and select suitable motor size</p>
+    <h1>Pump Motor Selection Calculator</h1>
+    <p>Calculate Hydraulic Power, Shaft Power, Motor Input Power & Recommended Motor Size Using Standard Pump Engineering Equations</p>
+
+    <div class="last-updated">
+        Last Updated: July 22, 2026
+    </div>
 </div>
 
 <!-- MAIN TOOL -->
@@ -73,59 +104,223 @@
 
 </div>
 
-<!-- ENGINEERING KNOWLEDGE SECTION -->
-    
-<div class="section">
+<!-- ================= ENGINEERING KNOWLEDGE ================= -->
 
+<div class="section">
 
 <h2>Engineering Knowledge</h2>
 
 <p>
-Pump power is the energy required to move fluid against a specified head at a given flow rate.
-Motor selection should consider hydraulic power, pump efficiency, service factor, starting torque,
-and future operating margins.
+Pump motor selection is one of the most important steps in designing a reliable pumping system. The selected motor must provide sufficient power to overcome the required flow rate and total dynamic head while operating efficiently under normal and peak load conditions. An undersized motor may overload and fail, whereas an oversized motor increases capital cost and often operates at lower efficiency.
 </p>
 
-    
-<h3>Fundamental Formula</h3>
+<p>
+This calculator estimates <strong>hydraulic power</strong>, <strong>shaft power</strong>, <strong>motor input power</strong>, and the <strong>recommended motor size</strong> using standard pump engineering equations. These calculations are widely used during the design of water supply systems, industrial utilities, HVAC installations, cooling water circuits, boiler feed systems, and chemical process plants.
+</p>
+
+<h3>Fundamental Pump Power Equations</h3>
+
+<p>The calculations are based on the conservation of energy for incompressible fluids.</p>
 
 <ul>
-<li>Hydraulic Power (kW) = (ρ × g × Q × H) ÷ 1000</li>
-<li>For water: Hydraulic Power (kW) = 9.81 × Q × H (Q in m³/s)</li>
-<li>For flow in m³/hr: Hydraulic Power (kW) = 0.002725 × Q × H</li>
-<li>ρ = Fluid density (kg/m³)</li>
-<li>g = 9.81 m/s²</li>
-<li>Q = Flow rate</li>
-<li>H = Total Dynamic Head (m)</li>
+<li><strong>Hydraulic Power</strong><br>
+P<sub>h</sub> = ρ × g × Q × H
+</li>
+
+<li><strong>For Water</strong><br>
+P<sub>h</sub> (kW) = 9.81 × Q × H
+(Q in m³/s)
+</li>
+
+<li><strong>When Flow is Entered in m³/hr</strong><br>
+P<sub>h</sub> (kW) = 0.002725 × Q × H
+</li>
+
+<li><strong>Shaft Power</strong><br>
+P<sub>shaft</sub> = Hydraulic Power ÷ Pump Efficiency
+</li>
+
+<li><strong>Motor Input Power</strong><br>
+P<sub>motor</sub> = Shaft Power ÷ Motor Efficiency
+</li>
+
+<li><strong>Recommended Motor Size</strong><br>
+Motor Rating = Motor Input Power × Safety Factor
+</li>
 </ul>
 
-<h3>Engineering Considerations</h3>
+<h3>Meaning of Each Parameter</h3>
 
 <ul>
-<li>Typical pump efficiency: 60–85%.</li>
-<li>Typical motor efficiency: 88–96%.</li>
-<li>Typical design margin for motor selection: 10–15%.</li>
-<li>Pump efficiency significantly affects operating power consumption.</li>
-<li>Oversized motors reduce efficiency at partial loads.</li>
-<li>High head applications require careful NPSH and cavitation evaluation.</li>
+
+<li><strong>Flow Rate (Q)</strong> – The volume of liquid delivered by the pump per unit time, typically expressed in m³/hr or m³/s.</li>
+
+<li><strong>Total Dynamic Head (TDH)</strong> – The total head developed by the pump, including static head, friction losses, valves, fittings and equipment losses.</li>
+
+<li><strong>Fluid Density (ρ)</strong> – The mass of the liquid per unit volume. Water at ambient temperature is generally taken as 1000 kg/m³.</li>
+
+<li><strong>Pump Efficiency</strong> – Represents hydraulic and mechanical losses inside the pump. Higher efficiency reduces power consumption.</li>
+
+<li><strong>Motor Efficiency</strong> – Indicates how effectively electrical power is converted into mechanical power.</li>
+
+<li><strong>Safety Factor</strong> – An additional design margin used to ensure reliable operation under varying process conditions.</li>
+
 </ul>
 
-<h3>Industrial Applications</h3>
+<h3>Typical Engineering Design Values</h3>
+
+<table>
+
+<tr>
+<th>Parameter</th>
+<th>Typical Range</th>
+</tr>
+
+<tr>
+<td>Pump Efficiency</td>
+<td>60–85%</td>
+</tr>
+
+<tr>
+<td>Motor Efficiency</td>
+<td>88–96%</td>
+</tr>
+
+<tr>
+<td>Motor Safety Factor</td>
+<td>1.10–1.15</td>
+</tr>
+
+<tr>
+<td>Water Density</td>
+<td>1000 kg/m³</td>
+</tr>
+
+<tr>
+<td>Gravitational Acceleration</td>
+<td>9.81 m/s²</td>
+</tr>
+
+</table>
+
+<h3>Engineering Design Considerations</h3>
 
 <ul>
+
+<li>Select the pump close to its Best Efficiency Point (BEP) for maximum reliability.</li>
+
+<li>Always consider total dynamic head rather than static head alone.</li>
+
+<li>Include piping friction losses, valves and fittings during system design.</li>
+
+<li>Provide a suitable motor safety margin without excessive oversizing.</li>
+
+<li>Check available NPSH to prevent cavitation.</li>
+
+<li>Verify starting torque requirements for high inertia pumps.</li>
+
+<li>Consider future process expansion when selecting motor size.</li>
+
+<li>Use high-efficiency motors to reduce long-term operating costs.</li>
+
+</ul>
+
+<h3>Example Calculation</h3>
+
+<p>
+A centrifugal pump delivers <strong>120 m³/hr</strong> of water against a <strong>35 m</strong> total dynamic head. The pump efficiency is <strong>75%</strong>, motor efficiency is <strong>92%</strong>, and a safety factor of <strong>1.15</strong> is applied.
+</p>
+
+<ul>
+
+<li>Hydraulic Power = 0.002725 × 120 × 35 = <strong>11.45 kW</strong></li>
+
+<li>Shaft Power = 11.45 ÷ 0.75 = <strong>15.27 kW</strong></li>
+
+<li>Motor Input Power = 15.27 ÷ 0.92 = <strong>16.60 kW</strong></li>
+
+<li>Recommended Motor = 16.60 × 1.15 = <strong>19.09 kW</strong></li>
+
+</ul>
+
+<p>
+In practice, the next standard motor rating (typically 22 kW) would normally be selected.
+</p>
+
+<h3>Typical Industrial Applications</h3>
+
+<ul>
+
 <li>Water treatment plants</li>
-<li>Boiler feed systems</li>
-<li>Cooling water circulation</li>
-<li>Chemical process pumping</li>
+
+<li>Cooling water circulation systems</li>
+
+<li>Boiler feed water pumping</li>
+
+<li>Chemical process industries</li>
+
 <li>HVAC chilled water systems</li>
+
+<li>Fire protection pump houses</li>
+
+<li>Oil and gas utility systems</li>
+
+<li>Power generation plants</li>
+
+<li>Mining slurry transfer systems</li>
+
+<li>Industrial utility pumping stations</li>
+
 </ul>
+
+<h3>Calculation Assumptions</h3>
+
+<ul>
+
+<li>Steady-state operating conditions.</li>
+
+<li>Incompressible fluid.</li>
+
+<li>Uniform flow rate.</li>
+
+<li>Constant fluid density.</li>
+
+<li>Specified pump and motor efficiencies remain constant.</li>
+
+<li>No allowance for transient operating conditions.</li>
+
+<li>The calculator estimates motor size only and does not replace detailed equipment selection.</li>
+
+</ul>
+
+<h3>Frequently Asked Questions</h3>
+
+<h4>What is hydraulic power?</h4>
+
+<p>Hydraulic power is the useful power required to lift and move a liquid through the pumping system before accounting for pump or motor losses.</p>
+
+<h4>Why are pump efficiency and motor efficiency different?</h4>
+
+<p>Pump efficiency represents hydraulic and mechanical losses inside the pump, whereas motor efficiency represents electrical losses within the motor.</p>
+
+<h4>Why is a safety factor included?</h4>
+
+<p>A safety factor provides additional capacity to accommodate process variations, equipment ageing, and operating uncertainties.</p>
+
+<h4>Does this calculator include pipe friction losses?</h4>
+
+<p>No. Pipe friction losses should first be calculated and included in the Total Dynamic Head entered into the calculator.</p>
+
+<h4>Can this calculator be used for liquids other than water?</h4>
+
+<p>Yes. The calculator can be used for other liquids provided the appropriate fluid density and operating conditions are considered during design.</p>
 
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
 
-<div>© 2026 Industrial Calculation Hub | Engineering Tools Portal</div>
+<div>© 2026 Industrial Calculation Hub. All Rights Reserved. Free Engineering Calculators | Unit Converters | Engineering Knowledge Base</div>
 
 <div class="footer-links">
     <a href="index.html">Home</a>
