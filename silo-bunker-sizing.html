@@ -83,26 +83,37 @@ crossorigin="anonymous"></script>
     </div>
 </div>
 
-<!-- INPUT -->
+<!-- ================= CALCULATOR ================= -->
+
 <div class="section">
 
-<label>Storage Type</label>
+<h2>Silo &amp; Bunker Volume Calculator</h2>
+
+<p>
+This calculator estimates the total storage volume, hopper volume, water capacity and effective storage volume of circular silos and rectangular bunkers. Select the storage type, enter the required dimensions, and the results are calculated instantly using standard engineering equations commonly applied in bulk material handling system design.
+</p>
+
+<label for="shape"><strong>Select Storage Type</strong></label>
+
 <select id="shape" onchange="changeInputs();calculate();">
-<option value="circular">Circular Silo</option>
-<option value="rectangular">Rectangular Bunker</option>
+    <option value="circular">Circular Silo</option>
+    <option value="rectangular">Rectangular Bunker</option>
 </select>
 
 </div>
 
-<!-- ================= CIRCULAR ================= -->
+<!-- ================= CIRCULAR SILO ================= -->
+
 <div class="section" id="circularInputs">
 
 <h2>Circular Silo Inputs</h2>
 
-<label>Diameter (mm)</label>
+<p>Enter all dimensions in millimetres (mm). The cone angle is measured from the horizontal.</p>
+
+<label>Internal Diameter (mm)</label>
 <input type="number" id="dia" oninput="calculate()">
 
-<label>Shell Height (mm)</label>
+<label>Cylindrical Shell Height (mm)</label>
 <input type="number" id="shellHeight" oninput="calculate()">
 
 <label>Cone Angle from Horizontal (°)</label>
@@ -111,42 +122,62 @@ crossorigin="anonymous"></script>
 <label>Outlet Diameter (mm)</label>
 <input type="number" id="outletDia" oninput="calculate()">
 
-<label>Angle of Repose (°)</label>
+<label>Bulk Material Angle of Repose (°)</label>
 <input type="number" id="reposeCircular" oninput="calculate()">
 
 </div>
 
-<!-- ================= RECTANGULAR UPDATED ================= -->
+<!-- ================= RECTANGULAR BUNKER ================= -->
+
 <div class="section" id="rectangularInputs" style="display:none;">
 
 <h2>Rectangular Bunker Inputs</h2>
 
-<label>Length of Shell (mm)</label>
+<p>Enter the shell dimensions, hopper outlet dimensions and valley angle for the bunker.</p>
+
+<label>Shell Length (mm)</label>
 <input type="number" id="lengthShell" oninput="calculate()">
 
-<label>Width of Shell (mm)</label>
+<label>Shell Width (mm)</label>
 <input type="number" id="widthShell" oninput="calculate()">
 
-<label>Height of Shell (mm)</label>
+<label>Shell Height (mm)</label>
 <input type="number" id="heightShell" oninput="calculate()">
 
-<label>Length of Cone Bottom (mm)</label>
+<label>Bottom Outlet Length (mm)</label>
 <input type="number" id="lengthCone" oninput="calculate()">
 
-<label>Width of Cone Bottom (mm)</label>
+<label>Bottom Outlet Width (mm)</label>
 <input type="number" id="widthCone" oninput="calculate()">
 
 <label>Valley Angle (°)</label>
 <input type="number" id="valleyAngle" oninput="calculate()">
 
+</div>
 
+<!-- ================= RESULTS ================= -->
 
-<!-- OUTPUT -->
+<div class="section">
+
+<h2>Calculation Results</h2>
 
 <div id="output"></div>
 
+<div class="note-box">
+
+<strong>Engineering Note:</strong>
+
+<ul>
+<li>All dimensions should be entered in millimetres (mm).</li>
+<li>Volumes are calculated using standard geometric equations.</li>
+<li>Effective storage volume is estimated using the specified angle of repose.</li>
+<li>This calculator is intended for preliminary engineering and equipment sizing.</li>
+<li>Final silo and bunker designs should always be verified for structural strength, flow characteristics and applicable design standards.</li>
+</ul>
+
 </div>
 
+</div>
 
 <!-- ================= ENGINEERING KNOWLEDGE ================= -->
 
