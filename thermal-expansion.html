@@ -58,6 +58,17 @@ crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="style.css">
 
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"WebPage",
+"name":"Thermal Expansion Calculator",
+"description":"Calculate linear thermal expansion of engineering materials using coefficient of thermal expansion.",
+"url":"https://industrialcalculation.com/thermal-expansion-calculator.html"
+}
+</script>
+
+    
 </head>
 
 <body>
@@ -102,21 +113,13 @@ crossorigin="anonymous"></script>
 
 <div class="section">
 
-<h2>Linear Thermal Expansion Calculator</h2>
-
-<p>
-Calculate the dimensional change of engineering materials when subjected to temperature variation.
-The calculator uses the standard linear thermal expansion equation based on initial length,
-temperature change and material coefficient of thermal expansion.
-</p>
-
 <label>Initial Length (L₀) [mm]</label>
 <input type="number" id="length" placeholder="Enter original length in mm" step="any" min="0">
 
 <label>Temperature Change (ΔT) [°C]</label>
 <input type="number" id="temp" placeholder="Enter temperature increase or decrease" step="any">
 
-<label>Engineering Material</label>
+<label>Select Material for Thermal Expansion Coefficient (α)</label>
 
 <select id="material">
 
@@ -148,45 +151,47 @@ temperature change and material coefficient of thermal expansion.
 
 </div>
 
-
-<div class="note-box">
-
-<strong>Engineering Note:</strong>
-
-<ul>
-
-<li>The calculation is based on the linear thermal expansion equation: ΔL = α × L₀ × ΔT.</li>
-
-<li>Positive temperature change represents heating and negative temperature change represents cooling.</li>
-
-<li>The calculated value represents free expansion without mechanical restraint.</li>
-
-<li>Actual expansion in piping and structures may vary due to supports, anchors, friction and operating conditions.</li>
-
-<li>For critical applications such as pressure vessels, pipelines and high-temperature equipment, detailed stress analysis should be performed.</li>
-
-</ul>
-
 </div>
 
-</div>
+    
 <!-- ================= ENGINEERING KNOWLEDGE ================= -->
 
 <div class="section">
 
-<h3>Engineering Knowledge</h3>
+<h2>Engineering Knowledge</h2>
 
 <p>
-<b>Thermal expansion</b> occurs when a material changes its dimensions due to temperature change.
+<strong>Thermal expansion</strong> is the change in size of a material when its temperature
+changes. Almost all engineering materials expand when heated and contract when cooled.
+Understanding thermal expansion is essential in the design of piping systems, pressure
+vessels, heat exchangers, structural components, and industrial equipment operating at
+elevated temperatures.
 </p>
 
-<p><b>Linear Expansion Formula:</b></p>
+<p>
+When a component is free to expand, the dimensional change can be calculated using the
+linear thermal expansion equation. However, when expansion is restricted by anchors,
+supports, or connected equipment, thermal stresses can develop and must be considered
+during engineering design.
+</p>
+
+
+<h3>Linear Thermal Expansion Formula</h3>
+
+<p>
+The standard equation used for calculating one-dimensional expansion is:
+</p>
 
 <p class="formula">
 ΔL = α × L₀ × ΔT
 </p>
 
+<p>
+Where:
+</p>
+
 <div class="result-card">
+
 <table class="result-table">
 
 <tr>
@@ -197,35 +202,222 @@ temperature change and material coefficient of thermal expansion.
 
 <tr>
 <td>L₀</td>
-<td>Initial Length</td>
+<td>Initial Length before temperature change</td>
 <td>mm or m</td>
 </tr>
 
 <tr>
 <td>ΔT</td>
-<td>Temperature Change</td>
+<td>Change in temperature (Final temperature − Initial temperature)</td>
 <td>°C</td>
 </tr>
 
 <tr>
 <td>α</td>
-<td>Coefficient of Expansion</td>
+<td>Coefficient of linear thermal expansion</td>
 <td>/°C</td>
 </tr>
 
 <tr>
 <td>ΔL</td>
-<td>Change in Length</td>
+<td>Increase or decrease in length</td>
 <td>mm or m</td>
 </tr>
 
 </table>
+
 </div>
+
+
+<h3>Coefficient of Thermal Expansion</h3>
+
+<p>
+The coefficient of thermal expansion represents how much a material expands per unit
+length for every degree Celsius change in temperature. Materials with higher values of
+α experience greater dimensional changes under the same operating conditions.
+</p>
+
+<table class="result-table">
+
+<tr>
+<th>Material</th>
+<th>Typical Expansion Coefficient (×10⁻⁶ /°C)</th>
+</tr>
+
+<tr>
+<td>Carbon Steel</td>
+<td>12</td>
+</tr>
+
+<tr>
+<td>Stainless Steel 304</td>
+<td>17</td>
+</tr>
+
+<tr>
+<td>Stainless Steel 316</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>Aluminium</td>
+<td>23</td>
+</tr>
+
+<tr>
+<td>Copper</td>
+<td>17</td>
+</tr>
+
+<tr>
+<td>Cast Iron</td>
+<td>11</td>
+</tr>
+
+<tr>
+<td>Titanium</td>
+<td>8.5</td>
+</tr>
+
+</table>
+
+
+<h3>Engineering Applications</h3>
+
+<p>
+Thermal expansion calculations are commonly performed in many industrial applications,
+including:
+</p>
+
+<ul>
+
+<li>
+<strong>Piping Systems:</strong> Long pipelines require expansion loops, bends or
+expansion joints to accommodate thermal movement.
+</li>
+
+<li>
+<strong>Pressure Vessels:</strong> Temperature changes can create additional stresses
+if expansion is restricted.
+</li>
+
+<li>
+<strong>Heat Exchangers:</strong> Differential expansion between tubes and shells must
+be considered during design.
+</li>
+
+<li>
+<strong>Boiler and Power Plant Equipment:</strong> High-temperature components require
+thermal movement allowances.
+</li>
+
+<li>
+<strong>Structural Steel:</strong> Bridges, platforms and industrial structures require
+expansion consideration for large temperature variations.
+</li>
+
+</ul>
+
+
+<h3>Example Calculation</h3>
+
+<p>
+Consider a carbon steel pipe with an initial length of <strong>20 metres</strong> operating
+with a temperature increase of <strong>150°C</strong>.
+The coefficient of thermal expansion for carbon steel is approximately
+<strong>12 × 10⁻⁶ /°C</strong>.
+</p>
+
+<p class="formula">
+ΔL = 12 × 10⁻⁶ × 20000 × 150
+</p>
+
+<p>
+ΔL = <strong>36 mm</strong>
+</p>
+
+<p>
+The pipe will expand approximately 36 mm if it is free to move.
+</p>
+
+
+<h3>Important Design Considerations</h3>
+
+<ul>
+
+<li>Provide expansion loops or expansion joints in long piping systems.</li>
+
+<li>Consider thermal movement in pipe supports and guides.</li>
+
+<li>Restrained expansion can generate high thermal stresses.</li>
+
+<li>Different materials connected together may experience differential expansion.</li>
+
+<li>Operating temperature range should be considered during design.</li>
+
+<li>Material properties may vary at elevated temperatures.</li>
+
+<li>Thermal expansion analysis is important for critical industrial systems.</li>
+
+</ul>
+
+
+<h3>Calculation Assumptions</h3>
+
+<ul>
+
+<li>Material properties remain constant over the temperature range.</li>
+
+<li>The component expands freely without mechanical restraint.</li>
+
+<li>Expansion is considered only in one linear direction.</li>
+
+<li>No creep or permanent deformation is considered.</li>
+
+<li>The calculation provides preliminary engineering estimation.</li>
+
+</ul>
+
+
+<h3>Frequently Asked Questions</h3>
+
+<h4>Why do materials expand when heated?</h4>
+
+<p>
+Heating increases atomic vibration and the average spacing between atoms, causing the
+material dimensions to increase.
+</p>
+
+<h4>Which material has higher thermal expansion?</h4>
+
+<p>
+Aluminium generally expands more than steel because it has a higher coefficient of
+thermal expansion.
+</p>
+
+<h4>Does this calculator consider pipe restraints?</h4>
+
+<p>
+No. It calculates free thermal expansion only. Restrained systems require detailed
+stress analysis.
+</p>
+
+<h4>Why is thermal expansion important in piping design?</h4>
+
+<p>
+Temperature changes in long pipelines can create significant movement and stresses,
+which may damage supports, joints or connected equipment if not properly managed.
+</p>
+
+<h4>Can this calculator be used for cooling conditions?</h4>
+
+<p>
+Yes. Enter a negative temperature change to calculate contraction during cooling.
+</p>
+
+</div>
+
     
-</div>
-
-</div>
-
 <!-- ================= FOOTER ================= -->
 
 <div class="footer">
@@ -265,9 +457,7 @@ function calculateLive() {
         return;
     }
 
-    let L = L_mm / 1000; // mm → m
-
-    let expansion = L * alpha * dT;
+let expansion_mm = L_mm * alpha * dT;
 
     output.innerHTML = `
     <div class="result-card">
@@ -296,15 +486,10 @@ function calculateLive() {
                 <td>${(alpha * 1e6).toFixed(1)} ×10⁻⁶ /°C</td>
             </tr>
 
-            <tr>
-                <td>Change in Length (ΔL)</td>
-                <td>${expansion.toFixed(3)} m</td>
-            </tr>
-
-            <tr>
-                <td>Change in Length</td>
-                <td>${(expansion * 1000).toFixed(2)} mm</td>
-            </tr>
+<tr>
+<td>Thermal Expansion</td>
+<td>${expansion_mm.toFixed(2)} mm (${(expansion_mm/1000).toFixed(4)} m)</td>
+</tr>
 
         </table>
 
