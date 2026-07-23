@@ -1,21 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Temperature Conversion Tool | Industrial Calculation Hub</title>
+<title>Temperature Conversion Calculator | Convert Celsius, Fahrenheit, Kelvin & Rankine | Industrial Calculation Hub</title>
 
-<meta name="description" content="Convert Celsius, Fahrenheit, and Kelvin with engineering accuracy for thermodynamics applications.">
+<meta name="description" content="Free online Temperature Conversion Calculator for engineers, technicians, students, and industrial professionals. Instantly convert Celsius (°C), Fahrenheit (°F), Kelvin (K), and Rankine (°R) with engineering accuracy for thermodynamics, HVAC, boilers, heat transfer, FGD, and industrial process applications.">
 
-<!-- CMP -->
+<meta name="keywords" content="temperature conversion calculator, celsius to fahrenheit, fahrenheit to celsius, kelvin converter, rankine converter, engineering temperature calculator, thermodynamics calculator, HVAC temperature conversion">
+
+<meta name="author" content="Industrial Calculation Hub">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1565c0">
+
+<link rel="canonical" href="https://industrialcalculation.com/temperature-conversion.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Temperature Conversion Calculator | Industrial Calculation Hub">
+<meta property="og:description" content="Convert Celsius, Fahrenheit, Kelvin, and Rankine accurately for engineering, HVAC, boiler, heat transfer, and industrial process applications.">
+<meta property="og:url" content="https://industrialcalculation.com/temperature-conversion.html">
+<meta property="og:image" content="https://industrialcalculation.com/images/temperature-conversion-calculator.webp">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Temperature Conversion Calculator | Industrial Calculation Hub">
+<meta name="twitter:description" content="Professional engineering temperature converter supporting Celsius, Fahrenheit, Kelvin, and Rankine.">
+<meta name="twitter:image" content="https://industrialcalculation.com/images/temperature-conversion-calculator.webp">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="favicon.png">
+
+<!-- Global CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Google Funding Choices (CMP) -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-1658062441623612?ers=1"></script>
 
-<!-- ADSENSE -->
+<!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1658062441623612"
 crossorigin="anonymous"></script>
 
-<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -32,7 +59,7 @@ crossorigin="anonymous"></script>
     </div>
 
     <div class="topbar-line">
-        <a href="index.html#tools">Engineering Tools</a>
+        <a href="index.html#tools">Engineering Calculators</a>
         <a href="index.html#converters">Unit Conversion</a>
         <a href="index.html#blogs">Engineering Knowledge</a>
     </div>
@@ -45,19 +72,51 @@ crossorigin="anonymous"></script>
 <!-- HEADER -->
 <div class="header">
     <h1>Temperature Conversion Calculator</h1>
-    <p>Unit Convertor For Temperature</p>
+    <p>Convert Celsius (°C), Fahrenheit (°F), Kelvin (K), and Rankine (°R) instantly with engineering accuracy for thermodynamics, HVAC, boiler, heat transfer, refrigeration, and industrial process applications.</p>
+
+<div class="update-info">
+    Last Updated: July 23, 2026
+</div>
+
+
 </div>
 
 <!-- INPUT SECTION -->
 <div class="section">
 
-<input type="number" id="inputValue" placeholder="Enter Temperature Value">
+<label for="inputValue">
+    Enter Temperature Value
+</label>
+
+<input 
+    type="number" 
+    id="inputValue" 
+    placeholder="Example: 100" 
+    step="any"
+>
+
+<label for="unit">
+    Select Temperature Unit
+</label>
 
 <select id="unit">
-    <option value="C">Celsius (°C)</option>
-    <option value="F">Fahrenheit (°F)</option>
+
+    <option value="C">Degree Celsius (°C)</option>
+
+    <option value="F">Degree Fahrenheit (°F)</option>
+
     <option value="K">Kelvin (K)</option>
+
+    <option value="R">Degree Rankine (°R)</option>
+
 </select>
+
+<div class="info-card">
+
+<strong>Engineering Note:</strong>
+Temperature conversion between Celsius and Fahrenheit uses a linear relationship, while Kelvin and Rankine are absolute temperature scales referenced to absolute zero.
+
+</div>
 
 <div id="output" class="result-box"></div>
 
